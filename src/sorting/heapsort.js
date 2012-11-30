@@ -1,4 +1,19 @@
+var array = [3,4,6,2,3,6,8,9];
+
+/**
+ * The heapsort algorithm. It's complexity is O(nlog n).
+ *
+ * @public
+ */
 var heapSort = (function () {
+
+    /**
+     * Finds the correct place of given element in given max heap.
+     *
+     * @private
+     * @param {array} array Array
+     * @param {number} index Index of the element which palce in the max heap should be find
+     */
     function heapify(array, index, heapSize) {
         var left = 2 * index + 1,
             right = 2 * index + 2,
@@ -18,6 +33,13 @@ var heapSort = (function () {
         }
     }
 
+    /**
+     * Builds max heap from a given array.
+     *
+     * @private
+     * @param {array} array Array which should be turned into max heap
+     * @returns {array} array Array turned into max heap
+     */
     function buildMaxHeap(array) {
         for (var i = Math.floor(array.length / 2); i >= 0; i -= 1) {
             heapify(array, i, array.length);
@@ -25,6 +47,13 @@ var heapSort = (function () {
         return array;
     }
 
+    /**
+     * Heapsort. Turns the input array into a max heap and after that sorts it.
+     *
+     * @public
+     * @param {array} array Input array
+     * @returns {array} array Sorted array
+     */
     return function (array) {
         var size = array.length,
             temp;
@@ -40,3 +69,4 @@ var heapSort = (function () {
     };
 }());
 
+console.log(heapSort(array));

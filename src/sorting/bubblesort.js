@@ -1,5 +1,12 @@
 var array = [3,5,2,4,7,9,6,4,5];
 
+/**
+ * The bubblesort algorithm. Complexity O(n^2).
+ *
+ * @public
+ * @param {array} array Input array
+ * @returns {array} array Sorted array
+ */
 function bubbleSort(array) {
     var temp;
     for (var i = 0; i < array.length; i += 1) {

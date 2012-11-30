@@ -1,5 +1,12 @@
 var array = [4,6,2,2,4,56,7,7,51,23,5,7];
 
+/**
+ * Recursive version of insertionsort. Complexity O(n^2).
+ *
+ * @public
+ * @param {array} array Input array
+ * @param {number} [max] Index of the element which place we should find in the current function call
+ */
 function recursiveInsertionSort(array, max) {
     if (max <= 0)
         return array;
