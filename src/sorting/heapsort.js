@@ -12,7 +12,7 @@ var heapSort = (function () {
      *
      * @private
      * @param {array} array Array
-     * @param {number} index Index of the element which palce in the max heap should be find
+     * @param {number} index Index of the element which palce in the max heap should be found.
      */
     function heapify(array, index, heapSize) {
         var left = 2 * index + 1,
@@ -34,7 +34,7 @@ var heapSort = (function () {
     }
 
     /**
-     * Builds max heap from a given array.
+     * Builds max heap from given array.
      *
      * @private
      * @param {array} array Array which should be turned into max heap
@@ -48,7 +48,7 @@ var heapSort = (function () {
     }
 
     /**
-     * Heapsort. Turns the input array into a max heap and after that sorts it.
+     * Heapsort. Turns the input array into max heap and after that sorts it.
      *
      * @public
      * @param {array} array Input array
