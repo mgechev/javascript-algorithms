@@ -1,5 +1,14 @@
 var array = [5, 8, 53, 56, 123, 322, 400, 2356, 8000, 23333];
 
+/**
+ * Searchs for specific element in given array using the binary search algorithm.
+ * It's complexity is O(log n)
+ *
+ * @public
+ * @param {array} array Input array
+ * @param {number} key The key of the element which index we should find
+ * @returns {number} index The index of the element or -1 if not found
+ */
 function binarySearch(array, key) {
     var middle = Math.round(array.length / 2),
         left = 0,
