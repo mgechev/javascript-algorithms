@@ -10,7 +10,7 @@ function MaxHeap() {
 /**
  * Exchange indexes with start index given as argument
  * to turn the heap into valid maxheap. On a single call
- * this method maintains only a single "branch" of the heap
+ * this method maintains only a single "branch" of the heap. Complexity O(log n)
  *
  * @private
  * @param {number} index The parent
@@ -37,7 +37,7 @@ MaxHeap.prototype._heapify = function (index) {
 }
 
 /**
- * Increases the key for give index
+ * Increases the key for give index. Complexity O(log n).
  *
  * @public
  * @param {number} index Index which key should be increased
@@ -61,7 +61,7 @@ MaxHeap.prototype.increaseKey = function (index, value) {
 }
 
 /**
- * Adds new element to the heap
+ * Adds new element to the heap. Complexity O(log n).
  *
  * @public
  * @param {number} value The new value which will be inserted
@@ -73,7 +73,7 @@ MaxHeap.prototype.add = function (value) {
 }
 
 /**
- * Gets the current value which is on the top of the heap
+ * Gets the current value which is on the top of the heap. Complexity O(1).
  *
  * @public
  * returns {numner}  The current largest value which is on the top of the heap
@@ -83,7 +83,8 @@ MaxHeap.prototype.max = function () {
 }
 
 /**
- * Remove and return the current maximum value which is on the top of the heap
+ * Remove and return the current maximum value which is on the top of the heap.
+ * Complexity O(log n).
  *
  * @public
  * @returns {number} max Extracted value
