@@ -101,7 +101,6 @@ var bucketSort = (function () {
         var buckets = createBuckets(array);
         sortBuckets(buckets);
         return unionBuckets(buckets);
-        return insertionSort([4,5,2,3,65,8,9,0]);
     }
 }());
 
