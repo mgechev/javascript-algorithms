@@ -1,22 +1,25 @@
-var array = [2,3,1,1,2,4,6,7,8,2,3,5,6,8];
-
+/**
+ * Selection sort. It's complexity is O(n^2)
+ *
+ * @public
+ * @param {array} array Array to be sorted
+ * @return {array} The sorted array
+ */
 function selectionSort(array) {
-    var min,
-        idx,
-        temp;
+    var min, idx, temp;
     for (var i = 0; i < array.length; i += 1) {
-       min = Infinity;
-       for (var j = i + 1; j < array.length; j += 1) {
-           if (min > array[j]) {
-               min = array[j];
-               idx = j;
-           }
-       }
-       temp = array[idx];
-       array[idx] = array[i];
-       array[i] = temp;
+        idx = i;
+        min = array[i];
+        for (var j = i + 1; j < array.length; j += 1) {
+            if (min > array[j]) {
+                min = array[j];
+                idx = j;
+            }
+        }
+        temp = array[i];
+        array[i] = min;
+        array[idx] = temp;
     }
     return array;
 }
 
-console.log(selectionSort(array));
