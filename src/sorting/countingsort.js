@@ -82,7 +82,7 @@ var countingSort = function () {
     return function (array) {
         var less = getLessCount(getCount(array));
         return sort(array, less);
-    }
+    };
 }();
 
 console.log(countingSort(array));

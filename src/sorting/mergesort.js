@@ -75,6 +75,6 @@ var mergeSort = (function () {
      */
     return function (array) {
         return mergesort(array, 0, array.length);
-    }
+    };
 
 }());
