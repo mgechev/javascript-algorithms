@@ -85,7 +85,6 @@ Graph.prototype.prim = (function () {
             spannigTree = [];
         spannigTree.push(current);
         inTheTree[current.e.id] = true;
-        inTheTree[current.v.id] = true;
         while (queue.isEmpty()) {
             current = queue.extract();
             if (!inTheTree[current.v.id] ||
