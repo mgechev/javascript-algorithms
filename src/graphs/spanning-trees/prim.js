@@ -1,4 +1,4 @@
-var Heap = require('../data-structures/heap').Heap;
+var Heap = require('../../data-structures/heap').Heap;
 
 /**
  * Graph vertex

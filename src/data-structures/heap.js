@@ -13,7 +13,7 @@ function Heap(cmp) {
             return a - b;
         };
     }
-}
+};
 
 /**
  * Exchange indexes with start index given as argument
@@ -41,8 +41,7 @@ Heap.prototype._heapify = function (index) {
         this._heap[extr] = temp;
         this._heapify(extr);
     }
-
-}
+};
 
 /**
  * Changes the key for give index. Complexity O(log n).
@@ -66,7 +65,7 @@ Heap.prototype.changeKey = function (index, value) {
         }
     }
     return parent;
-}
+};
 
 /**
  * Adds new element to the heap. Complexity O(log n).
@@ -78,7 +77,7 @@ Heap.prototype.changeKey = function (index, value) {
 Heap.prototype.add = function (value) {
     this._heap.push(value);
     return this.changeKey(this._heap.length - 1, value);
-}
+};
 
 /**
  * Gets the current value which is on the top of the heap. Complexity O(1).
@@ -88,7 +87,7 @@ Heap.prototype.add = function (value) {
  */
 Heap.prototype.top = function () {
     return this._heap[0];
-}
+};
 
 /**
  * Removes and returns the current extremum value which is on the top of the heap.
@@ -104,6 +103,10 @@ Heap.prototype.extract = function () {
     var extr = this._heap.shift();
     this._heapify(0);
     return extr;
-}
+};
+
+Heap.prototype.isEmpty = function () {
+    return !this._heapify.length;
+};
 
 exports.Heap = Heap;

@@ -20,7 +20,7 @@ var graph = [[NaN, 7,   9,   NaN, NaN, 16],
  */
 var dijstra = function () {
 
-    var Heap = require('../data-structures/heap.js').Heap,
+    var Heap = require('../../data-structures/heap.js').Heap,
         current,
         visited,
         distance,
