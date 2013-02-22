@@ -13,7 +13,7 @@ function Heap(cmp) {
             return a - b;
         };
     }
-};
+}
 
 /**
  * Exchange indexes with start index given as argument
@@ -98,7 +98,7 @@ Heap.prototype.top = function () {
  */
 Heap.prototype.extract = function () {
     if (!this._heap.length)
-        throw new 'The heap is already empty!';
+        throw 'The heap is already empty!';
 
     var extr = this._heap.shift();
     this._heapify(0);
