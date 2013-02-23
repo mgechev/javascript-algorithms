@@ -40,7 +40,7 @@ var binarySearch = (function () {
      */
     return function (array, key) {
         return recursiveBinarySearch(array, key, 0, array.length);
-    }
+    };
 
 }());
 

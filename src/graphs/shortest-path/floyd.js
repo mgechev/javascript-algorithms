@@ -70,5 +70,5 @@ var floydWarshall = (function () {
             }
         }
         return dist;
-    }
+    };
 }());
