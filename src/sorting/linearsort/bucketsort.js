@@ -45,7 +45,6 @@ var bucketSort = (function () {
             sectorSize = 1 / array.length;
         for (var i = 0; i < array.length; i += 1) {
             current = array[i];
-            console.log(current / sectorSize);
             currentBucket = Math.floor(current / sectorSize);
             if (buckets[currentBucket] === undefined) {
                 buckets[currentBucket] = [];
