@@ -10,6 +10,10 @@ var runLengthEncoding = (function () {
 
     'use strict';
 
+    /**
+     * Convers a given string to sequence of numbers
+     * This takes O(n).
+     */
     function convertToAscii(str) {
         var result = '',
             currentChar = '',
@@ -25,7 +29,11 @@ var runLengthEncoding = (function () {
         }
         return result;
     }
-     
+    
+    /**
+     * Encodes the binary string to run-length encoding.
+     * Takes O(n^2).
+     */ 
     function runLength(vector) {
         var result = '',
             zeros = 0,
@@ -48,7 +56,11 @@ var runLengthEncoding = (function () {
         }
         return result;
     }
-     
+
+    /**
+     * Accepts a string and returns it's run-length encoded binary representation.
+     * Takes O(n^2).
+     */     
     return function (str) {
         var asciiString = convertToAscii(str);
         return runLength(asciiString);
