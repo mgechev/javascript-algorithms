@@ -22,7 +22,10 @@ function QuickUnion(n) {
  * @return {number} The root of the node
  */
 QuickUnion.prototype._root = function (i) {
-  while (i !== this._ids[i]) i = this._ids[i];
+  while (i !== this._ids[i]) {
+//    this._ids = this._ids[this._ids[i]]; //enables the path compression
+    i = this._ids[i];
+  }
   return i;
 };
 
