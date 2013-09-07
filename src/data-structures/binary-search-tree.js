@@ -13,10 +13,10 @@
  * @param {Node} Parent of the node
  */
 function Node(value, left, right, parent) {
-    this.value = value;
-    this._left = left;
-    this._right = right;
-    this._parent = parent;
+  this.value = value;
+  this._left = left;
+  this._right = right;
+  this._parent = parent;
 }
 
 /**
@@ -24,9 +24,9 @@ function Node(value, left, right, parent) {
  *
  * @public
  * @constructor
- */ 
+ */
 function BinaryTree() {
-    this._root = null;
+  this._root = null;
 }
 
 /**
@@ -36,23 +36,23 @@ function BinaryTree() {
  * @public
  * @param {number|string} Value
  * @param {[Node]} Current node
- */ 
+ */
 BinaryTree.prototype.insert = function (value, current) {
-    if (this._root === null) {
-        this._root = new Node(value, null, null, null);
-        return;
-    }
-    
-    var insertKey;
-    current = current || this._root;
-    if (current.value > value)
-        insertKey = '_left';
-    else 
-        insertKey = '_right';
-    if (!current[insertKey])
-        current[insertKey] = new Node(value, null, null, current);
-    else
-        this.insert(value, current[insertKey]);
+  if (this._root === null) {
+    this._root = new Node(value, null, null, null);
+    return;
+  }
+  
+  var insertKey;
+  current = current || this._root;
+  if (current.value > value)
+    insertKey = '_left';
+  else
+    insertKey = '_right';
+  if (!current[insertKey])
+    current[insertKey] = new Node(value, null, null, current);
+  else
+    this.insert(value, current[insertKey]);
 };
 
 /**
@@ -61,14 +61,14 @@ BinaryTree.prototype.insert = function (value, current) {
  * @private
  * @param {Node} Node from which to start the traversal
  * @param {Function} Callback which will be called for each traversed node
- */ 
+ */
 BinaryTree.prototype._inorder = function (current, callback) {
-    if (!current)
-        return;
-    this._inorder(current._left, callback);
-    if (typeof callback === 'function') 
-        callback(current);
-    this._inorder(current._right, callback);
+  if (!current)
+    return;
+  this._inorder(current._left, callback);
+  if (typeof callback === 'function')
+    callback(current);
+  this._inorder(current._right, callback);
 };
 
 /**
@@ -78,7 +78,7 @@ BinaryTree.prototype._inorder = function (current, callback) {
  * @param {Function} Callback which will be called for each traversed node
  */
 BinaryTree.prototype.inorder = function (callback) {
-    return this._inorder(this._root, callback);
+  return this._inorder(this._root, callback);
 };
 
 /**
@@ -87,14 +87,14 @@ BinaryTree.prototype.inorder = function (callback) {
  * @private
  * @param {Node} Node from which to start the traversal
  * @param {Function} Callback which will be called for each traversed node
- */ 
+ */
 BinaryTree.prototype._postorder = function (current, callback) {
-    if (!current)
-        return;
-    if (typeof callback === 'function') 
-        callback(current);
-    this._postorder(current._left, callback);
-    this._postorder(current._right, callback);
+  if (!current)
+    return;
+  if (typeof callback === 'function')
+    callback(current);
+  this._postorder(current._left, callback);
+  this._postorder(current._right, callback);
 };
 
 /**
@@ -102,9 +102,9 @@ BinaryTree.prototype._postorder = function (current, callback) {
  *
  * @public
  * @param {Function} Callback which will be called for each traversed node
- */ 
+ */
 BinaryTree.prototype.postorder = function (callback) {
-    return this._postorder(this._root, callback);
+  return this._postorder(this._root, callback);
 };
 
 /**
@@ -113,14 +113,14 @@ BinaryTree.prototype.postorder = function (callback) {
  * @private
  * @param {Node} Node from which to start the traversal
  * @param {Function} Callback which will be called for each traversed node
- */ 
+ */
 BinaryTree.prototype._preorder = function (current, callback) {
-    if (!current)
-        return;
-    if (typeof callback === 'function')
-        callback(current);
-    this._preorder(current._left, callback);
-    this._preorder(current._right, callback);
+  if (!current)
+    return;
+  if (typeof callback === 'function')
+    callback(current);
+  this._preorder(current._left, callback);
+  this._preorder(current._right, callback);
 };
 
 /**
@@ -130,7 +130,7 @@ BinaryTree.prototype._preorder = function (current, callback) {
  * @param {Function} Callback which will be called for each traversed node
  */
 BinaryTree.prototype.preorder = function (callback) {
-    return this._preorder(this._root, callback);
+  return this._preorder(this._root, callback);
 };
 
 /**
@@ -138,9 +138,9 @@ BinaryTree.prototype.preorder = function (callback) {
  *
  * @public
  * @param {number|string} Value of the node which should be found
- */ 
+ */
 BinaryTree.prototype.find = function (value) {
-    return this._find(value, this._root);
+  return this._find(value, this._root);
 };
 
 /**
@@ -151,18 +151,18 @@ BinaryTree.prototype.find = function (value) {
  * @param {Node} Current node to be checked
  */
 BinaryTree.prototype._find = function (value, current) {
-    if (!current)
-        return null; 
+  if (!current)
+    return null;
  
-    if (current.value === value) 
-        return current;
+  if (current.value === value)
+    return current;
  
-    if (current.value > value)
-        return this._find(value, current._left);
+  if (current.value > value)
+    return this._find(value, current._left);
  
-    if (current.value < value)
-        return this._find(value, current._right);
-    
+  if (current.value < value)
+    return this._find(value, current._right);
+  
 };
 
 /**
@@ -174,20 +174,20 @@ BinaryTree.prototype._find = function (value, current) {
  * @param {Node} Child replacement
  */
 BinaryTree.prototype._replaceChild = function (parent, oldChild, newChild) {
-    if (!parent) {
-        this._root = newChild;
-        this._root._parent = null;
-    } else {
+  if (!parent) {
+    this._root = newChild;
+    this._root._parent = null;
+  } else {
 
-        if (parent._left === oldChild)
-            parent._left = newChild;
-        else 
-            parent._right = newChild;
+    if (parent._left === oldChild)
+      parent._left = newChild;
+    else
+      parent._right = newChild;
 
-        if (newChild) {
-            newChild._parent = parent;
-        }
+    if (newChild) {
+      newChild._parent = parent;
     }
+  }
 };
 
 /**
@@ -196,27 +196,27 @@ BinaryTree.prototype._replaceChild = function (parent, oldChild, newChild) {
  * @public
  * @param {Node} Node to be removed
  * @returns {boolean} True/false depending on whether the given node is removed
- */ 
+ */
 BinaryTree.prototype.remove = function (node) {
-    if (!node) 
-        return false;
+  if (!node)
+    return false;
 
-    if (node._left && node._right) {
-        var min = this._findMin(node._right),
-            temp = node.value;
+  if (node._left && node._right) {
+    var min = this._findMin(node._right),
+      temp = node.value;
 
-        node.value = min.value;
-        min.value = temp;
-        return this.remove(min);
-    } else { 
-        if (node._left)
-            this._replaceChild(node._parent, node, node._left);
-        else if (node._right)
-            this._replaceChild(node._parent, node, node._right);
-        else
-            this._replaceChild(node._parent, node, null);
-        return true;
-    }
+    node.value = min.value;
+    min.value = temp;
+    return this.remove(min);
+  } else {
+    if (node._left)
+      this._replaceChild(node._parent, node, node._left);
+    else if (node._right)
+      this._replaceChild(node._parent, node, node._right);
+    else
+      this._replaceChild(node._parent, node, null);
+    return true;
+  }
 };
 
 /**
@@ -228,12 +228,12 @@ BinaryTree.prototype.remove = function (node) {
  * @returns {Node} The node with minimum value in the sub-tree
  */
 BinaryTree.prototype._findMin = function (node, current) {
-    current = current || { value: Infinity };
-    if (!node)
-        return current;
-    if (current.value > node.value) 
-        current = node;
-    return this._findMin(node._left, current);
+  current = current || { value: Infinity };
+  if (!node)
+    return current;
+  if (current.value > node.value)
+    current = node;
+  return this._findMin(node._left, current);
 };
 
 /**
@@ -245,12 +245,12 @@ BinaryTree.prototype._findMin = function (node, current) {
  * @returns {Node} The node with maximum value in the sub-tree
  */
 BinaryTree.prototype._findMax = function (node, current) {
-    current = current || { value: -Infinity };
-    if (!node)
-        return current;
-    if (current.value < node.value) 
-        current = node;
-    return this._findMax(node._right, current);
+  current = current || { value: -Infinity };
+  if (!node)
+    return current;
+  if (current.value < node.value)
+    current = node;
+  return this._findMax(node._right, current);
 };
 
 /**
@@ -260,7 +260,7 @@ BinaryTree.prototype._findMax = function (node, current) {
  * @returns {Node} The minimum node of the tree
  */
 BinaryTree.prototype.findMin = function () {
-    return this._findMin(this._root);
+  return this._findMin(this._root);
 };
 
 /**
@@ -271,5 +271,5 @@ BinaryTree.prototype.findMin = function () {
  *
  */
 BinaryTree.prototype.findMax = function () {
-    return this._findMax(this._root);
+  return this._findMax(this._root);
 };
