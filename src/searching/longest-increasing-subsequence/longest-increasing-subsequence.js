@@ -32,7 +32,7 @@ exports.longestSubsequence = (function () {
         neighboursDistance = [],
         maxDist, maxNode, distance;
 
-    if (!neighbours.length) return { distance: 1, neighbour: undefined };
+    if (!neighbours.length) return { distance: 1, neighbour: undefined, node: node };
 
     for (var i = 0; i < neighbours.length; i += 1)
       neighboursDistance[i] = find(dag, neighbours[i]);
@@ -52,7 +52,7 @@ exports.longestSubsequence = (function () {
     }
     maxPath = results[max(results, cmp)];
     results = [];
-    while (maxPath.neighbour) {
+    while (maxPath) {
       results.push(array[maxPath.node]);
       maxPath = maxPath.neighbour;
     }
