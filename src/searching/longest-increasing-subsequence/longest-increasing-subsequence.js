@@ -28,9 +28,10 @@ exports.longestSubsequence = (function () {
 
   function find(dag, node) {
     node = node || 0;
+    if (find.memo[node]) return find.memo[node];
     var neighbours = dag[node],
         neighboursDistance = [],
-        maxDist, maxNode, distance;
+        maxDist, maxNode, distance, result;
 
     if (!neighbours.length) return { distance: 1, neighbour: undefined, node: node };
 
@@ -40,13 +41,15 @@ exports.longestSubsequence = (function () {
     maxDist = max(neighboursDistance, cmp);
     maxNode = neighbours[maxDist];
     distance = 1 + neighboursDistance[maxDist].distance;
-    return { distance: distance, neighbour: neighboursDistance[maxDist], node: node };
+    find.memo[node] = result = { distance: distance, neighbour: neighboursDistance[maxDist], node: node };
+    return result;
   }
 
   return function (array) {
     var results = [],
         dag = buildDag(array),
         maxPath;
+    find.memo = [];
     for (var i = 0; i < array.length; i += 1) {
       results.push(find(dag, i));
     }

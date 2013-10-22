@@ -7,7 +7,6 @@ describe('longest subsequence', function () {
   });
 
   it('should give the right length', function () {
-    console.log(longestSubsequence(module.sequence));
     expect(longestSubsequence(module.sequence).length).toBe(5);
   });
   
