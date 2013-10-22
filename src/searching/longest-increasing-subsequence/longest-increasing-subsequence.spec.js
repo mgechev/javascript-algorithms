@@ -3,11 +3,11 @@ var longestSubsequence = require('./longest-increasing-subsequence').longestSubs
 describe('longest subsequence', function () {
 
   beforeEach(function () {
-    module.sequence = [5, 2, 8, 6, 3, 6, 9, 7, 11];
+    global.sequence = [5, 2, 8, 6, 3, 6, 9, 7, 11];
   });
 
   it('should give the right length', function () {
-    expect(longestSubsequence(module.sequence).length).toBe(5);
+    expect(longestSubsequence(sequence).length).toBe(5);
   });
   
   it('should work with empty arrays', function () {
@@ -15,7 +15,7 @@ describe('longest subsequence', function () {
   });
 
   it('should return the correct path', function () {
-    expect(longestSubsequence(module.sequence).toString()).toBe([2,3,6,9,11].toString());
+    expect(longestSubsequence(sequence).toString()).toBe([2,3,6,9,11].toString());
   });
 
 });
