@@ -1,5 +1,23 @@
+/**
+ * Algorithm from dynamic programming.
+ * It finds the longest sub-sequence of
+ * increasing numbers. It is not required
+ * the numbers to be neighboring.
+ *
+ * Example:
+ *     1,5,2
+ * The longest sub-sequence is 1,2.
+ */
 exports.longestSubsequence = (function () {
 
+ /**
+  * Find the index of the first largest element in array.
+  * Complexity O(n).
+  *
+  * @param {Array}    array The array in which the largest element should be found
+  * @param {Function} cmp   Function used for comparison
+  * @return {number}        The index of the first largest element
+  */
   function max(array, cmp) {
     if (!array || !array.length) return -1;
     if (!cmp) {
@@ -11,10 +29,22 @@ exports.longestSubsequence = (function () {
     return max;
   }
 
+ /**
+  * Default comparison method.
+  */
   function cmp(a, b) {
     return a.distance - b.distance;
   }
 
+ /**
+  * Creates directed graph from given array.
+  * Each element's neighbours are the elements which can be
+  * after the element in the resulting sequence.
+  * Complexity O(n^2).
+  *
+  * @param  {Array} array The input array
+  * @return {Object}      Graph represented with list of neighbours
+  */
   function buildDag(array) {
     var result = [];
     for (var i = 0; i < array.length; i += 1) {
@@ -26,6 +56,14 @@ exports.longestSubsequence = (function () {
     return result;
   }
 
+ /**
+  * Finds the longest sub-sequence for given node.
+  * O(n^n).
+  *
+  * @param {Object} dag  Graph represented with list of neighbours.
+  * @param {number} node The current node.
+  * @return {object}     The longest sub-sequence for given node.
+  */
   function find(dag, node) {
     node = node || 0;
     if (find.memo[node]) return find.memo[node];
