@@ -1,5 +1,4 @@
-/* * * * * * * * * * * * * * * * * * * * * * * *
-
+/***********************************************
         A sample distance matrix
  
 var graph = [[NaN, 7,   9,   NaN, NaN, 16],
@@ -8,8 +7,7 @@ var graph = [[NaN, 7,   9,   NaN, NaN, 16],
              [NaN, 15,  11,  NaN, 6,   NaN],
              [NaN, NaN, NaN, 6,   NaN, 9],
              [16,  NaN, 2,   NaN, 9,   NaN]];
-
-* * * * * * * * * * * * * * * * * * * * * * * */
+***********************************************/
 
 
 /**
@@ -97,7 +95,7 @@ var dijstra = function () {
                 if (current.node !== i && //if it's not the current node
                     !visited[i] && //and if we haven't visited this node
                     !isNaN(graph[i][current.node])) { //and this node is sibling of the current...
-                  
+
                     tempDistance = current.distance + graph[i][current.node]; 
                     if (tempDistance < distance[i].distance) {
                         distance[i].distance = tempDistance;
