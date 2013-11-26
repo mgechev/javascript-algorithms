@@ -7,14 +7,14 @@
    * @param {function} Function used for comparition between the elements
    */
   function Heap(cmp) {
-      this._heap = [];
-      if (typeof cmp === 'function') {
-          this._cmp = cmp;
-      } else {
-          this._cmp = function (a, b) {
-              return a - b;
-          };
-      }
+    this._heap = [];
+    if (typeof cmp === 'function') {
+      this._cmp = cmp;
+    } else {
+      this._cmp = function (a, b) {
+        return a - b;
+      };
+    }
   }
 
   /**
@@ -26,23 +26,23 @@
    * @param {number} index The parent
    */
   Heap.prototype._heapify = function (index) {
-      var extr = index,
-          left = 2 * index + 1,
-          right = 2 * index + 2,
-          temp;
+    var extr = index,
+        left = 2 * index + 1,
+        right = 2 * index + 2,
+        temp;
 
-      if (left < this._heap.length && this._cmp(this._heap[left], this._heap[index]) > 0)
-          extr = left;
+    if (left < this._heap.length && this._cmp(this._heap[left], this._heap[index]) > 0)
+      extr = left;
 
-      if (right < this._heap.length && this._cmp(this._heap[right], this._heap[index]) > 0)
-          extr = right;
+    if (right < this._heap.length && this._cmp(this._heap[right], this._heap[index]) > 0)
+      extr = right;
 
-      if (index !== extr) {
-          temp = this._heap[index];
-          this._heap[index] = this._heap[extr];
-          this._heap[extr] = temp;
-          this._heapify(extr);
-      }
+    if (index !== extr) {
+      temp = this._heap[index];
+      this._heap[index] = this._heap[extr];
+      this._heap[extr] = temp;
+      this._heapify(extr);
+    }
   };
 
   /**
@@ -54,19 +54,19 @@
    * @returns {number} parent The new position of the element
    */
   Heap.prototype.changeKey = function (index, value) {
-      var elem = this._heap[index],
-          parent = Math.floor(index / 2),
-          temp;
-      if (elem !== undefined) {
-          while (parent >= 0 && this._cmp(elem, this._heap[parent]) > 0) {
-              temp = this._heap[parent];
-              this._heap[parent] = elem;
-              this._heap[index] = temp; 
-              index = parent;
-              parent = Math.floor(parent / 2);
-          }
+    var elem = this._heap[index],
+        parent = Math.floor(index / 2),
+        temp;
+    if (elem !== undefined) {
+      while (parent >= 0 && this._cmp(elem, this._heap[parent]) > 0) {
+        temp = this._heap[parent];
+        this._heap[parent] = elem;
+        this._heap[index] = temp;
+        index = parent;
+        parent = Math.floor(parent / 2);
       }
-      return parent;
+    }
+    return parent;
   };
 
   /**
@@ -77,8 +77,8 @@
    * @returns {number}  The index of the inserted value
    */
   Heap.prototype.add = function (value) {
-      this._heap.push(value);
-      return this.changeKey(this._heap.length - 1, value);
+    this._heap.push(value);
+    return this.changeKey(this._heap.length - 1, value);
   };
 
   /**
@@ -88,7 +88,7 @@
    * returns {numner} The current top value.
    */
   Heap.prototype.top = function () {
-      return this._heap[0];
+    return this._heap[0];
   };
 
   /**
@@ -99,16 +99,16 @@
    * @returns {number} The extremum value
    */
   Heap.prototype.extract = function () {
-      if (!this._heap.length)
-          throw 'The heap is already empty!';
+    if (!this._heap.length)
+      throw 'The heap is already empty!';
 
-      var extr = this._heap.shift();
-      this._heapify(0);
-      return extr;
+    var extr = this._heap.shift();
+    this._heapify(0);
+    return extr;
   };
 
   Heap.prototype.isEmpty = function () {
-      return !this._heapify.length;
+    return !this._heapify.length;
   };
 
   exports.Heap = Heap;
