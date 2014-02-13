@@ -49,13 +49,18 @@ QuickUnion.prototype.connected = function (p, q) {
  * @param {number} q The second node
  */
 QuickUnion.prototype.union = function (p, q) {
-  if (this._size[p] > this._size[q]) {
-    this._ids[this._root(p)] = this._root(q);
+  var pf = this._root(p);
+  var qf = this._root(q);
+  if (pf == qf) return; // already linked
+  var psz = this._size[qf];
+  var qsz = this._size[pf];
+  if (psz < qsz) {
+    this._ids[pf] = qf;
+    this._size[qf] += psz;
   } else {
-    this._ids[this._root(q)] = this._root(p);
+    this._ids[qf] = pf;
+    this._size[pf] += qsz;
   }
-  this._size[p] += this._size[q];
-  this._size[q] = this._size[p];
 };
 
 //var union = new QuickUnion(10);
