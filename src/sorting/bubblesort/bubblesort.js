@@ -20,6 +20,6 @@
     return array;
   }
 
-  exports.bubbleSort = bubbleSort;
+  module.exports = bubbleSort;
 
 }(typeof exports === 'undefined' ? window : exports));
