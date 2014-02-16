@@ -1,5 +1,5 @@
-module.exports = function (sort) {
-  describe('Bubble sort', function () {
+module.exports = function (sort, algorithmName) {
+  describe(algorithmName, function () {
 
     function createRandomArray(options) {
       options = options || {};
