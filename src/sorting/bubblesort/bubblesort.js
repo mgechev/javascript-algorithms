@@ -26,6 +26,6 @@
     return array;
   }
 
-  module.exports = bubbleSort;
+  exports.bubbleSort = bubbleSort;
 
 }(typeof exports === 'undefined' ? window : exports));
