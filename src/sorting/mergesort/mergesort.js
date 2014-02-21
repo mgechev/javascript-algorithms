@@ -4,6 +4,10 @@
 
   var mergeSort = (function () {
 
+    function compare(a, b) {
+      return a - b;
+    }
+
     /**
      * Mergesort method which is recursively called for sorting the input array.
      *
@@ -13,16 +17,16 @@
      * @param {number} end Right side of the subarray
      * @returns {array} Array with sorted subarray
      */
-    function mergesort(array, start, end) {
+    function mergesort(array, start, end, cmp) {
       if (Math.abs(end - start) <= 1) {
         return [];
       }
       var middle = Math.ceil((start + end) / 2);
 
-      mergesort(array, start, middle);
-      mergesort(array, middle, end);
+      mergesort(array, start, middle, cmp);
+      mergesort(array, middle, end, cmp);
 
-      return merge(array, start, middle, end);
+      return merge(array, start, middle, end, cmp);
     }
 
     /**
@@ -35,7 +39,7 @@
      * @param {number} end end - 1 is the end of the second array
      * @returns {array} The array with sorted subarray
      */
-    function merge(array, start, middle, end) {
+    function merge(array, start, middle, end, cmp) {
       var left = [],
           right = [],
           leftSize = middle - start,
@@ -55,7 +59,7 @@
       i = 0;
       while (i < size) {
         if (left.length && right.length) {
-          if (left[0] >= right[0]) {
+          if (cmp(left[0], right[0]) > 0) {
             array[start + i] = right.shift();
           } else {
             array[start + i] = left.shift();
@@ -77,8 +81,9 @@
      * @param {array} array The array which will be sorted
      * @returns {array} Sorted array
      */
-    return function (array) {
-      return mergesort(array, 0, array.length);
+    return function (array, cmp) {
+      cmp = cmp || compare;
+      return mergesort(array, 0, array.length, cmp);
     };
 
   }());
