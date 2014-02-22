@@ -1,5 +1,3 @@
-var array = [3,4,7,3,3,5,8,3,34,3,7,9];
-
 /**
  * The quicksort algorithm. It's complexity is O(nlog n).
  *
@@ -44,7 +42,7 @@ var quickSort = (function () {
         array[j] = temp;
         return array;
     }
-   
+
     /**
      * Sorts given array.
      *
@@ -53,7 +51,7 @@ var quickSort = (function () {
      * @param {number} left The start of the subarray which should be handled
      * @param {number} right The end of the subarray which should be handled
      * @returns {array} array Sorted array
-     */ 
+     */
     function quickSort(array, left, right) {
         if (left < right) {
             var p = partition(array, left, right);
@@ -74,5 +72,3 @@ var quickSort = (function () {
         return quickSort(array, 0, array.length);
     };
 }());
-
-console.log(quickSort(array));
