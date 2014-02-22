@@ -9,6 +9,10 @@
    */
   var quickSort = (function () {
 
+    function compare(a, b) {
+      return a - b;
+    }
+
     /**
      * Partitions given subarray.
      *
@@ -17,12 +21,12 @@
      * @param {number} left The start of the subarray
      * @param {number} right The end of the subarray
      */
-    function partition(array, left, right) {
+    function partition(array, left, right, compare) {
       var cmp = array[right - 1],
           minEnd = left,
           maxEnd;
       for (maxEnd = left; maxEnd < right - 1; maxEnd += 1) {
-        if (array[maxEnd] <= cmp) {
+        if (compare(array[maxEnd], cmp) < 0) {
           swap(array, maxEnd, minEnd);
           minEnd += 1;
         }
@@ -56,11 +60,11 @@
      * @param {number} right The end of the subarray which should be handled
      * @returns {array} array Sorted array
      */
-    function quickSort(array, left, right) {
+    function quickSort(array, left, right, cmp) {
       if (left < right) {
-        var p = partition(array, left, right);
-        quickSort(array, left, p);
-        quickSort(array, p + 1, right);
+        var p = partition(array, left, right, cmp);
+        quickSort(array, left, p, cmp);
+        quickSort(array, p + 1, right, cmp);
       }
       return array;
     }
@@ -72,8 +76,9 @@
      * @param {array} array The input array which should be sorted
      * @returns {array} array Sorted array
      */
-    return function (array) {
-      return quickSort(array, 0, array.length);
+    return function (array, cmp) {
+      cmp = cmp || compare;
+      return quickSort(array, 0, array.length, cmp);
     };
   }());
 
