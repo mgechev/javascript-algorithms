@@ -1,10 +1,12 @@
 (function (exports) {
 
+  'use strict';
+
   /**
    * Shellsort
    *
-   * Shellsort uses the gaps 701, 301, 132, 57, 23, 10, 4, 1 and uses insertion sort
-   * to sort the sub-arrays which match for the different gaps.
+   * Shellsort uses the gaps 701, 301, 132, 57, 23, 10, 4, 1 and uses
+   * insertion sort to sort the sub-arrays which match for the different gaps.
    */
   var shellSort = (function () {
 
