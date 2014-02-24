@@ -2,6 +2,11 @@
 
   'use strict';
 
+
+  function compare(a, b) {
+    return a - b;
+  }
+
   /**
    * Shellsort
    *
@@ -19,14 +24,16 @@
      * @param {array} array Array which should be sorted
      * @return {array} Sorted array
      */
-    return function (array) {
-      var gap, current;
+    return function (array, cmp) {
+      cmp = cmp || compare;
 
+      var gap, current;
       for (var k = 0; k < gaps.length; k += 1) {
         gap = gaps[k];
         for (var i = gap; i < array.length; i += gap) {
           current = array[i];
-          for (var j = i; j >= gap && array[j - gap] > current; j -= gap) {
+          for (var j = i;
+              j >= gap && cmp(array[j - gap], current) > 0; j -= gap) {
             array[j] = array[j - gap];
           }
           array[j] = current;
