@@ -8,6 +8,10 @@
 
   'use strict';
 
+  function compare(a, b) {
+    return a - b;
+  }
+
   /**
    * Quicksort algorithm
    *
@@ -27,14 +31,14 @@
      * @param {number} right Right part of the array
      * @return {number}
      */
-    function partition(array, left, right) {
+    function partition(array, left, right, cmp) {
       var pivot = array[Math.floor((left + right) / 2)],
           temp;
       while (left <= right) {
-        while (array[left] < pivot) {
+        while (cmp(array[left], pivot) < 0) {
           left += 1;
         }
-        while (array[right] > pivot) {
+        while (cmp(array[right], pivot) > 0) {
           right -= 1;
         }
         if (left <= right) {
@@ -57,13 +61,13 @@
      * @param {number} left Left part of the array which should be processed
      * @param {number} right Right part of the array which should be processed
      */
-    function quicksort(array, left, right) {
-      var mid = partition(array, left, right);
+    function quicksort(array, left, right, cmp) {
+      var mid = partition(array, left, right, cmp);
       if (left < mid - 1) {
-        quicksort(array, left, mid - 1);
+        quicksort(array, left, mid - 1, cmp);
       }
       if (right > mid) {
-        quicksort(array, mid, right);
+        quicksort(array, mid, right, cmp);
       }
     }
 
@@ -71,8 +75,9 @@
      * Quicksort's initial point
      * @public
      */
-    return function (array) {
-      quicksort(array, 0, array.length - 1);
+    return function (array, cmp) {
+      cmp = cmp || compare;
+      quicksort(array, 0, array.length - 1, cmp);
       return array;
     };
 
