@@ -2,6 +2,10 @@
 
   'use strict';
 
+  function comparator(a, b) {
+    return a - b;
+  }
+
   /**
    * Modified version of insertionsort. It uses binary search for finding
    * where the current element should be inserted. It's correct because
@@ -12,7 +16,8 @@
    * @param {array} array Input array
    * @param {array} array Sorted array
    */
-  function insertionBinarySort(array) {
+  function insertionBinarySort(array, cmp) {
+    cmp = cmp || comparator;
     var current,
         middle,
         left,
@@ -22,15 +27,15 @@
       left = 0;
       right = i;
       middle = Math.floor((left + right) / 2);
-      while (left < right) {
-        if (array[middle] <= current) {
+      while (left <= right) {
+        if (cmp(array[middle], current) <= 0) {
           left = middle + 1;
-        } else {
+        } else if (cmp(array[middle], current) > 0) {
           right = middle - 1;
         }
-        middle = Math.floor((left + right) / 2);
+        middle = Math.floor((right + left) / 2);
       }
-      for (var j = i; j > middle; j -= 1) {
+      for (var j = i; j > left; j -= 1) {
         array[j] = array[j - 1];
       }
       array[j] = current;
