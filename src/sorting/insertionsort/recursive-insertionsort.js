@@ -1,5 +1,3 @@
-var array = [4,6,2,2,4,56,7,7,51,23,5,7];
-
 /**
  * Recursive version of insertionsort. Complexity O(n^2).
  *
@@ -18,5 +16,3 @@ function recursiveInsertionSort(array, max) {
     array[i + 1] = current;
     return array;
 }
-
-console.log(recursiveInsertionSort(array));
