@@ -8,10 +8,10 @@
 function recursiveInsertionSort(array, max) {
     if (max <= 0)
         return array;
-    if (max === undefined) 
+    if (max === undefined)
         max = array.length - 1;
     recursiveInsertionSort(array, max - 1);
-    for (var i = max - 1, current = array[max]; i >= 0 && current < array[i]; i -= 1) 
+    for (var i = max - 1, current = array[max]; i >= 0 && current < array[i]; i -= 1)
         array[i + 1] = array[i];
     array[i + 1] = current;
     return array;
