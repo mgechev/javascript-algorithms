@@ -1,4 +1,4 @@
-var binarySearch = require('./../src/searching/binarysearch/binarysearch').binarySearch;
+var binarySearch = require('../../../src/searching/binarysearch/binarysearch').binarySearch;
 
 describe('Binary search', function () {
 

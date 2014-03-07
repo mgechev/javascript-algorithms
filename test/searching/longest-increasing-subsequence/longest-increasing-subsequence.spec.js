@@ -1,4 +1,4 @@
-var longestSubsequence = require('./../src/searching/longest-increasing-subsequence/longest-increasing-subsequence').longestSubsequence;
+var longestSubsequence = require('../../../src/searching/longest-increasing-subsequence/longest-increasing-subsequence').longestSubsequence;
 
 describe('longest subsequence', function () {
 
@@ -9,7 +9,7 @@ describe('longest subsequence', function () {
   it('should give the right length', function () {
     expect(longestSubsequence(sequence).length).toBe(5);
   });
-  
+
   it('should work with empty arrays', function () {
     expect(longestSubsequence([]).length).toBe(0);
   });
