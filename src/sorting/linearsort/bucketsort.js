@@ -38,7 +38,8 @@
      * @private
      * @param {array} array Input array
      * @returns {array} buckets Array whith array for each bucket.
-     *  Each bucket contains an array with all elements from the input which are with suitable size.
+     *                          Each bucket contains an array with all elements
+     *                          from the input which are with suitable size.
      */
     function createBuckets(array) {
       var buckets = [],
@@ -77,7 +78,8 @@
      *
      * @private
      * @param {array} buckets Input buckets
-     * @returns {array} result Sorted array which contains all elements form each bucket
+     * @returns {array} result Sorted array which contains
+     *                         all elements form each bucket
      */
     function unionBuckets(buckets) {
       var result = [],
