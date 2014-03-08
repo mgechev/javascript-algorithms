@@ -43,15 +43,12 @@
      */
     function createBuckets(array) {
       var buckets = [],
-          currentBucket,
-          current,
-          sectorSize = 1 / array.length;
+          length = array.length,
+          currentBucket, current;
       for (var i = 0; i < array.length; i += 1) {
         current = array[i];
-        currentBucket = Math.floor(current / sectorSize);
-        if (buckets[currentBucket] === undefined) {
-          buckets[currentBucket] = [];
-        }
+        currentBucket = Math.floor(length % current);
+        buckets[currentBucket] = buckets[currentBucket] || [];
         buckets[currentBucket].push(current);
       }
       return buckets;

@@ -8,7 +8,7 @@
    *
    * @public
    */
-  var countingSort = function () {
+  var countingSort = (function () {
 
     /**
      * Gets the count of the elements into the input array
@@ -36,7 +36,8 @@
      *
      * @private
      * @param {array} array The input array
-     * @returns {array} less The count of the elements which are less than each element from the input
+     * @returns {array} less The count of the elements which
+     *                       are less than each element from the input
      */
     function getLessCount(array) {
       var less = [],
@@ -85,7 +86,7 @@
       var less = getLessCount(getCount(array));
       return sort(array, less);
     };
-  }();
+  }());
 
   exports.countingSort = countingSort;
 
