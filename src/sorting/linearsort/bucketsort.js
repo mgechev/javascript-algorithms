@@ -4,7 +4,7 @@
 
   /**
    * Bucketsort. This algorithm has complexity O(n) but it's not
-   * correct for every input.
+   * correct for each input.
    *
    * @public
    */
