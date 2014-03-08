@@ -43,11 +43,10 @@
      */
     function createBuckets(array) {
       var buckets = [],
-          length = array.length,
           currentBucket, current;
       for (var i = 0; i < array.length; i += 1) {
         current = array[i];
-        currentBucket = Math.floor(length % current);
+        currentBucket = Math.floor(current);
         buckets[currentBucket] = buckets[currentBucket] || [];
         buckets[currentBucket].push(current);
       }
@@ -84,9 +83,7 @@
       for (var i = 0; i < buckets.length; i += 1) {
         currentBucket = buckets[i];
         if (currentBucket !== undefined) {
-          for (var j = 0; j < currentBucket.length; j += 1) {
-            result.push(currentBucket[j]);
-          }
+          result = result.concat(currentBucket);
         }
       }
       return result;

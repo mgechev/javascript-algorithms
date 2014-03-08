@@ -1,14 +1,19 @@
-module.exports = function (sort, algorithmName) {
+module.exports = function (sort, algorithmName, options) {
 
   'use strict';
 
+  options = options || {
+    integers: false,
+    reverse : true
+  };
+
   describe(algorithmName, function () {
 
-    function createRandomArray(options) {
-      options = options || {};
-      var size = options.size || 100,
-          precision = options.precision || 2,
-          multiplier = options.multiplier || 100;
+    function createRandomArray(config) {
+      config = config || {};
+      var size = config.size || 100,
+          precision = config.precision || 2,
+          multiplier = config.multiplier || 100;
 
       var result = [];
       for (var i = size; i > 0; i -= 1) {
@@ -27,28 +32,35 @@ module.exports = function (sort, algorithmName) {
     });
 
     it('should work with random non-sorted arrays', function () {
-
-      var array = createRandomArray();
+      var array;
+      if (options.integers) {
+        array = createRandomArray();
+      } else {
+        array = createRandomArray({
+          precision: 0
+        });
+      }
       sort(array);
-
       for (var i = 0; i < array.length - 1; i += 1) {
         expect(array[i] <= array[i + 1]).toBeTruthy();
       }
     });
 
-    it('should sort the numbers in descending order ' +
-        'when such comparator is provided', function () {
-      function comparator(a, b) {
-        return b - a;
-      }
+    if (options.reverse) {
+      it('should sort the numbers in descending order ' +
+          'when such comparator is provided', function () {
+        function comparator(a, b) {
+          return b - a;
+        }
 
-      var array = createRandomArray();
-      sort(array, comparator);
+        var array = createRandomArray();
+        sort(array, comparator);
 
-      for (var i = 0; i < array.length - 1; i += 1) {
-        expect(array[i] >= array[i + 1]).toBeTruthy();
-      }
-    });
+        for (var i = 0; i < array.length - 1; i += 1) {
+          expect(array[i] >= array[i + 1]).toBeTruthy();
+        }
+      });
+    }
 
   });
 };
