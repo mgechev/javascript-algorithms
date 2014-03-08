@@ -22,11 +22,7 @@
           current;
       for (var i = 0; i < array.length; i += 1) {
         current = array[i];
-        if (count[current] !== undefined) {
-          count[current] += 1;
-        } else {
-          count[current] = 1;
-        }
+        count[current] = (count[current] || 0) + 1;
       }
       return count;
     }
