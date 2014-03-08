@@ -26,6 +26,10 @@
   "maxcomplexity": 9,
   "maxlen": 80,
   "globals": {
-    "window": true
+    "window": true,
+    "it": true,
+    "beforeEach": true,
+    "describe": true,
+    "expect": true
   }
 }

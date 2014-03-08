@@ -1,4 +1,7 @@
 module.exports = function (sort, algorithmName) {
+
+  'use strict';
+
   describe(algorithmName, function () {
 
     function createRandomArray(options) {
@@ -9,7 +12,8 @@ module.exports = function (sort, algorithmName) {
 
       var result = [];
       for (var i = size; i > 0; i -= 1) {
-        result.push(parseFloat((Math.random() * multiplier).toFixed(precision)));
+        result.push(parseFloat((Math.random() *
+            multiplier).toFixed(precision)));
       }
       return result;
     }
@@ -19,7 +23,7 @@ module.exports = function (sort, algorithmName) {
     });
 
     it('should work with sorted arrays', function () {
-      expect(sort([1,2,3,4])).toEqual([1,2,3,4]);
+      expect(sort([1, 2, 3, 4])).toEqual([1, 2, 3, 4]);
     });
 
     it('should work with random non-sorted arrays', function () {
@@ -32,7 +36,8 @@ module.exports = function (sort, algorithmName) {
       }
     });
 
-    it('should sort the numbers in descending order when such comparator is provided', function () {
+    it('should sort the numbers in descending order ' +
+        'when such comparator is provided', function () {
       function comparator(a, b) {
         return b - a;
       }
