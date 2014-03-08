@@ -4,7 +4,7 @@
 
   /**
    * Counting sort algorithm. It's with complexity O(n) but it's
-   * correct for specific input.
+   * correct only for array of integers.
    *
    * @public
    */

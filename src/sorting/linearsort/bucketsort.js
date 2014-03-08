@@ -3,8 +3,8 @@
   'use strict';
 
   /**
-   * Bucketsort. This algorithm has complexity O(n) but it's not
-   * correct for each input.
+   * Bucket sort. This algorithm has complexity O(n) in case the
+   * data is with uniform distribution.
    *
    * @public
    */
