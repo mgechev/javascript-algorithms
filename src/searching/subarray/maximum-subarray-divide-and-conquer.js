@@ -2,7 +2,6 @@
  * Finds the maximum subarray using the divide and conquer algorithm 
  * by Bentley, Jon (1984) (complexity O(n(logn)));
  */
-var array = [4,5,-4,6,-34,-2,-34,-5,3,4,-1,2,3,2,8,-32,-45];
 
 /**
  * Accepts an array and range. Finds the maximum sum of elements
@@ -15,25 +14,25 @@ var array = [4,5,-4,6,-34,-2,-34,-5,3,4,-1,2,3,2,8,-32,-45];
  * @return {number} the maximum sum including the middle element
  */
 function crossSubarray(array, left, middle, right) {
-    var leftSum = -Infinity,
-        rightSum = -Infinity,
-        sum = 0,
-        i;
+  var leftSum = -Infinity,
+      rightSum = -Infinity,
+      sum = 0,
+      i;
 
-    for (i = middle; i >= left; i -= 1) {
-        if (sum + array[i] >= leftSum) {
-            leftSum = sum + array[i];
-        }
-        sum += array[i];
+  for (i = middle; i >= left; i -= 1) {
+    if (sum + array[i] >= leftSum) {
+      leftSum = sum + array[i];
     }
-    sum = 0;
-    for (i = middle + 1; i < right; i += 1) {
-        if (sum + array[i] >= rightSum) {
-            rightSum = sum + array[i];
-        }
-        sum += array[i];
+    sum += array[i];
+  }
+  sum = 0;
+  for (i = middle + 1; i < right; i += 1) {
+    if (sum + array[i] >= rightSum) {
+      rightSum = sum + array[i];
     }
-    return leftSum + rightSum;
+    sum += array[i];
+  }
+  return leftSum + rightSum;
 }
 
 /**
@@ -42,18 +41,19 @@ function crossSubarray(array, left, middle, right) {
  * @param {array} array
  * @param {number} left side of the range
  * @param {number} the right side of the range
- * @return {number} the maximum sum of the elements of subarray whithin the given range
+ * @return {number} the maximum sum of the elements of
+ *                      subarray whithin the given range
  */
 function maxSubarrayPartitioner(array, left, right) {
-    if (right - left <= 1) {
-        return array[left];
-    }
-    var middle = Math.floor((left + right) / 2),
-        leftSum = maxSubarrayPartitioner(array, left, middle),
-        rightSum = maxSubarrayPartitioner(array, middle, right),
-        crossSum = crossSubarray(array, left, middle, right);
+  if (right - left <= 1) {
+    return array[left];
+  }
+  var middle = Math.floor((left + right) / 2),
+      leftSum = maxSubarrayPartitioner(array, left, middle),
+      rightSum = maxSubarrayPartitioner(array, middle, right),
+      crossSum = crossSubarray(array, left, middle, right);
 
-   return Math.max(crossSum, leftSum, rightSum);
+  return Math.max(crossSum, leftSum, rightSum);
 }
 
 /**
@@ -63,7 +63,5 @@ function maxSubarrayPartitioner(array, left, right) {
  * @return the maximum sum
  */
 function maxSubarray(array) {
-    return maxSubarrayPartitioner(array, 0, array.length);
+  return maxSubarrayPartitioner(array, 0, array.length);
 }
-
-console.log(maxSubarray(array));
