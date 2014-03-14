@@ -40,6 +40,13 @@ var breadthFirstSearch = (function () {
     }
   }
 
+  /**
+   * Process given node
+   *
+   * @param  {number} destination The destionation, which should be reached
+   * @param  {number} current     The current node
+   * @param  {number} node        Neighbour node
+   */
   function processNode(destination, current, node) {
     if (graph[current][node]) {
       if (node === destination) {
@@ -70,7 +77,10 @@ var breadthFirstSearch = (function () {
       current = queue.shift();
       visited[current] = true;
       for (var i = 0; i < graph.length; i += 1) {
-        processNode(destination, current, i);
+        var result = processNode(destination, current, i);
+        if (result) {
+          return true;
+        }
       }
     }
     return false;
