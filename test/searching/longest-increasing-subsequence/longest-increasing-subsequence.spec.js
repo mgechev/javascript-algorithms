@@ -1,9 +1,15 @@
-var longestSubsequence = require('../../../src/searching/longest-increasing-subsequence/longest-increasing-subsequence').longestSubsequence;
+'use strict';
+
+var longestSubsequence =
+  require('../../../src/searching/' +
+    'longest-increasing-subsequence/longest-increasing-subsequence')
+    .longestSubsequence;
 
 describe('longest subsequence', function () {
 
+  var sequence;
   beforeEach(function () {
-    global.sequence = [5, 2, 8, 6, 3, 6, 9, 7, 11];
+    sequence = [5, 2, 8, 6, 3, 6, 9, 7, 11];
   });
 
   it('should give the right length', function () {
@@ -15,7 +21,8 @@ describe('longest subsequence', function () {
   });
 
   it('should return the correct path', function () {
-    expect(longestSubsequence(sequence).toString()).toBe([2,3,6,9,11].toString());
+    expect(longestSubsequence(sequence).toString())
+      .toBe([2, 3, 6, 9, 11].toString());
   });
 
 });
