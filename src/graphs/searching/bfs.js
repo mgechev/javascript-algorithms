@@ -49,6 +49,39 @@
     }
 
     /**
+     * Validates the graph
+     *
+     * @param {array} graph A matrix representation of the graph
+     * @param {number} source The source node
+     * @param {number} destination The destination node
+     * @returns {boolean} true/false depending whether the params are valid
+     */
+    function invalidParams(graph, source, destination) {
+      if (!graph) {
+        return true;
+      }
+      var invalidCoordinates =
+        source.concat(destination).filter(function (c, i) {
+        if (c < 0) {
+          return true;
+        }
+        if (i % 2 === 0) {
+          if (c >= graph.length) {
+            return true;
+          }
+        } else {
+          if (c >= graph[0].length) {
+            return true;
+          }
+        }
+      });
+      if (invalidCoordinates.length) {
+        return true;
+      }
+      return false;
+    }
+
+    /**
      * Finds whether there's a path between a given start node
      * to given destination
      *
@@ -60,6 +93,9 @@
      *                               a path between the nodes
      */
     return function (graph, source, destination) {
+      if (invalidParams(graph, source, destination)) {
+        return false;
+      }
       init(graph, destination);
       var current;
       queue.push(source);
