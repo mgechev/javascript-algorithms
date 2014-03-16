@@ -28,8 +28,9 @@ describe('BFS', function () {
 
   it('should work with 1x1 matrix', function () {
     graph = [[1]];
-    //expec(graph)
+    expect(bfs(graph, [0, 0], [0, 0])).toBeTruthy();
+    graph = [[0]];
+    expect(bfs(graph, [0, 0], [0, 0])).toBeFalsy();
   });
-
 
 });

@@ -23,11 +23,18 @@
     function init(inputGraph, destination) {
       graph = inputGraph;
       target = destination;
-      visited = [];
       queue = [];
-      for (var i = 0; i < graph.length; i += 1) {
-        visited[i] = false;
+      visited = {};
+    }
+
+    function addNode(node) {
+      if (visited[node] ||
+          node[0] < 0 || node[1] < 0 ||
+          node[0] > graph.length || node[1] > graph[0].length ||
+          !graph[node[0]] || !graph[node[0]]) {
+        return;
       }
+      queue.push(node);
     }
 
     /**
@@ -37,14 +44,15 @@
      * @param  {number} current     The current node
      * @param  {number} node        Neighbour node
      */
-    function processNode(destination, current, node) {
-      if (graph[current][node]) {
-        if (node === destination) {
-          return true;
-        }
-        if (!visited[node]) {
-          queue.push(node);
-        }
+    function processNode(destination, current) {
+      if (destination.toString() === current.toString()) {
+        return true;
+      } else {
+        addNode([current[0], current[1] + 1]);
+        addNode([current[0], current[1] - 1]);
+        addNode([current[0] + 1, current[1]]);
+        addNode([current[0] - 1, current[1]]);
+        return false;
       }
     }
 
@@ -87,8 +95,8 @@
      *
      * @public
      * @param {array} graph A matrix representation of the graph
-     * @param {number} source The source node
-     * @param {number} destination The destination node
+     * @param {array} source The source node
+     * @param {array} destination The destination node
      * @returns {boolean} true/false depending whether there's
      *                               a path between the nodes
      */
@@ -102,8 +110,8 @@
       while (queue.length > 0) {
         current = queue.shift();
         visited[current] = true;
-        for (var i = 0; i < graph.length; i += 1) {
-          var result = processNode(destination, current, i);
+        if (graph[current[0]][current[1]]) {
+          var result = processNode(destination, current);
           if (result) {
             return true;
           }
