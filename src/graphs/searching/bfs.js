@@ -18,7 +18,7 @@
      *
      * @private
      * @param {array} inputGraph The input matrix of the graph
-     * @param {number} destination The destination
+     * @param {array} destination The destination
      */
     function init(inputGraph, destination) {
       graph = inputGraph;
@@ -27,6 +27,10 @@
       visited = {};
     }
 
+    /**
+     * Adds a valid node to the queue
+     * @param {array} node Node to be added to the queue
+     */
     function addNode(node) {
       if (visited[node] ||
           node[0] < 0 || node[1] < 0 ||
@@ -40,9 +44,8 @@
     /**
      * Process given node
      *
-     * @param  {number} destination The destionation, which should be reached
-     * @param  {number} current     The current node
-     * @param  {number} node        Neighbour node
+     * @param  {array} destination The destionation, which should be reached
+     * @param  {array} current     The current node
      */
     function processNode(destination, current) {
       if (destination.toString() === current.toString()) {
@@ -57,40 +60,40 @@
     }
 
     /**
-     * Validates the graph
+     * Validates the params
      *
      * @param {array} graph A matrix representation of the graph
-     * @param {number} source The source node
-     * @param {number} destination The destination node
-     * @returns {boolean} true/false depending whether the params are valid
+     * @param {array} source The source node
+     * @param {array} destination The destination node
      */
     function validateParams(graph, source, destination) {
       if (!graph) {
-        throw 'The graph should be represented as a matrix';
+        throw new Error('The graph should be represented as a matrix');
       }
-      if (!graph[0]) {
-        throw 'The graph should be represented as ' +
-        'a matrix, with size at least 1x1';
+      if (graph[0] === undefined) {
+        throw new Error('The graph should be represented as ' +
+                'a matrix, with size at least 1x1');
       }
       var width = graph[0].length;
-      for (var i = 0; i < graph.length; i += 1) {
-        if (graph[i] !== width) {
-          throw 'The graph should be represented as a matrix';
+      for (var i = 1; i < graph.length; i += 1) {
+        if (graph[i].length !== width) {
+          throw new Error('The graph should be represented as a matrix');
         }
       }
       source.concat(destination).filter(function (c, i) {
         if (c < 0) {
-          throw 'The source and destination coordinates should be above zero';
+          throw new Error('The source and destination coordinates ' +
+            'should be above zero');
         }
         if (i % 2 === 0) {
           if (c >= graph.length) {
-            throw 'The source and destination coordinates ' +
-            'should not be above graph\'s size';
+            throw new Error('The source and destination coordinates ' +
+                        'should not be above graph\'s size');
           }
         } else {
           if (c >= graph[0].length) {
-            throw 'The source and destination coordinates ' +
-            'should not be above graph\'s size';
+            throw new Error('The source and destination coordinates ' +
+                        'should not be above graph\'s size');
           }
         }
       });
