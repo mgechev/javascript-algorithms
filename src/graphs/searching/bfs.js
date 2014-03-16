@@ -64,29 +64,37 @@
      * @param {number} destination The destination node
      * @returns {boolean} true/false depending whether the params are valid
      */
-    function invalidParams(graph, source, destination) {
+    function validateParams(graph, source, destination) {
       if (!graph) {
-        return true;
+        throw 'The graph should be represented as a matrix';
       }
-      var invalidCoordinates =
-        source.concat(destination).filter(function (c, i) {
+      if (!graph[0]) {
+        throw 'The graph should be represented as ' +
+        'a matrix, with size at least 1x1';
+      }
+      var width = graph[0].length;
+      for (var i = 0; i < graph.length; i += 1) {
+        if (graph[i] !== width) {
+          throw 'The graph should be represented as a matrix';
+        }
+      }
+      source.concat(destination).filter(function (c, i) {
         if (c < 0) {
-          return true;
+          throw 'The source and destination coordinates should be above zero';
         }
         if (i % 2 === 0) {
           if (c >= graph.length) {
-            return true;
+            throw 'The source and destination coordinates ' +
+            'should not be above graph\'s size';
           }
         } else {
           if (c >= graph[0].length) {
-            return true;
+            throw 'The source and destination coordinates ' +
+            'should not be above graph\'s size';
           }
         }
       });
-      if (invalidCoordinates.length) {
-        return true;
-      }
-      return false;
+      return true;
     }
 
     /**
@@ -101,9 +109,7 @@
      *                               a path between the nodes
      */
     return function (graph, source, destination) {
-      if (invalidParams(graph, source, destination)) {
-        return false;
-      }
+      validateParams(graph, source, destination);
       init(graph, destination);
       var current;
       queue.push(source);
