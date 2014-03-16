@@ -1,8 +1,8 @@
 'use strict';
 
-var sampleGraph = [[1, 0, 1, 0, 0, 0],
-                   [0, 1, 0, 1, 0, 0],
-                   [1, 0, 1, 0, 1, 0],
+var sampleGraph = [[1, 1, 1, 0, 0, 0],
+                   [0, 1, 1, 1, 0, 0],
+                   [1, 0, 1, 1, 1, 0],
                    [0, 1, 0, 1, 1, 0],
                    [0, 1, 0, 1, 1, 0],
                    [0, 1, 0, 1, 1, 0],
@@ -45,6 +45,11 @@ describe('BFS', function () {
     expect(bfs(graph, [0, 0], [0, 0])).toBeTruthy();
     graph = [[0]];
     expect(bfs(graph, [0, 0], [0, 0])).toBeFalsy();
+  });
+
+  it('should work in the general case', function () {
+    expect(bfs(sampleGraph, [0, 0], [1, 1])).toBeTruthy();
+    expect(bfs(sampleGraph, [0, 0], [6, 5])).toBeTruthy();
   });
 
 });

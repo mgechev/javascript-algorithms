@@ -34,8 +34,8 @@
     function addNode(node) {
       if (visited[node] ||
           node[0] < 0 || node[1] < 0 ||
-          node[0] > graph.length || node[1] > graph[0].length ||
-          !graph[node[0]] || !graph[node[0]]) {
+          node[0] >= graph.length || node[1] >= graph[0].length ||
+          !graph[node[0]][node[1]]) {
         return;
       }
       queue.push(node);
