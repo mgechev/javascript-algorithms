@@ -1,7 +1,4 @@
 'use strict';
-/**
- * BUGGY DON'T USE
- */
 
 /* * * * * * * * * * * * * * * * * *
 
@@ -35,16 +32,21 @@ var depthFirstSearch = (function () {
    *      the destination can be reached from the current node
    */
   function dfs(current) {
-    if (current === target) {
+    if (visited[current] ||
+        current[0] < 0 || current[1] < 0 ||
+        current[0] >= graph.length || current[1] >= graph[0].length ||
+        !graph[current[0]][current[1]]) {
+      return;
+    }
+    if (current[0] === target[0] &&
+        current[1] === target[1]) {
       return true;
     }
     visited[current] = true;
-    for (var i = 0; i < graph.length; i += 1) {
-      if (graph[current][i] === 1 &&
-         !visited[i]) {
-        return depthFirstSearch(i);
-      }
-    }
+    dfs([current[0] + 1, current[1]]);
+    dfs([current[0] - 1, current[1]]);
+    dfs([current[0], current[1] + 1]);
+    dfs([current[0], current[1] - 1]);
     return false;
   }
 
@@ -58,10 +60,7 @@ var depthFirstSearch = (function () {
   function init(inputGraph, destination) {
     graph = inputGraph;
     target = destination;
-    visited = [];
-    for (var i = 0; i < graph.length; i += 1) {
-      visited[i] = false;
-    }
+    visited = {};
   }
 
   /**
