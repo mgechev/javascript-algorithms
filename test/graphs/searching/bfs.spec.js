@@ -50,6 +50,9 @@ describe('BFS', function () {
   it('should work in the general case', function () {
     expect(bfs(sampleGraph, [0, 0], [1, 1])).toBeTruthy();
     expect(bfs(sampleGraph, [0, 0], [6, 5])).toBeTruthy();
+    expect(bfs(sampleGraph, [0, 0], [0, 5])).toBeFalsy();
+    expect(bfs(sampleGraph, [1, 1], [6, 5])).toBeTruthy();
+    expect(bfs(sampleGraph, [1, 1], [0, 5])).toBeFalsy();
   });
 
 });
