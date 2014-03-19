@@ -65,6 +65,47 @@ var depthFirstSearch = (function () {
   }
 
   /**
+   * Validates the params
+   *
+   * @param {array} graph A matrix representation of the graph
+   * @param {array} source The source node
+   * @param {array} destination The destination node
+   */
+  function validateParams(graph, source, destination) {
+    if (!graph) {
+      throw new Error('The graph should be represented as a matrix');
+    }
+    if (graph[0] === undefined) {
+      throw new Error('The graph should be represented as ' +
+              'a matrix, with size at least 1x1');
+    }
+    var width = graph[0].length;
+    for (var i = 1; i < graph.length; i += 1) {
+      if (graph[i].length !== width) {
+        throw new Error('The graph should be represented as a matrix');
+      }
+    }
+    source.concat(destination).filter(function (c, i) {
+      if (c < 0) {
+        throw new Error('The source and destination coordinates ' +
+          'should be above zero');
+      }
+      if (i % 2 === 0) {
+        if (c >= graph.length) {
+          throw new Error('The source and destination coordinates ' +
+                      'should not be above graph\'s size');
+        }
+      } else {
+        if (c >= graph[0].length) {
+          throw new Error('The source and destination coordinates ' +
+                      'should not be above graph\'s size');
+        }
+      }
+    });
+    return true;
+  }
+
+  /**
    * Finds whether there's a path between a given start node
    * to given destination
    *
@@ -76,6 +117,7 @@ var depthFirstSearch = (function () {
    *                               whether there's a path between the nodes
    */
   return function (graph, source, destination) {
+    validateParams(graph, source, destination);
     init(graph, destination);
     return dfs(source);
   };
