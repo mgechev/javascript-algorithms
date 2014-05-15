@@ -22,4 +22,11 @@
 
   global.Node = Node;
 
+
+  function RBTree() {
+    this._root = null;
+  }
+
+  global.RBTree = RBTree;
+
 }(typeof window === 'undefined' ? module.exports : window));
