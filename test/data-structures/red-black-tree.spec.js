@@ -26,4 +26,13 @@ describe('RBTree', function () {
   it('should initialize root to null by default', function () {
     expect(new RBTree()._root).toBeNull();
   });
+
+  describe('RBTree node insertion', function () {
+    it('should be able to insert a node in empty tree', function () {
+      var tree = new RBTree();
+      tree.put('foo', 'bar');
+      expect(tree._root.getKey()).toBe('foo');
+      expect(tree._root.getValue()).toBe('bar');
+    });
+  });
 });
