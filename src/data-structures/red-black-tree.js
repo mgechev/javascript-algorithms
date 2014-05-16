@@ -2,7 +2,7 @@
 
   'use strict';
 
-  function Node(key, left, right, value, isRed) {
+  function Node(key, value, left, right, isRed) {
     this._key = key;
     this._left = left;
     this._right = right;
@@ -42,13 +42,13 @@
   }
 
   RBTree.prototype.put = function (key, value) {
-    return this._put(key, value, this._root);
+    return (this._root = this._put(key, value, this._root));
   };
 
   RBTree.prototype._put = function (key, value, node) {
     var newRoot = node;
     if (this._root === null) {
-      return new Node(key, null, null, value, false);
+      return new Node(key, value, null, null, false);
     }
     if (node.getValue() > value) {
       this._put(key, value, node.getLeft());
