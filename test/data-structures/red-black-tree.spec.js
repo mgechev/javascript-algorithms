@@ -19,6 +19,10 @@ describe('Node', function () {
     //if we set isRed to falcy it should be turned to red
     expect(node.isRed()).toBe(false);
   });
+  it('should has method flipColor', function () {
+    var node = new Node();
+    expect(typeof node.flipColor).toBe('function');
+  });
 });
 
 describe('RBTree', function () {
