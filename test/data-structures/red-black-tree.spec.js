@@ -9,8 +9,10 @@ describe('Node', function () {
     expect(typeof Node).toBe('function');
   });
   it('should set all properties via the constructor', function () {
-    var node = new Node('key', 'value', true);
+    var node = new Node('key', 1, 2, 'value', true);
     expect(node.getKey()).toBe('key');
+    expect(node.getLeft()).toBe(1);
+    expect(node.getRight()).toBe(2);
     expect(node.getValue()).toBe('value');
     expect(node.isRed()).toBeTruthy();
     node = new Node('key', 'value', undefined);
