@@ -50,9 +50,19 @@
   RBTree.prototype._rotateLeft = function (node) {
     var x = node.getRight();
     if (x !== null) {
-      var temp = x.left;
-      node.right = temp;
-      x.left = node;
+      var temp = x.getLeft();
+      node.setRight(temp);
+      x.setLeft(node);
+    }
+    return x;
+  };
+
+  RBTree.prototype._rotateRight = function (node) {
+    var x = node.getLeft();
+    if (x !== null) {
+      var temp = x.getRight();
+      node.setLeft(temp);
+      x.setRight(node);
     }
     return x;
   };
