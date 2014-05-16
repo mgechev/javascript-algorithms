@@ -14,21 +14,21 @@
     return !!this._isRed;
   };
 
-  Node.prototype.getKey = function () {
-    return this._key;
-  };
+  'key value left right'
+  .split(' ')
+  .forEach(function (key) {
 
-  Node.prototype.getValue = function () {
-    return this._value;
-  };
+    var valueName = key.substr(0, 1).toUpperCase() + key.substr(1, key.length);
 
-  Node.prototype.getLeft = function () {
-    return this._left;
-  };
+    Node.prototype['get' + valueName] = function () {
+      return this['_' + key];
+    };
 
-  Node.prototype.getRight = function () {
-    return this._right;
-  };
+    Node.prototype['set' + valueName] = function (val) {
+      this['_' + key] = val;
+    };
+
+  });
 
   global.Node = Node;
 
@@ -49,7 +49,12 @@
 
   RBTree.prototype._rotateLeft = function (node) {
     var x = node.getRight();
-  
+    if (x !== null) {
+      var temp = x.left;
+      node.right = temp;
+      x.left = node;
+    }
+    return x;
   };
 
   global.RBTree = RBTree;
