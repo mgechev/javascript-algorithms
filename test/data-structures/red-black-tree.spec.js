@@ -46,7 +46,7 @@ describe('RBTree', function () {
     expect(new RBTree()._root).toBeNull();
   });
 
-  describe('RBTree node insertion', function () {
+  describe('node insertion', function () {
     it('should be able to insert a node in empty tree', function () {
       var tree = new RBTree();
       tree.put('foo', 'bar');
@@ -57,7 +57,7 @@ describe('RBTree', function () {
     it('should be able to insert a node in 1 level tree', function () {
       var tree = new RBTree();
       tree.put(1, 'bar');
-    
+      tree.put(0, 'baz');
     });
 
   });

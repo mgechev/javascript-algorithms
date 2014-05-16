@@ -42,13 +42,14 @@
   }
 
   RBTree.prototype.put = function (key, value) {
+    console.log(this._root);
     this._root = this._put(key, value, this._root);
     this._root.flipColor();
   };
 
   RBTree.prototype._put = function (key, value, node) {
     var newRoot = node;
-    if (this._root === null) {
+    if (node === null) {
       return new Node(key, value, null, null, true);
     }
     if (node.getKey() > key) {
@@ -56,13 +57,13 @@
     } else if (node.getKey() < key) {
       node.setLeft(this._put(key, value, node.getRight()));
     }
-    if (this._isRed(node.getRight())) {
+    if (this.isRed(node.getRight())) {
       node.setRight(this._rotateLeft(node));
     }
-    if (this._isRed(node.getLeft()) && this._isRed(node.getLeft().getLeft())) {
+    if (this.isRed(node.getLeft()) && this.isRed(node.getLeft().getLeft())) {
       newRoot = this._rotateRight(node);
     }
-    if (this._isRed(node.getLeft()) && this._isRed(node.getRight())) {
+    if (this.isRed(node.getLeft()) && this.isRed(node.getRight())) {
       this._flipColors();
     }
     return newRoot;
