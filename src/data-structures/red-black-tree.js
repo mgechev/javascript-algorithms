@@ -14,6 +14,10 @@
     return !!this._isRed;
   };
 
+  Node.prototype.flipColor = function () {
+    this._isRed = !this._isRed;
+  };
+
   'key value left right'
   .split(' ')
   .forEach(function (key) {
@@ -42,9 +46,30 @@
   };
 
   RBTree.prototype._put = function (key, value, node) {
+    var newRoot = node;
     if (this._root === null) {
-      return (this._root = new Node(key, null, null, value, false));
+      return new Node(key, null, null, value, false);
     }
+    if (node.getValue() > value) {
+      this._put(key, value, node.getLeft());
+    } else if (node.getValue() < value) {
+      this._put(key, value, node.getRight());
+    }
+    if (this._isRed(node.getRight())) {
+      newRoot = this._rotateLeft(node);
+    }
+    if (this._isRed(node.getLeft()) && this._isRed(node.getLeft().getLeft())) {
+      newRoot = this._rotateRight(node);
+    }
+    if (this._isRed(node.getLeft()) && this._isRed(node.getRight())) {
+      this._flipColors();
+    }
+    return newRoot;
+  };
+
+  RBTree.prototype._flipColors = function (node) {
+    node.getLeft().flipColor();
+    node.getRight().flipColor();
   };
 
   RBTree.prototype._rotateLeft = function (node) {
