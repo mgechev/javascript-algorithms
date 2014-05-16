@@ -42,21 +42,22 @@
   }
 
   RBTree.prototype.put = function (key, value) {
-    return (this._root = this._put(key, value, this._root));
+    this._root = this._put(key, value, this._root);
+    this._root.flipColor();
   };
 
   RBTree.prototype._put = function (key, value, node) {
     var newRoot = node;
     if (this._root === null) {
-      return new Node(key, value, null, null, false);
+      return new Node(key, value, null, null, true);
     }
-    if (node.getValue() > value) {
+    if (node.getKey() > key) {
       this._put(key, value, node.getLeft());
-    } else if (node.getValue() < value) {
-      this._put(key, value, node.getRight());
+    } else if (node.getKey() < key) {
+      node.setLeft(this._put(key, value, node.getRight()));
     }
     if (this._isRed(node.getRight())) {
-      newRoot = this._rotateLeft(node);
+      node.setRight(this._rotateLeft(node));
     }
     if (this._isRed(node.getLeft()) && this._isRed(node.getLeft().getLeft())) {
       newRoot = this._rotateRight(node);
