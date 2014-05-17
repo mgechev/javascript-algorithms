@@ -112,6 +112,24 @@
     return x;
   };
 
+  RBTree.prototype.get = function (key) {
+    return this._get(this._root, key);
+  };
+
+  RBTree.prototype._get = function (node, key) {
+    if (node === null) {
+      return undefined;
+    }
+    if (node.getKey() === key) {
+      return node.getValue();
+    }
+    if (node.getKey() > key) {
+      return this._get(node.getLeft(), key);
+    } else {
+      return this._get(node.getRight(), key);
+    }
+  };
+
   RBTree.prototype.getIterator = function () {
     return new RBTIterator(this);
   };
@@ -119,6 +137,9 @@
   function RBTIterator(tree) {
     this._tree = tree;
   }
+
+  RBTIterator.prototype.next = function () {
+  };
 
   global.RBTree = RBTree;
 
