@@ -59,12 +59,12 @@
       return new Node(key, value, null, null, true);
     }
     if (node.getKey() > key) {
-      this._put(key, value, node.getLeft());
+      node.setLeft(this._put(key, value, node.getLeft()));
     } else if (node.getKey() < key) {
-      node.setLeft(this._put(key, value, node.getRight()));
+      node.setRight(this._put(key, value, node.getRight()));
     }
     if (this.isRed(node.getRight())) {
-      node.setRight(this._rotateLeft(node));
+      newRoot = this._rotateLeft(node);
     }
     if (this.isRed(node.getLeft()) && this.isRed(node.getLeft().getLeft())) {
       newRoot = this._rotateRight(node);

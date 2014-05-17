@@ -58,6 +58,7 @@ describe('RBTree', function () {
       var tree = new RBTree();
       tree.put(1, 'bar');
       tree.put(0, 'baz');
+      expect(tree._root._left).not.toBeNull();
     });
 
   });
