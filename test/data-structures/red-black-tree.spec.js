@@ -59,6 +59,9 @@ describe('RBTree', function () {
       tree.put(1, 'bar');
       tree.put(0, 'baz');
       expect(tree._root._left).not.toBeNull();
+      expect(tree._root._left.isRed()).toBeTruthy();
+      tree.put(2, 'baz');
+      expect(tree._root._left).not.toBeNull();
     });
 
   });
