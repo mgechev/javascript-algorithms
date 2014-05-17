@@ -42,9 +42,15 @@
   }
 
   RBTree.prototype.put = function (key, value) {
-    console.log(this._root);
     this._root = this._put(key, value, this._root);
     this._root.flipColor();
+  };
+
+  RBTree.prototype.isRed = function (node) {
+    if (!node) {
+      return false;
+    }
+    return node.isRed();
   };
 
   RBTree.prototype._put = function (key, value, node) {
