@@ -64,11 +64,13 @@ describe('RBTree', function () {
 
       tree = new RBTree();
       tree.put(1, 'bar');
-      tree.put(2, 'bar');
-      tree.put(3, 'bar');
-      tree.put(4, 'bar');
-      console.log(tree._root);
-//      expect(tree._root._right._isRed).toBeFalsy();
+      tree.put(2, 'foo');
+      tree.put(3, 'baz');
+      expect(tree._root._right).not.toBeNull();
+      expect(tree._root._left).not.toBeNull();
+      expect(tree._root._isRed).toBeFalsy();
+      expect(tree._root._right._isRed).toBeFalsy();
+      expect(tree._root._left._isRed).toBeFalsy();
     });
 
   });
