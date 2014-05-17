@@ -2,23 +2,35 @@
 
   'use strict';
 
-  function Node(key, value, left, right, isRed) {
+  var Colors = {
+    RED: 0,
+    BLACK: 1
+  };
+
+  global.Colors = Colors;
+
+
+  function Node(key, value, left, right, color) {
     this._key = key;
     this._left = left;
     this._right = right;
     this._value = value;
-    this._isRed = isRed;
+    this._color = color;
   }
 
   Node.prototype.isRed = function () {
-    return !!this._isRed;
+    return this._color === Colors.RED;
   };
 
   Node.prototype.flipColor = function () {
-    this._isRed = !this._isRed;
+    if (this._color === Colors.RED) {
+      this._color = Colors.BLACK;
+    } else {
+      this._color = Colors.RED;
+    }
   };
 
-  'key value left right'
+  'key value left right color'
   .split(' ')
   .forEach(function (key) {
     var valueName = key.substr(0, 1).toUpperCase() + key.substr(1, key.length);
@@ -39,7 +51,7 @@
 
   RBTree.prototype.put = function (key, value) {
     this._root = this._put(key, value, this._root);
-    this._root.flipColor();
+    this._root.setColor(Colors.BLACK);
   };
 
   RBTree.prototype.isRed = function (node) {
@@ -52,7 +64,7 @@
   RBTree.prototype._put = function (key, value, node) {
     var newRoot = node;
     if (node === null) {
-      return new Node(key, value, null, null, true);
+      return new Node(key, value, null, null, Colors.RED);
     }
     if (node.getKey() > key) {
       node._left = this._put(key, value, node._left);
@@ -82,6 +94,8 @@
       var temp = x._left;
       node.setRight(temp);
       x._left = node;
+      x.setColor(node.getColor());
+      node.setColor(Colors.RED);
     }
     return x;
   };
@@ -92,6 +106,8 @@
       var temp = x._right;
       node._left = temp;
       x._right = node;
+      x.setColor(node.getColor());
+      node.setColor(Colors.RED);
     }
     return x;
   };

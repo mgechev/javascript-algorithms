@@ -2,7 +2,8 @@
 
 var mod = require('../../src/data-structures/red-black-tree.js'),
     Node = mod.Node,
-    RBTree = mod.RBTree;
+    RBTree = mod.RBTree,
+    Colors = mod.Colors;
 
 describe('Node', function () {
 
@@ -11,15 +12,12 @@ describe('Node', function () {
   });
 
   it('should set all properties via the constructor', function () {
-    var node = new Node('key', 'value', 1, 2, true);
+    var node = new Node('key', 'value', 1, 2, Colors.RED);
     expect(node.getKey()).toBe('key');
     expect(node.getLeft()).toBe(1);
     expect(node.getRight()).toBe(2);
     expect(node.getValue()).toBe('value');
     expect(node.isRed()).toBeTruthy();
-    node = new Node('key', 'value', null, null, undefined);
-    //if we set isRed to falcy it should be turned to red
-    expect(node.isRed()).toBe(false);
   });
 
   describe('Node flipColor', function () {
@@ -53,6 +51,7 @@ describe('RBTree', function () {
       expect(tree._root.getKey()).toBe('foo');
       expect(tree._root.getValue()).toBe('bar');
     });
+
     it('should be able to insert a node in 1 level tree', function () {
       var tree = new RBTree();
       tree.put(1, 'bar');
@@ -62,7 +61,16 @@ describe('RBTree', function () {
       tree.put(2, 'baz');
       expect(tree._root._right).not.toBeNull();
       expect(tree._root._right._isRed).toBeFalsy();
+
+      tree = new RBTree();
+      tree.put(1, 'bar');
+      tree.put(2, 'bar');
+      tree.put(3, 'bar');
+      tree.put(4, 'bar');
+      console.log(tree._root);
+//      expect(tree._root._right._isRed).toBeFalsy();
     });
+
   });
 
 });
