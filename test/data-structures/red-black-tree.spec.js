@@ -75,4 +75,9 @@ describe('RBTree', function () {
 
   });
 
+  describe('get method', function () {
+    var tree = new RBTree();
+    expect(tree.get(1)).toBeUndefined();
+  });
+
 });
