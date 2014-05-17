@@ -21,17 +21,13 @@
   'key value left right'
   .split(' ')
   .forEach(function (key) {
-
     var valueName = key.substr(0, 1).toUpperCase() + key.substr(1, key.length);
-
     Node.prototype['get' + valueName] = function () {
       return this['_' + key];
     };
-
     Node.prototype['set' + valueName] = function (val) {
       this['_' + key] = val;
     };
-
   });
 
   global.Node = Node;
