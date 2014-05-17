@@ -59,47 +59,57 @@
       return new Node(key, value, null, null, true);
     }
     if (node.getKey() > key) {
-      node.setLeft(this._put(key, value, node.getLeft()));
+      node._left = this._put(key, value, node._left);
     } else if (node.getKey() < key) {
-      node.setRight(this._put(key, value, node.getRight()));
+      node._right = this._put(key, value, node._right);
     }
-    if (this.isRed(node.getRight()) && !this.isRed(node.getLeft())) {
+    if (this.isRed(node._right) && !this.isRed(node._left)) {
       newRoot = this._rotateLeft(node);
     }
-    if (this.isRed(node.getLeft()) && this.isRed(node.getLeft().getLeft())) {
+    if (this.isRed(node._left) && this.isRed(node._left._left)) {
       newRoot = this._rotateRight(node);
     }
-    if (this.isRed(node.getLeft()) && this.isRed(node.getRight())) {
+    if (this.isRed(node._left) && this.isRed(node._right)) {
       this._flipColors(node);
     }
     return newRoot;
   };
 
   RBTree.prototype._flipColors = function (node) {
-    node.getLeft().flipColor();
-    node.getRight().flipColor();
+    node._left.flipColor();
+    node._right.flipColor();
   };
 
   RBTree.prototype._rotateLeft = function (node) {
-    var x = node.getRight();
+    var x = node._right;
     if (x !== null) {
-      var temp = x.getLeft();
+      var temp = x._left;
       node.setRight(temp);
-      x.setLeft(node);
+      x._left = node;
     }
     return x;
   };
 
   RBTree.prototype._rotateRight = function (node) {
-    var x = node.getLeft();
+    var x = node._left;
     if (x !== null) {
-      var temp = x.getRight();
-      node.setLeft(temp);
-      x.setRight(node);
+      var temp = x._right;
+      node._left = temp;
+      x._right = node;
     }
     return x;
   };
 
+  RBTree.prototype.getIterator = function () {
+    return new RBTIterator(this);
+  };
+
+  function RBTIterator(tree) {
+    this._tree = tree;
+  }
+
   global.RBTree = RBTree;
+
+
 
 }(typeof window === 'undefined' ? module.exports : window));

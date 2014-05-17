@@ -53,7 +53,6 @@ describe('RBTree', function () {
       expect(tree._root.getKey()).toBe('foo');
       expect(tree._root.getValue()).toBe('bar');
     });
-
     it('should be able to insert a node in 1 level tree', function () {
       var tree = new RBTree();
       tree.put(1, 'bar');
@@ -64,7 +63,6 @@ describe('RBTree', function () {
       expect(tree._root._right).not.toBeNull();
       expect(tree._root._right._isRed).toBeFalsy();
     });
-
   });
 
 });
