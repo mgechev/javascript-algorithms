@@ -63,14 +63,14 @@
     } else if (node.getKey() < key) {
       node.setRight(this._put(key, value, node.getRight()));
     }
-    if (this.isRed(node.getRight())) {
+    if (this.isRed(node.getRight()) && !this.isRed(node.getLeft())) {
       newRoot = this._rotateLeft(node);
     }
     if (this.isRed(node.getLeft()) && this.isRed(node.getLeft().getLeft())) {
       newRoot = this._rotateRight(node);
     }
     if (this.isRed(node.getLeft()) && this.isRed(node.getRight())) {
-      this._flipColors();
+      this._flipColors(node);
     }
     return newRoot;
   };
