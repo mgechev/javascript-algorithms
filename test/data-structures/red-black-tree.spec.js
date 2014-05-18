@@ -80,19 +80,21 @@ describe('RBTree', function () {
   });
 
   describe('get method', function () {
-    var tree = new RBTree();
-    expect(tree.get(1)).toBeUndefined();
-    tree.put(1, 'baz');
-    expect(tree.get(1)).toBe('baz');
-    tree.put(2, 'foo');
-    expect(tree.get(2)).toBe('foo');
-    tree.put(3, 'bar');
-    expect(tree.get(3)).toBe('bar');
-    expect(tree.get(4)).toBeUndefined();
-    tree.put(5, 'foobar');
-    expect(tree.get(5)).toBe('foobar');
-    tree.put(5, 'foobar1');
-    expect(tree.get(5)).toBe('foobar1');
+    it('should be able to find value by given key', function () {
+      var tree = new RBTree();
+      expect(tree.get(1)).toBeUndefined();
+      tree.put(1, 'baz');
+      expect(tree.get(1)).toBe('baz');
+      tree.put(2, 'foo');
+      expect(tree.get(2)).toBe('foo');
+      tree.put(3, 'bar');
+      expect(tree.get(3)).toBe('bar');
+      expect(tree.get(4)).toBeUndefined();
+      tree.put(5, 'foobar');
+      expect(tree.get(5)).toBe('foobar');
+      tree.put(5, 'foobar1');
+      expect(tree.get(5)).toBe('foobar1');
+    });
   });
 
 });
