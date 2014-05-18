@@ -87,6 +87,8 @@ describe('RBTree', function () {
     expect(tree.get(4)).toBeUndefined();
     tree.put(5, 'foobar');
     expect(tree.get(5)).toBe('foobar');
+    tree.put(5, 'foobar1');
+    expect(tree.get(5)).toBe('foobar1');
   });
 
 });

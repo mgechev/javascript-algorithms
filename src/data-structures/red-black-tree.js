@@ -70,6 +70,8 @@
       node._left = this._put(key, value, node._left);
     } else if (node.getKey() < key) {
       node._right = this._put(key, value, node._right);
+    } else {
+      node.setValue(value);
     }
     if (this.isRed(node._right) && !this.isRed(node._left)) {
       newRoot = this._rotateLeft(node);
