@@ -59,22 +59,22 @@ describe('RBTree', function () {
       expect(tree._root._left).not.toBeNull();
       expect(tree._root._left.isRed()).toBeTruthy();
       tree.put(2, 'baz');
-      expect(tree._root._right).not.toBeNull();
-      expect(tree._root._right.isRed()).toBeFalsy();
+      expect(tree._root.getRight()).not.toBeNull();
+      expect(tree._root.getRight().isRed()).toBeFalsy();
 
       tree = new RBTree();
       tree.put(1, 'bar');
       tree.put(2, 'foo');
       tree.put(3, 'baz');
-      expect(tree._root._right).not.toBeNull();
+      expect(tree._root.getRight()).not.toBeNull();
       expect(tree._root._left).not.toBeNull();
       expect(tree._root.isRed()).toBeFalsy();
-      expect(tree._root._right.isRed()).toBeFalsy();
+      expect(tree._root.getRight().isRed()).toBeFalsy();
       expect(tree._root._left.isRed()).toBeFalsy();
       tree.put(4, 'foobar');
       tree.put(5, 'foobar');
-      expect(tree._root._right._right).not.toBeNull();
-      expect(tree._root._right._right.isRed()).toBeFalsy();
+      expect(tree._root.getRight().getRight()).not.toBeNull();
+      expect(tree._root.getRight().getRight().isRed()).toBeFalsy();
     });
 
   });
