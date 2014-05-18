@@ -130,17 +130,6 @@
     }
   };
 
-  RBTree.prototype.getIterator = function () {
-    return new RBTIterator(this);
-  };
-
-  function RBTIterator(tree) {
-    this._tree = tree;
-  }
-
-  RBTIterator.prototype.next = function () {
-  };
-
   global.RBTree = RBTree;
 
 
