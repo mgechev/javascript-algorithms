@@ -71,6 +71,10 @@ describe('RBTree', function () {
       expect(tree._root._isRed).toBeFalsy();
       expect(tree._root._right._isRed).toBeFalsy();
       expect(tree._root._left._isRed).toBeFalsy();
+      tree.put(4, 'foobar');
+      tree.put(5, 'foobar');
+      expect(tree._root._right._right).not.toBeNull();
+      expect(tree._root._right._right._isRed).toBeFalsy();
     });
 
   });
