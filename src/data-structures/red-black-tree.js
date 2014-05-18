@@ -67,35 +67,35 @@
       return new Node(key, value, null, null, Colors.RED);
     }
     if (node.getKey() > key) {
-      node._left = this._put(key, value, node._left);
+      node.setLeft(this._put(key, value, node.getLeft()));
     } else if (node.getKey() < key) {
-      node._right = this._put(key, value, node._right);
+      node.setRight(this._put(key, value, node.getRight()));
     } else {
       node.setValue(value);
     }
-    if (this.isRed(node._right) && !this.isRed(node._left)) {
+    if (this.isRed(node.getRight()) && !this.isRed(node.getLeft())) {
       newRoot = this._rotateLeft(node);
     }
-    if (this.isRed(node._left) && this.isRed(node._left._left)) {
+    if (this.isRed(node.getLeft()) && this.isRed(node.getLeft().getLeft())) {
       newRoot = this._rotateRight(node);
     }
-    if (this.isRed(node._left) && this.isRed(node._right)) {
+    if (this.isRed(node.getLeft()) && this.isRed(node.getRight())) {
       this._flipColors(node);
     }
     return newRoot;
   };
 
   RBTree.prototype._flipColors = function (node) {
-    node._left.flipColor();
-    node._right.flipColor();
+    node.getLeft().flipColor();
+    node.getRight().flipColor();
   };
 
   RBTree.prototype._rotateLeft = function (node) {
-    var x = node._right;
+    var x = node.getRight();
     if (x !== null) {
-      var temp = x._left;
+      var temp = x.getLeft();
       node.setRight(temp);
-      x._left = node;
+      x.setLeft(node);
       x.setColor(node.getColor());
       node.setColor(Colors.RED);
     }
@@ -103,11 +103,11 @@
   };
 
   RBTree.prototype._rotateRight = function (node) {
-    var x = node._left;
+    var x = node.getLeft();
     if (x !== null) {
-      var temp = x._right;
-      node._left = temp;
-      x._right = node;
+      var temp = x.getRight();
+      node.setLeft(temp);
+      x.setRight(node);
       x.setColor(node.getColor());
       node.setColor(Colors.RED);
     }
