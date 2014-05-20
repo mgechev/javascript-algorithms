@@ -66,11 +66,19 @@
     this._root = null;
   }
 
+  /**
+   * Adds value associated with given key.
+   * Complexity O(log n)
+   */
   RBTree.prototype.put = function (key, value) {
     this._root = this._put(key, value, this._root);
     this._root.setColor(Colors.BLACK);
   };
 
+  /**
+   * Returns true or false depending on whether
+   * given node is red.
+   */
   RBTree.prototype.isRed = function (node) {
     if (!node) {
       return false;
@@ -78,6 +86,10 @@
     return node.isRed();
   };
 
+  /**
+   * Helper function for insertion of given key, value pair
+   * into the red-black tree.
+   */
   RBTree.prototype._put = function (key, value, node) {
     var newRoot = node;
     if (node === null) {
