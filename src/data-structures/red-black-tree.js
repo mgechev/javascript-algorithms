@@ -114,11 +114,19 @@
     return newRoot;
   };
 
+  /**
+   * Flip the colors of the both neighbours of given node.
+   * Complexity O(1).
+   */
   RBTree.prototype._flipColors = function (node) {
     node.getLeft().flipColor();
     node.getRight().flipColor();
   };
 
+  /*
+   * Rotates given node to left.
+   * Complexity O(1).
+   */
   RBTree.prototype._rotateLeft = function (node) {
     var x = node.getRight();
     if (x !== null) {
@@ -131,6 +139,10 @@
     return x;
   };
 
+  /*
+   * Rotates given node to right.
+   * Complexity O(1).
+   */
   RBTree.prototype._rotateRight = function (node) {
     var x = node.getLeft();
     if (x !== null) {
@@ -143,6 +155,13 @@
     return x;
   };
 
+  /**
+   * Gets value by given key.
+   * Complexity O(log n).
+   *
+   * @param {*} key A key to be searched for
+   * @return {*}    A value which will be returned based on the passed key
+   */
   RBTree.prototype.get = function (key) {
     return this._get(this._root, key);
   };
