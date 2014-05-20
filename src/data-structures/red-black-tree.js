@@ -2,6 +2,9 @@
 
   'use strict';
 
+  /**
+   * Enum for the different colors
+   */
   var Colors = {
     RED: 0,
     BLACK: 1
@@ -10,6 +13,11 @@
   global.Colors = Colors;
 
 
+  /**
+   * Represents given node in the tree.
+   *
+   * @constructor
+   */
   function Node(key, value, left, right, color) {
     this._key = key;
     this._left = left;
@@ -30,6 +38,10 @@
     }
   };
 
+  /**
+   * Creates getters and setters for the properties:
+   * key, value, left, right and color.
+   */
   'key value left right color'
   .split(' ')
   .forEach(function (key) {
@@ -45,6 +57,11 @@
   global.Node = Node;
 
 
+  /**
+   * Represents a Red-Black Tree
+   *
+   * @constructor
+   */
   function RBTree() {
     this._root = null;
   }
