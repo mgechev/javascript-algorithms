@@ -108,7 +108,7 @@
   };
 
   Heap.prototype.isEmpty = function () {
-    return !this._heapify.length;
+    return !this._heap.length;
   };
 
   exports.Heap = Heap;
