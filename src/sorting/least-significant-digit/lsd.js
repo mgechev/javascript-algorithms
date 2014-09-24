@@ -11,21 +11,17 @@
    * @returns {Array} Sorted array
    */
   function lsd(arr, letterIdx) {
-    var temp, count, max;
+    var temp, count;
     letterIdx = letterIdx || 1;
     for (var i = letterIdx - 1; i >= 0; i -= 1) {
       count = [];
-      max = -Infinity;
       temp = [];
       for (var j = 0; j < arr.length; j += 1) {
         var charCode = arr[j].charCodeAt(i);
-        if (max < charCode) {
-          max = charCode;
-        }
         var old = count[charCode + 1] || 0;
         count[charCode + 1] = old + 1;
       }
-      for (var c = 0; c < max; c += 1) {
+      for (var c = 0; c < count.length; c += 1) {
         count[c] = count[c] || 0;
         count[c + 1] = count[c + 1] || 0;
         count[c + 1] += count[c];
@@ -45,3 +41,4 @@
   exports.lsd = lsd;
 
 }(typeof exports === 'undefined' ? window : exports));
+
