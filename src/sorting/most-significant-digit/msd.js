@@ -1,5 +1,5 @@
+(function (exports) {
 
-var msd = (function () {
   'use strict';
 
   function charCodeAt(str, i) {
@@ -35,9 +35,11 @@ var msd = (function () {
     }
   }
 
-  return function msd(arr, d) {
+  function msd(arr, d) {
     d = d || 0;
     sort(arr, 0, arr.length - 1, d);
     return arr;
-  };
-}());
+  }
+
+  exports.msd = msd;
+}(typeof exports === 'undefined' ? window : exports));
