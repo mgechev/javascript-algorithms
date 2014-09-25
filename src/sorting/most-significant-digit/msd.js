@@ -35,6 +35,20 @@
     }
   }
 
+  /**
+   * Sorts given array lexicographically.
+   * The algorithms knows how to treat
+   * differently length strings.
+   * The algorithm is stable.
+   *
+   * Complexity O(n*m)
+   *
+   * @public
+   * @param {Array} arr The array, which needs to be sorted
+   * @param {Number} d The digit from which the sorting should start
+   * @return {Array} The sorted array
+   */
+
   function msd(arr, d) {
     d = d || 0;
     sort(arr, 0, arr.length - 1, d);
