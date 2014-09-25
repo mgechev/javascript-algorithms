@@ -9,15 +9,26 @@ describe('Most-Significant Digit', function () {
 
   it('should work with arrays with a single element', function () {
     var arr = ['a'];
-    expect(msd(arr).length).toBe(1);
-    expect(msd(arr)[0]).toBe('a');
+    msd(arr);
+    expect(arr.length).toBe(1);
+    expect(arr[0]).toBe('a');
   });
 
   it('should work with arrays with equally length strings', function () {
-    var arr = ['a'];
-    expect(msd(arr).length).toBe(1);
-    expect(msd(arr)[0]).toBe('a');
+    var arr = ['bb', 'aa', 'cc'];
+    msd(arr);
+    expect(arr.length).toBe(3);
+    expect(arr[0]).toBe('aa');
+    expect(arr[1]).toBe('bb');
+    expect(arr[2]).toBe('cc');
   });
 
-
+  it('should work with arrays with equally length strings', function () {
+    var arr = ['bb', 'aa', 'cc'];
+    msd(arr);
+    expect(arr.length).toBe(3);
+    expect(arr[0]).toBe('aa');
+    expect(arr[1]).toBe('bb');
+    expect(arr[2]).toBe('cc');
+  });
 });
