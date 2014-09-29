@@ -21,7 +21,7 @@
         var old = count[charCode + 1] || 0;
         count[charCode + 1] = old + 1;
       }
-      for (var c = 0; c < count.length; c += 1) {
+      for (var c = 0; c < count.length - 1; c += 1) {
         count[c] = count[c] || 0;
         count[c + 1] = count[c + 1] || 0;
         count[c + 1] += count[c];

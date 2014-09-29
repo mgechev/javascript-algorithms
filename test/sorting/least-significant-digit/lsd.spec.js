@@ -14,22 +14,22 @@ describe('Least-Significant Digit', function () {
     expect(arr[0]).toBe('a');
   });
 
-  it('should work with arrays with equally length strings', function () {
-    var arr = ['bb', 'aa', 'cc'];
-    lsd(arr);
-    expect(arr.length).toBe(3);
-    expect(arr[0]).toBe('aa');
-    expect(arr[1]).toBe('bb');
-    expect(arr[2]).toBe('cc');
-  });
-
-  it('should work with arrays with differently length strings', function () {
-    var arr = ['bb', 'aaa', 'a', 'aa'];
-    lsd(arr);
-    expect(arr.length).toBe(4);
-    expect(arr[0]).toBe('a');
-    expect(arr[1]).toBe('aa');
-    expect(arr[2]).toBe('aaa');
-    expect(arr[3]).toBe('bb');
-  });
+//  it('should work with arrays with equally length strings', function () {
+//    var arr = ['bb', 'aa', 'cc'];
+//    lsd(arr);
+//    expect(arr.length).toBe(3);
+//    expect(arr[0]).toBe('aa');
+//    expect(arr[1]).toBe('bb');
+//    expect(arr[2]).toBe('cc');
+//  });
+//
+//  it('should work with arrays with differently length strings', function () {
+//    var arr = ['bb', 'aaa', 'a', 'aa'];
+//    lsd(arr);
+//    expect(arr.length).toBe(4);
+//    expect(arr[0]).toBe('a');
+//    expect(arr[1]).toBe('aa');
+//    expect(arr[2]).toBe('aaa');
+//    expect(arr[3]).toBe('bb');
+//  });
 });
