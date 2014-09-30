@@ -1,6 +1,10 @@
 (function (exports) {
   'use strict';
 
+  /**
+   * Effective inplace string sorting algorithm.
+   * The algorithm is NOT stable.
+   */
   var quicksort = (function () {
 
     function charAt(str, i) {
