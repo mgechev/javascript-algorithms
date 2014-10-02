@@ -33,6 +33,7 @@
           swap(arr, i, lowPointer);
           lowPointer += 1;
         } else if (current > p) {
+          swap(arr, i, highPointer);
           highPointer -= 1;
           i += 1;
         } else {
