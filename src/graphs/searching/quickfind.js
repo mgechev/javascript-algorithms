@@ -7,8 +7,9 @@
  */
 function QuickFind(size) {
   this._ids = [];
-  for (var i = 0; i < size; i += 1)
+  for (var i = 0; i < size; i += 1) {
     this._ids[i] = i;
+  }
 }
 
 /**
@@ -20,11 +21,12 @@ function QuickFind(size) {
  */
 QuickFind.prototype.union = function (p, q) {
   var size = this._ids.length,
-    pval = this._ids[p],
-    qval = this._ids[q];
+      pval = this._ids[p],
+      qval = this._ids[q];
   for (var i = 0; i < size; i += 1) {
-    if (this._ids[i] === qval)
+    if (this._ids[i] === qval) {
       this._ids[i] = pval;
+    }
   }
 };
 
