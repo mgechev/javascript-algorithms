@@ -57,19 +57,26 @@ LinkedList.prototype.remove = function (data) {
       if (prev) {
         prev.next = next;
       }
+      if (temp === this.first) {
+        this.first = next;
+      }
+      if (temp === this.last) {
+        this.last = prev;
+      }
       return true;
     }
+    temp = temp.next;
   }
   return false;
 };
 
 var list = new LinkedList();
-list.push(1);
-list.push(2);
-list.unshift(3);
-list.unshift(4);
-list.push(-1);
-list.remove(-1);
-list.inorder(function (node) {
-  console.log(node.data);
-});
+//list.push(1);
+//list.push(2);
+//list.unshift(3);
+//list.unshift(4);
+//list.push(-1);
+//list.remove(-1);
+//list.inorder(function (node) {
+//  console.log(node.data);
+//});
