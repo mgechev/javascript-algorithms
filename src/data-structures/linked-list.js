@@ -1,5 +1,4 @@
 (function (exports) {
-
   'use strict';
 
   function Node(data) {
