@@ -93,7 +93,26 @@
     }
   };
 
+  LinkedList.prototype.pop = function () {
+    if (this.last === null) {
+      return null;
+    }
+    var temp = this.last;
+    this.last = this.last.prev;
+    return temp;
+  };
+
+  LinkedList.prototype.shift = function () {
+    if (this.first === null) {
+      return null;
+    }
+    var temp = this.first;
+    this.first = this.first.next;
+    return temp;
+  };
+
   exports.LinkedList = LinkedList;
   exports.Node = Node;
 
 }(typeof exports === 'undefined' ? window : exports));
+
