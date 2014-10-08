@@ -88,14 +88,3 @@ LinkedList.prototype.hasCycle = function () {
     }
   }
 };
-
-var list = new LinkedList();
-//list.push(1);
-//list.push(2);
-//list.unshift(3);
-//list.unshift(4);
-//list.push(-1);
-//list.remove(-1);
-//list.inorder(function (node) {
-//  console.log(node.data);
-//});
