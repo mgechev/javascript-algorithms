@@ -70,6 +70,25 @@ LinkedList.prototype.remove = function (data) {
   return false;
 };
 
+LinkedList.prototype.hasCycle = function () {
+  var fast = this.first,
+      slow = this.first;
+  while (true) {
+    if (fast === null) {
+      return false;
+    }
+    fast = fast.next;
+    if (fast === null) {
+      return false;
+    }
+    fast = fast.next;
+    slow = slow.next;
+    if (fast === slow) {
+      return true;
+    }
+  }
+};
+
 var list = new LinkedList();
 //list.push(1);
 //list.push(2);
