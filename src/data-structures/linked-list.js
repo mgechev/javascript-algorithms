@@ -41,12 +41,35 @@ LinkedList.prototype.inorder = function (cb) {
   }
 };
 
-//var list = new LinkedList();
-//list.push(1);
-//list.push(2);
-//list.unshift(3);
-//list.unshift(4);
-//list.push(-1);
-//list.inorder(function (node) {
-//  console.log(node.data);
-//});
+LinkedList.prototype.remove = function (data) {
+  if (this.first === null) {
+    return false;
+  }
+  var temp = this.first,
+      next, prev;
+  while (temp) {
+    if (temp.data === data) {
+      next = temp.next;
+      prev = temp.prev;
+      if (next) {
+        next.prev = prev;
+      }
+      if (prev) {
+        prev.next = next;
+      }
+      return true;
+    }
+  }
+  return false;
+};
+
+var list = new LinkedList();
+list.push(1);
+list.push(2);
+list.unshift(3);
+list.unshift(4);
+list.push(-1);
+list.remove(-1);
+list.inorder(function (node) {
+  console.log(node.data);
+});
