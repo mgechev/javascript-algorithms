@@ -42,7 +42,6 @@ BinaryTree.prototype.insert = function (value, current) {
     this._root = new Node(value, null, null, null);
     return;
   }
-  
   var insertKey;
   current = current || this._root;
   if (current.value > value)
@@ -273,3 +272,42 @@ BinaryTree.prototype.findMin = function () {
 BinaryTree.prototype.findMax = function () {
   return this._findMax(this._root);
 };
+
+BinaryTree.prototype._height = function (current) {
+  if (!current) {
+    return 0;
+  }
+  return 1 + Math.max(this._height(current._left),
+    this._height(current._right));
+};
+
+/**
+ * Returns the height of the tree
+ *
+ * @public
+ * @returns {Number} The height of the tree
+ */
+BinaryTree.prototype.height = function () {
+  return this._height(this._root);
+};
+
+BinaryTree.prototype._isBalanced = function (current) {
+  if (!current) {
+    return true;
+  }
+  return this._isBalanced(current._left)  &&
+         this._isBalanced(current._right) &&
+        Math.abs(this._height(current._left) -
+          this._height(current._right)) <= 1;
+};
+
+/**
+ * Returns whether the BST is balanced
+ *
+ * @public
+ * @returns {Boolean} Whether the tree is balanced or not
+ */
+BinaryTree.prototype.isBalanced = function () {
+  return this._isBalanced(this._root);
+};
+
