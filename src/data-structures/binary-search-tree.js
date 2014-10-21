@@ -333,3 +333,41 @@ BinaryTree.prototype._diameter = function (current) {
          Math.max(heightLeft + diameterLeft, heightLeft + heightRight + 1));
 };
 
+/**
+ * Finds the lowest common ancestor of two nodes.
+ *
+ * @public
+ * @returns {Node} The lowest common ancestor of the two nodes or null
+ */
+BinaryTree.prototype.lowestCommonAncestor = function (firstNode, secondNode, current) {
+  return this._lowestCommonAncestor(firstNode, secondNode, this._root);
+};
+
+BinaryTree.prototype._lowestCommonAncestor = function (firstNode, secondNode, current) {
+  var firstNodeInLeft = this._existsInSubtree(firstNode, current._left),
+      secondNodeInLeft = this._existsInSubtree(secondNode, current._left),
+      firstNodeInRight = this._existsInSubtree(firstNode, current._right),
+      secondNodeInRight = this._existsInSubtree(secondNode, current._right);
+  if ((firstNodeInLeft && secondNodeInRight) ||
+      (firstNodeInRight && secondNodeInLeft)) {
+    return current;
+  }
+  if (secondNodeInLeft && firstNodeInLeft) {
+    return this._lowestCommonAncestor(firstNode, secondNode, current._left);
+  }
+  if (secondNodeInRight && secondNodeInLeft) {
+    return this._lowestCommonAncestor(firstNode, secondNode, current._right);
+  }
+  return null;
+};
+
+BinaryTree.prototype._existsInSubtree = function (node, root) {
+  if (!root) {
+    return false;
+  }
+  if (node === root.value) {
+    return true;
+  }
+  return this._existsInSubtree(node, root._left) || this._existsInSubtree(node, root._right);
+};
+
