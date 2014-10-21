@@ -311,3 +311,25 @@ BinaryTree.prototype.isBalanced = function () {
   return this._isBalanced(this._root);
 };
 
+/**
+ * Finds the diameter of the binary tree
+ *
+ * @public
+ * @returns {Number} The longest path in the BST
+ */
+BinaryTree.prototype.diameter = function () {
+  return this._diameter(this._root);
+};
+
+BinaryTree.prototype._diameter = function (current) {
+  if (!current) {
+    return 0;
+  }
+  var heightLeft = this._height(current._left),
+      heightRight = this._height(current._right),
+      diameterLeft = this._diameter(current._left),
+      diameterRight = this._diameter(current._right);
+  return Math.max(heightLeft + diameterRight,
+         Math.max(heightLeft + diameterLeft, heightLeft + heightRight + 1));
+};
+
