@@ -110,6 +110,26 @@
     return temp;
   };
 
+  LinkedList.prototype.inverse = function () {
+
+    function inverse(current, next) {
+      if (!next) {
+        return;
+      }
+      inverse(next, next.next);
+      next.next = current;
+    }
+
+    if (!this.first) {
+      return;
+    }
+    inverse(this.first, this.first.next);
+    this.first.next = null;
+    var temp = this.first;
+    this.first = this.last;
+    this.last = temp;
+  };
+
   exports.LinkedList = LinkedList;
   exports.Node = Node;
 
