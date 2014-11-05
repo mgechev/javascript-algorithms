@@ -1,22 +1,26 @@
-var combinations = (function () {
+(function (exports) {
   'use strict';
+  var combinations = (function () {
+    var res = [];
 
-  var res = [];
-
-  function combinations(arr, k, start, idx, current) {
-    if (idx === k) {
-      res.push(current.slice());
-      return;
+    function combinations(arr, k, start, idx, current) {
+      if (idx === k) {
+        res.push(current.slice());
+        return;
+      }
+      for (var i = start; i < arr.length; i += 1) {
+        current[idx] = arr[i];
+        combinations(arr, k, i + 1, idx + 1, current);
+      }
     }
-    for (var i = start; i < arr.length; i += 1) {
-      current[idx] = arr[i];
-      combinations(arr, k, i + 1, idx + 1, current);
-    }
-  }
 
-  return function (arr, k) {
-    res = [];
-    combinations(arr, k, 0, 0, []);
-    return res;
-  };
-}());
+    return function (arr, k) {
+      res = [];
+      combinations(arr, k, 0, 0, []);
+      return res;
+    };
+  }());
+
+  exports.combinations = combinations;
+
+}(typeof exports === 'undefined' ? window : exports));
