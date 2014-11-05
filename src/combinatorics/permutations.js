@@ -10,6 +10,14 @@
       arr[j] = temp;
     }
 
+   /**
+    * Finds all the permutations of given array.
+    * Complexity O(n*n!).
+    *
+    * @param {Array} arr Array to find the permutations of
+    * @param {Number} current Current element
+    * @returns {Array} Array containing all the permutations
+    */
     function permutations(arr, current) {
       if (current >= arr.length) {
         return res.push(arr.slice());
