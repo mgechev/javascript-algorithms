@@ -110,7 +110,7 @@
     return temp;
   };
 
-  LinkedList.prototype.inverse = function () {
+  LinkedList.prototype.recursiveReverse = function () {
 
     function inverse(current, next) {
       if (!next) {
@@ -128,6 +128,22 @@
     var temp = this.first;
     this.first = this.last;
     this.last = temp;
+  };
+
+  LinkedList.prototype.reverse = function () {
+    if (!this.first || !this.first.next) {
+      return;
+    }
+    var current = this.first.next,
+        prev = this.first;
+    while (current) {
+      var temp = current.next;
+      current.next = prev;
+      prev = current;
+      current = temp;
+    }
+    this.first.next = null;
+    this.first = prev;
   };
 
   exports.LinkedList = LinkedList;
