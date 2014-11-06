@@ -135,15 +135,18 @@
       return;
     }
     var current = this.first.next,
-        prev = this.first;
+        prev = this.first,
+        temp;
     while (current) {
-      var temp = current.next;
+      temp = current.next;
       current.next = prev;
       prev = current;
       current = temp;
     }
     this.first.next = null;
+    temp = this.first;
     this.first = prev;
+    this.last = temp;
   };
 
   exports.LinkedList = LinkedList;
