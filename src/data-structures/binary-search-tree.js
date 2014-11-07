@@ -273,23 +273,6 @@ BinaryTree.prototype.findMax = function () {
   return this._findMax(this._root);
 };
 
-BinaryTree.prototype._height = function (current) {
-  if (!current) {
-    return 0;
-  }
-  return 1 + Math.max(this._height(current._left),
-    this._height(current._right));
-};
-
-/**
- * Returns the height of the tree
- *
- * @public
- * @returns {Number} The height of the tree
- */
-BinaryTree.prototype.height = function () {
-  return this._height(this._root);
-};
 
 BinaryTree.prototype._isBalanced = function (current) {
   if (!current) {
@@ -297,8 +280,8 @@ BinaryTree.prototype._isBalanced = function (current) {
   }
   return this._isBalanced(current._left)  &&
          this._isBalanced(current._right) &&
-        Math.abs(this._height(current._left) -
-          this._height(current._right)) <= 1;
+        Math.abs(this._getHeight(current._left) -
+          this._getHeight(current._right)) <= 1;
 };
 
 /**
@@ -317,20 +300,35 @@ BinaryTree.prototype.isBalanced = function () {
  * @public
  * @returns {Number} The longest path in the BST
  */
-BinaryTree.prototype.diameter = function () {
-  return this._diameter(this._root);
+BinaryTree.prototype.getDiameter = function () {
+  function getDiameter(root) {
+    if (!root) {
+      return 0;
+    }
+    var leftHeight = this._getHeight(root._left),
+        rightHeight = this._getHeight(root._right),
+        path = leftHeight + rightHeight + 1;
+    return Math.max(path, Math.max(getDiameter(root._left), getDiameter(root._right)));
+  }
+  getDiameter = getDiameter.bind(this);
+  return getDiameter(this._root);
 };
 
-BinaryTree.prototype._diameter = function (current) {
-  if (!current) {
+/**
+ * Returns the height of the tree
+ *
+ * @public
+ * @returns {Number} The height of the tree
+ */
+BinaryTree.prototype.getHeight = function () {
+  return this._getHeight(this._root);
+};
+
+BinaryTree.prototype._getHeight = function (node) {
+  if (!node) {
     return 0;
   }
-  var heightLeft = this._height(current._left),
-      heightRight = this._height(current._right),
-      diameterLeft = this._diameter(current._left),
-      diameterRight = this._diameter(current._right);
-  return Math.max(heightLeft + diameterRight,
-         Math.max(heightLeft + diameterLeft, heightLeft + heightRight + 1));
+  return 1 + Math.max(this._getHeight(node._left), this._getHeight(node._right));
 };
 
 /**
