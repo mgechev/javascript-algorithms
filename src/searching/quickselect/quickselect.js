@@ -41,7 +41,7 @@
         lo = pivotIdx + 1;
       }
     }
-    return null;
+    return NaN;
   }
   exports.quickselect = quickselect;
 
