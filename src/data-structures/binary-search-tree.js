@@ -301,7 +301,7 @@ BinaryTree.prototype.isBalanced = function () {
  * @returns {Number} The longest path in the BST
  */
 BinaryTree.prototype.getDiameter = function () {
-  function getDiameter(root) {
+  var getDiameter = function (root) {
     if (!root) {
       return 0;
     }
@@ -309,8 +309,7 @@ BinaryTree.prototype.getDiameter = function () {
         rightHeight = this._getHeight(root._right),
         path = leftHeight + rightHeight + 1;
     return Math.max(path, Math.max(getDiameter(root._left), getDiameter(root._right)));
-  }
-  getDiameter = getDiameter.bind(this);
+  }.bind(this);
   return getDiameter(this._root);
 };
 
