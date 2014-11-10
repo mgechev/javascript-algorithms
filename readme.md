@@ -2,7 +2,7 @@
 
 This repository contains different famous Computer Science algorithms implemented in JavaScript
 
-In order to run the tests use:
+In order to run the following tests use:
 
 ```Bash
 jasmine-node test/
