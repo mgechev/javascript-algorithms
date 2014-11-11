@@ -32,7 +32,10 @@
     return function (arr) {
       res = [];
       permutations(arr, 0);
-      return res;
+      var temp = res;
+      // Free the extra memory
+      res = null;
+      return temp;
     };
   }());
 

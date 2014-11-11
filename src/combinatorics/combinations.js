@@ -18,7 +18,10 @@
     return function (arr, k) {
       res = [];
       combinations(arr, k, 0, 0, []);
-      return res;
+      var temp = res;
+      // Free the extra memory
+      res = null;
+      return temp;
     };
   }());
 
