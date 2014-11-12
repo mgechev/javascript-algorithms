@@ -1,12 +1,12 @@
 /***********************************************
         A sample distance matrix
  
-var graph = [[NaN, 7,   9,   NaN, NaN, 16],
-             [7,   NaN, 10,  15,  NaN, NaN],
-             [9,   10,  NaN, 11,  NaN, 2],
-             [NaN, 15,  11,  NaN, 6,   NaN],
-             [NaN, NaN, NaN, 6,   NaN, 9],
-             [16,  NaN, 2,   NaN, 9,   NaN]];
+var graph = [[Infinity, 7,        9,        Infinity, Infinity, 16],
+             [7,        Infinity, 10,       15,       Infinity, Infinity],
+             [9,        10,       Infinity, 11,       Infinity, 2],
+             [Infinity, 15,       11,       Infinity, 6,        Infinity],
+             [Infinity, Infinity, Infinity, 6,        Infinity, 9],
+             [16,       Infinity, 2,        Infinity, 9,        Infinity]];
 ***********************************************/
 
 
@@ -96,7 +96,7 @@ var dijstra = function () {
       for (var i = 0; i < graph.length; i += 1) {
         if (current.node !== i && //if it's not the current node
           !visited[i] && //and if we haven't visited this node
-          !isNaN(graph[i][current.node])) { //and this node is sibling of the current...
+          Number.isFinite(graph[i][current.node])) { //and this node is sibling of the current...
 
           tempDistance = current.distance + graph[i][current.node]; 
           if (tempDistance < distance[i].distance) {
