@@ -126,6 +126,10 @@
           }
         }
       }
+      visited = null;
+      queue = null;
+      target = -1;
+      graph = null;
       return false;
     };
   }());
