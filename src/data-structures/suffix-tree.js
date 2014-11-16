@@ -1,3 +1,10 @@
+// TODO
+// 1) The algorithm is quite ineffective, better use
+// Ukkomen's algorithm to build it in O(n) complexity.
+// 2) Refactor the code in order to make addNode more readable.
+// 3) Add methods `addLeaf`, `addNode` to the suffix tree node,
+// it should be responsible for knowing it's internal representation.
+// 4) etc...
 function Node(value) {
   this.value = value;
   this.nodes = [];
