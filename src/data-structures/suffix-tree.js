@@ -1,10 +1,6 @@
 // TODO
 // 1) The algorithm is quite ineffective, better use
 // Ukkomen's algorithm to build it in O(n) complexity.
-// 2) Refactor the code in order to make addNode more readable.
-// 3) Add methods `addLeaf`, `addNode` to the suffix tree node,
-// it should be responsible for knowing it's internal representation.
-// 4) etc...
 function Node(val) {
   this.value = val;
   this.nodes = {};
@@ -29,23 +25,28 @@ SuffixTree.prototype.addNode = (function () {
   }
 
   function addNode(suffix, current) {
+    // Empty string already exists in the suffix tree
     if (!suffix) {
       return;
     }
+    // The suffix is already inside the tree
     if (current.value === suffix) {
       return;
     }
+    // Insert recursively
     if (current.nodes[suffix[0]]) {
       return addNode(suffix.substr(1, suffix.length), current.nodes[suffix[0]]);
     }
+    // Find the maximum prefix and split the current node if prefix exists
     var prefix = maxPrefix(current.value, suffix);
     if (prefix.length) {
-      var temp = current.value;
-      var suffixSuffix = suffix.substr(prefix.length, suffix.length);
-      var currentSuffix = temp.substr(prefix.length, temp.length);
+      var temp = current.value,
+          suffixSuffix = suffix.substr(prefix.length, suffix.length),
+          currentSuffix = temp.substr(prefix.length, temp.length);
       current.value = prefix;
       addNode(currentSuffix, current);
       addNode(suffixSuffix, current);
+    // If prefix doesn't exists add new child node
     } else {
       current.nodes[suffix[0]] = new Node(suffix);
     }
