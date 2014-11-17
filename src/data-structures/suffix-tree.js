@@ -5,71 +5,89 @@
 // 3) Add methods `addLeaf`, `addNode` to the suffix tree node,
 // it should be responsible for knowing it's internal representation.
 // 4) etc...
-function Node(value) {
-  this.value = value;
+function Node(val) {
+  this.value = val;
   this.nodes = {};
-  this.leaves = [];
 }
 
 function SuffixTree() {
-  this.root = new Node('');
+  this.root = new Node();
 }
 
 SuffixTree.prototype.addNode = (function () {
 
-  function addNode(suffix, current) {
-    var n, l;
-    var nodes = Object.keys(current.nodes);
-    for (var i = 0; i < nodes.length; i += 1) {
-      n = nodes[i];
-      if (n.value === suffix[0]) {
-        addNode(suffix.substr(1, suffix.length), n);
-        return;
+  function maxPrefix(a, b) {
+    var res = [];
+    for (var i = 0; i < Math.min(a.length, b.length); i += 1) {
+      if (a[i] === b[i]) {
+        res.push(a[i]);
+      } else {
+        return '';
       }
     }
-    for (i = 0; i < current.leaves.length; i += 1) {
-      l = current.leaves[i];
-      if (l[0] === suffix[0]) {
-        var prefix = l[0];
-        n = new Node(prefix);
-        current.nodes[l[0]] = n;
-        current.leaves.splice(current.leaves.indexOf(l), 1);
-        l = l.substr(1, l.length);
-        suffix = suffix.substr(1, suffix.length);
-        addNode(l, n);
-        addNode(suffix, n);
-        return;
-      }
-    }
-    current.leaves.push(suffix);
+    return res.join('');
   }
-  
+
+  function addNode(suffix, current) {
+    if (!suffix) {
+      return;
+    }
+    if (current.value === suffix) {
+      return;
+    }
+    if (current.nodes[suffix[0]]) {
+      return addNode(suffix.substr(1, suffix.length), current.nodes[suffix[0]]);
+    }
+    var prefix = maxPrefix(current.value, suffix);
+    console.log(prefix, current.value, suffix);
+    if (prefix.length) {
+      console.log('recursive, prefix:', prefix, current.value, suffix);
+      var temp = current.value;
+      var suffixSuffix = suffix.substr(prefix.length, suffix.length);
+      var currentSuffix = temp.substr(prefix.length, temp.length);
+      current.value = prefix;
+      addNode(currentSuffix, current);
+      addNode(suffixSuffix, current);
+    } else {
+      current.nodes[suffix[0]] = new Node(suffix);
+    }
+  }
+
   return function (suffix) {
     addNode(suffix, this.root);
   };
 }());
 
 SuffixTree.prototype.build = function (string) {
-  for (var i = 0; i < string.length; i += 1) {
+  this.root.value = string;
+  for (var i = 1; i < string.length; i += 1) {
     this.addNode(string.substr(i, string.length));
+    console.log(JSON.stringify(this.root));
   }
 };
 
 
-// function isSubstr(tree, str) {
-//   if (str.length === 0) {
-//     return true;
-//   }
-//   var l = tree.leaves.filter(function (l) {
-//     return l.indexOf(str) >= 0;
-//   });
-//   if (l.length > 0) return true;
-//   if (!tree.nodes[str[0]]) {
-//     return false;
-//   }
-//   return isSubstr(tree.nodes[str[0]], str.substr(1, str.length));
-// }
-// 
+function isSubstr(tree, str) {
+  if (!tree) {
+    return false;
+  }
+  if (tree.nodes[str[0]]) {
+    return isSubstr(tree, str.substr(1, str.length));
+  }
+  var match = '';
+  for (var i = 0; i < Math.min(tree.value.length, str.length); i += 1) {
+    if (tree.value[i] === str[i]) {
+      match += str[i];
+    } else {
+      break;
+    }
+  }
+  if (match.length === str.length) {
+    return true;
+  }
+  return false;
+}
+
 // var suffix = new SuffixTree();
 // suffix.build('banana');
 // console.log(suffix);
