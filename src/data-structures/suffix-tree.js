@@ -56,6 +56,7 @@ SuffixTree.prototype.addNode = (function () {
   };
 }());
 
+// O(n^2) or even O(n^3) because of maxPrefix
 SuffixTree.prototype.build = function (string) {
   this.root.value = string;
   for (var i = 1; i < string.length; i += 1) {
