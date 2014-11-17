@@ -7,7 +7,7 @@
 // 4) etc...
 function Node(value) {
   this.value = value;
-  this.nodes = [];
+  this.nodes = {};
   this.leaves = [];
 }
 
@@ -19,8 +19,9 @@ SuffixTree.prototype.addNode = (function () {
 
   function addNode(suffix, current) {
     var n, l;
-    for (var i = 0; i < current.nodes.length; i += 1) {
-      n = current.nodes[i];
+    var nodes = Object.keys(current.nodes);
+    for (var i = 0; i < nodes.length; i += 1) {
+      n = nodes[i];
       if (n.value === suffix[0]) {
         addNode(suffix.substr(1, suffix.length), n);
         return;
@@ -31,7 +32,7 @@ SuffixTree.prototype.addNode = (function () {
       if (l[0] === suffix[0]) {
         var prefix = l[0];
         n = new Node(prefix);
-        current.nodes.push(n);
+        current.nodes[l[0]] = n;
         current.leaves.splice(current.leaves.indexOf(l), 1);
         l = l.substr(1, l.length);
         suffix = suffix.substr(1, suffix.length);
@@ -54,6 +55,21 @@ SuffixTree.prototype.build = function (string) {
   }
 };
 
+
+// function isSubstr(tree, str) {
+//   if (str.length === 0) {
+//     return true;
+//   }
+//   var l = tree.leaves.filter(function (l) {
+//     return l.indexOf(str) >= 0;
+//   });
+//   if (l.length > 0) return true;
+//   if (!tree.nodes[str[0]]) {
+//     return false;
+//   }
+//   return isSubstr(tree.nodes[str[0]], str.substr(1, str.length));
+// }
+// 
 // var suffix = new SuffixTree();
 // suffix.build('banana');
 // console.log(suffix);
