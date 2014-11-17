@@ -39,9 +39,7 @@ SuffixTree.prototype.addNode = (function () {
       return addNode(suffix.substr(1, suffix.length), current.nodes[suffix[0]]);
     }
     var prefix = maxPrefix(current.value, suffix);
-    console.log(prefix, current.value, suffix);
     if (prefix.length) {
-      console.log('recursive, prefix:', prefix, current.value, suffix);
       var temp = current.value;
       var suffixSuffix = suffix.substr(prefix.length, suffix.length);
       var currentSuffix = temp.substr(prefix.length, temp.length);
@@ -62,7 +60,6 @@ SuffixTree.prototype.build = function (string) {
   this.root.value = string;
   for (var i = 1; i < string.length; i += 1) {
     this.addNode(string.substr(i, string.length));
-    console.log(JSON.stringify(this.root));
   }
 };
 
