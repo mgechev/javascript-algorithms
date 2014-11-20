@@ -6,6 +6,7 @@
  * @return {array} The shuffled array.
  */
 function shuffle(array) {
+  'use strict';
   var size = array.length,
     rand, temp;
   for (var i = 1; i < size; i += 1) {
@@ -17,6 +18,3 @@ function shuffle(array) {
   return array;
 }
 
-//var array = [1,2,3,4,5,6,7,8,9];
-//console.log(array);
-//console.log(shuffle(array));
