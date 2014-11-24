@@ -23,7 +23,7 @@ function QuickUnion(n) {
  */
 QuickUnion.prototype._root = function (i) {
   while (i !== this._ids[i]) {
-//    this._ids = this._ids[this._ids[i]]; //enables the path compression
+//    this._ids[i] = this._ids[this._ids[i]]; //enables the path compression
     i = this._ids[i];
   }
   return i;
