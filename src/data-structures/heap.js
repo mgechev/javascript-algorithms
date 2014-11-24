@@ -1,4 +1,5 @@
 (function (exports) {
+  'use strict';
 
   /**
    * Constructor function of minimum heap
@@ -20,7 +21,8 @@
   /**
    * Exchange indexes with start index given as argument
    * to turn the tree into a valid heap. On a single call
-   * this method maintains only a single "branch" of the heap. Complexity O(log n)
+   * this method maintains only a single "branch" of the heap.
+   * Complexity O(log n)
    *
    * @private
    * @param {number} index The parent
@@ -31,11 +33,15 @@
         right = 2 * index + 2,
         temp;
 
-    if (left < this._heap.length && this._cmp(this._heap[left], this._heap[index]) > 0)
+    if (left < this._heap.length &&
+        this._cmp(this._heap[left], this._heap[index]) > 0) {
       extr = left;
+    }
 
-    if (right < this._heap.length && this._cmp(this._heap[right], this._heap[index]) > 0)
+    if (right < this._heap.length &&
+        this._cmp(this._heap[right], this._heap[index]) > 0) {
       extr = right;
+    }
 
     if (index !== extr) {
       temp = this._heap[index];
@@ -54,6 +60,7 @@
    * @returns {number} parent The new position of the element
    */
   Heap.prototype.changeKey = function (index, value) {
+    this._heap[index] = value;
     var elem = this._heap[index],
         parent = Math.floor(index / 2),
         temp;
@@ -92,19 +99,25 @@
   };
 
   /**
-   * Removes and returns the current extremum value which is on the top of the heap.
+   * Removes and returns the current extremum value
+   * which is on the top of the heap.
    * Complexity O(log n).
    *
    * @public
    * @returns {number} The extremum value
    */
   Heap.prototype.extract = function () {
-    if (!this._heap.length)
+    if (!this._heap.length) {
       throw 'The heap is already empty!';
+    }
 
     var extr = this._heap.shift();
     this._heapify(0);
     return extr;
+  };
+
+  Heap.prototype.getCollection = function () {
+    return this._heap;
   };
 
   Heap.prototype.isEmpty = function () {
