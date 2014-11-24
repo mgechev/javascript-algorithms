@@ -8,7 +8,8 @@ var Heap = require('../../data-structures/heap').Heap;
  * @param {number} id The id of the vertex
  */
 function Vertex(id) {
-    this.id = id;
+  'use strict';
+  this.id = id;
 }
 
 /**
@@ -21,9 +22,10 @@ function Vertex(id) {
  * @param {number} distance Weight of the node
  */
 function Edge(e, v, distance) {
-    this.e = e;
-    this.v = v;
-    this.distance = distance;
+  'use strict';
+  this.e = e;
+  this.v = v;
+  this.distance = distance;
 }
 
 /**
@@ -33,8 +35,8 @@ function Edge(e, v, distance) {
  * @public
  */
 function Graph(edges) {
-    console.log(edges);
-    this.edges = edges || [];
+  'use strict';
+  this.edges = edges || [];
 }
 
 /**
@@ -44,58 +46,59 @@ function Graph(edges) {
  * @return {Graph} Graph which is the minimum spanning tree
  */
 Graph.prototype.prim = (function () {
+  'use strict';
 
-    var queue;
+  var queue;
 
-    /**
-     * Initialize the algorithm.
-     *
-     * @private
-     */
-    function init() {
-        queue = new Heap(compareEdges);
-        this.edges.forEach(function (e) {
-            queue.add(e);
-        });
-    }
+  /**
+   * Initialize the algorithm.
+   *
+   * @private
+   */
+  function init() {
+    queue = new Heap(compareEdges);
+    this.edges.forEach(function (e) {
+      queue.add(e);
+    });
+  }
 
-    /**
-     * Used for comparitions in the heap
-     *
-     * @private
-     * @param {Vertex} a First operand of the comparition
-     * @param {Vertex} b Second operand of the comparition
-     * @return {number} Number which which is equal, greater or less then zero and
-     *  indicates whether the first vertex is "greater" than the second.
-     */
-    function compareEdges(a, b) {
-        return b.distance - a.distance;
-    }
+  /**
+   * Used for comparitions in the heap
+   *
+   * @private
+   * @param {Vertex} a First operand of the comparition
+   * @param {Vertex} b Second operand of the comparition
+   * @return {number} Number which which is equal, greater or less then zero and
+   *  indicates whether the first vertex is "greater" than the second.
+   */
+  function compareEdges(a, b) {
+    return b.distance - a.distance;
+  }
 
-    /**
-     * Prim's algorithm implementation
-     *
-     * @public
-     * @return {Graph} Minimum spanning tree.
-     */
-    return function () {
-        init.call(this);
-        var inTheTree = {},
-            current = queue.extract(),
-            spannigTree = [];
+  /**
+   * Prim's algorithm implementation
+   *
+   * @public
+   * @return {Graph} Minimum spanning tree.
+   */
+  return function () {
+    init.call(this);
+    var inTheTree = {},
+        current = queue.extract(),
+        spannigTree = [];
+    spannigTree.push(current);
+    inTheTree[current.e.id] = true;
+    while (queue.isEmpty()) {
+      current = queue.extract();
+      if (!inTheTree[current.v.id] ||
+        !inTheTree[current.e.id]) {
         spannigTree.push(current);
         inTheTree[current.e.id] = true;
-        while (queue.isEmpty()) {
-            current = queue.extract();
-            if (!inTheTree[current.v.id] ||
-                !inTheTree[current.e.id]) {
-                spannigTree.push(current);
-                inTheTree[current.e.id] = true;
-                inTheTree[current.v.id] = true;
-            }
-        }
-        return new Graph(spannigTree);
-    };
+        inTheTree[current.v.id] = true;
+      }
+    }
+    return new Graph(spannigTree);
+  };
 
 }());
 
