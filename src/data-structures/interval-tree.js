@@ -81,11 +81,8 @@ function intersectsHelper(interval, node) {
   var result = false, temp;
   ['left', 'right'].forEach(function (side) {
     temp = node[side];
-    if (temp) {
-      if (intersects(interval, [temp.interval[0], temp.max]) ||
-          temp.interval[0] <= interval[0]) {
-        result = result || intersectsHelper(interval, temp);
-      }
+    if (temp && temp.max >= interval[0]) {
+      result = result || intersectsHelper(interval, temp);
     }
   });
   return result;
@@ -97,7 +94,7 @@ function intersects(a, b) {
 }
 
 IntervalTree.prototype.intersects = function (interval) {
-  return intersectsHelper(intersects, this.root);
+  return intersectsHelper(interval, this.root);
 };
 
 function heightHelper(node) {
@@ -111,16 +108,16 @@ IntervalTree.prototype.height = function () {
   return heightHelper(this.root);
 };
 
-
-var t = new IntervalTree();
-
-t.add([1, 2]);
-t.add([-1, 8]);
-t.add([-1, 18]);
-t.add([2, 4]);
-t.add([8, 13]);
-t.add([2, 10]);
-
-console.log(t.intersects([1, 2]));
-console.log(t.contains(16));
-console.log(t.height());
+// 
+// var t = new IntervalTree();
+// 
+// t.add([1, 2]);
+// t.add([-1, 8]);
+// t.add([-1, 18]);
+// t.add([2, 4]);
+// t.add([8, 13]);
+// t.add([2, 10]);
+// 
+// console.log(t.intersects([19, 29]));
+// console.log(t.contains(16));
+// console.log(t.height());
