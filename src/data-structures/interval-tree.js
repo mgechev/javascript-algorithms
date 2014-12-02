@@ -19,7 +19,7 @@
     var child = new Node(interval[0], interval[1]);
     child.parentNode = node;
     node[side] = child;
-    if (side === 'right' && node.max < interval[1]) {
+    if (node.max < interval[1]) {
       while (child) {
         if (child.max < interval[1]) {
           child.max = interval[1];
@@ -167,7 +167,10 @@
           }
         } else {
           this.root = node[side];
-          this.root.parentNode = null;
+          // last node removed
+          if (this.root) {
+            this.root.parentNode = null;
+          }
         }
       }
       // Adjust the max value
@@ -208,25 +211,26 @@ var t = new IntervalTree();
 
 t.add([1, 2]);
 t.add([-1, 8]);
-t.add([-1, 18]);
-t.add([2, 4]);
-t.add([8, 13]);
-t.add([2, 10]);
-t.add([-2, 10]);
-t.add([-4, 15]);
-t.add([-6, 15]);
+// t.add([-1, 18]);
+// t.add([2, 4]);
+// t.add([8, 13]);
+// t.add([2, 10]);
+// t.add([-2, 10]);
+// t.add([-4, 15]);
+// t.add([-6, 15]);
 
-t.remove([1, 2]);
-t.remove([-1, 8]);
-t.remove([-1, 18]);
-t.remove([2, 4]);
-t.remove([8, 13]);
-t.remove([2, 10]);
-t.remove([-2, 10]);
-t.remove([-4, 15]);
+// t.remove([1, 2]);
+// t.remove([-1, 8]);
+// t.remove([-1, 18]);
+// t.remove([2, 4]);
+// t.remove([8, 13]);
+// t.remove([2, 10]);
+// t.remove([-2, 10]);
+// t.remove([-4, 15]);
+// t.remove([-6, 15]);
 
+console.log(t.height());
 console.log(t.root);
-console.log(t.intersects([17, 29]));
 
 //console.log(t.intersects([19, 29]));
 //console.log(t.contains(16));
