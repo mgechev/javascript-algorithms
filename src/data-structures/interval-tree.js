@@ -1,5 +1,3 @@
-// The implementation doesn't work properly!
-// Most of the operations are still buggy, not properly implemented.
 (function (exports) {
   'use strict';
 
@@ -176,16 +174,14 @@
       // Adjust the max value
       var p = node.parentNode;
       if (p) {
-        var maxNode = this.findMax(p);
-        if (maxNode.interval[1] > p.max) {
-          var max = maxNode.interval[1];
-          while (maxNode) {
-            if (max > maxNode.max && maxNode.max === node.interval[1]) {
-              maxNode.max = max;
-              maxNode = maxNode.parentNode;
-            } else {
-              maxNode = false;
-            }
+        var maxNode = this.findMax(p),
+            max = maxNode.interval[1];
+        while (maxNode) {
+          if (maxNode.max === node.interval[1]) {
+            maxNode.max = max;
+            maxNode = maxNode.parentNode;
+          } else {
+            maxNode = false;
           }
         }
       }
@@ -204,35 +200,3 @@
   exports.IntervalTree = IntervalTree;
 
 }(typeof exports === 'undefined' ? window : exports));
-
-var IntervalTree = exports.IntervalTree;
-
-var t = new IntervalTree();
-
-t.add([1, 2]);
-t.add([-1, 8]);
-// t.add([-1, 18]);
-// t.add([2, 4]);
-// t.add([8, 13]);
-// t.add([2, 10]);
-// t.add([-2, 10]);
-// t.add([-4, 15]);
-// t.add([-6, 15]);
-
-// t.remove([1, 2]);
-// t.remove([-1, 8]);
-// t.remove([-1, 18]);
-// t.remove([2, 4]);
-// t.remove([8, 13]);
-// t.remove([2, 10]);
-// t.remove([-2, 10]);
-// t.remove([-4, 15]);
-// t.remove([-6, 15]);
-
-console.log(t.height());
-console.log(t.root);
-
-//console.log(t.intersects([19, 29]));
-//console.log(t.contains(16));
-
-console.log('Height:', t.height());
