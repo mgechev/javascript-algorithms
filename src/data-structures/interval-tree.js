@@ -111,13 +111,33 @@
     return heightHelper(this.root);
   };
 
+  IntervalTree.prototype.findMax = function (node) {
+    var stack = [node],
+        current, max = -Infinity, maxNode;
+    while (stack.length) {
+      current = stack.pop();
+      if (current.left) {
+        stack.push(current.left);
+      }
+      if (current.right) {
+        stack.push(current.right);
+      }
+      if (current.interval[1] > max) {
+        max = current.interval[1];
+        maxNode = current;
+      }
+    }
+    return maxNode;
+  };
+
   // adjust the max value
-  IntervalTree.prototype.removeHelper = function (interval, node) {
+  IntervalTree.prototype._removeHelper = function (interval, node) {
     if (!node) {
       return;
     }
     if (node.interval[0] === interval[0] &&
         node.interval[1] === interval[1]) {
+      // When left and right children exists
       if (node.left && node.right) {
         var replacement = node.left;
         while (replacement.left) {
@@ -128,6 +148,7 @@
         node.interval = temp;
         this._removeHelper(replacement.interval, node);
       } else {
+        // When only left or right child exists
         var side = 'left';
         if (node.right) {
           side = 'right';
@@ -139,10 +160,28 @@
           } else {
             parentNode.right = node[side];
           }
-          node[side].parentNode = parentNode;
+          if (node[side]) {
+            node[side].parentNode = parentNode;
+          }
         } else {
           this.root = node[side];
           this.root.parentNode = null;
+        }
+      }
+      // Adjust the max value
+      var p = node.parentNode;
+      if (p) {
+        var maxNode = this.findMax(p);
+        if (maxNode.interval[1] > p.max) {
+          var max = maxNode.interval[1];
+          while (maxNode) {
+            if (max > maxNode.max && maxNode.max === node.interval[1]) {
+              maxNode.max = max;
+              maxNode = maxNode.parentNode;
+            } else {
+              maxNode = false;
+            }
+          }
         }
       }
     } else {
@@ -171,7 +210,23 @@ t.add([-1, 18]);
 t.add([2, 4]);
 t.add([8, 13]);
 t.add([2, 10]);
+t.add([-2, 10]);
+t.add([-4, 15]);
+t.add([-6, 15]);
 
-console.log(t.intersects([19, 29]));
-console.log(t.contains(16));
-console.log(t.height());
+t.remove([1, 2]);
+t.remove([-1, 8]);
+t.remove([-1, 18]);
+t.remove([2, 4]);
+t.remove([8, 13]);
+t.remove([2, 10]);
+t.remove([-2, 10]);
+t.remove([-4, 15]);
+
+console.log(t.root);
+console.log(t.intersects([17, 29]));
+
+//console.log(t.intersects([19, 29]));
+//console.log(t.contains(16));
+
+console.log('Height:', t.height());
