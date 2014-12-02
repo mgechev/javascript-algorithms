@@ -111,21 +111,67 @@
     return heightHelper(this.root);
   };
 
+  // adjust the max value
+  IntervalTree.prototype.removeHelper = function (interval, node) {
+    if (!node) {
+      return;
+    }
+    if (node.interval[0] === interval[0] &&
+        node.interval[1] === interval[1]) {
+      if (node.left && node.right) {
+        var replacement = node.left;
+        while (replacement.left) {
+          replacement = replacement.left;
+        }
+        var temp = replacement.interval;
+        replacement.interval = node.interval;
+        node.interval = temp;
+        this._removeHelper(replacement.interval, node);
+      } else {
+        var side = 'left';
+        if (node.right) {
+          side = 'right';
+        }
+        var parentNode = node.parentNode;
+        if (parentNode) {
+          if (parentNode.left === node) {
+            parentNode.left = node[side];
+          } else {
+            parentNode.right = node[side];
+          }
+          node[side].parentNode = parentNode;
+        } else {
+          this.root = node[side];
+          this.root.parentNode = null;
+        }
+      }
+    } else {
+      // could be optimized
+      this._removeHelper(interval, node.left);
+      this._removeHelper(interval, node.right);
+    }
+  };
+
+  IntervalTree.prototype.remove = function (interval) {
+    return this._removeHelper(interval, this.root);
+  };
+
   exports.Node = Node;
   exports.IntervalTree = IntervalTree;
 
 }(typeof exports === 'undefined' ? window : exports));
 
-// 
-// var t = new IntervalTree();
-// 
-// t.add([1, 2]);
-// t.add([-1, 8]);
-// t.add([-1, 18]);
-// t.add([2, 4]);
-// t.add([8, 13]);
-// t.add([2, 10]);
-// 
-// console.log(t.intersects([19, 29]));
-// console.log(t.contains(16));
-// console.log(t.height());
+var IntervalTree = exports.IntervalTree;
+
+var t = new IntervalTree();
+
+t.add([1, 2]);
+t.add([-1, 8]);
+t.add([-1, 18]);
+t.add([2, 4]);
+t.add([8, 13]);
+t.add([2, 10]);
+
+console.log(t.intersects([19, 29]));
+console.log(t.contains(16));
+console.log(t.height());
