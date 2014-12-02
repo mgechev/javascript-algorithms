@@ -1,3 +1,5 @@
+// The implementation doesn't work properly!
+// Most of the operations are still buggy, not properly implemented.
 (function (exports) {
   'use strict';
 
