@@ -308,7 +308,7 @@ BinaryTree.prototype.getDiameter = function () {
     var leftHeight = this._getHeight(root._left),
         rightHeight = this._getHeight(root._right),
         path = leftHeight + rightHeight + 1;
-    return Math.max(path, Math.max(getDiameter(root._left), getDiameter(root._right)));
+    return Math.max(path, getDiameter(root._left), getDiameter(root._right));
   }.bind(this);
   return getDiameter(this._root);
 };
