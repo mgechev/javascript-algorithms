@@ -1,3 +1,7 @@
+## Note
+
+Note that not all algorithms are well tested so bugs are quite possible.
+
 ## About
 
 This repository contains different famous Computer Science algorithms implemented in JavaScript
