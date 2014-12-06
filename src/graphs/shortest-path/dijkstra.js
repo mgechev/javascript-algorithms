@@ -92,7 +92,7 @@ var dijstra = function () {
   return function (src, dest, graph) {
     var  tempDistance = 0;
     init(src, graph);
-    while (current.node != dest && current.distance != Infinity) {
+    while (current.node !== dest && isFinite(current.distance)) {
       for (var i = 0; i < graph.length; i += 1) {
         if (current.node !== i && //if it's not the current node
           !visited[i] && //and if we haven't visited this node
