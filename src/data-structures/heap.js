@@ -77,6 +77,18 @@
   };
 
   /**
+   * Updates given node. This operation is useful
+   * in algorithms like Dijkstra, A* where we need
+   * to decrease/increase the value of givne node.
+   */
+  Heap.prototype.update = function (node) {
+    var idx = this._heap.indexOf(node);
+    if (idx >= 0) {
+      this.changeKey(idx, node);
+    }
+  };
+
+  /**
    * Adds new element to the heap. Complexity O(log n).
    *
    * @public
