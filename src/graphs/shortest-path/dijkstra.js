@@ -93,21 +93,18 @@ var dijstra = function () {
     var  tempDistance = 0;
     init(src, graph);
     while (current.node != dest && current.distance != Infinity) {
-      var changed = false;
       for (var i = 0; i < graph.length; i += 1) {
         if (current.node !== i && //if it's not the current node
           !visited[i] && //and if we haven't visited this node
           Number.isFinite(graph[i][current.node])) { //and this node is sibling of the current...
 
-          tempDistance = current.distance + graph[i][current.node]; 
+          tempDistance = current.distance + graph[i][current.node];
           if (tempDistance < distance[i].distance) {
-            changed = true;
             distance[i].distance = tempDistance;
+            current.distance = tempDistance;
+            unvisited.update(current);
           }
         }
-      }
-      if (changed) {
-        // TODO the heap should update the order of the elements!
       }
       visited[current.node] = true;
       current = unvisited.extract();
