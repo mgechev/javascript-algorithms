@@ -1,27 +1,31 @@
-var levenshteinDistance = (function () {
+(function (exports) {
   'use strict';
 
-  function levenshteinDistance(s, ls, t, lt) {
-    if (ls === 0) {
-      return lt;
-    }
-    if (lt === 0) {
-      return ls;
-    }
-    var cost;
-    if (s[ls - 1] === t[lt - 1]) {
-      cost = 0;
-    } else {
-      cost = 1;
-    }
-    return Math.min(levenshteinDistance(s, ls - 1, t,     lt) + 1,
-                    levenshteinDistance(s, ls,     t, lt - 1) + 1,
-                    levenshteinDistance(s, ls - 1, t, lt - 1) + cost);
-  }
+  var levenshteinDistance = (function () {
 
-  return function (s, t) {
-    return levenshteinDistance(s, s.length, t, t.length);
-  };
-}());
+    function levenshteinDistance(s, ls, t, lt) {
+      if (ls === 0) {
+        return lt;
+      }
+      if (lt === 0) {
+        return ls;
+      }
+      var cost;
+      if (s[ls - 1] === t[lt - 1]) {
+        cost = 0;
+      } else {
+        cost = 1;
+      }
+      return Math.min(levenshteinDistance(s, ls - 1, t,     lt) + 1,
+                      levenshteinDistance(s, ls,     t, lt - 1) + 1,
+                      levenshteinDistance(s, ls - 1, t, lt - 1) + cost);
+    }
 
-//console.log(levenshteinDistance('kitten', 'sitting'));
+    return function (s, t) {
+      return levenshteinDistance(s, s.length, t, t.length);
+    };
+  }());
+
+  exports.levenshteinDistance = levenshteinDistance;
+
+}(typeof exports === 'undefined' ? window : exports));
