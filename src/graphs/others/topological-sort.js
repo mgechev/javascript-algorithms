@@ -1,6 +1,10 @@
 (function (exports) {
   'use strict';
 
+  /**
+   * Complexity O(|E|), where E is the set
+   * which contains all edges and |E| is their count.
+   */
   var topologicalSort = (function () {
 
     function topologicalSortHelper(node, visited, temp, graph, result) {
