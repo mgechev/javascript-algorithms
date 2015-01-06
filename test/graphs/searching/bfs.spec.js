@@ -34,6 +34,16 @@ describe('BFS', function () {
     expect(bfs(graph, 0, 2)).toBeFalsy();
   });
 
+  /**
+   * In this case the graph should not
+   * update the parent of 2, in case it was called
+   * with source 0 and target 2, after the first iteration.
+   *
+   *  0 ---> 1
+   *   \     |
+   *    \    v 
+   *      -> 2
+   */
   it('should not update the parent node once set', function () {
     var graph = [[0, 1, 1],
                  [0, 0, 1],
