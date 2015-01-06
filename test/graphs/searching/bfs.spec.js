@@ -25,4 +25,13 @@ describe('BFS', function () {
     expect(bfs(graph, 0, 2)).toEqual([0, 4, 3, 2]);
   });
 
+  it('should return falsy value when there\'s no path', function () {
+    var graph = [[0, 0, 0, 0, 1],
+                 [0, 0, 0, 1, 0],
+                 [0, 0, 0, 0, 0],
+                 [1, 0, 0, 0, 0],
+                 [0, 1, 0, 1, 0]];
+    expect(bfs(graph, 0, 2)).toBeFalsy();
+  });
+
 });
