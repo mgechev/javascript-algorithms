@@ -50,10 +50,3 @@
   exports.bfs = bfs;
 
 }((typeof window === 'undefined') ? module.exports : window));
-
-console.log(exports.bfs(
-[[0, 0, 0, 0, 1],
- [0, 0, 0, 1, 0],
- [0, 0, 0, 0, 0],
- [1, 0, 1, 0, 0],
- [0, 1, 0, 1, 0]], 0, 2));
