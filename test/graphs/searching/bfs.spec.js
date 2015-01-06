@@ -17,4 +17,9 @@ describe('BFS', function () {
     expect(bfs([], 0, 0)).toEqual([0]);
   });
 
+  it('should return the correct output when used with\
+  source node equals target node', function () {
+
+  });
+
 });
