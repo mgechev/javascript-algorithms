@@ -34,4 +34,11 @@ describe('BFS', function () {
     expect(bfs(graph, 0, 2)).toBeFalsy();
   });
 
+  it('should not update the parent node once set', function () {
+    var graph = [[0, 1, 1],
+                 [0, 0, 1],
+                 [0, 0, 0]];
+    expect(bfs(graph, 0, 2)).toEqual([0, 2]);
+  });
+
 });
