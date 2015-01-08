@@ -9,13 +9,14 @@
    * @param  {number} x2 The first coordinate of the end of the line
    * @param  {number} y2 The second coordinate of the end of the line
    */
-  function drawLine(x1, y1, x2, y2) {
+  function drawLine(x1, y1, x2, y2, draw) {
+    drawPoint = draw || drawPoint;
     var dx = Math.abs(x2 - x1),
-      dy = Math.abs(y2 - y1),
-      cx = (x1 < x2) ? 1 : -1,
-      cy = (y1 < y2) ? 1 : -1,
-      error = dx - dy,
-      doubledError;
+        dy = Math.abs(y2 - y1),
+        cx = (x1 < x2) ? 1 : -1,
+        cy = (y1 < y2) ? 1 : -1,
+        error = dx - dy,
+        doubledError;
 
     while (x1 !== x2 || y1 !== y2) {
       drawPoint(x1, y1);
