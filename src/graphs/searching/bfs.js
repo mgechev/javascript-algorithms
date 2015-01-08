@@ -13,14 +13,15 @@
     }
 
     /**
-     * Returns the shortest path between
-     * startNode and targetNode.
-     * Time complexity O(|V|*|V|), because we use adjust matrix.
-     *
-     * @param {array} graph The adjust matrix, which represents the graph
-     * @param {number} startNode The start node
-     * @param {number} targetNode The target, which should be reached
-     * @returns {array} The shortest path from startNode to targetNode
+     * Breath-First graph searching algorithm.
+     * Returns the shortest path between startNode and targetNode.<br><br>
+     * Time complexity: O(|V|^2).
+     * @public
+     * @module graphs/searching/bfs
+     * @param {Array} graph Adjacency matrix, which represents the graph.
+     * @param {Number} startNode Start node.
+     * @param {Number} targetNode Target, which should be reached.
+     * @returns {Array} Shortest path from startNode to targetNode.
      */
     return function (graph, startNode, targetNode) {
       var parents = [],

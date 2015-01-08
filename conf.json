@@ -1,0 +1,31 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "source": {
+        "include": ["./src/graphs/searching/"],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "docs"
+    },
+    "plugins": [],
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": true,
+        "systemName": "remoteFileExplorer",
+        "footer": "Created by Simon Speich",
+        "copyright": "2013",
+        "navType": "vertical",
+        "theme": "spacelab",
+        "linenums": true,
+        "collapseSymbols": true,
+        "inverseNav": false
+    },
+    "opts": {
+        "template": "templates/default",
+        "encoding": "utf8",
+        "destination": "docs",
+        "recurse": true,
+        "private": true,
+        "readme": "./readme.md"
+    }
+}

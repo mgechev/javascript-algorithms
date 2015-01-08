@@ -1,18 +1,8 @@
-/**
- * Depth-First Search graph searching algorithm.
- * Finds out whether there's a path between
- * two nodes - start node and a target.
- */
-
 (function (exports) {
   'use strict';
 
   var dfs = (function () {
 
-    /**
-     * Implements an iterative DFS.
-     * Complexity O(|V|^2), since it uses adjust matrix.
-     */
     function hasPath(graph, current, goal) {
       var stack = [],
           visited = [],
@@ -35,14 +25,16 @@
     }
 
     /**
-     * Returns whether there's a path between two nodes
-     * in a graph represented with adjust matrix.
+     * Depth-First graph searching algorithm.
+     * Returns whether there's a path between two nodes in a graph.<br><br>
+     * Time complexity: O(|V|^2).
      *
+     * @module graphs/searching/dfs
      * @public
-     * @param {array} graph Adjust matrix representation of a graph
-     * @param {number} start A start node
-     * @param {number} goal The target node
-     * @return {boolean} Returns whether there's a path between start and goal
+     * @param {Array} graph Adjacency matrix, which represents the graph.
+     * @param {Number} start Start node.
+     * @param {Number} goal Target node.
+     * @return {Boolean} Returns true if path between two nodes exists.
      */
     return function (graph, start, goal) {
       return hasPath(graph, start, goal);

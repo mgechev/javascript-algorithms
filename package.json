@@ -1,0 +1,26 @@
+{
+    "name": "javascript-algorithms",
+    "version": "0.1.1",
+    "description": "Famous Computer Science algorithms implemented in JavaScript.",
+    "homepage": "https://github.com/mgechev/javascript-algorithms",
+    "keywords": [
+        "algorithms",
+        "data-structures",
+        "graphs",
+        "sorting",
+        "compression",
+        "combinatorics",
+        "sets",
+        "searching"
+    ],
+    "author": "Minko Gechev <mgechev@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/mgechev/javascript-algorithms.git"
+    },
+    "main": "./src/combinatorics/cartesianproduct.js",
+    "devDependencies": {
+        "jsdoc": "~3.3.0"
+    },
+    "license": "MIT"
+}
