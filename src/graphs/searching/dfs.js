@@ -35,6 +35,16 @@
      * @param {Number} start Start node.
      * @param {Number} goal Target node.
      * @return {Boolean} Returns true if path between two nodes exists.
+     *
+     * @example
+     * var dfs = require('../src/graphs/searching/dfs').dfs;
+     * var graph = [[1, 1, 0, 0, 1, 0],
+     *              [1, 0, 1, 0, 1, 0],
+     *              [0, 1, 0, 1, 0, 0],
+     *              [0, 0, 1, 0, 1, 1],
+     *              [1, 1, 0, 1, 0, 0],
+     *              [0, 0, 0, 1, 0, 0]];
+     * var pathExists = dfs(graph, 1, 5); // true
      */
     return function (graph, start, goal) {
       return hasPath(graph, start, goal);

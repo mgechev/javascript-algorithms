@@ -16,12 +16,23 @@
      * Breath-First graph searching algorithm.
      * Returns the shortest path between startNode and targetNode.<br><br>
      * Time complexity: O(|V|^2).
+     *
      * @public
      * @module graphs/searching/bfs
      * @param {Array} graph Adjacency matrix, which represents the graph.
      * @param {Number} startNode Start node.
      * @param {Number} targetNode Target, which should be reached.
      * @returns {Array} Shortest path from startNode to targetNode.
+     *
+     * @example
+     * var bfs = require('path-to-algorithms/src/graphs/searching/bfs').bfs;
+     * var graph = [[1, 1, 0, 0, 1, 0],
+     *              [1, 0, 1, 0, 1, 0],
+     *              [0, 1, 0, 1, 0, 0],
+     *              [0, 0, 1, 0, 1, 1],
+     *              [1, 1, 0, 1, 0, 0],
+     *              [0, 0, 0, 1, 0, 0]];
+     * var shortestPath = bfs(graph, 1, 5); // [1, 2, 3, 5]
      */
     return function (graph, startNode, targetNode) {
       var parents = [],
