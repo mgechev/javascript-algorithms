@@ -20,6 +20,7 @@
     },
     "main": "./src/combinatorics/cartesianproduct.js",
     "devDependencies": {
+        "jasmine-node": "~1.14.5",
         "jsdoc": "~3.3.0"
     },
     "license": "MIT"
