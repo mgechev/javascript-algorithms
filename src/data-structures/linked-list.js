@@ -140,10 +140,12 @@
     while (current) {
       temp = current.next;
       current.next = prev;
+      prev.prev = current;
       prev = current;
       current = temp;
     }
     this.first.next = null;
+    this.last.prev = null;
     temp = this.first;
     this.first = prev;
     this.last = temp;
