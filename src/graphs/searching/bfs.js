@@ -13,14 +13,30 @@
     }
 
     /**
-     * Returns the shortest path between
-     * startNode and targetNode.
-     * Time complexity O(|V|*|V|), because we use adjust matrix.
+     * Breath-First graph searching algorithm.
+     * Returns the shortest path between startNode and targetNode.
+     * Time complexity O(|V|*|V|).
      *
+     * @module graphs/searching
+     * @public
      * @param {array} graph The adjust matrix, which represents the graph
      * @param {number} startNode The start node
      * @param {number} targetNode The target, which should be reached
+     * @param {Array} graph Adjacency matrix, which represents the graph.
      * @returns {array} The shortest path from startNode to targetNode
+     * @param {Number} startNode Start node.
+     * @param {Number} targetNode Target, which should be reached.
+     * @returns {Array} Shortest path from startNode to targetNode.
+     *
+     * @example
+     * var bfs = require('path-to-algorithms/src/graphs/searching/bfs').bfs;
+     * var graph = [[1, 1, 0, 0, 1, 0],
+     *              [1, 0, 1, 0, 1, 0],
+     *              [0, 1, 0, 1, 0, 0],
+     *              [0, 0, 1, 0, 1, 1],
+     *              [1, 1, 0, 1, 0, 0],
+     *              [0, 0, 0, 1, 0, 0]];
+     * var shortestPath = bfs(graph, 1, 5); // [1, 2, 3, 5]
      */
     return function (graph, startNode, targetNode) {
       var parents = [],

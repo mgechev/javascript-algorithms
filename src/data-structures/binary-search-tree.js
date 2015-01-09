@@ -39,7 +39,7 @@
    *
    * @public
    * @param {Number|String} Value
-   * @param {[Node]} Current node
+   * @param {Node} Current node
    */
   BinaryTree.prototype.insert = function (value, current) {
     if (this._root === null) {
@@ -227,7 +227,7 @@
    *
    * @private
    * @param {Node} Root of the sub-tree
-   * @param {[Number|String]} Current minimum value of the sub-tree
+   * @param {Number|String} Current minimum value of the sub-tree
    * @returns {Node} The node with minimum value in the sub-tree
    */
   BinaryTree.prototype._findMin = function (node, current) {
@@ -244,7 +244,7 @@
    *
    * @private
    * @param {Node} Root of the sub-tree
-   * @param {[Number|String]} Current maximum value of the sub-tree
+   * @param {Number|String} Current maximum value of the sub-tree
    * @returns {Node} The node with maximum value in the sub-tree
    */
   BinaryTree.prototype._findMax = function (node, current) {
