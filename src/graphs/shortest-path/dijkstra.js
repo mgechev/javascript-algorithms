@@ -1,10 +1,3 @@
-/**
- * Dijkstra's shortest path algorithm.
- * For the implementation is not used the most
- * suitable data structure (Fibonacci heap)
- * but the binary heap gives also good results. The implementation bellow finds
- * the minimum distance between two given nodes using a distance matrix.
- */
 (function (exports) {
   'use strict';
 
@@ -71,14 +64,16 @@
 
     /**
      * Dijkstra's shortest path algorithm. Finds the minimum 
-     * distance between two given nodes using a distance matrix.
+     * distance between two given nodes using a distance matrix.<br><br>
+     * For the implementation is not used the most suitable data structure
+     * (Fibonacci heap) but the Binary heap gives also good results.
      *
      * @public
      * @module graphs/shortest-path/dijkstra
      * @param {Number} src Source node.
      * @param {Number} dest Destination node.
      * @param {Array} graph A distance matrix of the graph.
-     * @returns {Number} The shortest distance between the nodes.
+     * @returns {Number} The shortest distance between two nodes.
      * 
      * @example
      * var dijkstra = require('path-to-algorithms/src/graphs/shortest-path/dijkstra').dijkstra;
