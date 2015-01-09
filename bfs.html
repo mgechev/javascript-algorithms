@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: searching/subarray/maximum-subarray.js</title>
+    <title>JSDoc: Module: graphs/searching/bfs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,37 +17,103 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: searching/subarray/maximum-subarray.js</h1>
+    <h1 class="page-title">Module: graphs/searching/bfs</h1>
 
     
 
 
+
+<section>
+
+<header>
+    <h2>
+    graphs/searching/bfs
+    </h2>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Finds the maximum sum of subarray's element of given array using the Kadane's algorithm
- * It's complexity is O(n). The algorithm can be found here: https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane.27s_algorithm
- *
- * @public
- * @param {array} array Input array
- * @returns {number} max The maximum sum of the elements of subarray of the input
- *
- */
-function maxSubarray(array) {
-    var currentMax = 0,
-        max = 0;
+</header>
 
-    for (var i = 0; i &lt; array.length; i += 1) {
-        currentMax = Math.max(0, currentMax + array[i]);
-        max = Math.max(max, currentMax);
-    }
+<article>
+    <div class="container-overview">
+    
 
-    return max;
-}
-</code></pre>
-        </article>
-    </section>
+    
+        
+            <div class="description">Breath-First graph searching algorithm.
+Returns the shortest path between startNode and targetNode.<br><br>
+Time complexity: O(|V|^2).</div>
+        
+
+        
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="bfs.js.html">graphs/searching/bfs.js</a>, <a href="bfs.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+            <h3>Example</h3>
+            
+    <pre class="prettyprint"><code>var bfs = require('path-to-algorithms/src/graphs/searching/bfs').bfs;
+var graph = [[1, 1, 0, 0, 1, 0],
+             [1, 0, 1, 0, 1, 0],
+             [0, 1, 0, 1, 0, 0],
+             [0, 0, 1, 0, 1, 1],
+             [1, 1, 0, 1, 0, 0],
+             [0, 0, 0, 1, 0, 0]];
+var shortestPath = bfs(graph, 1, 5); // [1, 2, 3, 5]</code></pre>
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

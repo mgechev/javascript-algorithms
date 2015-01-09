@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: graphs/searching/dfs.js</title>
+    <title>JSDoc: Source: graphs/others/topological-sort.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: graphs/searching/dfs.js</h1>
+    <h1 class="page-title">Source: graphs/others/topological-sort.js</h1>
 
     
 
@@ -28,57 +28,59 @@
             <pre class="prettyprint source linenums"><code>(function (exports) {
   'use strict';
 
-  var dfs = (function () {
+  var topologicalSort = (function () {
 
-    function hasPath(graph, current, goal) {
-      var stack = [],
-          visited = [],
-          node;
-      stack.push(current);
-      visited[current] = true;
-      while (stack.length) {
-        node = stack.pop();
-        if (node === goal) {
-          return true;
+    function topologicalSortHelper(node, visited, temp, graph, result) {
+      temp[node] = true;
+      var neighbors = graph[node];
+      for (var i = 0; i &lt; neighbors.length; i += 1) {
+        var n = neighbors[i];
+        if (temp[n]) {
+          throw new Error('The graph is not a DAG');
         }
-        for (var i = 0; i &lt; graph[node].length; i += 1) {
-          if (graph[node][i] &amp;&amp; !visited[i]) {
-            stack.push(i);
-            visited[i] = true;
-          }
+        if (!visited[n]) {
+          topologicalSortHelper(n, visited, temp, graph, result);
         }
       }
-      return false;
+      temp[node] = false;
+      visited[node] = true;
+      result.push(node);
     }
 
     /**
-     * Depth-First graph searching algorithm.
-     * Returns whether there's a path between two nodes in a graph.&lt;br>&lt;br>
-     * Time complexity: O(|V|^2).
+     * Topological sort algorithm of a directed acyclic graph.&lt;br>&lt;br>
+     * Time complexity: O(|E|) where E is a number of edges.
      *
-     * @module graphs/searching/dfs
      * @public
-     * @param {Array} graph Adjacency matrix, which represents the graph.
-     * @param {Number} start Start node.
-     * @param {Number} goal Target node.
-     * @return {Boolean} Returns true if path between two nodes exists.
+     * @module graphs/others/topological-sort
+     * @param {Array} graph Adjacency list, which represents the graph.
+     * @returns {Array} Ordered vertices.
      *
      * @example
-     * var dfs = require('../src/graphs/searching/dfs').dfs;
-     * var graph = [[1, 1, 0, 0, 1, 0],
-     *              [1, 0, 1, 0, 1, 0],
-     *              [0, 1, 0, 1, 0, 0],
-     *              [0, 0, 1, 0, 1, 1],
-     *              [1, 1, 0, 1, 0, 0],
-     *              [0, 0, 0, 1, 0, 0]];
-     * var pathExists = dfs(graph, 1, 5); // true
+     * var topsort = require('path-to-algorithms/src/graphs/others/topological-sort').topologicalSort;
+     * var graph = {
+     *     v1: ['v2', 'v5'],
+     *     v2: [],
+     *     v3: ['v1', 'v2', 'v4', 'v5'],
+     *     v4: [],
+     *     v5: []
+     * };
+     * var vertices = topsort(graph); // ['v3', 'v4', 'v1', 'v5', 'v2']
      */
-    return function (graph, start, goal) {
-      return hasPath(graph, start, goal);
+    return function (graph) {
+      var result = [],
+          visited = [],
+          temp = [];
+      for (var node in graph) {
+        if (!visited[node] &amp;&amp; !temp[node]) {
+          topologicalSortHelper(node, visited, temp, graph, result);
+        }
+      }
+      return result.reverse();
     };
   }());
 
-  exports.dfs = dfs;
+  exports.topologicalSort = topologicalSort;
 
 }(typeof exports === 'undefined' ? window : exports));</code></pre>
         </article>

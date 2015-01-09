@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Vertex</title>
+    <title>JSDoc: Module: graphs/shortest-path/dijkstra</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Vertex</h1>
+    <h1 class="page-title">Module: graphs/shortest-path/dijkstra</h1>
 
     
 
@@ -27,7 +27,7 @@
 
 <header>
     <h2>
-    Vertex
+    graphs/shortest-path/dijkstra
     </h2>
     
 </header>
@@ -38,74 +38,13 @@
 
     
         
-<dt>
-    <h4 class="name" id="Vertex"><span class="type-signature"></span>new Vertex<span class="signature">(id)</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Graph vertex
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
+            <div class="description">Dijkstra's shortest path algorithm. Finds the minimum 
+distance between two given nodes using a distance matrix.<br><br>
+For the implementation is not used the most suitable data structure
+(Fibonacci heap) but the Binary heap gives also good results.</div>
         
 
         
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The id of the vertex</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
 <dl class="details">
     
 
@@ -128,7 +67,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="prim.js.html">graphs/spanning-trees/prim.js</a>, <a href="prim.js.html#line10">line 10</a>
+        <a href="dijkstra.js.html">graphs/shortest-path/dijkstra.js</a>, <a href="dijkstra.js.html#line65">line 65</a>
     </li></ul></dd>
     
 
@@ -140,21 +79,19 @@
 </dl>
 
 
-    
+        
+            <h3>Example</h3>
+            
+    <pre class="prettyprint"><code>var dijkstra = require('path-to-algorithms/src/graphs/shortest-path/dijkstra').dijkstra;
+var distMatrix = [[Infinity, 7,        9,        Infinity, Infinity, 16],
+                  [7,        Infinity, 10,       15,       Infinity, Infinity],
+                  [9,        10,       Infinity, 11,       Infinity, 2],
+                  [Infinity, 15,       11,       Infinity, 6,        Infinity],
+                  [Infinity, Infinity, Infinity, 6,        Infinity, 9],
+                  [16,       Infinity, 2,        Infinity, 9,        Infinity]];
+var shortestDist = dijkstra(0, 2, distMatrix); // 9</code></pre>
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
+        
     
     </div>
 

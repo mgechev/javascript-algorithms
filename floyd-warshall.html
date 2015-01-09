@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Vertex</title>
+    <title>JSDoc: Module: graphs/shortest-path/floyd-warshall</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Vertex</h1>
+    <h1 class="page-title">Module: graphs/shortest-path/floyd-warshall</h1>
 
     
 
@@ -27,7 +27,7 @@
 
 <header>
     <h2>
-    Vertex
+    graphs/shortest-path/floyd-warshall
     </h2>
     
 </header>
@@ -38,74 +38,11 @@
 
     
         
-<dt>
-    <h4 class="name" id="Vertex"><span class="type-signature"></span>new Vertex<span class="signature">(id)</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Graph vertex
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
+            <div class="description">Floyd-Warshall algorithm. Finds the shortest path between each two vertices.<br><br>
+Complexity: O(|V|^3) where V is the number of vertices.</div>
         
 
         
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The id of the vertex</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
 <dl class="details">
     
 
@@ -128,7 +65,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="prim.js.html">graphs/spanning-trees/prim.js</a>, <a href="prim.js.html#line10">line 10</a>
+        <a href="floyd-warshall.js.html">graphs/shortest-path/floyd-warshall.js</a>, <a href="floyd-warshall.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -140,21 +77,26 @@
 </dl>
 
 
-    
+        
+            <h3>Example</h3>
+            
+    <pre class="prettyprint"><code>var floydWarshall = require('path-to-algorithms/src/graphs/shortest-path/floyd-warshall').floydWarshall;
+var distMatrix = [[NaN, 7,   9,   NaN, NaN, 16],
+                  [7,   NaN, 10,  15,  NaN, NaN],
+                  [9,   10,  NaN, 11,  NaN, 2],
+                  [NaN, 15,  11,  NaN, 6,   NaN],
+                  [NaN, NaN, NaN, 6,   NaN, 9],
+                  [16,  NaN, 2,   NaN, 9,   NaN]];
 
-    
+// [ [ 0, 7, 9, 20, 20, 11 ],
+//   [ 7, 0, 10, 15, 21, 12 ],
+//   [ 9, 10, 0, 11, 11, 2 ],
+//   [ 20, 15, 11, 0, 6, 13 ],
+//   [ 20, 21, 11, 6, 0, 9 ],
+//   [ 11, 12, 2, 13, 9, 0 ] ]
+var shortestDists = floydWarshall(distMatrix);</code></pre>
 
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
+        
     
     </div>
 

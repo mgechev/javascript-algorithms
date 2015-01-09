@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Vertex</title>
+    <title>JSDoc: Module: graphs/shortest-path/bellman-ford</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Vertex</h1>
+    <h1 class="page-title">Module: graphs/shortest-path/bellman-ford</h1>
 
     
 
@@ -27,7 +27,7 @@
 
 <header>
     <h2>
-    Vertex
+    graphs/shortest-path/bellman-ford
     </h2>
     
 </header>
@@ -38,74 +38,12 @@
 
     
         
-<dt>
-    <h4 class="name" id="Vertex"><span class="type-signature"></span>new Vertex<span class="signature">(id)</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Graph vertex
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
+            <div class="description">Bellman–Ford algorithm computes shortest paths from a single source
+vertex to all of the other vertices in a weighted digraph (negative weights allowed).<br><br>
+Time complexity: O(|V||E|) where V and E are the number of vertices and edges respectively.</div>
         
 
         
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The id of the vertex</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
 <dl class="details">
     
 
@@ -128,7 +66,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="prim.js.html">graphs/spanning-trees/prim.js</a>, <a href="prim.js.html#line10">line 10</a>
+        <a href="bellman-ford.js.html">graphs/shortest-path/bellman-ford.js</a>, <a href="bellman-ford.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -140,21 +78,33 @@
 </dl>
 
 
-    
+        
+            <h3>Example</h3>
+            
+    <pre class="prettyprint"><code>require('path-to-algorithms/src/graphs/shortest-path/bellman-ford');
 
-    
+var glob = (typeof window === 'undefined') ? global : window;
+var Edge = glob.Edge;
+var bellmanFord = glob.bellmanFord;
+var edges = [];
+var vertexes = [0, 1, 2, 3, 4];
 
-    
+edges.push(new Edge(0, 1, -1));
+edges.push(new Edge(0, 2, 4));
+edges.push(new Edge(1, 2, 3));
+edges.push(new Edge(1, 3, 2));
+edges.push(new Edge(3, 1, 1));
+edges.push(new Edge(4, 3, -3));
+edges.push(new Edge(1, 4, 2));
+edges.push(new Edge(3, 2, 5));
 
-    
+// { 
+//   parents:   { '0': null, '1':  0, '2': 1, '3':  4, '4': 1 },
+//   distances: { '0': 0,    '1': -1, '2': 2, '3': -2, '4': 1 }
+// }
+var pathInfo = bellmanFord(vertexes, edges, 0);</code></pre>
 
-    
-
-    
-
-    
-</dd>
-
+        
     
     </div>
 
