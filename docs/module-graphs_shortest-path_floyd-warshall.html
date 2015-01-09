@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: graphs/shortest-path/dijkstra</title>
+    <title>JSDoc: Module: graphs/shortest-path/floyd-warshall</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: graphs/shortest-path/dijkstra</h1>
+    <h1 class="page-title">Module: graphs/shortest-path/floyd-warshall</h1>
 
     
 
@@ -38,10 +38,8 @@
     <div class="container-overview">
     
         
-            <div class="description">Dijkstra's shortest path algorithm. Finds the minimum 
-distance between two given nodes using a distance matrix.<br><br>
-For the implementation is not used the most suitable data structure
-(Fibonacci heap) but the Binary heap gives also good results.</div>
+            <div class="description">Floyd-Warshall algorithm. Finds the shortest path between each two vertices.<br><br>
+Complexity: O(|V|^3) where V is the number of vertices.</div>
         
 
         
@@ -78,52 +76,6 @@ For the implementation is not used the most suitable data structure
     </thead>
 
     <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>src</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Source node.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dest</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Destination node.</td>
-        </tr>
-
     
 
         <tr>
@@ -184,7 +136,7 @@ For the implementation is not used the most suitable data structure
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="shortest-path_dijkstra.js.html">shortest-path/dijkstra.js</a>, <a href="shortest-path_dijkstra.js.html#line65">line 65</a>
+        <a href="shortest-path_floyd-warshall.js.html">shortest-path/floyd-warshall.js</a>, <a href="shortest-path_floyd-warshall.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -211,7 +163,7 @@ For the implementation is not used the most suitable data structure
 
         
 <div class="param-desc">
-    The shortest distance between two nodes.
+    Array which contains the shortest distance between each two vertices.
 </div>
 
 
@@ -222,7 +174,7 @@ For the implementation is not used the most suitable data structure
     </dt>
     <dd>
         
-<span class="param-type">Number</span>
+<span class="param-type">Array</span>
 
 
     </dd>
@@ -233,14 +185,21 @@ For the implementation is not used the most suitable data structure
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var dijkstra = require('path-to-algorithms/src/graphs/shortest-path/dijkstra').dijkstra;
-var distMatrix = [[Infinity, 7,        9,        Infinity, Infinity, 16],
-                  [7,        Infinity, 10,       15,       Infinity, Infinity],
-                  [9,        10,       Infinity, 11,       Infinity, 2],
-                  [Infinity, 15,       11,       Infinity, 6,        Infinity],
-                  [Infinity, Infinity, Infinity, 6,        Infinity, 9],
-                  [16,       Infinity, 2,        Infinity, 9,        Infinity]];
-var shortestDist = dijkstra(0, 2, distMatrix); // 9</code></pre>
+    <pre class="prettyprint"><code>var floydWarshall = require('path-to-algorithms/src/graphs/shortest-path/floyd-warshall').floydWarshall;
+var distMatrix = [[NaN, 7,   9,   NaN, NaN, 16],
+                  [7,   NaN, 10,  15,  NaN, NaN],
+                  [9,   10,  NaN, 11,  NaN, 2],
+                  [NaN, 15,  11,  NaN, 6,   NaN],
+                  [NaN, NaN, NaN, 6,   NaN, 9],
+                  [16,  NaN, 2,   NaN, 9,   NaN]];
+
+// [ [ 0, 7, 9, 20, 20, 11 ],
+//   [ 7, 0, 10, 15, 21, 12 ],
+//   [ 9, 10, 0, 11, 11, 2 ],
+//   [ 20, 15, 11, 0, 6, 13 ],
+//   [ 20, 21, 11, 6, 0, 9 ],
+//   [ 11, 12, 2, 13, 9, 0 ] ]
+var shortestDists = floydWarshall(distMatrix);</code></pre>
 
 
 
