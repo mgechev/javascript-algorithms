@@ -5,7 +5,7 @@
  *
  * @example
  *
- * var BellmanFord = require('../src/graphs/shortest-path/bellman-ford');
+ * var BellmanFord = require('path-to-algorithms/src/graphs/shortest-path/bellman-ford');
  * var Edge = BellmanFord.Edge;
  * var bellmanFord = BellmanFord.bellmanFord;
  * var edges = [];
