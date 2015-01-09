@@ -1,8 +1,7 @@
 'use strict';
-var jsdoc = require('gulp-jsdoc'),
-    gulp = require('gulp');
+var gulp = require('gulp'),
+    shell = require('gulp-shell');
 
-gulp.task('jsdoc', function () {
-  gulp.src(['./src/**/*.js', "readme.md"])
-    .pipe(jsdoc('../javascript-algorithms-docs'));
-});
+gulp.task('jsdoc', shell.task([
+    './node_modules/.bin/jsdoc -c ./doc-config.json',
+]));
