@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: graphs/searching/bfs</title>
+    <title>JSDoc: Module: graphs/shortest-path/bellman-ford</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: graphs/searching/bfs</h1>
+    <h1 class="page-title">Module: graphs/shortest-path/bellman-ford</h1>
 
     
 
@@ -38,9 +38,9 @@
     <div class="container-overview">
     
         
-            <div class="description">Breath-First graph searching algorithm.
-Returns the shortest path between startNode and targetNode.<br><br>
-Time complexity: O(|V|^2).</div>
+            <div class="description">Bellman–Ford algorithm computes shortest paths from a single source
+vertex to all of the other vertices in a weighted digraph (negative weights allowed).<br><br>
+Time complexity: O(|V||E|) where V and E are the number of vertices and edges respectively.</div>
         
 
         
@@ -81,7 +81,7 @@ Time complexity: O(|V|^2).</div>
 
         <tr>
             
-                <td class="name"><code>graph</code></td>
+                <td class="name"><code>vertexes</code></td>
             
 
             <td class="type">
@@ -97,14 +97,37 @@ Time complexity: O(|V|^2).</div>
 
             
 
-            <td class="description last">Adjacency matrix, which represents the graph.</td>
+            <td class="description last">Vertices of the graph.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>startNode</code></td>
+                <td class="name"><code>edges</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edges of the graph.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
             
 
             <td class="type">
@@ -120,30 +143,7 @@ Time complexity: O(|V|^2).</div>
 
             
 
-            <td class="description last">Start node.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>targetNode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Target, which should be reached.</td>
+            <td class="description last">Start vertex.</td>
         </tr>
 
     
@@ -183,7 +183,7 @@ Time complexity: O(|V|^2).</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="searching_bfs.js.html">searching/bfs.js</a>, <a href="searching_bfs.js.html#line15">line 15</a>
+        <a href="shortest-path_bellman-ford.js.html">shortest-path/bellman-ford.js</a>, <a href="shortest-path_bellman-ford.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -210,7 +210,7 @@ Time complexity: O(|V|^2).</div>
 
         
 <div class="param-desc">
-    Shortest path from startNode to targetNode.
+    Object with two arrays (parents and distances) with shortest-path information.
 </div>
 
 
@@ -221,7 +221,7 @@ Time complexity: O(|V|^2).</div>
     </dt>
     <dd>
         
-<span class="param-type">Array</span>
+<span class="param-type">Object</span>
 
 
     </dd>
@@ -232,14 +232,28 @@ Time complexity: O(|V|^2).</div>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var bfs = require('path-to-algorithms/src/graphs/searching/bfs').bfs;
-var graph = [[1, 1, 0, 0, 1, 0],
-             [1, 0, 1, 0, 1, 0],
-             [0, 1, 0, 1, 0, 0],
-             [0, 0, 1, 0, 1, 1],
-             [1, 1, 0, 1, 0, 0],
-             [0, 0, 0, 1, 0, 0]];
-var shortestPath = bfs(graph, 1, 5); // [1, 2, 3, 5]</code></pre>
+    <pre class="prettyprint"><code>require('../src/graphs/shortest-path/bellman-ford');
+
+var glob = (typeof window === 'undefined') ? global : window;
+var Edge = glob.Edge;
+var bellmanFord = glob.bellmanFord;
+var edges = [];
+var vertexes = [0, 1, 2, 3, 4];
+
+edges.push(new Edge(0, 1, -1));
+edges.push(new Edge(0, 2, 4));
+edges.push(new Edge(1, 2, 3));
+edges.push(new Edge(1, 3, 2));
+edges.push(new Edge(3, 1, 1));
+edges.push(new Edge(4, 3, -3));
+edges.push(new Edge(1, 4, 2));
+edges.push(new Edge(3, 2, 5));
+
+// { 
+//   parents:   { '0': null, '1':  0, '2': 1, '3':  4, '4': 1 },
+//   distances: { '0': 0,    '1': -1, '2': 2, '3': -2, '4': 1 }
+// }
+var pathInfo = bellmanFord(vertexes, edges, 0);</code></pre>
 
 
 

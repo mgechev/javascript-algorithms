@@ -3,7 +3,11 @@
         "allowUnknownTags": true
     },
     "source": {
-        "include": ["./src/graphs/searching/"],
+        "include": [
+            "./src/graphs/searching/",
+            "./src/graphs/others/",
+            "./src/graphs/shortest-path/"
+        ],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "docs"
     },

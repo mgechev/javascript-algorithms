@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: graphs/searching/bfs</title>
+    <title>JSDoc: Module: graphs/others/topological-sort</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: graphs/searching/bfs</h1>
+    <h1 class="page-title">Module: graphs/others/topological-sort</h1>
 
     
 
@@ -38,9 +38,8 @@
     <div class="container-overview">
     
         
-            <div class="description">Breath-First graph searching algorithm.
-Returns the shortest path between startNode and targetNode.<br><br>
-Time complexity: O(|V|^2).</div>
+            <div class="description">Topological sorting algorithm.<br><br>
+Time complexity: O(|E|) where E is a count of edges.</div>
         
 
         
@@ -101,52 +100,6 @@ Time complexity: O(|V|^2).</div>
         </tr>
 
     
-
-        <tr>
-            
-                <td class="name"><code>startNode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Start node.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>targetNode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Target, which should be reached.</td>
-        </tr>
-
-    
     </tbody>
 </table>
 
@@ -183,7 +136,7 @@ Time complexity: O(|V|^2).</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="searching_bfs.js.html">searching/bfs.js</a>, <a href="searching_bfs.js.html#line15">line 15</a>
+        <a href="others_topological-sort.js.html">others/topological-sort.js</a>, <a href="others_topological-sort.js.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -210,7 +163,7 @@ Time complexity: O(|V|^2).</div>
 
         
 <div class="param-desc">
-    Shortest path from startNode to targetNode.
+    Ordered vertices.
 </div>
 
 
@@ -232,14 +185,13 @@ Time complexity: O(|V|^2).</div>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var bfs = require('path-to-algorithms/src/graphs/searching/bfs').bfs;
-var graph = [[1, 1, 0, 0, 1, 0],
-             [1, 0, 1, 0, 1, 0],
-             [0, 1, 0, 1, 0, 0],
-             [0, 0, 1, 0, 1, 1],
-             [1, 1, 0, 1, 0, 0],
-             [0, 0, 0, 1, 0, 0]];
-var shortestPath = bfs(graph, 1, 5); // [1, 2, 3, 5]</code></pre>
+    <pre class="prettyprint"><code>var topsort = require('path-to-algorithms/src/graphs/others/topological-sort').topologicalSort;
+var graph = [[0, 1, 0, 0, 1],
+             [0, 0, 0, 0, 0],
+             [1, 1, 0, 1, 1],
+             [0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0]];
+var vertices = topsort(graph);</code></pre>
 
 
 
