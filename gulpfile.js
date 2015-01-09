@@ -4,5 +4,5 @@ var jsdoc = require('gulp-jsdoc'),
 
 gulp.task('jsdoc', function () {
   gulp.src('./src/**/*.js')
-    .pipe(jsdoc('./documentation'));
+    .pipe(jsdoc('../javascript-algorithms-docs'));
 });
