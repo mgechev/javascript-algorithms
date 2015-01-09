@@ -14,16 +14,12 @@
 
     /**
      * Breath-First graph searching algorithm.
-     * Returns the shortest path between startNode and targetNode.
-     * Time complexity O(|V|*|V|).
+     * Returns the shortest path between startNode and targetNode.<br><br>
+     * Time complexity: O(|V|^2).
      *
-     * @module graphs/searching
      * @public
-     * @param {array} graph The adjust matrix, which represents the graph
-     * @param {number} startNode The start node
-     * @param {number} targetNode The target, which should be reached
+     * @module graphs/searching/bfs
      * @param {Array} graph Adjacency matrix, which represents the graph.
-     * @returns {array} The shortest path from startNode to targetNode
      * @param {Number} startNode Start node.
      * @param {Number} targetNode Target, which should be reached.
      * @returns {Array} Shortest path from startNode to targetNode.
