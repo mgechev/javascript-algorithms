@@ -21,13 +21,13 @@ npm install
 1) go to the parent directory of the `javascript-algorithms` folder and call:
 
 ```Bash
-    git clone git@github.com:mgechev/javascript-algorithms.git javascript-algorithms-docs
+git clone git@github.com:mgechev/javascript-algorithms.git javascript-algorithms-docs
 ```
 
 2) go to the `javascript-algorithms-docs` folder and change current branch to `gh-pages`:
 
 ```Bash
-    git checkout gh-pages
+git checkout gh-pages
 ```
 
 Now you can see `index.html` file in this folder and open it in your browser. 
@@ -37,7 +37,7 @@ Now you can see `index.html` file in this folder and open it in your browser.
 Go to the `javascript-algorithms` folder and call:
 
 ```Bash
-    gulp jsdoc 
+gulp jsdoc 
 ```
 
 and all files in `javascript-algorithms-docs` folder will be updated.
