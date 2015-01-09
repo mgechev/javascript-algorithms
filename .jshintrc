@@ -1,4 +1,6 @@
 {
+  "browser": true,
+  "jquery": true,
   "node": true,
   "esnext": true,
   "bitwise": true,
@@ -25,11 +27,5 @@
   "loopfunc": true,
   "maxcomplexity": 9,
   "maxlen": 80,
-  "globals": {
-    "window": true,
-    "it": true,
-    "beforeEach": true,
-    "describe": true,
-    "expect": true
-  }
+  "maxparams": 4
 }
