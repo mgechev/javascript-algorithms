@@ -8,3 +8,4 @@ var graph = {
 };
 // ['G3', 'G4', 'G1', 'G5', 'G2']
 var vertices = topsort(graph);
+console.log(vertices);
