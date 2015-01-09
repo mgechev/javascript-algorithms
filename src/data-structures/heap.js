@@ -25,7 +25,7 @@
    * Complexity O(log n)
    *
    * @private
-   * @param {number} index The parent
+   * @param {Number} index The parent
    */
   Heap.prototype._heapify = function (index) {
     var extr = index,
@@ -55,9 +55,9 @@
    * Changes the key for give index. Complexity O(log n).
    *
    * @public
-   * @param {number} index Index which key should be changed
-   * @param {number} value New value of the key
-   * @returns {number} parent The new position of the element
+   * @param {Number} index Index which key should be changed
+   * @param {Number} value New value of the key
+   * @returns {Number} parent The new position of the element
    */
   Heap.prototype.changeKey = function (index, value) {
     this._heap[index] = value;
@@ -92,8 +92,8 @@
    * Adds new element to the heap. Complexity O(log n).
    *
    * @public
-   * @param {number} value The new value which will be inserted
-   * @returns {number}  The index of the inserted value
+   * @param {Number} value The new value which will be inserted
+   * @returns {Number}  The index of the inserted value
    */
   Heap.prototype.add = function (value) {
     this._heap.push(value);
@@ -104,7 +104,7 @@
    * Gets the current value which is on the top of the heap. Complexity O(1).
    *
    * @public
-   * returns {numner} The current top value.
+   * returns {Number} The current top value.
    */
   Heap.prototype.top = function () {
     return this._heap[0];
@@ -116,7 +116,7 @@
    * Complexity O(log n).
    *
    * @public
-   * @returns {number} The extremum value
+   * @returns {Number} The extremum value
    */
   Heap.prototype.extract = function () {
     if (!this._heap.length) {

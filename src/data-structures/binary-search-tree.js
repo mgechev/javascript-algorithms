@@ -8,9 +8,10 @@
   /**
    * A node of the tree
    *
+   * @class
    * @public
    * @constructor
-   * @param {number|string} Value of the node
+   * @param {Number|String} Value of the node
    * @param {Node} Left subling
    * @param {Node} Right sibling
    * @param {Node} Parent of the node
@@ -37,7 +38,7 @@
    * O(n) in the worst case.
    *
    * @public
-   * @param {number|string} Value
+   * @param {Number|String} Value
    * @param {[Node]} Current node
    */
   BinaryTree.prototype.insert = function (value, current) {
@@ -139,7 +140,7 @@
    * Finds a node by it's value. Average runtime complexity O(log n) 
    *
    * @public
-   * @param {number|string} Value of the node which should be found
+   * @param {Number|String} Value of the node which should be found
    */
   BinaryTree.prototype.find = function (value) {
     return this._find(value, this._root);
@@ -149,22 +150,22 @@
    * Finds a node by it's value in given sub-tree. Average runtime complexity: O(log n).
    *
    * @private
-   * @param {number|string} Value of the node which should be found
+   * @param {Number|String} Value of the node which should be found
    * @param {Node} Current node to be checked
    */
   BinaryTree.prototype._find = function (value, current) {
     if (!current)
       return null;
-   
+
     if (current.value === value)
       return current;
-   
+
     if (current.value > value)
       return this._find(value, current._left);
-   
+
     if (current.value < value)
       return this._find(value, current._right);
-    
+
   };
 
   /**
@@ -226,7 +227,7 @@
    *
    * @private
    * @param {Node} Root of the sub-tree
-   * @param {[number|string]} Current minimum value of the sub-tree
+   * @param {[Number|String]} Current minimum value of the sub-tree
    * @returns {Node} The node with minimum value in the sub-tree
    */
   BinaryTree.prototype._findMin = function (node, current) {
@@ -243,7 +244,7 @@
    *
    * @private
    * @param {Node} Root of the sub-tree
-   * @param {[number|string]} Current maximum value of the sub-tree
+   * @param {[Number|String]} Current maximum value of the sub-tree
    * @returns {Node} The node with maximum value in the sub-tree
    */
   BinaryTree.prototype._findMax = function (node, current) {
