@@ -17,8 +17,7 @@ To generate documentation use:
 ```Bash
 ./node_modules/.bin/jsdoc -c ./conf.json
 ```
-
-and documentation will be available in docs folder. After the merging regenerated documentation to `gh-pages` branch it will be available <a href="http://andreygeonya.github.io/javascript-algorithms/docs/" target="_blank">online</a>.
+and documentation will be available in docs folder. After the merging regenerated documentation to `gh-pages` branch it will be available <a href="http://mgechev.github.io/javascript-algorithms/docs/" target="_blank">online</a>.
 
 To run the tests use:
 
