@@ -20,7 +20,7 @@
    * @returns {Object} Object with two arrays (parents and distances) with shortest-path information.
    *
    * @example
-   * require('../src/graphs/shortest-path/bellman-ford');
+   * require('path-to-algorithms/src/graphs/shortest-path/bellman-ford');
    * 
    * var glob = (typeof window === 'undefined') ? global : window;
    * var Edge = glob.Edge;

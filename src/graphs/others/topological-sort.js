@@ -21,22 +21,24 @@
     }
 
     /**
-     * Topological sorting algorithm.<br><br>
-     * Time complexity: O(|E|) where E is a count of edges.
+     * Topological sort algorithm of a directed acyclic graph.<br><br>
+     * Time complexity: O(|E|) where E is a number of edges.
      *
      * @public
      * @module graphs/others/topological-sort
-     * @param {Array} graph Adjacency matrix, which represents the graph.
+     * @param {Array} graph Adjacency list, which represents the graph.
      * @returns {Array} Ordered vertices.
      *
      * @example
      * var topsort = require('path-to-algorithms/src/graphs/others/topological-sort').topologicalSort;
-     * var graph = [[0, 1, 0, 0, 1],
-     *              [0, 0, 0, 0, 0],
-     *              [1, 1, 0, 1, 1],
-     *              [0, 0, 0, 0, 0],
-     *              [0, 0, 0, 0, 0]];
-     * var vertices = topsort(graph);
+     * var graph = {
+     *     v1: ['v2', 'v5'],
+     *     v2: [],
+     *     v3: ['v1', 'v2', 'v4', 'v5'],
+     *     v4: [],
+     *     v5: []
+     * };
+     * var vertices = topsort(graph); // ['v3', 'v4', 'v1', 'v5', 'v2']
      */
     return function (graph) {
       var result = [],

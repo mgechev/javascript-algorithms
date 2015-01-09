@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: graphs/others/topological-sort</title>
+    <title>JSDoc: Module: graphs/shortest-path/dijkstra</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: graphs/others/topological-sort</h1>
+    <h1 class="page-title">Module: graphs/shortest-path/dijkstra</h1>
 
     
 
@@ -38,8 +38,8 @@
     <div class="container-overview">
     
         
-            <div class="description">Topological sort algorithm of a directed acyclic graph.<br><br>
-Time complexity: O(|E|) where E is a number of edges.</div>
+            <div class="description">Dijkstra's shortest path algorithm. Finds the minimum 
+distance between two given nodes using a distance matrix.</div>
         
 
         
@@ -80,6 +80,52 @@ Time complexity: O(|E|) where E is a number of edges.</div>
 
         <tr>
             
+                <td class="name"><code>src</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Source node.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dest</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Destination node.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>graph</code></td>
             
 
@@ -96,7 +142,7 @@ Time complexity: O(|E|) where E is a number of edges.</div>
 
             
 
-            <td class="description last">Adjacency list, which represents the graph.</td>
+            <td class="description last">A distance matrix of the graph.</td>
         </tr>
 
     
@@ -136,7 +182,7 @@ Time complexity: O(|E|) where E is a number of edges.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="others_topological-sort.js.html">others/topological-sort.js</a>, <a href="others_topological-sort.js.html#line23">line 23</a>
+        <a href="shortest-path_dijkstra.js.html">shortest-path/dijkstra.js</a>, <a href="shortest-path_dijkstra.js.html#line72">line 72</a>
     </li></ul></dd>
     
 
@@ -163,7 +209,7 @@ Time complexity: O(|E|) where E is a number of edges.</div>
 
         
 <div class="param-desc">
-    Ordered vertices.
+    The shortest distance between the nodes.
 </div>
 
 
@@ -174,7 +220,7 @@ Time complexity: O(|E|) where E is a number of edges.</div>
     </dt>
     <dd>
         
-<span class="param-type">Array</span>
+<span class="param-type">Number</span>
 
 
     </dd>
@@ -185,15 +231,14 @@ Time complexity: O(|E|) where E is a number of edges.</div>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var topsort = require('path-to-algorithms/src/graphs/others/topological-sort').topologicalSort;
-var graph = {
-    v1: ['v2', 'v5'],
-    v2: [],
-    v3: ['v1', 'v2', 'v4', 'v5'],
-    v4: [],
-    v5: []
-};
-var vertices = topsort(graph); // ['v3', 'v4', 'v1', 'v5', 'v2']</code></pre>
+    <pre class="prettyprint"><code>var dijkstra = require('path-to-algorithms/src/graphs/shortest-path/dijkstra').dijkstra;
+var distMatrix = [[Infinity, 7,        9,        Infinity, Infinity, 16],
+                  [7,        Infinity, 10,       15,       Infinity, Infinity],
+                  [9,        10,       Infinity, 11,       Infinity, 2],
+                  [Infinity, 15,       11,       Infinity, 6,        Infinity],
+                  [Infinity, Infinity, Infinity, 6,        Infinity, 9],
+                  [16,       Infinity, 2,        Infinity, 9,        Infinity]];
+var shortestDist = dijkstra(0, 2, distMatrix); // 9</code></pre>
 
 
 
