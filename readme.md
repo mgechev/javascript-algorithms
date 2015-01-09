@@ -1,15 +1,28 @@
-## Note
-
-Note that not all algorithms are well tested so bugs are quite possible.
-
 ## About
 
-This repository contains different famous Computer Science algorithms implemented in JavaScript
+This repository contains JavaScript implementations of different famous Computer Science algorithms.
 
-In order to run the tests use:
+*Note: not all algorithms are well tested so bugs are quite possible.*
+
+## Development
+
+To install all dev dependencies use:
 
 ```Bash
-jasmine-node test/
+npm install
+```
+
+To generate documentation use:
+
+```Bash
+./node_modules/.bin/jsdoc -c ./conf.json
+```
+and documentation will be available in docs folder. After the merging regenerated documentation to `gh-pages` branch it will be available <a href="http://mgechev.github.io/javascript-algorithms/docs/" target="_blank">online</a>.
+
+To run the tests use:
+
+```Bash
+./node_modules/jasmine-node/bin/jasmine-node test/
 ```
 
 and all `*.spec.js` files will be executed.
