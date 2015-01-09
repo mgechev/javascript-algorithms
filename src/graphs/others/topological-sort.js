@@ -24,6 +24,13 @@
       result.push(node);
     }
 
+    /**
+     * Implements the topological sort algorithm.
+     *
+     * @public
+     * @param {object} graph A graph represented with list of neighbors
+     * @return {array} The list containing all nodes in topological sorted order
+     */
     return function (graph) {
       var result = [],
           visited = [],
