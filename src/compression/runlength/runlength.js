@@ -1,6 +1,6 @@
 /**
  * Run-length encoding.
- * The idea of this algorithm is to remove the usless zeros and                           
+ * The idea of this algorithm is to remove the usless zeros and 
  * give us representation of string in binary which in which the
  * zeros will be stripped and replaced with their count.
  */
