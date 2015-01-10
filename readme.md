@@ -65,6 +65,14 @@ Initiate the PR.
 
 Make sure you're editor makes validations according to the `.jshintrc` in the root directory of the repository.
 
+Before pushing to the repository run:
+
+```bash
+gulp build
+```
+
+If the build is not successful fix your code in order the tests and jshint validation to run successfully and after that create a pull request.
+
 ## Contributors
 
 [![mgechev](https://avatars.githubusercontent.com/u/455023?v=3&s=117)](https://github.com/mgechev)[![AndreyGeonya](https://avatars.githubusercontent.com/u/773648?v=3&s=117)](https://github.com/AndreyGeonya)[![Microfed](https://avatars.githubusercontent.com/u/613179?v=3&s=117)](https://github.com/Microfed)[![contra](https://avatars.githubusercontent.com/u/425716?v=3&s=117)](https://github.com/contra)
