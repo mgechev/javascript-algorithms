@@ -60,7 +60,7 @@
      * @member {Node}
      */
     this.prev = null;
-  }
+  };
 
   /**
    * Linked list.
@@ -71,7 +71,7 @@
   exports.LinkedList = function () {
     this.first = null;
     this.last = null;
-  }
+  };
 
   /**
    * Add data to the end of linked list.
@@ -262,5 +262,4 @@
     this.last = temp;
   };
 
-}(typeof exports === 'undefined' ? window : exports));
-
+})(typeof window === 'undefined' ? module.exports : window);
