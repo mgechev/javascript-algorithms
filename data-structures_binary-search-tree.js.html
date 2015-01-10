@@ -64,7 +64,7 @@
    * @param {Node} right Right sibling.
    * @param {Node} parent Parent of the node.
    */
-  exports.Node = function(value, left, right, parent) {
+  exports.Node = function (value, left, right, parent) {
     /**
      * @member {Number|String}
      */
@@ -72,7 +72,7 @@
     this._left = left;
     this._right = right;
     this._parent = parent;
-  }
+  };
 
   /**
    * Binary tree.
@@ -80,9 +80,9 @@
    * @public
    * @constructor
    */
-  exports.BinaryTree = function() {
+  exports.BinaryTree = function () {
     this._root = null;
-  }
+  };
 
   /**
    * Inserts a node into the binary search tree.&lt;br>&lt;br>
@@ -118,7 +118,8 @@
    *
    * @private
    * @param {Node} current Node from which to start the traversal.
-   * @param {Function} callback Callback which will be called for each traversed node.
+   * @param {Function} callback Callback which
+   *    will be called for each traversed node.
    */
   exports.BinaryTree.prototype._inorder = function (current, callback) {
     if (!current) {
@@ -136,7 +137,8 @@
    *
    * @public
    * @method
-   * @param {Function} callback Callback which will be called for each traversed node.
+   * @param {Function} callback Callback which will be
+   * called for each traversed node.
    */
   exports.BinaryTree.prototype.inorder = function (callback) {
     return this._inorder(this._root, callback);
@@ -147,7 +149,8 @@
    *
    * @private
    * @param {Node} current Node from which to start the traversal.
-   * @param {Function} callback Callback which will be called for each traversed node.
+   * @param {Function} callback Callback which will
+   * be called for each traversed node
    */
   exports.BinaryTree.prototype._postorder = function (current, callback) {
     if (!current) {
@@ -164,7 +167,8 @@
    * Post-order traversal of the whole tree.
    *
    * @public
-   * @param {Function} callback Callback which will be called for each traversed node.
+   * @param {Function} callback Callback which
+   * will be called for each traversed node.
    */
   exports.BinaryTree.prototype.postorder = function (callback) {
     return this._postorder(this._root, callback);
@@ -175,7 +179,8 @@
    *
    * @private
    * @param {Node} current Node from which to start the traversal.
-   * @param {Function} callback Callback which will be called for each traversed node.
+   * @param {Function} callback Callback which
+   * will be called for each traversed node.
    */
   exports.BinaryTree.prototype._preorder = function (current, callback) {
     if (!current) {
@@ -190,9 +195,10 @@
 
   /**
    * Pre-order preorder traversal of the whole tree.
-   * 
+   *
    * @public
-   * @param {Function} callback Callback which will be called for each traversed node.
+   * @param {Function} callback Callback which will
+   * be called for each traversed node.
    */
   exports.BinaryTree.prototype.preorder = function (callback) {
     return this._preorder(this._root, callback);
@@ -243,7 +249,8 @@
    * @param {Node} oldChild Child to be replaced.
    * @param {Node} newChild Child replacement.
    */
-  exports.BinaryTree.prototype._replaceChild = function (parent, oldChild, newChild) {
+  exports.BinaryTree.prototype._replaceChild = 
+   function (parent, oldChild, newChild) {
     if (!parent) {
       this._root = newChild;
       this._root._parent = null;
@@ -460,13 +467,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a></li><li><a href="module-data-structures_heap.html">data-structures/heap</a></li><li><a href="module-graphs_others_topological-sort.html">graphs/others/topological-sort</a></li><li><a href="module-graphs_searching_bfs.html">graphs/searching/bfs</a></li><li><a href="module-graphs_searching_dfs.html">graphs/searching/dfs</a></li><li><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a></li><li><a href="module-graphs_shortest-path_dijkstra.html">graphs/shortest-path/dijkstra</a></li><li><a href="module-graphs_shortest-path_floyd-warshall.html">graphs/shortest-path/floyd-warshall</a></li><li><a href="module-graphs_spanning-trees_prim.html">graphs/spanning-trees/prim</a></li></ul><h3>Classes</h3><ul><li><a href="module-data-structures_binary-search-tree.BinaryTree.html">BinaryTree</a></li><li><a href="module-data-structures_binary-search-tree.Node.html">Node</a></li><li><a href="module-data-structures_heap.Heap.html">Heap</a></li><li><a href="module-graphs_shortest-path_bellman-ford.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></li><li><a href="module-graphs_spanning-trees_prim.Vertex.html">Vertex</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a></li><li><a href="module-data-structures_heap.html">data-structures/heap</a></li><li><a href="module-data-structures_interval-tree.html">data-structures/interval-tree</a></li><li><a href="module-data-structures_linked-list.html">data-structures/linked-list</a></li><li><a href="module-graphs_others_topological-sort.html">graphs/others/topological-sort</a></li><li><a href="module-graphs_searching_bfs.html">graphs/searching/bfs</a></li><li><a href="module-graphs_searching_dfs.html">graphs/searching/dfs</a></li><li><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a></li><li><a href="module-graphs_shortest-path_dijkstra.html">graphs/shortest-path/dijkstra</a></li><li><a href="module-graphs_shortest-path_floyd-warshall.html">graphs/shortest-path/floyd-warshall</a></li><li><a href="module-graphs_spanning-trees_prim.html">graphs/spanning-trees/prim</a></li></ul><h3>Classes</h3><ul><li><a href="module-data-structures_binary-search-tree.BinaryTree.html">BinaryTree</a></li><li><a href="module-data-structures_binary-search-tree.Node.html">Node</a></li><li><a href="module-data-structures_heap.Heap.html">Heap</a></li><li><a href="module-data-structures_interval-tree.IntervalTree.html">IntervalTree</a></li><li><a href="module-data-structures_interval-tree.Node.html">Node</a></li><li><a href="module-data-structures_linked-list.LinkedList.html">LinkedList</a></li><li><a href="module-data-structures_linked-list.Node.html">Node</a></li><li><a href="module-graphs_shortest-path_bellman-ford.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></li><li><a href="module-graphs_spanning-trees_prim.Vertex.html">Vertex</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Sat Jan 10 2015 15:37:24 GMT+0200 (EET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Sun Jan 11 2015 00:17:24 GMT+0200 (EET)
 </footer>
 
 <script> prettyPrint(); </script>

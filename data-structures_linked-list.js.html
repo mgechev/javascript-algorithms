@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: data-structures/linked-list.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: data-structures/linked-list.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Linked list.
+ *
+ * @example
+ *
+ * var LL = require('path-to-algorithms/src/data-structures/linked-list');
+ *
+ * var linkedList = new LL.LinkedList();
+ *
+ * linkedList.push({
+ *   name: 'John',
+ *   birthyear: 1981
+ * });
+ * linkedList.push({
+ *   name: 'Pavlo',
+ *   birthyear: 2000
+ * });
+ * linkedList.push({
+ *   name: 'Garry',
+ *   birthyear: 1989
+ * });
+ * linkedList.push({
+ *   name: 'Derek',
+ *   birthyear: 1990
+ * });
+ * linkedList.push({
+ *   name: 'Ivan',
+ *   birthyear: 1966
+ * });
+ *
+ * console.log(linkedList.shift().data); // { name: 'John', birthyear: 1981 }
+ * console.log(linkedList.pop().data);   // { name: 'Ivan', birthyear: 1966 }
+ *
+ * @module data-structures/linked-list
+ */
+(function (exports) {
+
+  'use strict';
+
+  /**
+   * Linked list node.
+   *
+   * @public
+   * @constructor
+   * @param {Object} data Data of the node.
+   */
+  exports.Node = function (data) {
+    /**
+     * Data of the node.
+     * @member {Object}
+     */
+    this.data = data;
+    /**
+     * Next node.
+     * @member {Node}
+     */
+    this.next = null;
+    /**
+     * Previous node.
+     * @member {Node}
+     */
+    this.prev = null;
+  };
+
+  /**
+   * Linked list.
+   *
+   * @public
+   * @constructor
+   */
+  exports.LinkedList = function () {
+    this.first = null;
+    this.last = null;
+  };
+
+  /**
+   * Add data to the end of linked list.
+   *
+   * @public
+   * @method
+   * @param {Object} data Data which should be added.
+   */
+  exports.LinkedList.prototype.push = function (data) {
+    var node = new exports.Node(data);
+    if (this.first === null) {
+      this.first = this.last = node;
+    } else {
+      var temp = this.last;
+      this.last = node;
+      node.prev = temp;
+      temp.next = node;
+    }
+  };
+
+  /**
+   * Add data to the beginning of linked list.
+   *
+   * @public
+   * @method
+   * @param {Object} data Data which should be added.
+   */
+  exports.LinkedList.prototype.unshift = function (data) {
+    var node = new exports.Node(data);
+    if (this.first === null) {
+      this.first = this.last = node;
+    } else {
+      var temp = this.first;
+      this.first = node;
+      node.next = temp;
+      temp.prev = node;
+    }
+  };
+
+  /**
+   * In order traversal of the linked list.
+   *
+   * @public
+   * @method
+   * @param {Function} cb Callback which should be executed on each node.
+   */
+  exports.LinkedList.prototype.inorder = function (cb) {
+    var temp = this.first;
+    while (temp) {
+      cb(temp);
+      temp = temp.next;
+    }
+  };
+
+  /**
+   * Remove data from the linked list.
+   *
+   * @public
+   * @method
+   * @param {Object} data Data which should be removed.
+   * @return {Boolean} Returns true if data has been removed.
+   */
+  exports.LinkedList.prototype.remove = function (data) {
+    if (this.first === null) {
+      return false;
+    }
+    var temp = this.first,
+        next, prev;
+    while (temp) {
+      if (temp.data === data) {
+        next = temp.next;
+        prev = temp.prev;
+        if (next) {
+          next.prev = prev;
+        }
+        if (prev) {
+          prev.next = next;
+        }
+        if (temp === this.first) {
+          this.first = next;
+        }
+        if (temp === this.last) {
+          this.last = prev;
+        }
+        return true;
+      }
+      temp = temp.next;
+    }
+    return false;
+  };
+
+  /**
+   * Check or linked list contains cycle.
+   *
+   * @public
+   * @method
+   * @return {Boolean} Returns true if linked list contains cycle.
+   */
+  exports.LinkedList.prototype.hasCycle = function () {
+    var fast = this.first,
+        slow = this.first;
+    while (true) {
+      if (fast === null) {
+        return false;
+      }
+      fast = fast.next;
+      if (fast === null) {
+        return false;
+      }
+      fast = fast.next;
+      slow = slow.next;
+      if (fast === slow) {
+        return true;
+      }
+    }
+  };
+
+  /**
+   * Return last node from the linked list.
+   *
+   * @public
+   * @method
+   * @return {Node} Last node.
+   */
+  exports.LinkedList.prototype.pop = function () {
+    if (this.last === null) {
+      return null;
+    }
+    var temp = this.last;
+    this.last = this.last.prev;
+    return temp;
+  };
+
+  /**
+   * Return first node from the linked list.
+   *
+   * @public
+   * @method
+   * @return {Node} First node.
+   */
+  exports.LinkedList.prototype.shift = function () {
+    if (this.first === null) {
+      return null;
+    }
+    var temp = this.first;
+    this.first = this.first.next;
+    return temp;
+  };
+
+  exports.LinkedList.prototype.recursiveReverse = function () {
+
+    function inverse(current, next) {
+      if (!next) {
+        return;
+      }
+      inverse(next, next.next);
+      next.next = current;
+    }
+
+    if (!this.first) {
+      return;
+    }
+    inverse(this.first, this.first.next);
+    this.first.next = null;
+    var temp = this.first;
+    this.first = this.last;
+    this.last = temp;
+  };
+
+  exports.LinkedList.prototype.reverse = function () {
+    if (!this.first || !this.first.next) {
+      return;
+    }
+    var current = this.first.next,
+        prev = this.first,
+        temp;
+    while (current) {
+      temp = current.next;
+      current.next = prev;
+      prev.prev = current;
+      prev = current;
+      current = temp;
+    }
+    this.first.next = null;
+    this.last.prev = null;
+    temp = this.first;
+    this.first = prev;
+    this.last = temp;
+  };
+
+})(typeof window === 'undefined' ? module.exports : window);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a></li><li><a href="module-data-structures_heap.html">data-structures/heap</a></li><li><a href="module-data-structures_interval-tree.html">data-structures/interval-tree</a></li><li><a href="module-data-structures_linked-list.html">data-structures/linked-list</a></li><li><a href="module-graphs_others_topological-sort.html">graphs/others/topological-sort</a></li><li><a href="module-graphs_searching_bfs.html">graphs/searching/bfs</a></li><li><a href="module-graphs_searching_dfs.html">graphs/searching/dfs</a></li><li><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a></li><li><a href="module-graphs_shortest-path_dijkstra.html">graphs/shortest-path/dijkstra</a></li><li><a href="module-graphs_shortest-path_floyd-warshall.html">graphs/shortest-path/floyd-warshall</a></li><li><a href="module-graphs_spanning-trees_prim.html">graphs/spanning-trees/prim</a></li></ul><h3>Classes</h3><ul><li><a href="module-data-structures_binary-search-tree.BinaryTree.html">BinaryTree</a></li><li><a href="module-data-structures_binary-search-tree.Node.html">Node</a></li><li><a href="module-data-structures_heap.Heap.html">Heap</a></li><li><a href="module-data-structures_interval-tree.IntervalTree.html">IntervalTree</a></li><li><a href="module-data-structures_interval-tree.Node.html">Node</a></li><li><a href="module-data-structures_linked-list.LinkedList.html">LinkedList</a></li><li><a href="module-data-structures_linked-list.Node.html">Node</a></li><li><a href="module-graphs_shortest-path_bellman-ford.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></li><li><a href="module-graphs_spanning-trees_prim.Vertex.html">Vertex</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Sun Jan 11 2015 00:17:24 GMT+0200 (EET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

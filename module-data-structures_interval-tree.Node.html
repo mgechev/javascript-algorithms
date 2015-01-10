@@ -29,7 +29,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a>.</span>
+            <span class="ancestors"><a href="module-data-structures_interval-tree.html">data-structures/interval-tree</a>.</span>
         
         Node
         </h2>
@@ -46,14 +46,14 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Node"><span class="type-signature"></span>new Node<span class="signature">(value, left, right, parent)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Node"><span class="type-signature"></span>new Node<span class="signature">(start, end, left, right)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Node of the tree.
+    Node which describes an interval.
 </div>
 
 
@@ -89,16 +89,13 @@
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>start</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">Number</span>
-|
-
-<span class="param-type">String</span>
 
 
             
@@ -108,7 +105,30 @@
 
             
 
-            <td class="description last">Value of the node.</td>
+            <td class="description last">Start of the interval.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>end</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">End of the interval.</td>
         </tr>
 
     
@@ -131,7 +151,7 @@
 
             
 
-            <td class="description last">Left sibling.</td>
+            <td class="description last">Left child node.</td>
         </tr>
 
     
@@ -154,30 +174,7 @@
 
             
 
-            <td class="description last">Right sibling.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>parent</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Node</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Parent of the node.</td>
+            <td class="description last">Right child node.</td>
         </tr>
 
     
@@ -217,7 +214,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line39">line 39</a>
+        <a href="data-structures_interval-tree.js.html">data-structures/interval-tree.js</a>, <a href="data-structures_interval-tree.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -261,10 +258,14 @@
 
         
             
-<h4 class="name" id="value"><span class="type-signature"></span>value<span class="type-signature"> :Number|String</span></h4>
+<h4 class="name" id="interval"><span class="type-signature"></span>interval<span class="type-signature"> :Array</span></h4>
 
 
 
+
+<div class="description">
+    Node interval.
+</div>
 
 
 
@@ -272,10 +273,7 @@
     <ul>
         <li>
             
-<span class="param-type">Number</span>
-|
-
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
         </li>
@@ -314,7 +312,295 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line43">line 43</a>
+        <a href="data-structures_interval-tree.js.html">data-structures/interval-tree.js</a>, <a href="data-structures_interval-tree.js.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="left"><span class="type-signature"></span>left<span class="type-signature"> :Node</span></h4>
+
+
+
+
+<div class="description">
+    Left child node.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Node</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_interval-tree.js.html">data-structures/interval-tree.js</a>, <a href="data-structures_interval-tree.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="max"><span class="type-signature"></span>max<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    Max endpoint in subtree which starts from this node.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_interval-tree.js.html">data-structures/interval-tree.js</a>, <a href="data-structures_interval-tree.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="parentNode"><span class="type-signature"></span>parentNode<span class="type-signature"> :Node</span></h4>
+
+
+
+
+<div class="description">
+    Parent node.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Node</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_interval-tree.js.html">data-structures/interval-tree.js</a>, <a href="data-structures_interval-tree.js.html#line50">line 50</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="right"><span class="type-signature"></span>right<span class="type-signature"> :Node</span></h4>
+
+
+
+
+<div class="description">
+    Right child node.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Node</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_interval-tree.js.html">data-structures/interval-tree.js</a>, <a href="data-structures_interval-tree.js.html#line60">line 60</a>
     </li></ul></dd>
     
 
