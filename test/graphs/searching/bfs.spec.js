@@ -13,7 +13,7 @@ var bfs = require('../../../src/graphs/searching/bfs').bfs;
 describe('BFS', function () {
 
   it('should work with empty graph', function () {
-    expect(bfs([], 0, 0)).toEqual([0]);
+    expect(bfs([], 0, 0)).toEqual([1]);
   });
 
   it('should return the correct output when used with\
