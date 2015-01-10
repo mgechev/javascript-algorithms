@@ -1,13 +1,54 @@
+/**
+ * A binary heap is a complete binary tree which satisfies the heap ordering property.
+ * 
+ * @example
+ * var Heap = require('path-to-algorithms/src/data-structures/heap').Heap;
+ * 
+ * var heap = new Heap(function(a, b) {
+ *     return a.birthyear - b.birthyear;
+ * });
+ * 
+ * heap.add({
+ *     name: 'John',
+ *     birthyear: 1981
+ * });
+ * heap.add({
+ *     name: 'Pavlo',
+ *     birthyear: 2000
+ * });
+ * heap.add({
+ *     name: 'Garry',
+ *     birthyear: 1989
+ * });
+ * heap.add({
+ *     name: 'Derek',
+ *     birthyear: 1990
+ * });
+ * heap.add({
+ *     name: 'Ivan',
+ *     birthyear: 1966
+ * });
+ *
+ * console.log(heap.extract()); // { name: 'Pavlo', birthyear: 2000 }
+ * console.log(heap.extract()); // { name: 'Derek', birthyear: 1990 }
+ * console.log(heap.extract()); // { name: 'Garry', birthyear: 1989 }
+ * console.log(heap.extract()); // { name: 'John', birthyear: 1981 }
+ * console.log(heap.extract()); // { name: 'Ivan', birthyear: 1966 }
+ *
+ * @module data-structures/heap
+ */
 (function (exports) {
+
   'use strict';
 
   /**
-   * Constructor function of minimum heap
+   * Minimum heap constructor.
    *
    * @public
-   * @param {function} Function used for comparition between the elements
+   * @constructor
+   * @param {Function} cmp Function used for comparition between the elements.
    */
-  function Heap(cmp) {
+  exports.Heap = function(cmp) {
     this._heap = [];
     if (typeof cmp === 'function') {
       this._cmp = cmp;
@@ -21,13 +62,14 @@
   /**
    * Exchange indexes with start index given as argument
    * to turn the tree into a valid heap. On a single call
-   * this method maintains only a single "branch" of the heap.
-   * Complexity O(log n)
+   * this method maintains only a single "branch" of the heap.<br><br>
+   *
+   * Time complexity: O(log N).
    *
    * @private
-   * @param {Number} index The parent
+   * @param {Number} index The parent.
    */
-  Heap.prototype._heapify = function (index) {
+  exports.Heap.prototype._heapify = function (index) {
     var extr = index,
         left = 2 * index + 1,
         right = 2 * index + 2,
@@ -52,14 +94,15 @@
   };
 
   /**
-   * Changes the key for give index. Complexity O(log n).
-   *
+   * Changes the key.<br><br>
+   * Complexity: O(log N).
+   * 
    * @public
-   * @param {Number} index Index which key should be changed
-   * @param {Number} value New value of the key
-   * @returns {Number} parent The new position of the element
+   * @param {Number} index Index of the value which should be changed.
+   * @param {Number|Object} value New value according to the index.
+   * @return {Number} New position of the element.
    */
-  Heap.prototype.changeKey = function (index, value) {
+  exports.Heap.prototype.changeKey = function (index, value) {
     this._heap[index] = value;
     var elem = this._heap[index],
         parent = Math.floor(index / 2),
@@ -77,11 +120,14 @@
   };
 
   /**
-   * Updates given node. This operation is useful
+   * Updates a given node. This operation is useful
    * in algorithms like Dijkstra, A* where we need
-   * to decrease/increase the value of givne node.
+   * to decrease/increase value of the given node.
+   *
+   * @public
+   * @param {Number|Object} node Node which should be updated.
    */
-  Heap.prototype.update = function (node) {
+  exports.Heap.prototype.update = function (node) {
     var idx = this._heap.indexOf(node);
     if (idx >= 0) {
       this.changeKey(idx, node);
@@ -89,53 +135,58 @@
   };
 
   /**
-   * Adds new element to the heap. Complexity O(log n).
+   * Adds new element to the heap.<br><br>
+   * Complexity: O(log N).
    *
    * @public
-   * @param {Number} value The new value which will be inserted
-   * @returns {Number}  The index of the inserted value
+   * @param {Number|Object} value Value which will be inserted.
+   * @return {Number} Index of the inserted value.
    */
-  Heap.prototype.add = function (value) {
+  exports.Heap.prototype.add = function (value) {
     this._heap.push(value);
     return this.changeKey(this._heap.length - 1, value);
   };
 
   /**
-   * Gets the current value which is on the top of the heap. Complexity O(1).
+   * Returns current value which is on the top of the heap.<br><br>
+   * Complexity: O(1).
    *
    * @public
-   * returns {Number} The current top value.
+   * @return {Number|Object} Current top value.
    */
-  Heap.prototype.top = function () {
+  exports.Heap.prototype.top = function () {
     return this._heap[0];
   };
 
   /**
    * Removes and returns the current extremum value
-   * which is on the top of the heap.
-   * Complexity O(log n).
+   * which is on the top of the heap.<br><br>
+   * Complexity: O(log N).
    *
    * @public
-   * @returns {Number} The extremum value
+   * @returns {Number|Object} The extremum value.
    */
-  Heap.prototype.extract = function () {
+  exports.Heap.prototype.extract = function () {
     if (!this._heap.length) {
       throw 'The heap is already empty!';
     }
-
     var extr = this._heap.shift();
     this._heapify(0);
     return extr;
   };
 
-  Heap.prototype.getCollection = function () {
+  exports.Heap.prototype.getCollection = function () {
     return this._heap;
   };
 
-  Heap.prototype.isEmpty = function () {
+  /**
+   * Checks or heap is empty.
+   *
+   * @public
+   * @returns {Boolean} Returns true if heap is empty.
+   */
+  exports.Heap.prototype.isEmpty = function () {
     return !this._heap.length;
   };
 
-  exports.Heap = Heap;
-
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
