@@ -7,7 +7,8 @@
             "./src/graphs/searching/",
             "./src/graphs/others/",
             "./src/graphs/shortest-path/",
-            "./src/graphs/spanning-trees/"
+            "./src/graphs/spanning-trees/",
+            "./src/data-structures/"
         ],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "docs"
@@ -18,7 +19,7 @@
         "encoding": "utf8",
         "destination": "../javascript-algorithms-docs",
         "recurse": true,
-        "private": true,
+        "private": false,
         "readme": "./readme.md"
     }
 }

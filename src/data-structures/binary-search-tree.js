@@ -1,22 +1,45 @@
+/**
+ * Binary search tree.
+ *
+ * @example
+ * var BST = require('path-to-algorithms/src/data-structures'+
+ * '/binary-search-tree');
+ * var bst = new BST.BinaryTree();
+ *
+ * bst.insert(2000);
+ * bst.insert(1989);
+ * bst.insert(1991);
+ * bst.insert(2001);
+ * bst.insert(1966);
+ *
+ * var node = bst.find(1989);
+ * console.log(node.value); // 1989
+ *
+ * var minNode = bst.findMin();
+ * console.log(minNode.value); // 1966
+ *
+ * var maxNode = bst.findMax();
+ * console.log(maxNode.value); //2001
+ *
+ * @module data-structures/binary-search-tree
+ */
 (function (exports) {
   'use strict';
 
   /**
-   * Implementation of binary search tree.
-   */
-
-  /**
-   * A node of the tree
+   * Node of the tree.
    *
-   * @class
    * @public
    * @constructor
-   * @param {Number|String} Value of the node
-   * @param {Node} Left subling
-   * @param {Node} Right sibling
-   * @param {Node} Parent of the node
+   * @param {Number|String} value Value of the node.
+   * @param {Node} left Left sibling.
+   * @param {Node} right Right sibling.
+   * @param {Node} parent Parent of the node.
    */
-  function Node(value, left, right, parent) {
+  exports.Node = function(value, left, right, parent) {
+    /**
+     * @member {Number|String}
+     */
     this.value = value;
     this._left = left;
     this._right = right;
@@ -24,27 +47,28 @@
   }
 
   /**
-   * Defines the binary tree
+   * Binary tree.
    *
    * @public
    * @constructor
    */
-  function BinaryTree() {
+  exports.BinaryTree = function() {
     this._root = null;
   }
 
   /**
-   * Inserts a node into the binary tree. The method's
-   * complexity is O(log n) in the average case and
-   * O(n) in the worst case.
+   * Inserts a node into the binary search tree.<br><br>
+   * Time complexity: O(log N) in the average case
+   * and O(N) in the worst case.
    *
    * @public
-   * @param {Number|String} Value
-   * @param {Node} Current node
+   * @method
+   * @param {Number|String} value Node value.
+   * @param {Node} current Current node.
    */
-  BinaryTree.prototype.insert = function (value, current) {
+  exports.BinaryTree.prototype.insert = function (value, current) {
     if (this._root === null) {
-      this._root = new Node(value, null, null, null);
+      this._root = new exports.Node(value, null, null, null);
       return;
     }
     var insertKey;
@@ -55,21 +79,20 @@
       insertKey = '_right';
     }
     if (!current[insertKey]) {
-      current[insertKey] = new Node(value, null, null, current);
+      current[insertKey] = new exports.Node(value, null, null, current);
     } else {
       this.insert(value, current[insertKey]);
     }
   };
 
   /**
-   * Prints the nodes of the tree in order.
-   * It starts the tree traversal from a given node.
+   * In-order traversal from the given node.
    *
    * @private
-   * @param {Node} Node from which to start the traversal
-   * @param {Function} Callback which will be called for each traversed node
+   * @param {Node} current Node from which to start the traversal.
+   * @param {Function} callback Callback which will be called for each traversed node.
    */
-  BinaryTree.prototype._inorder = function (current, callback) {
+  exports.BinaryTree.prototype._inorder = function (current, callback) {
     if (!current) {
       return;
     }
@@ -81,23 +104,24 @@
   };
 
   /**
-   * Inorder traversal of the whole binary search tree
+   * In-order traversal of the whole binary search tree.
    *
    * @public
-   * @param {Function} Callback which will be called for each traversed node
+   * @method
+   * @param {Function} callback Callback which will be called for each traversed node.
    */
-  BinaryTree.prototype.inorder = function (callback) {
+  exports.BinaryTree.prototype.inorder = function (callback) {
     return this._inorder(this._root, callback);
   };
 
   /**
-   * Post-order traversal from given node
+   * Post-order traversal from given node.
    *
    * @private
-   * @param {Node} Node from which to start the traversal
-   * @param {Function} Callback which will be called for each traversed node
+   * @param {Node} current Node from which to start the traversal.
+   * @param {Function} callback Callback which will be called for each traversed node.
    */
-  BinaryTree.prototype._postorder = function (current, callback) {
+  exports.BinaryTree.prototype._postorder = function (current, callback) {
     if (!current) {
       return;
     }
@@ -109,23 +133,23 @@
   };
 
   /**
-   * Post-order traversal of the whole tree
+   * Post-order traversal of the whole tree.
    *
    * @public
-   * @param {Function} Callback which will be called for each traversed node
+   * @param {Function} callback Callback which will be called for each traversed node.
    */
-  BinaryTree.prototype.postorder = function (callback) {
+  exports.BinaryTree.prototype.postorder = function (callback) {
     return this._postorder(this._root, callback);
   };
 
   /**
-   * Pre-order traversal of the tree from given node
+   * Pre-order traversal of the tree from given node.
    *
    * @private
-   * @param {Node} Node from which to start the traversal
-   * @param {Function} Callback which will be called for each traversed node
+   * @param {Node} current Node from which to start the traversal.
+   * @param {Function} callback Callback which will be called for each traversed node.
    */
-  BinaryTree.prototype._preorder = function (current, callback) {
+  exports.BinaryTree.prototype._preorder = function (current, callback) {
     if (!current) {
       return;
     }
@@ -137,34 +161,35 @@
   };
 
   /**
-   * Pre-order preorder traversal of the whole tree
+   * Pre-order preorder traversal of the whole tree.
    * 
    * @public
-   * @param {Function} Callback which will be called for each traversed node
+   * @param {Function} callback Callback which will be called for each traversed node.
    */
-  BinaryTree.prototype.preorder = function (callback) {
+  exports.BinaryTree.prototype.preorder = function (callback) {
     return this._preorder(this._root, callback);
   };
 
   /**
-   * Finds a node by it's value. Average runtime complexity O(log n) 
+   * Finds a node by it's value.<br><br>
+   * Average time complexity: O(log N).
    *
    * @public
-   * @param {Number|String} Value of the node which should be found
+   * @param {Number|String} Value of the node which should be found.
    */
-  BinaryTree.prototype.find = function (value) {
+  exports.BinaryTree.prototype.find = function (value) {
     return this._find(value, this._root);
   };
 
   /**
-   * Finds a node by it's value in
-   * given sub-tree. Average runtime complexity: O(log n).
-   *
+   * Finds a node by it's value in a given sub-tree.
+   * Average time complexity: O(log N).
+   * 
    * @private
-   * @param {Number|String} Value of the node which should be found
-   * @param {Node} Current node to be checked
+   * @param {Number|String} Value of the node which should be found.
+   * @param {Node} Current node to be checked.
    */
-  BinaryTree.prototype._find = function (value, current) {
+  exports.BinaryTree.prototype._find = function (value, current) {
     if (!current) {
       return null;
     }
@@ -183,19 +208,18 @@
   };
 
   /**
-   * Replaces given child with new one, for given parent
+   * Replaces given child with new one, for given parent.
    *
    * @private
-   * @param {Node} Parent node
-   * @param {Node} Child to be replaced
-   * @param {Node} Child replacement
+   * @param {Node} parent Parent node.
+   * @param {Node} oldChild Child to be replaced.
+   * @param {Node} newChild Child replacement.
    */
-  BinaryTree.prototype._replaceChild = function (parent, oldChild, newChild) {
+  exports.BinaryTree.prototype._replaceChild = function (parent, oldChild, newChild) {
     if (!parent) {
       this._root = newChild;
       this._root._parent = null;
     } else {
-
       if (parent._left === oldChild) {
         parent._left = newChild;
       } else {
@@ -209,14 +233,15 @@
   };
 
   /**
-   * Removes node from the tree. Average runtime complexity: O(log n).
+   * Removes node from the tree. <br><br>
+   * Average runtime complexity: O(log N).
    *
    * @public
    * @param {Node} Node to be removed
-   * @returns {boolean} True/false depending
-   *    on whether the given node is removed
+   * @returns {Boolean} True/false depending
+   *    on whether the given node is removed.
    */
-  BinaryTree.prototype.remove = function (node) {
+  exports.BinaryTree.prototype.remove = function (node) {
     if (!node) {
       return false;
     }
@@ -241,14 +266,14 @@
   };
 
   /**
-   * Finds the node with minimum value in given sub-tree
+   * Finds the node with minimum value in given sub-tree.
    *
    * @private
-   * @param {Node} Root of the sub-tree
-   * @param {Number|String} Current minimum value of the sub-tree
-   * @returns {Node} The node with minimum value in the sub-tree
+   * @param {Node} node Root of the sub-tree.
+   * @param {Number|String} current Current minimum value of the sub-tree.
+   * @returns {Node} Node with the minimum value in the sub-tree.
    */
-  BinaryTree.prototype._findMin = function (node, current) {
+  exports.BinaryTree.prototype._findMin = function (node, current) {
     current = current || { value: Infinity };
     if (!node) {
       return current;
@@ -260,14 +285,14 @@
   };
 
   /**
-   * Finds the node with maximum value in given sub-tree
+   * Finds the node with maximum value in given sub-tree.
    *
    * @private
-   * @param {Node} Root of the sub-tree
-   * @param {Number|String} Current maximum value of the sub-tree
-   * @returns {Node} The node with maximum value in the sub-tree
+   * @param {Node} node Root of the sub-tree.
+   * @param {Number|String} current Current maximum value of the sub-tree.
+   * @returns {Node} Node with the maximum value in the sub-tree.
    */
-  BinaryTree.prototype._findMax = function (node, current) {
+  exports.BinaryTree.prototype._findMax = function (node, current) {
     current = current || { value: -Infinity };
     if (!node) {
       return current;
@@ -279,28 +304,27 @@
   };
 
   /**
-   * Finds the node with minimum value in the whole tree
+   * Finds the node with minimum value in the whole tree.
    *
    * @public
-   * @returns {Node} The minimum node of the tree
+   * @returns {Node} The minimum node of the tree.
    */
-  BinaryTree.prototype.findMin = function () {
+  exports.BinaryTree.prototype.findMin = function () {
     return this._findMin(this._root);
   };
 
   /**
-   * Finds the maximum node of the tree
+   * Finds the node with maximum value in the whole tree.
    *
    * @public
-   * @returns {Node} The maximum node of the tree
+   * @returns {Node} The maximum node of the tree.
    *
    */
-  BinaryTree.prototype.findMax = function () {
+  exports.BinaryTree.prototype.findMax = function () {
     return this._findMax(this._root);
   };
 
-
-  BinaryTree.prototype._isBalanced = function (current) {
+  exports.BinaryTree.prototype._isBalanced = function (current) {
     if (!current) {
       return true;
     }
@@ -311,22 +335,22 @@
   };
 
   /**
-   * Returns whether the BST is balanced
+   * Returns whether the BST is balanced.
    *
    * @public
-   * @returns {Boolean} Whether the tree is balanced or not
+   * @returns {Boolean} Whether the tree is balanced or not.
    */
-  BinaryTree.prototype.isBalanced = function () {
+  exports.BinaryTree.prototype.isBalanced = function () {
     return this._isBalanced(this._root);
   };
 
   /**
-   * Finds the diameter of the binary tree
+   * Finds the diameter of the binary tree.
    *
    * @public
-   * @returns {Number} The longest path in the BST
+   * @returns {Number} The longest path in the BST.
    */
-  BinaryTree.prototype.getDiameter = function () {
+  exports.BinaryTree.prototype.getDiameter = function () {
     var getDiameter = function (root) {
       if (!root) {
         return 0;
@@ -340,16 +364,16 @@
   };
 
   /**
-   * Returns the height of the tree
+   * Returns the height of the tree.
    *
    * @public
-   * @returns {Number} The height of the tree
+   * @returns {Number} The height of the tree.
    */
-  BinaryTree.prototype.getHeight = function () {
+  exports.BinaryTree.prototype.getHeight = function () {
     return this._getHeight(this._root);
   };
 
-  BinaryTree.prototype._getHeight = function (node) {
+  exports.BinaryTree.prototype._getHeight = function (node) {
     if (!node) {
       return 0;
     }
@@ -361,14 +385,14 @@
    * Finds the lowest common ancestor of two nodes.
    *
    * @public
-   * @returns {Node} The lowest common ancestor of the two nodes or null
+   * @returns {Node} The lowest common ancestor of the two nodes or null.
    */
-  BinaryTree.prototype.lowestCommonAncestor =
+  exports.BinaryTree.prototype.lowestCommonAncestor =
    function (firstNode, secondNode) {
     return this._lowestCommonAncestor(firstNode, secondNode, this._root);
   };
 
-  BinaryTree.prototype._lowestCommonAncestor =
+  exports.BinaryTree.prototype._lowestCommonAncestor =
    function (firstNode, secondNode, current) {
     var firstNodeInLeft = this._existsInSubtree(firstNode, current._left),
         secondNodeInLeft = this._existsInSubtree(secondNode, current._left),
@@ -387,7 +411,7 @@
     return null;
   };
 
-  BinaryTree.prototype._existsInSubtree = function (node, root) {
+  exports.BinaryTree.prototype._existsInSubtree = function (node, root) {
     if (!root) {
       return false;
     }
@@ -397,8 +421,5 @@
     return this._existsInSubtree(node, root._left) ||
       this._existsInSubtree(node, root._right);
   };
-
-  exports.BinaryTree = BinaryTree;
-  exports.Node = Node;
 
 }(typeof exports === 'undefined' ? window : exports));
