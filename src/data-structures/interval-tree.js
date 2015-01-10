@@ -3,7 +3,7 @@
  *
  * @example
  *
- * var IT = require('../src/data-structures/interval-tree');
+ * var IT = require('path-to-algorithms/src/data-structures/interval-tree');
  * var intervalTree = new IT.IntervalTree();
  *
  * intervalTree.add([0, 100]);

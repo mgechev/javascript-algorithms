@@ -12,7 +12,6 @@
 
   global.Colors = Colors;
 
-
   /**
    * Represents given node in the tree.
    *
