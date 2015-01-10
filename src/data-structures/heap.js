@@ -1,5 +1,6 @@
 /**
- * A binary heap is a complete binary tree which satisfies the heap ordering property.
+ * A binary heap is a complete binary tree which
+ * satisfies the heap ordering property.
  * 
  * @example
  * var Heap = require('path-to-algorithms/src/data-structures/heap').Heap;
@@ -57,7 +58,7 @@
         return a - b;
       };
     }
-  }
+  };
 
   /**
    * Exchange indexes with start index given as argument

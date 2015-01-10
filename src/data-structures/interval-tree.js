@@ -58,7 +58,7 @@
      * @member {Node}
      */
     this.right = right;
-  }
+  };
 
   /**
    * Interval tree.
@@ -72,7 +72,7 @@
      * @member {Node}
      */
     this.root = null;
-  }
+  };
 
   function addNode(node, side, interval) {
     var child = new exports.Node(interval[0], interval[1]);
