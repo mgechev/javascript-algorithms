@@ -422,4 +422,4 @@
       this._existsInSubtree(node, root._right);
   };
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
