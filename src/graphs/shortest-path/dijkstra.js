@@ -66,8 +66,11 @@
      * Dijkstra's shortest path algorithm. Finds the minimum 
      * distance between two given nodes using a distance matrix.<br><br>
      * For the implementation is not used the most suitable data structure
-     * (Fibonacci heap) but the Binary heap gives also good results.
+     * (Fibonacci heap) but the Binary heap gives also good results.<br><br>
      *
+     * Time complexity: O(|E|+|V|log(|V|)) where V and E are the number of
+     * vertices and edges respectively.
+     * 
      * @public
      * @module graphs/shortest-path/dijkstra
      * @param {Number} src Source node.
