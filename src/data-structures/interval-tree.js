@@ -1,20 +1,81 @@
+/**
+ * Interval tree is an ordered tree data structure to hold intervals.
+ *
+ * @example
+ *
+ * var IT = require('../src/data-structures/interval-tree');
+ * var intervalTree = new IT.IntervalTree();
+ *
+ * intervalTree.add([0, 100]);
+ * intervalTree.add([101, 200]);
+ * intervalTree.add([10, 50]);
+ * intervalTree.add([120, 220]);
+ *
+ * console.log(intervalTree.contains(150)); // true
+ * console.log(intervalTree.contains(250)); // false
+ * console.log(intervalTree.intersects([210, 310])); // true
+ * console.log(intervalTree.intersects([310, 320])); // false
+ *
+ * @module data-structures/interval-tree
+ */
 (function (exports) {
+
   'use strict';
 
-  function Node(start, end, left, right) {
+  /**
+   * Node which describes an interval.
+   * 
+   * @public
+   * @constructor
+   * @param {Number} start Start of the interval.
+   * @param {Number} end End of the interval.
+   * @param {Node} left Left child node.
+   * @param {Node} right Right child node.
+   */
+  exports.Node = function(start, end, left, right) {
+    /**
+     * Node interval.
+     * @member {Array}
+     */
     this.interval = [start, end];
+    /**
+     * Max endpoint in subtree which starts from this node. 
+     * @member {Number}
+     */
     this.max = -Infinity;
+    /**
+     * Parent node.
+     * @member {Node}
+     */    
     this.parentNode = null;
+    /**
+     * Left child node.
+     * @member {Node}
+     */
     this.left = left;
+    /**
+     * Right child node.
+     * @member {Node}
+     */
     this.right = right;
-  }
+  };
 
-  function IntervalTree() {
+  /**
+   * Interval tree.
+   *
+   * @public
+   * @constructor
+   */
+  exports.IntervalTree = function() {
+    /**
+     * Root node of the tree.
+     * @member {Node}
+     */
     this.root = null;
-  }
+  };
 
   function addNode(node, side, interval) {
-    var child = new Node(interval[0], interval[1]);
+    var child = new exports.Node(interval[0], interval[1]);
     child.parentNode = node;
     node[side] = child;
     if (node.max < interval[1]) {
@@ -43,9 +104,15 @@
     }
   }
 
-  IntervalTree.prototype.add = function (interval) {
+  /**
+   * Add new interval to the tree.
+   * 
+   * @public
+   * @param {Array} intreval Array with start and end points of the interval.
+   */
+  exports.IntervalTree.prototype.add = function (interval) {
     if (!this.root) {
-      this.root = new Node(interval[0], interval[1]);
+      this.root = new exports.Node(interval[0], interval[1]);
       return;
     }
     addHelper(this.root, interval);
@@ -70,7 +137,16 @@
     return result;
   }
 
-  IntervalTree.prototype.contains = function (point) {
+  /**
+   * Checks or point belongs to at least one intarval from the tree.<br><br>
+   * Complexity: O(log N).
+   * 
+   * @public
+   * @method
+   * @param {Number} point Point which should be checked.
+   * @return {Boolean} True if point belongs to one of the intervals.
+   */
+  exports.IntervalTree.prototype.contains = function (point) {
     return contains(point, this.root);
   };
 
@@ -96,7 +172,16 @@
            (b[0] <= a[0] && b[1] >= a[0]) || (b[0] <= a[1] && b[1] >= a[1]);
   }
 
-  IntervalTree.prototype.intersects = function (interval) {
+  /**
+   * Checks or interval belongs to at least one intarval from the tree.<br><br>
+   * Complexity: O(log N).
+   *
+   * @public
+   * @method
+   * @param {Array} interval Interval which should be checked.
+   * @return {Boolean} True if interval intersects with one of the intervals.
+   */
+  exports.IntervalTree.prototype.intersects = function (interval) {
     return intersectsHelper(interval, this.root);
   };
 
@@ -107,11 +192,26 @@
     return 1 + Math.max(heightHelper(node.left), heightHelper(node.right));
   }
 
-  IntervalTree.prototype.height = function () {
+  /**
+   * Returns height of the tree.
+   * 
+   * @public
+   * @method
+   * @return {Number} Height of the tree.
+   */
+  exports.IntervalTree.prototype.height = function () {
     return heightHelper(this.root);
   };
 
-  IntervalTree.prototype.findMax = function (node) {
+  /**
+   * Returns node with the max endpoint in subtree.
+   *
+   * @public
+   * @method
+   * @param {Node} node Root node of subtree.
+   * @return {Node} Node with the largest endpoint.
+   */
+  exports.IntervalTree.prototype.findMax = function (node) {
     var stack = [node],
         current, max = -Infinity, maxNode;
     while (stack.length) {
@@ -131,7 +231,7 @@
   };
 
   // adjust the max value
-  IntervalTree.prototype._removeHelper =
+  exports.IntervalTree.prototype._removeHelper =
    function (interval, node) {
     if (!node) {
       return;
@@ -193,11 +293,15 @@
     }
   };
 
-  IntervalTree.prototype.remove = function (interval) {
+  /**
+   * Remove interval from the tree.
+   * 
+   * @public
+   * @method
+   * @param {Array} intreval Array with start and end of the interval.
+   */
+  exports.IntervalTree.prototype.remove = function (interval) {
     return this._removeHelper(interval, this.root);
   };
 
-  exports.Node = Node;
-  exports.IntervalTree = IntervalTree;
-
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);

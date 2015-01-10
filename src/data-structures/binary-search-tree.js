@@ -109,8 +109,8 @@
    *
    * @public
    * @method
-   * @param {Function} callback Callback which will
-   *   be called for each traversed node.
+   * @param {Function} callback Callback which will be
+   * called for each traversed node.
    */
   exports.BinaryTree.prototype.inorder = function (callback) {
     return this._inorder(this._root, callback);
@@ -122,7 +122,7 @@
    * @private
    * @param {Node} current Node from which to start the traversal.
    * @param {Function} callback Callback which will
-   *   be called for each traversed node
+   * be called for each traversed node
    */
   exports.BinaryTree.prototype._postorder = function (current, callback) {
     if (!current) {
@@ -139,8 +139,8 @@
    * Post-order traversal of the whole tree.
    *
    * @public
-   * @param {Function} callback Callback which will
-   *   be called for each traversed node.
+   * @param {Function} callback Callback which
+   * will be called for each traversed node.
    */
   exports.BinaryTree.prototype.postorder = function (callback) {
     return this._postorder(this._root, callback);
@@ -151,8 +151,8 @@
    *
    * @private
    * @param {Node} current Node from which to start the traversal.
-   * @param {Function} callback Callback which will
-   *    be called for each traversed node.
+   * @param {Function} callback Callback which
+   * will be called for each traversed node.
    */
   exports.BinaryTree.prototype._preorder = function (current, callback) {
     if (!current) {
@@ -169,8 +169,8 @@
    * Pre-order preorder traversal of the whole tree.
    *
    * @public
-   * @param {Function} callback Callback which will be
-   *    called for each traversed node.
+   * @param {Function} callback Callback which will
+   * be called for each traversed node.
    */
   exports.BinaryTree.prototype.preorder = function (callback) {
     return this._preorder(this._root, callback);
@@ -221,7 +221,7 @@
    * @param {Node} oldChild Child to be replaced.
    * @param {Node} newChild Child replacement.
    */
-  exports.BinaryTree.prototype._replaceChild =
+  exports.BinaryTree.prototype._replaceChild = 
    function (parent, oldChild, newChild) {
     if (!parent) {
       this._root = newChild;
