@@ -23,7 +23,7 @@
         for (var j = 0; j < size; j += 1) {
           if (i === j) {
             dist[i][j] = 0;
-          } else if (isNaN(graph[i][j])) {
+          } else if (!isFinite(graph[i][j])) {
             dist[i][j] = Infinity;
           } else {
             dist[i][j] = graph[i][j];
@@ -34,22 +34,26 @@
     }
 
     /**
-     * Floyd-Warshall algorithm. Finds the shortest path between each two vertices.<br><br>
+     * Floyd-Warshall algorithm. Finds the shortest path between
+     * each two vertices.<br><br>
      * Complexity: O(|V|^3) where V is the number of vertices.
      *
      * @public
      * @module graphs/shortest-path/floyd-warshall
      * @param {Array} graph A distance matrix of the graph.
-     * @return {Array} Array which contains the shortest distance between each two vertices.
-     * 
+     * @return {Array} Array which contains the shortest
+     *    distance between each two vertices.
+     *
      * @example
-     * var floydWarshall = require('path-to-algorithms/src/graphs/shortest-path/floyd-warshall').floydWarshall;
-     * var distMatrix = [[NaN, 7,   9,   NaN, NaN, 16],
-     *                   [7,   NaN, 10,  15,  NaN, NaN],
-     *                   [9,   10,  NaN, 11,  NaN, 2],
-     *                   [NaN, 15,  11,  NaN, 6,   NaN],
-     *                   [NaN, NaN, NaN, 6,   NaN, 9],
-     *                   [16,  NaN, 2,   NaN, 9,   NaN]];
+     * var floydWarshall =
+     * require('path-to-algorithms/src/graphs/shortest-path/floyd-warshall').floydWarshall;
+     * var distMatrix =
+     *    [[Infinity, 7,        9,       Infinity,  Infinity, 16],
+     *     [7,        Infinity, 10,       15,       Infinity, Infinity],
+     *     [9,        10,       Infinity, 11,       Infinity, 2],
+     *     [Infinity, 15,       11,       Infinity, 6,        Infinity],
+     *     [Infinity, Infinity, Infinity, 6,        Infinity, 9],
+     *     [16,       Infinity, 2,        Infinity, 9,        Infinity]];
      *
      * // [ [ 0, 7, 9, 20, 20, 11 ],
      * //   [ 7, 0, 10, 15, 21, 12 ],
