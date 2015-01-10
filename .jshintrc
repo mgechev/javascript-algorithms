@@ -23,9 +23,16 @@
   "plusplus": true,
   "undef": true,
   "laxbreak": true,
-  "maxdepth": 3,
+  "maxdepth": 4,
   "loopfunc": true,
-  "maxcomplexity": 9,
+  "maxcomplexity": 13,
   "maxlen": 80,
-  "maxparams": 4
+  "maxparams": 5,
+  "globals": {
+    "expect": true,
+    "it": true,
+    "describe": true,
+    "beforeEach": true,
+    "afterEach": true
+  }
 }
