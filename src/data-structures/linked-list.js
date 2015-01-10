@@ -3,7 +3,7 @@
  *
  * @example
  *
- * var LL = require('path-to-algorithm/src/data-structures/linked-list');
+ * var LL = require('path-to-algorithms/src/data-structures/linked-list');
  *
  * var linkedList = new LL.LinkedList();
  *
