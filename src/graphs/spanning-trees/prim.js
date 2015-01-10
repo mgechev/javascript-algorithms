@@ -24,7 +24,7 @@
  * edges.push(new Edge(new Vertex(5), new Vertex(6), 2));
  * edges.push(new Edge(new Vertex(6), new Vertex(8), 6));
  * edges.push(new Edge(new Vertex(8), new Vertex(7), 7));
- * graph = new Graph(edges, 9);
+ * graph = new Graph(edges, edges.length);
  *
  * // { edges: 
  * //    [ { e: '1', v: 0, distance: 4 },
@@ -53,9 +53,9 @@
    * @public
    * @param {Number} id Id of the vertex.
    */
-  exports.Vertex = function(id) {
+  exports.Vertex = function (id) {
     this.id = id;
-  }
+  };
 
   /**
    * Graph edge.
@@ -66,11 +66,11 @@
    * @param {Vertex} v Vertex which this edge connects.
    * @param {Number} distance Weight of the edge.
    */
-  exports.Edge = function(e, v, distance) {
+  exports.Edge = function (e, v, distance) {
     this.e = e;
     this.v = v;
     this.distance = distance;
-  }
+  };
 
   /**
    * Graph.
@@ -80,10 +80,10 @@
    * @param {Array} edges Array with graph edges.
    * @param {Number} nodesCount Number of nodes in graph.
    */
-  exports.Graph = function(edges, nodesCount) {
+  exports.Graph = function (edges, nodesCount) {
     this.edges = edges || [];
     this.nodesCount = nodesCount || 0;
-  }
+  };
 
   /**
    * Executes Prim's algorithm and returns minimum spanning tree.
@@ -110,8 +110,9 @@
      * @private
      * @param {Vertex} a First operand of the comparition.
      * @param {Vertex} b Second operand of the comparition.
-     * @return {number} Number which which is equal, greater or less then zero and
-     *  indicates whether the first vertex is "greater" than the second.
+     * @return {number} Number which which is equal, greater or
+     *  less then zero and indicates whether the first vertex is
+     *  "greater" than the second.
      */
     function compareEdges(a, b) {
       return b.distance - a.distance;
@@ -168,7 +169,8 @@
         });
       }
       for (var node in parents) {
-        spannigTree.push(new exports.Edge(node, parents[node], distances[node]));
+        spannigTree.push(
+          new exports.Edge(node, parents[node], distances[node]));
       }
       return new exports.Graph(spannigTree);
     };
