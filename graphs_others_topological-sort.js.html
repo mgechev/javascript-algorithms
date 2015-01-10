@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: graphs/others/topological-sort</title>
+    <title>JSDoc: Source: graphs/others/topological-sort.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,212 +17,78 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: graphs/others/topological-sort</h1>
+    <h1 class="page-title">Source: graphs/others/topological-sort.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Topological sort algorithm of a directed acyclic graph.<br><br>
-Time complexity: O(|E|) where E is a number of edges.</div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>graph</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Adjacency list, which represents the graph.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graphs_others_topological-sort.js.html">graphs/others/topological-sort.js</a>, <a href="graphs_others_topological-sort.js.html#line23">line 23</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Ordered vertices.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var topsort =
- require('path-to-algorithms/src/graphs/' +
-'others/topological-sort').topologicalSort;
-var graph = {
-    v1: ['v2', 'v5'],
-    v2: [],
-    v3: ['v1', 'v2', 'v4', 'v5'],
-    v4: [],
-    v5: []
-};
-var vertices = topsort(graph); // ['v3', 'v4', 'v1', 'v5', 'v2']</code></pre>
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function (exports) {
+  'use strict';
+
+  var topologicalSort = (function () {
+
+    function topologicalSortHelper(node, visited, temp, graph, result) {
+      temp[node] = true;
+      var neighbors = graph[node];
+      for (var i = 0; i &lt; neighbors.length; i += 1) {
+        var n = neighbors[i];
+        if (temp[n]) {
+          throw new Error('The graph is not a DAG');
+        }
+        if (!visited[n]) {
+          topologicalSortHelper(n, visited, temp, graph, result);
+        }
+      }
+      temp[node] = false;
+      visited[node] = true;
+      result.push(node);
+    }
+
+    /**
+     * Topological sort algorithm of a directed acyclic graph.&lt;br>&lt;br>
+     * Time complexity: O(|E|) where E is a number of edges.
+     *
+     * @public
+     * @module graphs/others/topological-sort
+     * @param {Array} graph Adjacency list, which represents the graph.
+     * @returns {Array} Ordered vertices.
+     *
+     * @example
+     * var topsort =
+     *  require('path-to-algorithms/src/graphs/' +
+     * 'others/topological-sort').topologicalSort;
+     * var graph = {
+     *     v1: ['v2', 'v5'],
+     *     v2: [],
+     *     v3: ['v1', 'v2', 'v4', 'v5'],
+     *     v4: [],
+     *     v5: []
+     * };
+     * var vertices = topsort(graph); // ['v3', 'v4', 'v1', 'v5', 'v2']
+     */
+    return function (graph) {
+      var result = [],
+          visited = [],
+          temp = [];
+      for (var node in graph) {
+        if (!visited[node] &amp;&amp; !temp[node]) {
+          topologicalSortHelper(node, visited, temp, graph, result);
+        }
+      }
+      return result.reverse();
+    };
+  }());
+
+  exports.topologicalSort = topologicalSort;
+
+}(typeof exports === 'undefined' ? window : exports));
+</code></pre>
+        </article>
+    </section>
 
 
 

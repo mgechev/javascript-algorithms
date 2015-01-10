@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: graphs/searching/dfs</title>
+    <title>JSDoc: Class: Node</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: graphs/searching/dfs</h1>
+    <h1 class="page-title">Class: Node</h1>
 
     
 
@@ -28,8 +28,11 @@
 
 <header>
     
+        <h2>
+            <span class="ancestors"><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a>.</span>
         
-            
+        Node
+        </h2>
         
     
 </header>
@@ -38,15 +41,20 @@
     <div class="container-overview">
     
         
-            <div class="description">Depth-First graph searching algorithm.
-Returns whether there's a path between two nodes in a graph.<br><br>
-Time complexity: O(|V|^2).</div>
-        
 
-        
-            
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Node"><span class="type-signature"></span>new Node<span class="signature">(value, left, right, parent)</span><span class="type-signature"></span></h4>
+
+    
 
 
+
+<div class="description">
+    Node of the tree.
+</div>
 
 
 
@@ -81,36 +89,16 @@ Time complexity: O(|V|^2).</div>
 
         <tr>
             
-                <td class="name"><code>graph</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Adjacency matrix, which represents the graph.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>start</code></td>
+                <td class="name"><code>value</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">Number</span>
+|
+
+<span class="param-type">String</span>
 
 
             
@@ -120,20 +108,20 @@ Time complexity: O(|V|^2).</div>
 
             
 
-            <td class="description last">Start node.</td>
+            <td class="description last">Value of the node.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>goal</code></td>
+                <td class="name"><code>left</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Number</span>
+<span class="param-type">Node</span>
 
 
             
@@ -143,7 +131,53 @@ Time complexity: O(|V|^2).</div>
 
             
 
-            <td class="description last">Target node.</td>
+            <td class="description last">Left sibling.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>right</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Right sibling.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Parent of the node.</td>
         </tr>
 
     
@@ -183,7 +217,7 @@ Time complexity: O(|V|^2).</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graphs_searching_dfs.js.html">graphs/searching/dfs.js</a>, <a href="graphs_searching_dfs.js.html#line27">line 27</a>
+        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -206,44 +240,9 @@ Time complexity: O(|V|^2).</div>
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Returns true if path between two nodes exists.
-</div>
 
 
 
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var dfs = require('../src/graphs/searching/dfs').dfs;
-var graph = [[1, 1, 0, 0, 1, 0],
-             [1, 0, 1, 0, 1, 0],
-             [0, 1, 0, 1, 0, 0],
-             [0, 0, 1, 0, 1, 1],
-             [1, 1, 0, 1, 0, 0],
-             [0, 0, 0, 1, 0, 0]];
-var pathExists = dfs(graph, 1, 5); // true</code></pre>
-
-
-
-        
     
     </div>
 
@@ -257,6 +256,81 @@ var pathExists = dfs(graph, 1, 5); // true</code></pre>
 
     
 
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="value"><span class="type-signature"></span>value<span class="type-signature"> :Number|String</span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">String</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
     
 
     

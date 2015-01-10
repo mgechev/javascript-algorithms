@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: data-structures/heap.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: data-structures/heap.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * A binary heap is a complete binary tree which satisfies the heap ordering property.
+ * 
+ * @example
+ * var Heap = require('path-to-algorithms/src/data-structures/heap').Heap;
+ * 
+ * var heap = new Heap(function(a, b) {
+ *     return a.birthyear - b.birthyear;
+ * });
+ * 
+ * heap.add({
+ *     name: 'John',
+ *     birthyear: 1981
+ * });
+ * heap.add({
+ *     name: 'Pavlo',
+ *     birthyear: 2000
+ * });
+ * heap.add({
+ *     name: 'Garry',
+ *     birthyear: 1989
+ * });
+ * heap.add({
+ *     name: 'Derek',
+ *     birthyear: 1990
+ * });
+ * heap.add({
+ *     name: 'Ivan',
+ *     birthyear: 1966
+ * });
+ *
+ * console.log(heap.extract()); // { name: 'Pavlo', birthyear: 2000 }
+ * console.log(heap.extract()); // { name: 'Derek', birthyear: 1990 }
+ * console.log(heap.extract()); // { name: 'Garry', birthyear: 1989 }
+ * console.log(heap.extract()); // { name: 'John', birthyear: 1981 }
+ * console.log(heap.extract()); // { name: 'Ivan', birthyear: 1966 }
+ *
+ * @module data-structures/heap
+ */
+(function (exports) {
+
+  'use strict';
+
+  /**
+   * Minimum heap constructor.
+   *
+   * @public
+   * @constructor
+   * @param {Function} cmp Function used for comparition between the elements.
+   */
+  exports.Heap = function(cmp) {
+    this._heap = [];
+    if (typeof cmp === 'function') {
+      this._cmp = cmp;
+    } else {
+      this._cmp = function (a, b) {
+        return a - b;
+      };
+    }
+  }
+
+  /**
+   * Exchange indexes with start index given as argument
+   * to turn the tree into a valid heap. On a single call
+   * this method maintains only a single "branch" of the heap.&lt;br>&lt;br>
+   *
+   * Time complexity: O(log N).
+   *
+   * @private
+   * @param {Number} index The parent.
+   */
+  exports.Heap.prototype._heapify = function (index) {
+    var extr = index,
+        left = 2 * index + 1,
+        right = 2 * index + 2,
+        temp;
+
+    if (left &lt; this._heap.length &amp;&amp;
+        this._cmp(this._heap[left], this._heap[index]) > 0) {
+      extr = left;
+    }
+
+    if (right &lt; this._heap.length &amp;&amp;
+        this._cmp(this._heap[right], this._heap[index]) > 0) {
+      extr = right;
+    }
+
+    if (index !== extr) {
+      temp = this._heap[index];
+      this._heap[index] = this._heap[extr];
+      this._heap[extr] = temp;
+      this._heapify(extr);
+    }
+  };
+
+  /**
+   * Changes the key.&lt;br>&lt;br>
+   * Complexity: O(log N).
+   * 
+   * @public
+   * @param {Number} index Index of the value which should be changed.
+   * @param {Number|Object} value New value according to the index.
+   * @return {Number} New position of the element.
+   */
+  exports.Heap.prototype.changeKey = function (index, value) {
+    this._heap[index] = value;
+    var elem = this._heap[index],
+        parent = Math.floor(index / 2),
+        temp;
+    if (elem !== undefined) {
+      while (parent >= 0 &amp;&amp; this._cmp(elem, this._heap[parent]) > 0) {
+        temp = this._heap[parent];
+        this._heap[parent] = elem;
+        this._heap[index] = temp;
+        index = parent;
+        parent = Math.floor(parent / 2);
+      }
+    }
+    return parent;
+  };
+
+  /**
+   * Updates a given node. This operation is useful
+   * in algorithms like Dijkstra, A* where we need
+   * to decrease/increase value of the given node.
+   *
+   * @public
+   * @param {Number|Object} node Node which should be updated.
+   */
+  exports.Heap.prototype.update = function (node) {
+    var idx = this._heap.indexOf(node);
+    if (idx >= 0) {
+      this.changeKey(idx, node);
+    }
+  };
+
+  /**
+   * Adds new element to the heap.&lt;br>&lt;br>
+   * Complexity: O(log N).
+   *
+   * @public
+   * @param {Number|Object} value Value which will be inserted.
+   * @return {Number} Index of the inserted value.
+   */
+  exports.Heap.prototype.add = function (value) {
+    this._heap.push(value);
+    return this.changeKey(this._heap.length - 1, value);
+  };
+
+  /**
+   * Returns current value which is on the top of the heap.&lt;br>&lt;br>
+   * Complexity: O(1).
+   *
+   * @public
+   * @return {Number|Object} Current top value.
+   */
+  exports.Heap.prototype.top = function () {
+    return this._heap[0];
+  };
+
+  /**
+   * Removes and returns the current extremum value
+   * which is on the top of the heap.&lt;br>&lt;br>
+   * Complexity: O(log N).
+   *
+   * @public
+   * @returns {Number|Object} The extremum value.
+   */
+  exports.Heap.prototype.extract = function () {
+    if (!this._heap.length) {
+      throw 'The heap is already empty!';
+    }
+    var extr = this._heap.shift();
+    this._heapify(0);
+    return extr;
+  };
+
+  exports.Heap.prototype.getCollection = function () {
+    return this._heap;
+  };
+
+  /**
+   * Checks or heap is empty.
+   *
+   * @public
+   * @returns {Boolean} Returns true if heap is empty.
+   */
+  exports.Heap.prototype.isEmpty = function () {
+    return !this._heap.length;
+  };
+
+})(typeof window === 'undefined' ? module.exports : window);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a></li><li><a href="module-data-structures_heap.html">data-structures/heap</a></li><li><a href="module-graphs_others_topological-sort.html">graphs/others/topological-sort</a></li><li><a href="module-graphs_searching_bfs.html">graphs/searching/bfs</a></li><li><a href="module-graphs_searching_dfs.html">graphs/searching/dfs</a></li><li><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a></li><li><a href="module-graphs_shortest-path_dijkstra.html">graphs/shortest-path/dijkstra</a></li><li><a href="module-graphs_shortest-path_floyd-warshall.html">graphs/shortest-path/floyd-warshall</a></li><li><a href="module-graphs_spanning-trees_prim.html">graphs/spanning-trees/prim</a></li></ul><h3>Classes</h3><ul><li><a href="module-data-structures_binary-search-tree.BinaryTree.html">BinaryTree</a></li><li><a href="module-data-structures_binary-search-tree.Node.html">Node</a></li><li><a href="module-data-structures_heap.Heap.html">Heap</a></li><li><a href="module-graphs_shortest-path_bellman-ford.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></li><li><a href="module-graphs_spanning-trees_prim.Vertex.html">Vertex</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Sat Jan 10 2015 15:37:24 GMT+0200 (EET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

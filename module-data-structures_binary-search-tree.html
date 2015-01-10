@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: graphs/spanning-trees/prim</title>
+    <title>JSDoc: Module: data-structures/binary-search-tree</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: graphs/spanning-trees/prim</h1>
+    <h1 class="page-title">Module: data-structures/binary-search-tree</h1>
 
     
 
@@ -38,8 +38,7 @@
     <div class="container-overview">
     
         
-            <div class="description">Prim's algorithm is a greedy algorithm that finds a minimum
-spanning tree for a connected weighted undirected graph.</div>
+            <div class="description">Binary search tree.</div>
         
 
         
@@ -88,7 +87,7 @@ spanning tree for a connected weighted undirected graph.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graphs_spanning-trees_prim.js.html">graphs/spanning-trees/prim.js</a>, <a href="graphs_spanning-trees_prim.js.html#line1">line 1</a>
+        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -115,39 +114,24 @@ spanning tree for a connected weighted undirected graph.</div>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var Prim = require('path-to-algorithms/src/graphs/spanning-trees/prim');
-var Graph = Prim.Graph;
-var Edge = Prim.Edge;
-var Vertex = Prim.Vertex;
+    <pre class="prettyprint"><code>var BST = require('path-to-algorithms/src/data-structures'+
+'/binary-search-tree');
+var bst = new BST.BinaryTree();
 
-var graph, edges = [];
-edges.push(new Edge(new Vertex(0), new Vertex(1), 4));
-edges.push(new Edge(new Vertex(0), new Vertex(7), 8));
-edges.push(new Edge(new Vertex(1), new Vertex(7), 11));
-edges.push(new Edge(new Vertex(1), new Vertex(2), 8));
-edges.push(new Edge(new Vertex(2), new Vertex(8), 2));
-edges.push(new Edge(new Vertex(2), new Vertex(3), 7));
-edges.push(new Edge(new Vertex(2), new Vertex(5), 4));
-edges.push(new Edge(new Vertex(2), new Vertex(3), 7));
-edges.push(new Edge(new Vertex(3), new Vertex(4), 9));
-edges.push(new Edge(new Vertex(3), new Vertex(5), 14));
-edges.push(new Edge(new Vertex(4), new Vertex(5), 10));
-edges.push(new Edge(new Vertex(5), new Vertex(6), 2));
-edges.push(new Edge(new Vertex(6), new Vertex(8), 6));
-edges.push(new Edge(new Vertex(8), new Vertex(7), 7));
-graph = new Graph(edges, edges.length);
+bst.insert(2000);
+bst.insert(1989);
+bst.insert(1991);
+bst.insert(2001);
+bst.insert(1966);
 
-// { edges: 
-//    [ { e: '1', v: 0, distance: 4 },
-//      { e: '2', v: 8, distance: 2 },
-//      { e: '3', v: 2, distance: 7 },
-//      { e: '4', v: 3, distance: 9 },
-//      { e: '5', v: 2, distance: 4 },
-//      { e: '6', v: 5, distance: 2 },
-//      { e: '7', v: 0, distance: 8 },
-//      { e: '8', v: 7, distance: 7 } ],
-//   nodesCount: 0 }
-var spanningTree = graph.prim();</code></pre>
+var node = bst.find(1989);
+console.log(node.value); // 1989
+
+var minNode = bst.findMin();
+console.log(minNode.value); // 1966
+
+var maxNode = bst.findMax();
+console.log(maxNode.value); //2001</code></pre>
 
 
 
@@ -163,13 +147,10 @@ var spanningTree = graph.prim();</code></pre>
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="module-graphs_spanning-trees_prim.Edge.html">Edge</a></dt>
+            <dt><a href="module-data-structures_binary-search-tree.BinaryTree.html">BinaryTree</a></dt>
             <dd></dd>
         
-            <dt><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-graphs_spanning-trees_prim.Vertex.html">Vertex</a></dt>
+            <dt><a href="module-data-structures_binary-search-tree.Node.html">Node</a></dt>
             <dd></dd>
         </dl>
     

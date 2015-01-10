@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: graphs/spanning-trees/prim</title>
+    <title>JSDoc: Module: data-structures/heap</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: graphs/spanning-trees/prim</h1>
+    <h1 class="page-title">Module: data-structures/heap</h1>
 
     
 
@@ -38,8 +38,7 @@
     <div class="container-overview">
     
         
-            <div class="description">Prim's algorithm is a greedy algorithm that finds a minimum
-spanning tree for a connected weighted undirected graph.</div>
+            <div class="description">A binary heap is a complete binary tree which satisfies the heap ordering property.</div>
         
 
         
@@ -88,7 +87,7 @@ spanning tree for a connected weighted undirected graph.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graphs_spanning-trees_prim.js.html">graphs/spanning-trees/prim.js</a>, <a href="graphs_spanning-trees_prim.js.html#line1">line 1</a>
+        <a href="data-structures_heap.js.html">data-structures/heap.js</a>, <a href="data-structures_heap.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -115,39 +114,38 @@ spanning tree for a connected weighted undirected graph.</div>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var Prim = require('path-to-algorithms/src/graphs/spanning-trees/prim');
-var Graph = Prim.Graph;
-var Edge = Prim.Edge;
-var Vertex = Prim.Vertex;
+    <pre class="prettyprint"><code>var Heap = require('path-to-algorithms/src/data-structures/heap').Heap;
 
-var graph, edges = [];
-edges.push(new Edge(new Vertex(0), new Vertex(1), 4));
-edges.push(new Edge(new Vertex(0), new Vertex(7), 8));
-edges.push(new Edge(new Vertex(1), new Vertex(7), 11));
-edges.push(new Edge(new Vertex(1), new Vertex(2), 8));
-edges.push(new Edge(new Vertex(2), new Vertex(8), 2));
-edges.push(new Edge(new Vertex(2), new Vertex(3), 7));
-edges.push(new Edge(new Vertex(2), new Vertex(5), 4));
-edges.push(new Edge(new Vertex(2), new Vertex(3), 7));
-edges.push(new Edge(new Vertex(3), new Vertex(4), 9));
-edges.push(new Edge(new Vertex(3), new Vertex(5), 14));
-edges.push(new Edge(new Vertex(4), new Vertex(5), 10));
-edges.push(new Edge(new Vertex(5), new Vertex(6), 2));
-edges.push(new Edge(new Vertex(6), new Vertex(8), 6));
-edges.push(new Edge(new Vertex(8), new Vertex(7), 7));
-graph = new Graph(edges, edges.length);
+var heap = new Heap(function(a, b) {
+    return a.birthyear - b.birthyear;
+});
 
-// { edges: 
-//    [ { e: '1', v: 0, distance: 4 },
-//      { e: '2', v: 8, distance: 2 },
-//      { e: '3', v: 2, distance: 7 },
-//      { e: '4', v: 3, distance: 9 },
-//      { e: '5', v: 2, distance: 4 },
-//      { e: '6', v: 5, distance: 2 },
-//      { e: '7', v: 0, distance: 8 },
-//      { e: '8', v: 7, distance: 7 } ],
-//   nodesCount: 0 }
-var spanningTree = graph.prim();</code></pre>
+heap.add({
+    name: 'John',
+    birthyear: 1981
+});
+heap.add({
+    name: 'Pavlo',
+    birthyear: 2000
+});
+heap.add({
+    name: 'Garry',
+    birthyear: 1989
+});
+heap.add({
+    name: 'Derek',
+    birthyear: 1990
+});
+heap.add({
+    name: 'Ivan',
+    birthyear: 1966
+});
+
+console.log(heap.extract()); // { name: 'Pavlo', birthyear: 2000 }
+console.log(heap.extract()); // { name: 'Derek', birthyear: 1990 }
+console.log(heap.extract()); // { name: 'Garry', birthyear: 1989 }
+console.log(heap.extract()); // { name: 'John', birthyear: 1981 }
+console.log(heap.extract()); // { name: 'Ivan', birthyear: 1966 }</code></pre>
 
 
 
@@ -163,13 +161,7 @@ var spanningTree = graph.prim();</code></pre>
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="module-graphs_spanning-trees_prim.Edge.html">Edge</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-graphs_spanning-trees_prim.Vertex.html">Vertex</a></dt>
+            <dt><a href="module-data-structures_heap.Heap.html">Heap</a></dt>
             <dd></dd>
         </dl>
     
