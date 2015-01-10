@@ -12,7 +12,7 @@ API reference with usage examples available <a href="https://mgechev.github.io/j
 
 Call:
 
-```Bash
+```bash
 npm install
 ```
 
@@ -20,13 +20,13 @@ npm install
 
 1) go to the parent directory of the `javascript-algorithms` folder and call:
 
-```Bash
+```bash
 git clone git@github.com:mgechev/javascript-algorithms.git javascript-algorithms-docs
 ```
 
 2) go to the `javascript-algorithms-docs` folder and change current branch to `gh-pages`:
 
-```Bash
+```bash
 git checkout gh-pages
 ```
 
@@ -36,7 +36,7 @@ Now you can see `index.html` file in this folder and open it in your browser.
 
 Go to the `javascript-algorithms` folder and call:
 
-```Bash
+```bash
 gulp jsdoc 
 ```
 
@@ -44,10 +44,16 @@ and all files in `javascript-algorithms-docs` folder will be updated.
 
 **To run tests**
 
+You should install `jasmine-node`:
+
+```bash
+npm install -g jasmine-node
+```
+
 Call:
 
-```Bash
-./node_modules/jasmine-node/bin/jasmine-node test/
+```bash
+jasmine-node test/
 ```
 
 and all `*.spec.js` files will be executed.
