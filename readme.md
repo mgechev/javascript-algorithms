@@ -8,24 +8,43 @@ API reference with usage examples available <a href="https://mgechev.github.io/j
 
 ## Development
 
-To install all dev dependencies use:
+**To install all dev dependencies**
+
+Call:
 
 ```Bash
 npm install
 ```
 
-To setup documentation repository:
+**To setup repository with documentation**
 
-* go to the parent directory of the root of `javascript-algorithms`;
-* clone `javascript-algorithms` to directory called `javascript-algorithms-docs` (`git clone git@github.com:mgechev/javascript-algorithms.git javascript-algorithms-docs`);
-* change current branch in `javascript-algorithms-docs` to `gh-pages` (`git checkout gh-pages`).
+1) go to the parent directory of the `javascript-algorithms` folder and call:
 
-To generate documentation call:
+```Bash
+git clone git@github.com:mgechev/javascript-algorithms.git javascript-algorithms-docs
+```
 
-`gulp jsdocs` inside `javascript-algorithms` folder. Content of the `javascript-algorithms-docs` will be updated and you will be able to look it in your browser.
+2) go to the `javascript-algorithms-docs` folder and change current branch to `gh-pages`:
 
+```Bash
+git checkout gh-pages
+```
 
-To run tests use:
+Now you can see `index.html` file in this folder and open it in your browser. 
+
+**To update .html files with documentation**
+
+Go to the `javascript-algorithms` folder and call:
+
+```Bash
+gulp jsdoc 
+```
+
+and all files in `javascript-algorithms-docs` folder will be updated.
+
+**To run tests**
+
+Call:
 
 ```Bash
 ./node_modules/jasmine-node/bin/jasmine-node test/

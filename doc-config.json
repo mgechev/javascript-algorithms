@@ -6,24 +6,13 @@
         "include": [
             "./src/graphs/searching/",
             "./src/graphs/others/",
-            "./src/graphs/shortest-path/"
+            "./src/graphs/shortest-path/",
+            "./src/graphs/spanning-trees/"
         ],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "docs"
     },
     "plugins": [],
-    "templates": {
-        "cleverLinks": false,
-        "monospaceLinks": true,
-        "systemName": "remoteFileExplorer",
-        "footer": "Created by Simon Speich",
-        "copyright": "2013",
-        "navType": "vertical",
-        "theme": "spacelab",
-        "linenums": true,
-        "collapseSymbols": true,
-        "inverseNav": false
-    },
     "opts": {
         "template": "templates/default",
         "encoding": "utf8",
