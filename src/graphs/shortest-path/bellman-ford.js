@@ -1,11 +1,14 @@
 /**
  * Bellman–Ford algorithm computes shortest paths from a single source
- * vertex to all of the other vertices in a weighted digraph (negative weights allowed).<br><br>
- * Time complexity: O(|V||E|) where V and E are the number of vertices and edges respectively.
+ * vertex to all of the other vertices in a weighted digraph
+ * (negative weights allowed).<br><br>
+ * Time complexity: O(|V||E|) where V and E are the number of
+ * vertices and edges respectively.
  *
  * @example
  *
- * var BellmanFord = require('path-to-algorithms/src/graphs/shortest-path/bellman-ford');
+ * var BellmanFord =
+ *    require('path-to-algorithms/src/graphs/shortest-path/bellman-ford');
  * var Edge = BellmanFord.Edge;
  * var bellmanFord = BellmanFord.bellmanFord;
  * var edges = [];
@@ -20,7 +23,7 @@
  * edges.push(new Edge(1, 4, 2));
  * edges.push(new Edge(3, 2, 5));
  *
- * // { 
+ * // {
  * //   parents:   { '0': null, '1':  0, '2': 1, '3':  4, '4': 1 },
  * //   distances: { '0': 0,    '1': -1, '2': 2, '3': -2, '4': 1 }
  * // }
@@ -41,23 +44,24 @@
    * @param {Vertex} v End vertex.
    * @param {Number} weight Weight of the edge.
    */
-  exports.Edge = function(u, v, weight) {
+  exports.Edge = function (u, v, weight) {
     this.from = u;
     this.to = v;
     this.weight = weight;
-  }
+  };
 
   /**
-   * Computes shortest paths from a single source vertex to all of the other vertices.
+   * Computes shortest paths from a single source
+   * vertex to all of the other vertices.
    *
    * @public
    * @param {Array} vertexes Vertices of the graph.
    * @param {Array} edges Edges of the graph.
    * @param {Number} source Start vertex.
-   * @returns {Object} Object with two arrays (parents and distances) with shortest-path information.
-   *
+   * @returns {Object} Object with two arrays (parents and distances)
+   *   with shortest-path information.
    */
-  exports.bellmanFord = function(vertexes, edges, source) {
+  exports.bellmanFord = function (vertexes, edges, source) {
     var distances = {}, parents = {}, c;
     for (var i = 0; i < vertexes.length; i += 1) {
       distances[vertexes[i]] = Infinity;
@@ -82,6 +86,6 @@
     }
 
     return { parents: parents, distances: distances };
-  }
+  };
 
 })(typeof window === 'undefined' ? module.exports : window);
