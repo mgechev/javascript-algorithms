@@ -1,4 +1,34 @@
-(function (global) {
+/**
+ * Red-Black tree is a data structure which is
+ * a type of self-balancing binary search tree.
+ * 
+ * @example
+ *
+ * var RBTree = require('../src/data-structures/red-black-tree').RBTree;
+ * var rbTree = new RBTree();
+ *
+ * rbTree.put(1981, {
+ *   name: 'John',
+ *   surname: 'Smith'
+ * });
+ * rbTree.put(2000, {
+ *   name: 'Pavlo',
+ *   surname: 'Popov'
+ * });
+ * rbTree.put(1989, {
+ *   name: 'Garry',
+ *   surname: 'Fisher'
+ * });
+ * rbTree.put(1990, {
+ *   name: 'Derek',
+ *   surname: 'Anderson'
+ * });
+ *
+ * console.log(rbTree.get(1989)); // { name: 'Garry', surname: 'Fisher' }
+ * 
+ * @module data-structures/red-black-tree
+ */
+(function (exports) {
 
   'use strict';
 
@@ -9,13 +39,18 @@
     RED: 0,
     BLACK: 1
   };
-
-  global.Colors = Colors;
+  exports.Colors = Colors;
 
   /**
-   * Represents given node in the tree.
-   *
+   * Node of the Red-Black tree.
+   * 
+   * @private
    * @constructor
+   * @param {Number} key Key of the node.
+   * @param {Object} value Value assigned to the node.
+   * @param {Node} left Left node.
+   * @param {Node} right Right node.
+   * @param {Number} color Node color.
    */
   function Node(key, value, left, right, color) {
     this._key = key;
@@ -25,10 +60,23 @@
     this._color = color;
   }
 
+  /**
+   * Check or node is red.
+   *
+   * @private
+   * @method
+   * @return {Boolean} Returns true if node is red.
+   */
   Node.prototype.isRed = function () {
     return this._color === Colors.RED;
   };
 
+  /**
+   * Changes node color.
+   *
+   * @private
+   * @method
+   */
   Node.prototype.flipColor = function () {
     if (this._color === Colors.RED) {
       this._color = Colors.BLACK;
@@ -53,23 +101,28 @@
     };
   });
 
-  global.Node = Node;
-
+  exports.Node = Node;
 
   /**
-   * Represents a Red-Black Tree
-   *
+   * Red-Black Tree.
+   * 
+   * @public
    * @constructor
    */
-  function RBTree() {
+  exports.RBTree = function () {
     this._root = null;
-  }
+  };
 
   /**
-   * Adds value associated with given key.
-   * Complexity O(log n)
+   * Add value associated with a given key.<br><br>
+   * Complexity: O(log N).
+   * 
+   * @public
+   * @method
+   * @param {Number} key Key.
+   * @param {Object} value Value.
    */
-  RBTree.prototype.put = function (key, value) {
+  exports.RBTree.prototype.put = function (key, value) {
     this._root = this._put(key, value, this._root);
     this._root.setColor(Colors.BLACK);
   };
@@ -77,8 +130,13 @@
   /**
    * Returns true or false depending on whether
    * given node is red.
+   * 
+   * @private
+   * @method
+   * @param {Node} node Node which sould be checked.
+   * @return Returns true if node is red.
    */
-  RBTree.prototype.isRed = function (node) {
+  exports.RBTree.prototype.isRed = function (node) {
     if (!node) {
       return false;
     }
@@ -86,10 +144,16 @@
   };
 
   /**
-   * Helper function for insertion of given key, value pair
-   * into the red-black tree.
+   * Helper function for insertion of given key,
+   * value pair into the Red-Black tree.
+   * 
+   * @private
+   * @method
+   * @param {Number} key Key.
+   * @param {Object} value Value.
+   * @param {Node} node Node.
    */
-  RBTree.prototype._put = function (key, value, node) {
+  exports.RBTree.prototype._put = function (key, value, node) {
     var newRoot = node;
     if (node === null) {
       return new Node(key, value, null, null, Colors.RED);
@@ -114,19 +178,28 @@
   };
 
   /**
-   * Flip the colors of the both neighbours of given node.
-   * Complexity O(1).
+   * Flip the colors of the both neighbours of given node.<br><br>
+   * Complexity: O(1).
+   *
+   * @private
+   * @method
+   * @param {Node} node Node.
    */
-  RBTree.prototype._flipColors = function (node) {
+  exports.RBTree.prototype._flipColors = function (node) {
     node.getLeft().flipColor();
     node.getRight().flipColor();
   };
 
   /*
-   * Rotates given node to left.
-   * Complexity O(1).
+   * Rotates given node to the left.<br><br>
+   * Complexity: O(1).
+   *
+   * @private
+   * @method
+   * @param {Node} node Node.
+   * @return {Node} Right node.
    */
-  RBTree.prototype._rotateLeft = function (node) {
+  exports.RBTree.prototype._rotateLeft = function (node) {
     var x = node.getRight();
     if (x !== null) {
       var temp = x.getLeft();
@@ -139,10 +212,15 @@
   };
 
   /*
-   * Rotates given node to right.
-   * Complexity O(1).
+   * Rotates given node to the right.<br><br>
+   * Complexity: O(1).
+   *
+   * @private
+   * @method
+   * @param {Node} node Node.
+   * @return {Node} Left node.
    */
-  RBTree.prototype._rotateRight = function (node) {
+  exports.RBTree.prototype._rotateRight = function (node) {
     var x = node.getLeft();
     if (x !== null) {
       var temp = x.getRight();
@@ -155,17 +233,26 @@
   };
 
   /**
-   * Gets value by given key.
-   * Complexity O(log n).
+   * Get value by the given key.<br><br>
+   * Complexity: O(log N).
    *
-   * @param {*} key A key to be searched for
-   * @return {*}    A value which will be returned based on the passed key
+   * @public
+   * @param {Number} key A key to be searched for.
+   * @return {Object} A value which will be returned based on the key.
    */
-  RBTree.prototype.get = function (key) {
+  exports.RBTree.prototype.get = function (key) {
     return this._get(this._root, key);
   };
 
-  RBTree.prototype._get = function (node, key) {
+  /**
+   * Get value by the given key.<br><br>
+   *
+   * @private
+   * @param {Node} node Node to start with.
+   * @param {Number} key A key to be searched for.
+   * @return {Object} A value which will be returned based on the key.
+   */
+  exports.RBTree.prototype._get = function (node, key) {
     if (node === null) {
       return undefined;
     }
@@ -179,7 +266,4 @@
     }
   };
 
-  global.RBTree = RBTree;
-
-}(typeof window === 'undefined' ? module.exports : window));
-
+})(typeof window === 'undefined' ? module.exports : window);
