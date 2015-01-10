@@ -1,5 +1,4 @@
 module.exports = function (sort, algorithmName, options) {
-
   'use strict';
 
   options = options || {

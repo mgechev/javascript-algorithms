@@ -1,4 +1,6 @@
 (function (exports) {
+  'use strict';
+
   /**
    * Checks whether path between two nodes exists.
    * The initialization has O(n) complexity.
@@ -22,7 +24,9 @@
    * @return {number} The root of the given node
    */
   QuickUnion.prototype._root = function (i) {
-    while (i !== this._ids[i]) i = this._ids[i];
+    while (i !== this._ids[i]) {
+      i = this._ids[i];
+    }
     return i;
   };
 

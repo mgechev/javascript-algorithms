@@ -1,7 +1,9 @@
 (function (exports) {
+  'use strict';
 
   /**
-   * Searchs for specific element in given array using the binary search algorithm.
+   * Searchs for specific element in given array using
+   * the binary search algorithm.
    * It's complexity is O(log n)
    *
    * @public

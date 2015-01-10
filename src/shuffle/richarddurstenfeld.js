@@ -1,5 +1,6 @@
 (function (exports) {
   'use strict';
+
   /**
    * Shuffle of an array elements.
    * This algorithm is modified version of Fisher-Yates shuffle

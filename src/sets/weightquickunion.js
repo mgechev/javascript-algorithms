@@ -1,4 +1,6 @@
 (function (exports) {
+  'use strict';
+
   /**
    * Checks whether there is a path between two nodes
    * Complexity of the initialization O(n).
@@ -52,7 +54,9 @@
   QuickUnion.prototype.union = function (p, q) {
     var pf = this._root(p);
     var qf = this._root(q);
-    if (pf == qf) return; // already linked
+    if (pf === qf) {
+      return; // already linked
+    }
     var psz = this._size[qf];
     var qsz = this._size[pf];
     if (psz < qsz) {

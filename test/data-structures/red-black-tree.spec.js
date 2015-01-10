@@ -1,18 +1,18 @@
 'use strict';
 
 var mod = require('../../src/data-structures/red-black-tree.js'),
-    Node = mod.Node,
+    Vertex = mod.Node,
     RBTree = mod.RBTree,
     Colors = mod.Colors;
 
 describe('Node', function () {
 
   it('should be a constructor function', function () {
-    expect(typeof Node).toBe('function');
+    expect(typeof Vertex).toBe('function');
   });
 
   it('should set all properties via the constructor', function () {
-    var node = new Node('key', 'value', 1, 2, Colors.RED);
+    var node = new Vertex('key', 'value', 1, 2, Colors.RED);
     expect(node.getKey()).toBe('key');
     expect(node.getLeft()).toBe(1);
     expect(node.getRight()).toBe(2);
@@ -22,11 +22,11 @@ describe('Node', function () {
 
   describe('Node flipColor', function () {
     it('should has method flipColor', function () {
-      var node = new Node();
+      var node = new Vertex();
       expect(typeof node.flipColor).toBe('function');
     });
     it('should work properly', function () {
-      var node = new Node();
+      var node = new Vertex();
       expect(node.isRed()).toBe(false);
       node.flipColor();
       expect(node.isRed()).toBe(true);

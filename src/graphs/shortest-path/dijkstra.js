@@ -1,7 +1,7 @@
 (function (exports) {
   'use strict';
 
-  var dijkstra = (function() {
+  var dijkstra = (function () {
 
     var Heap = require('../../data-structures/heap.js').Heap,
         current,
@@ -76,13 +76,15 @@
      * @returns {Number} The shortest distance between two nodes.
      * 
      * @example
-     * var dijkstra = require('path-to-algorithms/src/graphs/shortest-path/dijkstra').dijkstra;
-     * var distMatrix = [[Infinity, 7,        9,        Infinity, Infinity, 16],
-     *                   [7,        Infinity, 10,       15,       Infinity, Infinity],
-     *                   [9,        10,       Infinity, 11,       Infinity, 2],
-     *                   [Infinity, 15,       11,       Infinity, 6,        Infinity],
-     *                   [Infinity, Infinity, Infinity, 6,        Infinity, 9],
-     *                   [16,       Infinity, 2,        Infinity, 9,        Infinity]];
+     * var dijkstra =
+     * require('path-to-algorithms/src/graphs/shortest-path/dijkstra').dijkstra;
+     * var distMatrix =
+     *    [[Infinity, 7,        9,        Infinity, Infinity, 16],
+     *     [7,        Infinity, 10,       15,       Infinity, Infinity],
+     *     [9,        10,       Infinity, 11,       Infinity, 2],
+     *     [Infinity, 15,       11,       Infinity, 6,        Infinity],
+     *     [Infinity, Infinity, Infinity, 6,        Infinity, 9],
+     *     [16,       Infinity, 2,        Infinity, 9,        Infinity]];
      * var shortestDist = dijkstra(0, 2, distMatrix); // 9
      */
     return function (src, dest, graph) {
@@ -92,7 +94,8 @@
         for (var i = 0; i < graph.length; i += 1) {
           if (current.node !== i && //if it's not the current node
             !visited[i] && //and if we haven't visited this node
-            Number.isFinite(graph[i][current.node])) { //and this node is sibling of the current...
+            //and this node is sibling of the current...
+            Number.isFinite(graph[i][current.node])) {
 
             tempDistance = current.distance + graph[i][current.node];
             if (tempDistance < distance[i].distance) {
@@ -107,7 +110,7 @@
       }
       return distance[dest].distance;
     };
-  
+
   })();
 
   exports.dijkstra = dijkstra;

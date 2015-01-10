@@ -131,7 +131,8 @@
   };
 
   // adjust the max value
-  IntervalTree.prototype._removeHelper = function (interval, node) {
+  IntervalTree.prototype._removeHelper =
+   function (interval, node) {
     if (!node) {
       return;
     }

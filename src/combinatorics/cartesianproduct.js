@@ -24,3 +24,4 @@
   exports.cartesianProduct = cartesianProduct;
 
 }(typeof exports === 'undefined' ? window : exports));
+

@@ -182,6 +182,5 @@
 
   global.RBTree = RBTree;
 
-
 }(typeof window === 'undefined' ? module.exports : window));
 

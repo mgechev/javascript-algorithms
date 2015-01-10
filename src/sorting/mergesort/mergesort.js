@@ -1,5 +1,4 @@
 (function (exports) {
-
   'use strict';
 
   var mergeSort = (function () {
@@ -34,7 +33,8 @@
      *
      * @private
      * @param {array} array The array which subarrays should be sorted
-     * @param {number} start The start of the first subarray. This subarray is with end middle - 1.
+     * @param {number} start The start of the first subarray.
+     *   This subarray is with end middle - 1.
      * @param {number} middle The start of the second array
      * @param {number} end end - 1 is the end of the second array
      * @returns {array} The array with sorted subarray

@@ -1,4 +1,6 @@
 (function (exports) {
+  'use strict';
+
   /**
    * Checks whether there is a path between two nodes.
    * The initialization is O(n).

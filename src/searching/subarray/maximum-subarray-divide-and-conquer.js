@@ -4,7 +4,6 @@
  */
 
 (function (exports) {
-
   'use strict';
 
   /**

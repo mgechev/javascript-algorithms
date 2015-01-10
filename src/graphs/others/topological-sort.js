@@ -30,7 +30,9 @@
      * @returns {Array} Ordered vertices.
      *
      * @example
-     * var topsort = require('path-to-algorithms/src/graphs/others/topological-sort').topologicalSort;
+     * var topsort =
+     *  require('path-to-algorithms/src/graphs/' +
+     * 'others/topological-sort').topologicalSort;
      * var graph = {
      *     v1: ['v2', 'v5'],
      *     v2: [],

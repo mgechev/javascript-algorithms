@@ -34,7 +34,8 @@
   }
 
   /**
-   * Inserts a node into the binary tree. The method's complexity is O(log n) in the average case and
+   * Inserts a node into the binary tree. The method's
+   * complexity is O(log n) in the average case and
    * O(n) in the worst case.
    *
    * @public
@@ -48,29 +49,34 @@
     }
     var insertKey;
     current = current || this._root;
-    if (current.value > value)
+    if (current.value > value) {
       insertKey = '_left';
-    else
+    } else {
       insertKey = '_right';
-    if (!current[insertKey])
+    }
+    if (!current[insertKey]) {
       current[insertKey] = new Node(value, null, null, current);
-    else
+    } else {
       this.insert(value, current[insertKey]);
+    }
   };
 
   /**
-   * Prints the nodes of the tree in order. It starts the tree traversal from a given node.
+   * Prints the nodes of the tree in order.
+   * It starts the tree traversal from a given node.
    *
    * @private
    * @param {Node} Node from which to start the traversal
    * @param {Function} Callback which will be called for each traversed node
    */
   BinaryTree.prototype._inorder = function (current, callback) {
-    if (!current)
+    if (!current) {
       return;
+    }
     this._inorder(current._left, callback);
-    if (typeof callback === 'function')
+    if (typeof callback === 'function') {
       callback(current);
+    }
     this._inorder(current._right, callback);
   };
 
@@ -92,10 +98,12 @@
    * @param {Function} Callback which will be called for each traversed node
    */
   BinaryTree.prototype._postorder = function (current, callback) {
-    if (!current)
+    if (!current) {
       return;
-    if (typeof callback === 'function')
+    }
+    if (typeof callback === 'function') {
       callback(current);
+    }
     this._postorder(current._left, callback);
     this._postorder(current._right, callback);
   };
@@ -118,10 +126,12 @@
    * @param {Function} Callback which will be called for each traversed node
    */
   BinaryTree.prototype._preorder = function (current, callback) {
-    if (!current)
+    if (!current) {
       return;
-    if (typeof callback === 'function')
+    }
+    if (typeof callback === 'function') {
       callback(current);
+    }
     this._preorder(current._left, callback);
     this._preorder(current._right, callback);
   };
@@ -147,25 +157,29 @@
   };
 
   /**
-   * Finds a node by it's value in given sub-tree. Average runtime complexity: O(log n).
+   * Finds a node by it's value in
+   * given sub-tree. Average runtime complexity: O(log n).
    *
    * @private
    * @param {Number|String} Value of the node which should be found
    * @param {Node} Current node to be checked
    */
   BinaryTree.prototype._find = function (value, current) {
-    if (!current)
+    if (!current) {
       return null;
+    }
 
-    if (current.value === value)
+    if (current.value === value) {
       return current;
+    }
 
-    if (current.value > value)
+    if (current.value > value) {
       return this._find(value, current._left);
+    }
 
-    if (current.value < value)
+    if (current.value < value) {
       return this._find(value, current._right);
-
+    }
   };
 
   /**
@@ -182,10 +196,11 @@
       this._root._parent = null;
     } else {
 
-      if (parent._left === oldChild)
+      if (parent._left === oldChild) {
         parent._left = newChild;
-      else
+      } else {
         parent._right = newChild;
+      }
 
       if (newChild) {
         newChild._parent = parent;
@@ -198,11 +213,13 @@
    *
    * @public
    * @param {Node} Node to be removed
-   * @returns {boolean} True/false depending on whether the given node is removed
+   * @returns {boolean} True/false depending
+   *    on whether the given node is removed
    */
   BinaryTree.prototype.remove = function (node) {
-    if (!node)
+    if (!node) {
       return false;
+    }
 
     if (node._left && node._right) {
       var min = this._findMin(node._right),
@@ -212,12 +229,13 @@
       min.value = temp;
       return this.remove(min);
     } else {
-      if (node._left)
+      if (node._left) {
         this._replaceChild(node._parent, node, node._left);
-      else if (node._right)
+      } else if (node._right) {
         this._replaceChild(node._parent, node, node._right);
-      else
+      } else {
         this._replaceChild(node._parent, node, null);
+      }
       return true;
     }
   };
@@ -232,10 +250,12 @@
    */
   BinaryTree.prototype._findMin = function (node, current) {
     current = current || { value: Infinity };
-    if (!node)
+    if (!node) {
       return current;
-    if (current.value > node.value)
+    }
+    if (current.value > node.value) {
       current = node;
+    }
     return this._findMin(node._left, current);
   };
 
@@ -249,10 +269,12 @@
    */
   BinaryTree.prototype._findMax = function (node, current) {
     current = current || { value: -Infinity };
-    if (!node)
+    if (!node) {
       return current;
-    if (current.value < node.value)
+    }
+    if (current.value < node.value) {
       current = node;
+    }
     return this._findMax(node._right, current);
   };
 
@@ -331,7 +353,8 @@
     if (!node) {
       return 0;
     }
-    return 1 + Math.max(this._getHeight(node._left), this._getHeight(node._right));
+    return 1 + Math.max(this._getHeight(node._left),
+        this._getHeight(node._right));
   };
 
   /**
@@ -340,11 +363,13 @@
    * @public
    * @returns {Node} The lowest common ancestor of the two nodes or null
    */
-  BinaryTree.prototype.lowestCommonAncestor = function (firstNode, secondNode, current) {
+  BinaryTree.prototype.lowestCommonAncestor =
+   function (firstNode, secondNode) {
     return this._lowestCommonAncestor(firstNode, secondNode, this._root);
   };
 
-  BinaryTree.prototype._lowestCommonAncestor = function (firstNode, secondNode, current) {
+  BinaryTree.prototype._lowestCommonAncestor =
+   function (firstNode, secondNode, current) {
     var firstNodeInLeft = this._existsInSubtree(firstNode, current._left),
         secondNodeInLeft = this._existsInSubtree(secondNode, current._left),
         firstNodeInRight = this._existsInSubtree(firstNode, current._right),
@@ -369,7 +394,8 @@
     if (node === root.value) {
       return true;
     }
-    return this._existsInSubtree(node, root._left) || this._existsInSubtree(node, root._right);
+    return this._existsInSubtree(node, root._left) ||
+      this._existsInSubtree(node, root._right);
   };
 
   exports.BinaryTree = BinaryTree;
