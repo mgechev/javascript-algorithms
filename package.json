@@ -6,9 +6,6 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-    "jsdoc": "^3.3.0-alpha13"
-  },
   "devDependencies": {
     "gulp": "^3.8.10",
     "gulp-jasmine": "^1.0.1",
