@@ -1,3 +1,5 @@
+![](https://travis-ci.org/mgechev/javascript-algorithms.svg?branch=master)
+
 ## About
 
 This repository contains JavaScript implementations of different famous Computer Science algorithms.
