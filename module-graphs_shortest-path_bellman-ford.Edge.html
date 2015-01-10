@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: graphs/searching/bfs</title>
+    <title>JSDoc: Class: Edge</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: graphs/searching/bfs</h1>
+    <h1 class="page-title">Class: Edge</h1>
 
     
 
@@ -28,8 +28,11 @@
 
 <header>
     
+        <h2>
+            <span class="ancestors"><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a>.</span>
         
-            
+        Edge
+        </h2>
         
     
 </header>
@@ -38,15 +41,20 @@
     <div class="container-overview">
     
         
-            <div class="description">Breath-First graph searching algorithm.
-Returns the shortest path between startNode and targetNode.<br><br>
-Time complexity: O(|V|^2).</div>
-        
 
-        
-            
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Edge"><span class="type-signature"></span>new Edge<span class="signature">(u, v, weight)</span><span class="type-signature"></span></h4>
+
+    
 
 
+
+<div class="description">
+    Graph edge.
+</div>
 
 
 
@@ -81,13 +89,13 @@ Time complexity: O(|V|^2).</div>
 
         <tr>
             
-                <td class="name"><code>graph</code></td>
+                <td class="name"><code>u</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array</span>
+<span class="param-type">Vertex</span>
 
 
             
@@ -97,14 +105,37 @@ Time complexity: O(|V|^2).</div>
 
             
 
-            <td class="description last">Adjacency matrix, which represents the graph.</td>
+            <td class="description last">Start vertex.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>startNode</code></td>
+                <td class="name"><code>v</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Vertex</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">End vertex.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>weight</code></td>
             
 
             <td class="type">
@@ -120,30 +151,7 @@ Time complexity: O(|V|^2).</div>
 
             
 
-            <td class="description last">Start node.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>targetNode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Target, which should be reached.</td>
+            <td class="description last">Weight of the edge.</td>
         </tr>
 
     
@@ -183,7 +191,7 @@ Time complexity: O(|V|^2).</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="searching_bfs.js.html">searching/bfs.js</a>, <a href="searching_bfs.js.html#line15">line 15</a>
+        <a href="shortest-path_bellman-ford.js.html">shortest-path/bellman-ford.js</a>, <a href="shortest-path_bellman-ford.js.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -206,44 +214,9 @@ Time complexity: O(|V|^2).</div>
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Shortest path from startNode to targetNode.
-</div>
 
 
 
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var bfs = require('path-to-algorithms/src/graphs/searching/bfs').bfs;
-var graph = [[1, 1, 0, 0, 1, 0],
-             [1, 0, 1, 0, 1, 0],
-             [0, 1, 0, 1, 0, 0],
-             [0, 0, 1, 0, 1, 1],
-             [1, 1, 0, 1, 0, 0],
-             [0, 0, 0, 1, 0, 0]];
-var shortestPath = bfs(graph, 1, 5); // [1, 2, 3, 5]</code></pre>
-
-
-
-        
     
     </div>
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: graphs/shortest-path/floyd-warshall</title>
+    <title>JSDoc: Class: Edge</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Module: graphs/shortest-path/floyd-warshall</h1>
+    <h1 class="page-title">Class: Edge</h1>
     
     
 
@@ -27,7 +27,9 @@
     
 <header>
     <h2>
-    graphs/shortest-path/floyd-warshall
+        <span class="ancestors"><a href="bellman-ford.html">graphs/shortest-path/bellman-ford</a>.</span>
+    
+    Edge
     </h2>
     
 </header>  
@@ -38,11 +40,120 @@
     
     
         
-            <div class="description">Floyd-Warshall algorithm. Finds the shortest path between each two vertices.<br><br>
-Complexity: O(|V|^3) where V is the number of vertices.</div>
+<dt>
+    <h4 class="name" id="Edge"><span class="type-signature"></span>new Edge<span class="signature">(u, v, weight)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Graph edge.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
         
-        
-        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>u</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Vertex</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Start vertex.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>v</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Vertex</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">End vertex.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>weight</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Weight of the edge.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
 <dl class="details">
     
         
@@ -65,7 +176,7 @@ Complexity: O(|V|^3) where V is the number of vertices.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="floyd-warshall.js.html">shortest-path/floyd-warshall.js</a>, <a href="floyd-warshall.js.html#line36">line 36</a>
+        <a href="bellman-ford.js.html">shortest-path/bellman-ford.js</a>, <a href="bellman-ford.js.html#line47">line 47</a>
     </li></ul></dd>
     
     
@@ -76,27 +187,20 @@ Complexity: O(|V|^3) where V is the number of vertices.</div>
     
 </dl>
 
-        
-        
-            <h3>Example</h3>
-            
-    <pre class="prettyprint"><code>var floydWarshall = require('path-to-algorithms/src/graphs/shortest-path/floyd-warshall').floydWarshall;
-var distMatrix = [[NaN, 7,   9,   NaN, NaN, 16],
-                  [7,   NaN, 10,  15,  NaN, NaN],
-                  [9,   10,  NaN, 11,  NaN, 2],
-                  [NaN, 15,  11,  NaN, 6,   NaN],
-                  [NaN, NaN, NaN, 6,   NaN, 9],
-                  [16,  NaN, 2,   NaN, 9,   NaN]];
+    
+    
 
-// [ [ 0, 7, 9, 20, 20, 11 ],
-//   [ 7, 0, 10, 15, 21, 12 ],
-//   [ 9, 10, 0, 11, 11, 2 ],
-//   [ 20, 15, 11, 0, 6, 13 ],
-//   [ 20, 21, 11, 6, 0, 9 ],
-//   [ 11, 12, 2, 13, 9, 0 ] ]
-var shortestDists = floydWarshall(distMatrix);</code></pre>
+    
 
-        
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
     

@@ -43,23 +43,29 @@
 
 
     <section>
-        <article><h2>About</h2><p>This repository contains JavaScript implementations of different famous Computer Science algorithms.</p>
+        <article><p><img src="https://travis-ci.org/mgechev/javascript-algorithms.svg?branch=master" alt=""></p>
+<h2>About</h2><p>This repository contains JavaScript implementations of different famous Computer Science algorithms.</p>
 <p>API reference with usage examples available <a href="https://mgechev.github.io/javascript-algorithms/" target="_blank">here</a>.</p>
 <p><em>Note: not all algorithms are well tested so bugs are quite possible.</em></p>
-<h2>Development</h2><p>To install all dev dependencies use:</p>
-<pre class="prettyprint source lang-Bash"><code>npm install</code></pre><p>To setup documentation repository:</p>
-<ul>
-<li>go to the parent directory of the root of <code>javascript-algorithms</code>;</li>
-<li>clone <code>javascript-algorithms</code> to directory called <code>javascript-algorithms-docs</code> (<code>git clone git@github.com:mgechev/javascript-algorithms.git javascript-algorithms-docs</code>);</li>
-<li>change current branch in <code>javascript-algorithms-docs</code> to <code>gh-pages</code> (<code>git checkout gh-pages</code>).</li>
-</ul>
-<p>To generate documentation call:</p>
-<p><code>gulp jsdocs</code> inside <code>javascript-algorithms</code> folder. Content of the <code>javascript-algorithms-docs</code> will be updated and you will be able to look it in your browser.</p>
-<p>To run tests use:</p>
-<pre class="prettyprint source lang-Bash"><code>./node_modules/jasmine-node/bin/jasmine-node test/</code></pre><p>and all <code>*.spec.js</code> files will be executed.</p>
+<h2>Development</h2><p><strong>To install all dev dependencies</strong></p>
+<p>Call:</p>
+<pre class="prettyprint source lang-bash"><code>npm install</code></pre><p><strong>To setup repository with documentation</strong></p>
+<p>1) go to the parent directory of the <code>javascript-algorithms</code> folder and call:</p>
+<pre class="prettyprint source lang-bash"><code>git clone git@github.com:mgechev/javascript-algorithms.git javascript-algorithms-docs</code></pre><p>2) go to the <code>javascript-algorithms-docs</code> folder and change current branch to <code>gh-pages</code>:</p>
+<pre class="prettyprint source lang-bash"><code>git checkout gh-pages</code></pre><p>Now you can see <code>index.html</code> file in this folder and open it in your browser. </p>
+<p><strong>To update .html files with documentation</strong></p>
+<p>Go to the <code>javascript-algorithms</code> folder and call:</p>
+<pre class="prettyprint source lang-bash"><code>gulp jsdoc</code></pre><p>and all files in <code>javascript-algorithms-docs</code> folder will be updated.</p>
+<p><strong>To run tests</strong></p>
+<p>You should install <code>jasmine-node</code>:</p>
+<pre class="prettyprint source lang-bash"><code>npm install -g jasmine-node</code></pre><p>Call:</p>
+<pre class="prettyprint source lang-bash"><code>jasmine-node test/</code></pre><p>and all <code>*.spec.js</code> files will be executed.</p>
 <h2>Contributions</h2><p>Fork the repo and make requred changes. After that push your changes in branch, which is named according to the changes you did.
 Initiate the PR.</p>
-<h2>Contributors</h2><p><a href="https://github.com/mgechev"><img src="https://avatars.githubusercontent.com/u/455023?v=3&amp;s=117" alt="mgechev"></a><a href="https://github.com/Microfed"><img src="https://avatars.githubusercontent.com/u/613179?v=3&amp;s=117" alt="Microfed"></a><a href="https://github.com/contra"><img src="https://avatars.githubusercontent.com/u/425716?v=3&amp;s=117" alt="contra"></a></p>
+<p>Make sure you're editor makes validations according to the <code>.jshintrc</code> in the root directory of the repository.</p>
+<p>Before pushing to the repository run:</p>
+<pre class="prettyprint source lang-bash"><code>gulp build</code></pre><p>If the build is not successful fix your code in order the tests and jshint validation to run successfully and after that create a pull request.</p>
+<h2>Contributors</h2><p><a href="https://github.com/mgechev"><img src="https://avatars.githubusercontent.com/u/455023?v=3&amp;s=117" alt="mgechev"></a><a href="https://github.com/AndreyGeonya"><img src="https://avatars.githubusercontent.com/u/773648?v=3&amp;s=117" alt="AndreyGeonya"></a><a href="https://github.com/Microfed"><img src="https://avatars.githubusercontent.com/u/613179?v=3&amp;s=117" alt="Microfed"></a><a href="https://github.com/contra"><img src="https://avatars.githubusercontent.com/u/425716?v=3&amp;s=117" alt="contra"></a></p>
 <h2>License</h2><p>The code in this repository is distributed under the terms of the MIT license.</p></article>
     </section>
 
@@ -71,13 +77,13 @@ Initiate the PR.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-graphs_others_topological-sort.html">graphs/others/topological-sort</a></li><li><a href="module-graphs_searching_bfs.html">graphs/searching/bfs</a></li><li><a href="module-graphs_searching_dfs.html">graphs/searching/dfs</a></li><li><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a></li><li><a href="module-graphs_shortest-path_dijkstra.html">graphs/shortest-path/dijkstra</a></li><li><a href="module-graphs_shortest-path_floyd-warshall.html">graphs/shortest-path/floyd-warshall</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-graphs_others_topological-sort.html">graphs/others/topological-sort</a></li><li><a href="module-graphs_searching_bfs.html">graphs/searching/bfs</a></li><li><a href="module-graphs_searching_dfs.html">graphs/searching/dfs</a></li><li><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a></li><li><a href="module-graphs_shortest-path_dijkstra.html">graphs/shortest-path/dijkstra</a></li><li><a href="module-graphs_shortest-path_floyd-warshall.html">graphs/shortest-path/floyd-warshall</a></li><li><a href="module-graphs_spanning-trees_prim.html">graphs/spanning-trees/prim</a></li></ul><h3>Classes</h3><ul><li><a href="module-graphs_shortest-path_bellman-ford.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></li><li><a href="module-graphs_spanning-trees_prim.Vertex.html">Vertex</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Fri Jan 09 2015 22:19:23 GMT+0200 (EET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Sat Jan 10 2015 13:25:38 GMT+0200 (EET)
 </footer>
 
 <script> prettyPrint(); </script>
