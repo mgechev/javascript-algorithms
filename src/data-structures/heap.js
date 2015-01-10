@@ -1,14 +1,14 @@
 /**
  * A binary heap is a complete binary tree which
  * satisfies the heap ordering property.
- * 
+ *
  * @example
  * var Heap = require('path-to-algorithms/src/data-structures/heap').Heap;
- * 
+ *
  * var heap = new Heap(function(a, b) {
  *     return a.birthyear - b.birthyear;
  * });
- * 
+ *
  * heap.add({
  *     name: 'John',
  *     birthyear: 1981
@@ -49,7 +49,7 @@
    * @constructor
    * @param {Function} cmp Function used for comparition between the elements.
    */
-  exports.Heap = function(cmp) {
+  exports.Heap = function (cmp) {
     this._heap = [];
     if (typeof cmp === 'function') {
       this._cmp = cmp;

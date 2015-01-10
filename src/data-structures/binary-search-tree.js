@@ -36,7 +36,7 @@
    * @param {Node} right Right sibling.
    * @param {Node} parent Parent of the node.
    */
-  exports.Node = function(value, left, right, parent) {
+  exports.Node = function (value, left, right, parent) {
     /**
      * @member {Number|String}
      */
@@ -52,7 +52,7 @@
    * @public
    * @constructor
    */
-  exports.BinaryTree = function() {
+  exports.BinaryTree = function () {
     this._root = null;
   };
 
@@ -90,8 +90,8 @@
    *
    * @private
    * @param {Node} current Node from which to start the traversal.
-   * @param {Function} callback Callback which will be called
-   * for each traversed node.
+   * @param {Function} callback Callback which
+   *    will be called for each traversed node.
    */
   exports.BinaryTree.prototype._inorder = function (current, callback) {
     if (!current) {
@@ -121,8 +121,8 @@
    *
    * @private
    * @param {Node} current Node from which to start the traversal.
-   * @param {Function} callback Callback which will be called
-   * for each traversed node.
+   * @param {Function} callback Callback which will
+   * be called for each traversed node
    */
   exports.BinaryTree.prototype._postorder = function (current, callback) {
     if (!current) {
@@ -167,7 +167,7 @@
 
   /**
    * Pre-order preorder traversal of the whole tree.
-   * 
+   *
    * @public
    * @param {Function} callback Callback which will
    * be called for each traversed node.
@@ -222,7 +222,7 @@
    * @param {Node} newChild Child replacement.
    */
   exports.BinaryTree.prototype._replaceChild = 
-  function (parent, oldChild, newChild) {
+   function (parent, oldChild, newChild) {
     if (!parent) {
       this._root = newChild;
       this._root._parent = null;
