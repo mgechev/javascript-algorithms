@@ -1,26 +1,27 @@
-/**
- * Sieve of Eratosthenes
- *
- * Simple, ancient algorithm for finding all prime numbers up to any given limit
- *
- * For example for limit 12 it should return following list of primes:
- * [2, 3, 5, 7, 11]
- */
 (function (exports) {
   'use strict';
 
   /**
-   * Returns Sieve of Eratosthenes for specified number
+   * Sieve of Eratosthenes.
    *
-   * Simple, ancient algorithm for finding all prime numbers up to any given
+   * Simple, ancient algorithm for finding all prime numbers up to given limit.
+   *
+   * Returns list of primes up to specified limit.
+   *
+   * For example, for limit 10 it should return following list of primes:
+   * [2, 3, 5, 7]
+   *
+   * @module primes/sieve-of-eratosthenes
+   * @param {Number} limit - Algorithm will returns list of primes up to
+   * specified limit
+   * @returns {Array} Will return list with all prime numbers up to provided
    * limit
    *
-   * @module primes
-   * @param {Number} limit - algorithm will return list with prime numbers up
-   *             to given limit
+   * @example
+   * var sieveOfEratosthenes = require('path/to/primes/sieve-of-eratosthenes')
+   * .sieveOfEratosthenes;
    *
-   * @returns {Array} - will return array with all prime numbers up to
-   *          provided limit
+   * console.log(sieveOfEratosthenes(12)); // [2, 3, 5, 7, 11]
    */
   exports.sieveOfEratosthenes = function (limit) {
     var sieve = [];

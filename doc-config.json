@@ -8,7 +8,8 @@
             "./src/graphs/others/",
             "./src/graphs/shortest-path/",
             "./src/graphs/spanning-trees/",
-            "./src/data-structures/"
+            "./src/data-structures/",
+            "./src/primes/"
         ],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "docs"
