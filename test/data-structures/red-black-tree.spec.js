@@ -1,9 +1,9 @@
 'use strict';
 
-var mod = require('../../src/data-structures/red-black-tree.js'),
-    Vertex = mod.Node,
-    RBTree = mod.RBTree,
-    Colors = mod.Colors;
+var mod = require('../../src/data-structures/red-black-tree.js');
+var Vertex = mod.Node;
+var RBTree = mod.RBTree;
+var Colors = mod.Colors;
 
 describe('Node', function () {
 

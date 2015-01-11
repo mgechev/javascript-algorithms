@@ -18,8 +18,8 @@ describe('Prime factor tree', function () {
   });
 
   it('sum of primes for given number 600851475143 should be 9238', function () {
-    var primes = primeFactorTree(600851475143),
-      sumOfPrimes = primes.reduce(function (previousValue, currentValue) {
+    var primes = primeFactorTree(600851475143);
+    var sumOfPrimes = primes.reduce(function (previousValue, currentValue) {
         return previousValue + currentValue;
       });
 

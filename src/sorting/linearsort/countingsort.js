@@ -17,8 +17,8 @@
      * @returns {array} count The count of each element from the input array
      */
     function getCount(array) {
-      var count = [],
-          current;
+      var count = [];
+      var current;
       for (var i = 0; i < array.length; i += 1) {
         current = array[i];
         count[current] = (count[current] || 0) + 1;
@@ -35,8 +35,8 @@
      *                       are less than each element from the input
      */
     function getLessCount(array) {
-      var less = [],
-          last;
+      var less = [];
+      var last;
       less[0] = array[0] || 0;
       for (var i = 1; i < array.length; i += 1) {
         last = array[i - 1] || 0;
@@ -54,10 +54,10 @@
      * @returns {array} result The sorted input
      */
     function sort(array, less) {
-      var result = [],
-          currentPositions = [],
-          current,
-          position;
+      var result = [];
+      var currentPositions = [];
+      var current;
+      var position;
       for (var i = 0; i < array.length; i += 1) {
         current = array[i];
         position = less[current];

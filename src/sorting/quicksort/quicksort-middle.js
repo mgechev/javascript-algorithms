@@ -32,8 +32,8 @@
      * @return {number}
      */
     function partition(array, left, right, cmp) {
-      var pivot = array[Math.floor((left + right) / 2)],
-          temp;
+      var pivot = array[Math.floor((left + right) / 2)];
+      var temp;
       while (left <= right) {
         while (cmp(array[left], pivot) < 0) {
           left += 1;

@@ -21,9 +21,9 @@
      *                       the max heap should be found.
      */
     function heapify(array, index, heapSize, cmp) {
-      var left = 2 * index + 1,
-          right = 2 * index + 2,
-          largest = index;
+      var left = 2 * index + 1;
+      var right = 2 * index + 2;
+      var largest = index;
 
       if (left < heapSize && cmp(array[left], array[index]) > 0) {
         largest = left;
@@ -64,8 +64,8 @@
      */
     return function (array, cmp) {
       cmp = cmp || comparator;
-      var size = array.length,
-          temp;
+      var size = array.length;
+      var temp;
       buildMaxHeap(array, cmp);
       for (var i = array.length - 1; i > 0; i -= 1) {
         temp = array[0];

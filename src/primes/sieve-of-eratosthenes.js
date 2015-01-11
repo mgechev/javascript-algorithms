@@ -23,8 +23,10 @@
    *          provided limit
    */
   exports.sieveOfEratosthenes = function (limit) {
-    var sieve = [],
-      primes = [], k, l;
+    var sieve = [];
+    var primes = [];
+    var k;
+    var l;
 
     sieve[1] = false;
 

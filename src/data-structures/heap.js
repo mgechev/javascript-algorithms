@@ -71,10 +71,10 @@
    * @param {Number} index The parent.
    */
   exports.Heap.prototype._heapify = function (index) {
-    var extr = index,
-        left = 2 * index + 1,
-        right = 2 * index + 2,
-        temp;
+    var extr = index;
+    var left = 2 * index + 1;
+    var right = 2 * index + 2;
+    var temp;
 
     if (left < this._heap.length &&
         this._cmp(this._heap[left], this._heap[index]) > 0) {
@@ -105,9 +105,9 @@
    */
   exports.Heap.prototype.changeKey = function (index, value) {
     this._heap[index] = value;
-    var elem = this._heap[index],
-        parent = Math.floor(index / 2),
-        temp;
+    var elem = this._heap[index];
+    var parent = Math.floor(index / 2);
+    var temp;
     if (elem !== undefined) {
       while (parent >= 0 && this._cmp(elem, this._heap[parent]) > 0) {
         temp = this._heap[parent];

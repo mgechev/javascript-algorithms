@@ -138,8 +138,9 @@
     if (this.first === null) {
       return false;
     }
-    var temp = this.first,
-        next, prev;
+    var temp = this.first;
+    var next;
+    var prev;
     while (temp) {
       if (temp.data === data) {
         next = temp.next;
@@ -171,8 +172,8 @@
    * @return {Boolean} Returns true if linked list contains cycle.
    */
   exports.LinkedList.prototype.hasCycle = function () {
-    var fast = this.first,
-        slow = this.first;
+    var fast = this.first;
+    var slow = this.first;
     while (true) {
       if (fast === null) {
         return false;
@@ -245,9 +246,9 @@
     if (!this.first || !this.first.next) {
       return;
     }
-    var current = this.first.next,
-        prev = this.first,
-        temp;
+    var current = this.first.next;
+    var prev = this.first;
+    var temp;
     while (current) {
       temp = current.next;
       current.next = prev;

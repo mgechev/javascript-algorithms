@@ -17,8 +17,8 @@ describe('Sieve Of Eratosthenes', function () {
 
   it('sum of prime numbers up to 2000000 limit should be 142913828922',
   function () {
-    var sieve = sieveOfEratosthenes(2000000),
-      sumOfPrimes = sieve.reduce(function (previousValue, currentValue) {
+    var sieve = sieveOfEratosthenes(2000000);
+    var sumOfPrimes = sieve.reduce(function (previousValue, currentValue) {
         return previousValue + currentValue;
       });
 

@@ -125,7 +125,8 @@
     if (node.interval[0] <= point && node.interval[1] >= point) {
       return true;
     }
-    var result = false, temp;
+    var result = false;
+    var temp;
     ['left', 'right'].forEach(function (key) {
       temp = node[key];
       if (temp) {
@@ -157,7 +158,8 @@
     if (intersects(node.interval, interval)) {
       return true;
     }
-    var result = false, temp;
+    var result = false;
+    var temp;
     ['left', 'right'].forEach(function (side) {
       temp = node[side];
       if (temp && temp.max >= interval[0]) {
@@ -212,8 +214,10 @@
    * @return {Node} Node with the largest endpoint.
    */
   exports.IntervalTree.prototype.findMax = function (node) {
-    var stack = [node],
-        current, max = -Infinity, maxNode;
+    var stack = [node];
+    var current;
+    var max = -Infinity;
+    var maxNode;
     while (stack.length) {
       current = stack.pop();
       if (current.left) {
@@ -275,8 +279,8 @@
       // Adjust the max value
       var p = node.parentNode;
       if (p) {
-        var maxNode = this.findMax(p),
-            max = maxNode.interval[1];
+        var maxNode = this.findMax(p);
+        var max = maxNode.interval[1];
         while (maxNode) {
           if (maxNode.max === node.interval[1]) {
             maxNode.max = max;

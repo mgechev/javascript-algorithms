@@ -254,8 +254,8 @@
     }
 
     if (node._left && node._right) {
-      var min = this._findMin(node._right),
-        temp = node.value;
+      var min = this._findMin(node._right);
+      var temp = node.value;
 
       node.value = min.value;
       min.value = temp;
@@ -362,9 +362,9 @@
       if (!root) {
         return 0;
       }
-      var leftHeight = this._getHeight(root._left),
-          rightHeight = this._getHeight(root._right),
-          path = leftHeight + rightHeight + 1;
+      var leftHeight = this._getHeight(root._left);
+      var rightHeight = this._getHeight(root._right);
+      var path = leftHeight + rightHeight + 1;
       return Math.max(path, getDiameter(root._left), getDiameter(root._right));
     }.bind(this);
     return getDiameter(this._root);
@@ -401,10 +401,10 @@
 
   exports.BinaryTree.prototype._lowestCommonAncestor =
    function (firstNode, secondNode, current) {
-    var firstNodeInLeft = this._existsInSubtree(firstNode, current._left),
-        secondNodeInLeft = this._existsInSubtree(secondNode, current._left),
-        firstNodeInRight = this._existsInSubtree(firstNode, current._right),
-        secondNodeInRight = this._existsInSubtree(secondNode, current._right);
+    var firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
+    var secondNodeInLeft = this._existsInSubtree(secondNode, current._left);
+    var firstNodeInRight = this._existsInSubtree(firstNode, current._right);
+    var secondNodeInRight = this._existsInSubtree(secondNode, current._right);
     if ((firstNodeInLeft && secondNodeInRight) ||
         (firstNodeInRight && secondNodeInLeft)) {
       return current;

@@ -28,4 +28,4 @@ gulp.task('jscs', function () {
     .pipe(jscs());
 });
 
-gulp.task('build', ['lint', 'test']);
+gulp.task('build', ['lint', 'jscs', 'test']);

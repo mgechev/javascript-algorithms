@@ -12,9 +12,9 @@
    * @returns {number} index The index of the element or -1 if not found
    */
   function binarySearch(array, key) {
-    var middle = Math.floor(array.length / 2),
-        left = 0,
-        right = array.length;
+    var middle = Math.floor(array.length / 2);
+    var left = 0;
+    var right = array.length;
     while (right >= left) {
       if (array[middle] === key) {
         return middle;

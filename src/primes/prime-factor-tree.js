@@ -14,8 +14,8 @@
    * @returns {Array}
    */
   exports.primeFactorTree = function (number) {
-    var div = 2,
-      array = [];
+    var div = 2;
+    var array = [];
 
     while (number > 1) {
       if (number % div === 0) {

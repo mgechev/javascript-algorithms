@@ -9,8 +9,9 @@
    * @return {array} The shuffled array.
    */
   function shuffle(array) {
-    var size = array.length,
-      rand, temp;
+    var size = array.length;
+    var rand;
+    var temp;
     for (var i = 1; i < size; i += 1) {
       rand = Math.round(Math.random() * i);
       temp = array[rand];

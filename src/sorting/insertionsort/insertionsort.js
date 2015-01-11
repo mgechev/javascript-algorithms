@@ -14,8 +14,8 @@
    */
   function insertionSort(array, cmp) {
     cmp = cmp || compare;
-    var current,
-        j;
+    var current;
+    var j;
     for (var i = 1; i < array.length; i += 1) {
       current = array[i];
       j = i - 1;

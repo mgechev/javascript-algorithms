@@ -21,11 +21,11 @@
       if (lo >= hi) {
         return;
       }
-      var lowPointer = lo,
-          highPointer = hi,
-          p = charAt(arr[lo], d),
-          i = lo + 1,
-          current;
+      var lowPointer = lo;
+      var highPointer = hi;
+      var p = charAt(arr[lo], d);
+      var i = lo + 1;
+      var current;
 
       while (i <= highPointer) {
         current = charAt(arr[i], d);

@@ -14,9 +14,9 @@
      * This takes O(n).
      */
     function convertToAscii(str) {
-      var result = '',
-          currentChar = '',
-          i = 0;
+      var result = '';
+      var currentChar = '';
+      var i = 0;
       for (; i < str.length; i += 1) {
         currentChar = str[i].charCodeAt(0).toString(2);
         if (currentChar.length < 8) {
@@ -34,11 +34,11 @@
      * Takes O(n^2).
      */
     function runLength(vector) {
-      var result = '',
-          zeros = 0,
-          zerosTemp = '',
-          wordLength = 0,
-          i = 0;
+      var result = '';
+      var zeros = 0;
+      var zerosTemp = '';
+      var wordLength = 0;
+      var i = 0;
       for (; i < vector.length; i += 1) {
         if (vector[i] === '0') {
           zeros += 1;

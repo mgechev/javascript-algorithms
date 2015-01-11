@@ -120,12 +120,12 @@
 
     return function () {
       init.call(this);
-      var inTheTree = {},
-          startVertex = this.edges[0].e.id,
-          spannigTree = [],
-          parents = {},
-          distances = {},
-          current;
+      var inTheTree = {};
+      var tartVertex = this.edges[0].e.id;
+      var pannigTree = [];
+      var arents = {};
+      var istances = {};
+      var urrent;
       inTheTree[startVertex] = true;
       queue.add({
         node: startVertex,
@@ -138,8 +138,8 @@
           if (inTheTree[e.v.id] && inTheTree[e.e.id]) {
             return;
           }
-          var collection = queue.getCollection(),
-              node;
+          var collection = queue.getCollection();
+          var node;
           if (e.e.id === current) {
             node = e.v.id;
           } else if (e.v.id === current) {

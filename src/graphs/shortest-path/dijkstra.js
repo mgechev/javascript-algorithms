@@ -3,11 +3,11 @@
 
   var dijkstra = (function () {
 
-    var Heap = require('../../data-structures/heap.js').Heap,
-        current,
-        visited,
-        distance,
-        unvisited;
+    var Heap = require('../../data-structures/heap.js').Heap;
+    var current;
+    var visited;
+    var distance;
+    var unvisited;
 
     /**
      * Creates a new node instance.

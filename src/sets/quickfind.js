@@ -23,9 +23,9 @@
    * @param {number} q The second node
    */
   QuickFind.prototype.union = function (p, q) {
-    var size = this._ids.length,
-        pval = this._ids[p],
-        qval = this._ids[q];
+    var size = this._ids.length;
+    var pval = this._ids[p];
+    var qval = this._ids[q];
     for (var i = 0; i < size; i += 1) {
       if (this._ids[i] === qval) {
         this._ids[i] = pval;

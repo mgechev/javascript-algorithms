@@ -17,8 +17,8 @@
      * @returns {array} array Sorted input array
      */
     function insertionSort(array) {
-      var current,
-          j;
+      var current;
+      var j;
       for (var i = 1; i < array.length; i += 1) {
         current = array[i];
         j = i - 1;
@@ -41,8 +41,9 @@
      *                          from the input which are with suitable size.
      */
     function createBuckets(array) {
-      var buckets = [],
-          currentBucket, current;
+      var buckets = [];
+      var currentBucket;
+      var current;
       for (var i = 0; i < array.length; i += 1) {
         current = array[i];
         currentBucket = Math.floor(current);
@@ -77,8 +78,8 @@
      *                         all elements form each bucket
      */
     function unionBuckets(buckets) {
-      var result = [],
-          currentBucket;
+      var result = [];
+      var currentBucket;
       for (var i = 0; i < buckets.length; i += 1) {
         currentBucket = buckets[i];
         if (currentBucket !== undefined) {

@@ -40,8 +40,8 @@
        * 'number' rounded to the greatest integer 'rounded' so that:
        * rounded * rounded <= number
        */
-      var rounded = Math.floor(Math.sqrt(number)),
-        factor = 5;
+      var rounded = Math.floor(Math.sqrt(number));
+      var factor = 5;
       while (factor <= rounded) {
         if (number % factor === 0) {
           return false;

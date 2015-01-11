@@ -80,9 +80,12 @@
       if (find.memo[node]) {
         return find.memo[node];
       }
-      var neighbours = dag[node],
-          neighboursDistance = [],
-          maxDist, maxNode, distance, result;
+      var neighbours = dag[node];
+      var neighboursDistance = [];
+      var maxDist;
+      var maxNode;
+      var distance;
+      var result;
 
       if (!neighbours.length) {
         return { distance: 1, neighbour: undefined, node: node };
@@ -104,9 +107,9 @@
     }
 
     return function (array) {
-      var results = [],
-          dag = buildDag(array),
-          maxPath;
+      var results = [];
+      var dag = buildDag(array);
+      var maxPath;
       find.memo = [];
       for (var i = 0; i < array.length; i += 1) {
         results.push(find(dag, i));

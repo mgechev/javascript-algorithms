@@ -10,11 +10,11 @@ module.exports = function (sort, algorithmName, options) {
 
     function createRandomArray(config) {
       config = config || {};
-      var size = config.size || 100,
-          precision = config.precision || 2,
-          multiplier = config.multiplier || 100;
-
+      var size = config.size || 100;
+      var precision = config.precision || 2;
+      var multiplier = config.multiplier || 100;
       var result = [];
+
       for (var i = size; i > 0; i -= 1) {
         result.push(parseFloat((Math.random() *
             multiplier).toFixed(precision)));

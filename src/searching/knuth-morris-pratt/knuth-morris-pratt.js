@@ -3,8 +3,11 @@
 
   var kmp = (function () {
     function builtKMPTable(str) {
-      var res = [],
-          len, front, end, found;
+      var res = [];
+      var len;
+      var front;
+      var end;
+      var found;
       for (var i = 1; i <= str.length; i += 1) {
         front = Math.max(1, i - ((res[i - 2] || 0) + 1));
         end = Math.min(i - 1, (res[i - 2] || 0) + 1);
@@ -25,8 +28,9 @@
     }
 
     function indexOf(str, substr) {
-      var table = builtKMPTable(substr),
-          i = 0, j = 0;
+      var table = builtKMPTable(substr);
+      var i = 0;
+      var j = 0;
       while (i < str.length) {
         if (str[i] === substr[j]) {
           i += 1;

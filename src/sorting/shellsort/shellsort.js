@@ -25,7 +25,8 @@
     return function (array, cmp) {
       cmp = cmp || compare;
 
-      var gap, current;
+      var gap;
+      var current;
       for (var k = 0; k < gaps.length; k += 1) {
         gap = gaps[k];
         for (var i = gap; i < array.length; i += gap) {

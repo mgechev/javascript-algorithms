@@ -17,10 +17,10 @@
    */
   function insertionBinarySort(array, cmp) {
     cmp = cmp || comparator;
-    var current,
-        middle,
-        left,
-        right;
+    var current;
+    var middle;
+    var left;
+    var right;
     for (var i = 1; i < array.length; i += 1) {
       current = array[i];
       left = 0;

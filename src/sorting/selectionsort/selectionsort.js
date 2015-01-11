@@ -14,7 +14,9 @@
    */
   var selectionSort = function (array, cmp) {
     cmp = cmp || compare;
-    var min, idx, temp;
+    var min;
+    var idx;
+    var temp;
     for (var i = 0; i < array.length; i += 1) {
       idx = i;
       min = array[i];

@@ -4,9 +4,9 @@
   var dfs = (function () {
 
     function hasPath(graph, current, goal) {
-      var stack = [],
-          visited = [],
-          node;
+      var stack = [];
+      var visited = [];
+      var node;
       stack.push(current);
       visited[current] = true;
       while (stack.length) {
