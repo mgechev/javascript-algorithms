@@ -9,17 +9,17 @@
    * Returns list of primes up to specified limit.
    *
    * For example, for limit 10 it should return following list of primes:
-   * [2, 3, 5, 7]
+   * [2, 3, 5, 7].
    *
    * @module primes/sieve-of-eratosthenes
    * @param {Number} limit - Algorithm will returns list of primes up to
-   * specified limit
-   * @returns {Array} Will return list with all prime numbers up to provided
-   * limit
+   * specified limit.
+   * @returns {Array} Will return list with all prime numbers up to provided.
+   * limit.
    *
    * @example
-   * var sieveOfEratosthenes = require('path/to/primes/sieve-of-eratosthenes')
-   * .sieveOfEratosthenes;
+   * var sieveOfEratosthenes =
+   * require('path-to-algorithms/src/sieve-of-eratosthenes').sieveOfEratosthenes;
    *
    * console.log(sieveOfEratosthenes(12)); // [2, 3, 5, 7, 11]
    */

@@ -6,11 +6,11 @@
    * For example for number 104743 it should return true, for 104744 - false.
    *
    * @module primes/is-prime
-   * @param {Number} number - Number that we check on prime
-   * @returns {Boolean} Will return true if provided number is prime
+   * @param {Number} number - Number that we check on prime.
+   * @returns {Boolean} Will return true if provided number is prime.
    *
    * @example
-   * var isPrime = require('path/to/primes/is-prime').isPrime;
+   * var isPrime = require('path-to-algorithms/src/is-prime').isPrime;
    *
    * console.log(isPrime(7)); // true
    * console.log(isPrime(18)); // false
