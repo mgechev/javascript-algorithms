@@ -31,7 +31,7 @@
     *
     * @example
     *
-    * var permutations = require('path-to-algorithms/src/' + 
+    * var permutations = require('path-to-algorithms/src/' +
     * 'combinatorics/permutations').permutations;
     * var result = permutations(['apple', 'orange', 'pear']);
     *

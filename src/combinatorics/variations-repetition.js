@@ -18,9 +18,9 @@
      * Finds all the variations with repetition of given array.<br><br>
      * Variations with repetition is the number of ways to sample k elements
      * from a set of elements (which may be repeated).
-     * 
+     *
      * @example
-     * var variations = require('path-to-algorithms/src/combinatorics/' + 
+     * var variations = require('path-to-algorithms/src/combinatorics/' +
      * 'variations-repetition').variationsWithRepetion;
      * var result = variations(['apple', 'orange', 'pear'], 2);
      *

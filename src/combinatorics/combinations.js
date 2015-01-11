@@ -22,9 +22,9 @@
      * For example given three fruits, say an apple, an orange and a pear,
      * there are three combinations of two that can be drawn from this set:
      * an apple and a pear; an apple and an orange; or a pear and an orange.
-     * 
+     *
      * @example
-     * 
+     *
      * var combinations = require('path-to-algorithms/src/' +
      * 'combinatorics/combinations').combinations;
      * var result = combinations(['apple', 'orange', 'pear'], 2);
@@ -32,7 +32,7 @@
      * //  ['apple', 'pear'],
      * //  ['orange', 'pear']]
      * console.log(result);
-     * 
+     *
      * @module combinatorics/combinations
      * @public
      * @param arr {Array} Set of items.
