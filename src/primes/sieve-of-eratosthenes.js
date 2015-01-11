@@ -18,7 +18,8 @@
    * limit.
    *
    * @example
-   * var sieveOfEratosthenes = require('path-to-algorithms/src/sieve-of-eratosthenes')
+   * var sieveOfEratosthenes =
+   * require('path-to-algorithms/src/sieve-of-eratosthenes')
    * .sieveOfEratosthenes;
    *
    * console.log(sieveOfEratosthenes(12)); // [2, 3, 5, 7, 11]
