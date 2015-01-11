@@ -14,4 +14,13 @@ describe('Sieve Of Eratosthenes', function () {
         expect(sieveOfEratosthenes(0).toString()).toEqual([].toString());
         expect(sieveOfEratosthenes(1).toString()).toEqual([].toString());
     });
+
+    it('sum of prime numbers up to 2000000 limit should be 142913828922', function () {
+        var sieve = sieveOfEratosthenes(2000000),
+            sumOfPrimes = sieve.reduce(function (previousValue, currentValue) {
+                return previousValue + currentValue;
+            });
+
+        expect(sumOfPrimes).toEqual(142913828922);
+    });
 });
