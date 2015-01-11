@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: data-structures/interval-tree</title>
+    <title>JSDoc: Module: primes/is-prime</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: data-structures/interval-tree</h1>
+    <h1 class="page-title">Module: primes/is-prime</h1>
 
     
 
@@ -38,7 +38,8 @@
     <div class="container-overview">
     
         
-            <div class="description">Interval tree is an ordered tree data structure to hold intervals.</div>
+            <div class="description">Advanced (optimised) method for checking if provided number is prime.
+For example for number 104743 it should return true, for 104744 - false.</div>
         
 
         
@@ -53,6 +54,54 @@
 
 
 
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>number</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Number that we check on prime</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -87,7 +136,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_interval-tree.js.html">data-structures/interval-tree.js</a>, <a href="data-structures_interval-tree.js.html#line1">line 1</a>
+        <a href="primes_is-prime.js.html">primes/is-prime.js</a>, <a href="primes_is-prime.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -110,22 +159,36 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Will return true if provided number is prime
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var IT = require('path-to-algorithms/src/data-structures/interval-tree');
-var intervalTree = new IT.IntervalTree();
+    <pre class="prettyprint"><code>var isPrime = require('path/to/primes/is-prime').isPrime;
 
-intervalTree.add([0, 100]);
-intervalTree.add([101, 200]);
-intervalTree.add([10, 50]);
-intervalTree.add([120, 220]);
-
-console.log(intervalTree.contains(150)); // true
-console.log(intervalTree.contains(250)); // false
-console.log(intervalTree.intersects([210, 310])); // true
-console.log(intervalTree.intersects([310, 320])); // false</code></pre>
+console.log(isPrime(7)); // true
+console.log(isPrime(18)); // false</code></pre>
 
 
 
@@ -137,16 +200,6 @@ console.log(intervalTree.intersects([310, 320])); // false</code></pre>
 
     
 
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-data-structures_interval-tree.IntervalTree.html">IntervalTree</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-data-structures_interval-tree.Node.html">Node</a></dt>
-            <dd></dd>
-        </dl>
     
 
      

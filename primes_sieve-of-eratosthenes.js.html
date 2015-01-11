@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: data-structures/interval-tree</title>
+    <title>JSDoc: Source: primes/sieve-of-eratosthenes.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,152 +17,73 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: data-structures/interval-tree</h1>
+    <h1 class="page-title">Source: primes/sieve-of-eratosthenes.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Interval tree is an ordered tree data structure to hold intervals.</div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_interval-tree.js.html">data-structures/interval-tree.js</a>, <a href="data-structures_interval-tree.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var IT = require('path-to-algorithms/src/data-structures/interval-tree');
-var intervalTree = new IT.IntervalTree();
-
-intervalTree.add([0, 100]);
-intervalTree.add([101, 200]);
-intervalTree.add([10, 50]);
-intervalTree.add([120, 220]);
-
-console.log(intervalTree.contains(150)); // true
-console.log(intervalTree.contains(250)); // false
-console.log(intervalTree.intersects([210, 310])); // true
-console.log(intervalTree.intersects([310, 320])); // false</code></pre>
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-data-structures_interval-tree.IntervalTree.html">IntervalTree</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-data-structures_interval-tree.Node.html">Node</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function (exports) {
+  'use strict';
+
+  /**
+   * Sieve of Eratosthenes.
+   *
+   * Simple, ancient algorithm for finding all prime numbers up to given limit.
+   *
+   * Returns list of primes up to specified limit.
+   *
+   * For example, for limit 10 it should return following list of primes:
+   * [2, 3, 5, 7]
+   *
+   * @module primes/sieve-of-eratosthenes
+   * @param {Number} limit - Algorithm will returns list of primes up to
+   * specified limit
+   * @returns {Array} Will return list with all prime numbers up to provided
+   * limit
+   *
+   * @example
+   * var sieveOfEratosthenes = require('path/to/primes/sieve-of-eratosthenes')
+   * .sieveOfEratosthenes;
+   *
+   * console.log(sieveOfEratosthenes(12)); // [2, 3, 5, 7, 11]
+   */
+  exports.sieveOfEratosthenes = function (limit) {
+    var sieve = [],
+      primes = [], k, l;
+
+    sieve[1] = false;
+
+    for (k = 2; k &lt;= limit; k += 1) {
+      sieve[k] = true;
+    }
+
+    for (k = 2; k * k &lt;= limit; k += 1) {
+      if (sieve[k] !== true) {
+        continue;
+      }
+
+      for (l = k * k; l &lt;= limit; l += k) {
+        sieve[l] = false;
+      }
+    }
+
+    sieve.forEach(function (value, key) {
+      if (value) {
+        this.push(key);
+      }
+    }, primes);
+
+    return primes;
+  };
+
+}(typeof exports === 'undefined' ? window : exports));
+</code></pre>
+        </article>
+    </section>
 
 
 

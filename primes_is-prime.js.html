@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: data-structures/interval-tree</title>
+    <title>JSDoc: Source: primes/is-prime.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,152 +17,79 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: data-structures/interval-tree</h1>
+    <h1 class="page-title">Source: primes/is-prime.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Interval tree is an ordered tree data structure to hold intervals.</div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_interval-tree.js.html">data-structures/interval-tree.js</a>, <a href="data-structures_interval-tree.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var IT = require('path-to-algorithms/src/data-structures/interval-tree');
-var intervalTree = new IT.IntervalTree();
-
-intervalTree.add([0, 100]);
-intervalTree.add([101, 200]);
-intervalTree.add([10, 50]);
-intervalTree.add([120, 220]);
-
-console.log(intervalTree.contains(150)); // true
-console.log(intervalTree.contains(250)); // false
-console.log(intervalTree.intersects([210, 310])); // true
-console.log(intervalTree.intersects([310, 320])); // false</code></pre>
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-data-structures_interval-tree.IntervalTree.html">IntervalTree</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-data-structures_interval-tree.Node.html">Node</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function (exports) {
+  'use strict';
+
+  /**
+   * Advanced (optimised) method for checking if provided number is prime.
+   * For example for number 104743 it should return true, for 104744 - false.
+   *
+   * @module primes/is-prime
+   * @param {Number} number - Number that we check on prime
+   * @returns {Boolean} Will return true if provided number is prime
+   *
+   * @example
+   * var isPrime = require('path/to/primes/is-prime').isPrime;
+   *
+   * console.log(isPrime(7)); // true
+   * console.log(isPrime(18)); // false
+   */
+  exports.isPrime = function (number) {
+    if (number === 1) {
+      return false;
+
+    } else if (number &lt; 4) {
+      /**
+       * 2 and 3 are prime
+       */
+      return true;
+
+    } else if (number % 2 === 0) {
+      return false;
+
+    } else if (number &lt; 9) {
+      /**
+       * We have already excluded 4,6 and 8
+       */
+      return true;
+
+    } else if (number % 3 === 0) {
+      return false;
+
+    } else {
+      /**
+       * 'number' rounded to the greatest integer 'rounded' so that:
+       * rounded * rounded &lt;= number
+       */
+      var rounded = Math.floor(Math.sqrt(number)),
+        factor = 5;
+      while (factor &lt;= rounded) {
+        if (number % factor === 0) {
+          return false;
+        }
+        if (number % (factor + 2) === 0) {
+          return false;
+        }
+        factor += 6;
+      }
+    }
+
+    return true;
+  };
+
+}(typeof exports === 'undefined' ? window : exports));
+</code></pre>
+        </article>
+    </section>
 
 
 
