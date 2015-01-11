@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: graphs/shortest-path/floyd-warshall</title>
+    <title>JSDoc: Module: data-structures/red-black-tree</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: graphs/shortest-path/floyd-warshall</h1>
+    <h1 class="page-title">Module: data-structures/red-black-tree</h1>
 
     
 
@@ -38,9 +38,8 @@
     <div class="container-overview">
     
         
-            <div class="description">Floyd-Warshall algorithm. Finds the shortest path between
-each two vertices.<br><br>
-Complexity: O(|V|^3) where V is the number of vertices.</div>
+            <div class="description">Red-Black tree is a data structure which is
+a type of self-balancing binary search tree.</div>
         
 
         
@@ -55,54 +54,6 @@ Complexity: O(|V|^3) where V is the number of vertices.</div>
 
 
 
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>graph</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">A distance matrix of the graph.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -137,7 +88,7 @@ Complexity: O(|V|^3) where V is the number of vertices.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graphs_shortest-path_floyd-warshall.js.html">graphs/shortest-path/floyd-warshall.js</a>, <a href="graphs_shortest-path_floyd-warshall.js.html#line36">line 36</a>
+        <a href="data-structures_red-black-tree.js.html">data-structures/red-black-tree.js</a>, <a href="data-structures_red-black-tree.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -160,50 +111,31 @@ Complexity: O(|V|^3) where V is the number of vertices.</div>
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Array which contains the shortest
-   distance between each two vertices.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var floydWarshall =
-require('path-to-algorithms/src/graphs/shortest-path/floyd-warshall').floydWarshall;
-var distMatrix =
-   [[Infinity, 7,        9,       Infinity,  Infinity, 16],
-    [7,        Infinity, 10,       15,       Infinity, Infinity],
-    [9,        10,       Infinity, 11,       Infinity, 2],
-    [Infinity, 15,       11,       Infinity, 6,        Infinity],
-    [Infinity, Infinity, Infinity, 6,        Infinity, 9],
-    [16,       Infinity, 2,        Infinity, 9,        Infinity]];
+    <pre class="prettyprint"><code>var RBTree = require('../src/data-structures/red-black-tree').RBTree;
+var rbTree = new RBTree();
 
-// [ [ 0, 7, 9, 20, 20, 11 ],
-//   [ 7, 0, 10, 15, 21, 12 ],
-//   [ 9, 10, 0, 11, 11, 2 ],
-//   [ 20, 15, 11, 0, 6, 13 ],
-//   [ 20, 21, 11, 6, 0, 9 ],
-//   [ 11, 12, 2, 13, 9, 0 ] ]
-var shortestDists = floydWarshall(distMatrix);</code></pre>
+rbTree.put(1981, {
+  name: 'John',
+  surname: 'Smith'
+});
+rbTree.put(2000, {
+  name: 'Pavlo',
+  surname: 'Popov'
+});
+rbTree.put(1989, {
+  name: 'Garry',
+  surname: 'Fisher'
+});
+rbTree.put(1990, {
+  name: 'Derek',
+  surname: 'Anderson'
+});
+
+console.log(rbTree.get(1989)); // { name: 'Garry', surname: 'Fisher' }</code></pre>
 
 
 
@@ -215,6 +147,13 @@ var shortestDists = floydWarshall(distMatrix);</code></pre>
 
     
 
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="module-data-structures_red-black-tree.RBTree.html">RBTree</a></dt>
+            <dd></dd>
+        </dl>
     
 
      
