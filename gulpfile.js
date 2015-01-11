@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     stylish = require('jshint-stylish');
 
 gulp.task('jsdoc', shell.task([
-  './node_modules/.bin/jsdoc -c ./doc-config.json',
+  './node_modules/.bin/jsdoc -c ./doc-config.json'
 ]));
 
 gulp.task('lint', function () {
