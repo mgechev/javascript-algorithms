@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: graphs/searching/dfs.js</title>
+    <title>JSDoc: Module: primes/prime-factor-tree</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,74 +17,207 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: graphs/searching/dfs.js</h1>
+    <h1 class="page-title">Module: primes/prime-factor-tree</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>(function (exports) {
-  'use strict';
+        
+            
+        
+    
+</header>
 
-  var dfs = (function () {
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Method will return list of all primes for provided number.
+For example for number 18 it should return following list of primes
+[2, 3, 3].</div>
+        
 
-    function hasPath(graph, current, goal) {
-      var stack = [];
-      var visited = [];
-      var node;
-      stack.push(current);
-      visited[current] = true;
-      while (stack.length) {
-        node = stack.pop();
-        if (node === goal) {
-          return true;
-        }
-        for (var i = 0; i &lt; graph[node].length; i += 1) {
-          if (graph[node][i] &amp;&amp; !visited[i]) {
-            stack.push(i);
-            visited[i] = true;
-          }
-        }
-      }
-      return false;
-    }
+        
+            
 
-    /**
-     * Depth-First graph searching algorithm.
-     * Returns whether there's a path between two nodes in a graph.&lt;br>&lt;br>
-     * Time complexity: O(|V|^2).
-     *
-     * @module graphs/searching/dfs
-     * @public
-     * @param {Array} graph Adjacency matrix, which represents the graph.
-     * @param {Number} start Start node.
-     * @param {Number} goal Target node.
-     * @return {Boolean} Returns true if path between two nodes exists.
-     *
-     * @example
-     * var dfs = require('../src/graphs/searching/dfs').dfs;
-     * var graph = [[1, 1, 0, 0, 1, 0],
-     *              [1, 0, 1, 0, 1, 0],
-     *              [0, 1, 0, 1, 0, 0],
-     *              [0, 0, 1, 0, 1, 1],
-     *              [1, 1, 0, 1, 0, 0],
-     *              [0, 0, 0, 1, 0, 0]];
-     * var pathExists = dfs(graph, 1, 5); // true
-     */
-    return function (graph, start, goal) {
-      return hasPath(graph, start, goal);
-    };
-  }());
 
-  exports.dfs = dfs;
 
-}(typeof exports === 'undefined' ? window : exports));
-</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>number</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Number for which method will find all primes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="primes_prime-factor-tree.js.html">primes/prime-factor-tree.js</a>, <a href="primes_prime-factor-tree.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    List of available primes for provided number
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var primeFactorTree = require('path/to/primes/prime-factor-tree')
+.primeFactorTree;
+
+console.log(primeFactorTree(18)); // [2, 3, 3]
+console.log(primeFactorTree(600851475143)); // [71, 839, 1471, 6857]</code></pre>
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

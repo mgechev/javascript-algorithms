@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: graphs/searching/dfs.js</title>
+    <title>JSDoc: Source: primes/is-prime.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: graphs/searching/dfs.js</h1>
+    <h1 class="page-title">Source: primes/is-prime.js</h1>
 
     
 
@@ -29,57 +29,62 @@
             <pre class="prettyprint source linenums"><code>(function (exports) {
   'use strict';
 
-  var dfs = (function () {
-
-    function hasPath(graph, current, goal) {
-      var stack = [];
-      var visited = [];
-      var node;
-      stack.push(current);
-      visited[current] = true;
-      while (stack.length) {
-        node = stack.pop();
-        if (node === goal) {
-          return true;
-        }
-        for (var i = 0; i &lt; graph[node].length; i += 1) {
-          if (graph[node][i] &amp;&amp; !visited[i]) {
-            stack.push(i);
-            visited[i] = true;
-          }
-        }
-      }
+  /**
+   * Advanced (optimised) method for checking if provided number is prime.
+   * For example for number 104743 it should return true, for 104744 - false.
+   *
+   * @module primes/is-prime
+   * @param {Number} number - Number that we check on prime
+   * @returns {Boolean} Will return true if provided number is prime
+   *
+   * @example
+   * var isPrime = require('path/to/primes/is-prime').isPrime;
+   *
+   * console.log(isPrime(7)); // true
+   * console.log(isPrime(18)); // false
+   */
+  exports.isPrime = function (number) {
+    if (number === 1) {
       return false;
+
+    } else if (number &lt; 4) {
+      /**
+       * 2 and 3 are prime
+       */
+      return true;
+
+    } else if (number % 2 === 0) {
+      return false;
+
+    } else if (number &lt; 9) {
+      /**
+       * We have already excluded 4,6 and 8
+       */
+      return true;
+
+    } else if (number % 3 === 0) {
+      return false;
+
+    } else {
+      /**
+       * 'number' rounded to the greatest integer 'rounded' so that:
+       * rounded * rounded &lt;= number
+       */
+      var rounded = Math.floor(Math.sqrt(number));
+      var factor = 5;
+      while (factor &lt;= rounded) {
+        if (number % factor === 0) {
+          return false;
+        }
+        if (number % (factor + 2) === 0) {
+          return false;
+        }
+        factor += 6;
+      }
     }
 
-    /**
-     * Depth-First graph searching algorithm.
-     * Returns whether there's a path between two nodes in a graph.&lt;br>&lt;br>
-     * Time complexity: O(|V|^2).
-     *
-     * @module graphs/searching/dfs
-     * @public
-     * @param {Array} graph Adjacency matrix, which represents the graph.
-     * @param {Number} start Start node.
-     * @param {Number} goal Target node.
-     * @return {Boolean} Returns true if path between two nodes exists.
-     *
-     * @example
-     * var dfs = require('../src/graphs/searching/dfs').dfs;
-     * var graph = [[1, 1, 0, 0, 1, 0],
-     *              [1, 0, 1, 0, 1, 0],
-     *              [0, 1, 0, 1, 0, 0],
-     *              [0, 0, 1, 0, 1, 1],
-     *              [1, 1, 0, 1, 0, 0],
-     *              [0, 0, 0, 1, 0, 0]];
-     * var pathExists = dfs(graph, 1, 5); // true
-     */
-    return function (graph, start, goal) {
-      return hasPath(graph, start, goal);
-    };
-  }());
-
-  exports.dfs = dfs;
+    return true;
+  };
 
 }(typeof exports === 'undefined' ? window : exports));
 </code></pre>
