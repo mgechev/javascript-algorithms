@@ -23,8 +23,8 @@
      * @return {Array} Cartesian product of provided sets.
      *
      * @example
-     * var product = require('../src/combinatorics/cartesianproduct')
-     * .cartesianProduct;
+     * var product = require('path-to-algorithms/src/combinatorics/' +
+     * 'cartesianproduct').cartesianProduct;
      * var result = product([[1, 2, 3], [3, 2, 1]]);
      * // [ [ 1, 3 ],
      * //   [ 1, 2 ],
