@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: combinatorics/combinations</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Module: combinatorics/combinations</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Finds all the combinations of given array.<br><br>
+A combination is a way of selecting members from a grouping,
+such that (unlike permutations) the order of selection does not matter.
+For example given three fruits, say an apple, an orange and a pear,
+there are three combinations of two that can be drawn from this set:
+an apple and a pear; an apple and an orange; or a pear and an orange.</div>
+        
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Set of items.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>k</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Size of each combination.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="combinatorics_combinations.js.html">combinatorics/combinations.js</a>, <a href="combinatorics_combinations.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Returns all combinations.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var combinations = require('path-to-algorithms/src/' +
+'combinatorics/combinations').combinations;
+var result = combinations(['apple', 'orange', 'pear'], 2);
+// [['apple', 'orange'],
+//  ['apple', 'pear'],
+//  ['orange', 'pear']]
+console.log(result);</code></pre>
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-combinatorics_cartesianproduct.html">combinatorics/cartesianproduct</a></li><li><a href="module-combinatorics_combinations.html">combinatorics/combinations</a></li><li><a href="module-combinatorics_permutations.html">combinatorics/permutations</a></li><li><a href="module-combinatorics_variations-repetition.html">combinatorics/variations-repetition</a></li><li><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a></li><li><a href="module-data-structures_heap.html">data-structures/heap</a></li><li><a href="module-data-structures_interval-tree.html">data-structures/interval-tree</a></li><li><a href="module-data-structures_linked-list.html">data-structures/linked-list</a></li><li><a href="module-data-structures_red-black-tree.html">data-structures/red-black-tree</a></li><li><a href="module-graphs_others_topological-sort.html">graphs/others/topological-sort</a></li><li><a href="module-graphs_searching_bfs.html">graphs/searching/bfs</a></li><li><a href="module-graphs_searching_dfs.html">graphs/searching/dfs</a></li><li><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a></li><li><a href="module-graphs_shortest-path_dijkstra.html">graphs/shortest-path/dijkstra</a></li><li><a href="module-graphs_shortest-path_floyd-warshall.html">graphs/shortest-path/floyd-warshall</a></li><li><a href="module-graphs_spanning-trees_prim.html">graphs/spanning-trees/prim</a></li><li><a href="module-primes_is-prime.html">primes/is-prime</a></li><li><a href="module-primes_prime-factor-tree.html">primes/prime-factor-tree</a></li><li><a href="module-primes_sieve-of-eratosthenes.html">primes/sieve-of-eratosthenes</a></li></ul><h3>Classes</h3><ul><li><a href="module-data-structures_binary-search-tree.BinaryTree.html">BinaryTree</a></li><li><a href="module-data-structures_binary-search-tree.Node.html">Node</a></li><li><a href="module-data-structures_heap.Heap.html">Heap</a></li><li><a href="module-data-structures_interval-tree.IntervalTree.html">IntervalTree</a></li><li><a href="module-data-structures_interval-tree.Node.html">Node</a></li><li><a href="module-data-structures_linked-list.LinkedList.html">LinkedList</a></li><li><a href="module-data-structures_linked-list.Node.html">Node</a></li><li><a href="module-data-structures_red-black-tree.RBTree.html">RBTree</a></li><li><a href="module-graphs_shortest-path_bellman-ford.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></li><li><a href="module-graphs_spanning-trees_prim.Vertex.html">Vertex</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Sun Jan 11 2015 20:12:49 GMT+0200 (EET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
