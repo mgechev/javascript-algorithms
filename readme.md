@@ -20,13 +20,13 @@ npm install
 
 **To setup repository with documentation**
 
-1) go to the parent directory of the `javascript-algorithms` folder and call:
+- Go to the parent directory of the `javascript-algorithms` folder and call:
 
 ```bash
 git clone git@github.com:mgechev/javascript-algorithms.git javascript-algorithms-docs
 ```
 
-2) go to the `javascript-algorithms-docs` folder and change current branch to `gh-pages`:
+- Go to the `javascript-algorithms-docs` folder and change current branch to `gh-pages`:
 
 ```bash
 git checkout gh-pages
@@ -46,16 +46,10 @@ and all files in `javascript-algorithms-docs` folder will be updated.
 
 **To run tests**
 
-You should install `jasmine-node`:
-
-```bash
-npm install -g jasmine-node
-```
-
 Call:
 
 ```bash
-jasmine-node test/
+gulp test
 ```
 
 and all `*.spec.js` files will be executed.
