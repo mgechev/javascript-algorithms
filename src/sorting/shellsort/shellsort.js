@@ -1,7 +1,6 @@
 (function (exports) {
   'use strict';
 
-
   function compare(a, b) {
     return a - b;
   }

@@ -32,7 +32,7 @@
    * @param {Node} left Left child node.
    * @param {Node} right Right child node.
    */
-  exports.Node = function(start, end, left, right) {
+  exports.Node = function (start, end, left, right) {
     /**
      * Node interval.
      * @member {Array}
@@ -46,7 +46,7 @@
     /**
      * Parent node.
      * @member {Node}
-     */    
+     */
     this.parentNode = null;
     /**
      * Left child node.
@@ -66,7 +66,7 @@
    * @public
    * @constructor
    */
-  exports.IntervalTree = function() {
+  exports.IntervalTree = function () {
     /**
      * Root node of the tree.
      * @member {Node}
@@ -295,7 +295,7 @@
 
   /**
    * Remove interval from the tree.
-   * 
+   *
    * @public
    * @method
    * @param {Array} intreval Array with start and end of the interval.

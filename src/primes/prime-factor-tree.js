@@ -4,29 +4,30 @@
  * For example for number 18 it should return following list of primes [2, 3, 3]
  */
 (function (exports) {
-    'use strict';
+  'use strict';
 
-    /**
-     * Method will list of all primes for provided number
-     *
-     * @param {Number} number
-     * @returns {Array}
-     */
-    exports.primeFactorTree = function (number) {
-        var div = 2,
-            array = [];
+  /**
+   * Method will list of all primes for provided number
+   *
+   * @module primes
+   * @param {Number} number
+   * @returns {Array}
+   */
+  exports.primeFactorTree = function (number) {
+    var div = 2,
+      array = [];
 
-        while (number > 1) {
-            if (number % div === 0) {
-                number /= div;
+    while (number > 1) {
+      if (number % div === 0) {
+        number /= div;
 
-                array.push(div);
-            } else {
-                div += 1;
-            }
-        }
+        array.push(div);
+      } else {
+        div += 1;
+      }
+    }
 
-        return array;
-    };
+    return array;
+  };
 
 }(typeof exports === 'undefined' ? window : exports));

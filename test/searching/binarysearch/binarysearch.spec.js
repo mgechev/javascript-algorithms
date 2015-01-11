@@ -25,5 +25,4 @@ describe('Binary search', function () {
   it('should work with empty arrays', function () {
     expect(binarySearch([], 4)).toBe(-1);
   });
-
 });

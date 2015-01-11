@@ -24,5 +24,4 @@ describe('longest subsequence', function () {
     expect(longestSubsequence(sequence).toString())
       .toBe([2, 3, 6, 9, 11].toString());
   });
-
 });

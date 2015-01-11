@@ -3,7 +3,7 @@ module.exports = function (sort, algorithmName, options) {
 
   options = options || {
     integers: false,
-    reverse : true
+    reverse: true
   };
 
   describe(algorithmName, function () {

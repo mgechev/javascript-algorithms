@@ -33,5 +33,4 @@ describe('dfs', function () {
       expect(dfs([[0, 0], [1, 0]], 0, 1)).toBeFalsy();
       expect(dfs([[0, 0, 0], [0, 0, 1], [0, 0, 0]], 0, 2)).toBeFalsy();
     });
-
 });

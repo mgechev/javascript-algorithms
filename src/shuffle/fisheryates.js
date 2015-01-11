@@ -23,4 +23,3 @@
   exports.shuffle = shuffle;
 
 }(typeof exports === 'undefined' ? window : exports));
-

@@ -28,4 +28,3 @@
   exports.combinations = combinations;
 
 }(typeof exports === 'undefined' ? window : exports));
-

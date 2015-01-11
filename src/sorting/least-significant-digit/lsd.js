@@ -41,4 +41,3 @@
   exports.lsd = lsd;
 
 }(typeof exports === 'undefined' ? window : exports));
-
