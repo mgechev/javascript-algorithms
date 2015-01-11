@@ -24,7 +24,7 @@
 
   /**
    * Node which describes an interval.
-   * 
+   *
    * @public
    * @constructor
    * @param {Number} start Start of the interval.
@@ -39,7 +39,7 @@
      */
     this.interval = [start, end];
     /**
-     * Max endpoint in subtree which starts from this node. 
+     * Max endpoint in subtree which starts from this node.
      * @member {Number}
      */
     this.max = -Infinity;
@@ -106,7 +106,7 @@
 
   /**
    * Add new interval to the tree.
-   * 
+   *
    * @public
    * @param {Array} intreval Array with start and end points of the interval.
    */
@@ -125,7 +125,8 @@
     if (node.interval[0] <= point && node.interval[1] >= point) {
       return true;
     }
-    var result = false, temp;
+    var result = false;
+    var temp;
     ['left', 'right'].forEach(function (key) {
       temp = node[key];
       if (temp) {
@@ -140,7 +141,7 @@
   /**
    * Checks or point belongs to at least one intarval from the tree.<br><br>
    * Complexity: O(log N).
-   * 
+   *
    * @public
    * @method
    * @param {Number} point Point which should be checked.
@@ -157,7 +158,8 @@
     if (intersects(node.interval, interval)) {
       return true;
     }
-    var result = false, temp;
+    var result = false;
+    var temp;
     ['left', 'right'].forEach(function (side) {
       temp = node[side];
       if (temp && temp.max >= interval[0]) {
@@ -194,7 +196,7 @@
 
   /**
    * Returns height of the tree.
-   * 
+   *
    * @public
    * @method
    * @return {Number} Height of the tree.
@@ -212,8 +214,10 @@
    * @return {Node} Node with the largest endpoint.
    */
   exports.IntervalTree.prototype.findMax = function (node) {
-    var stack = [node],
-        current, max = -Infinity, maxNode;
+    var stack = [node];
+    var current;
+    var max = -Infinity;
+    var maxNode;
     while (stack.length) {
       current = stack.pop();
       if (current.left) {
@@ -275,8 +279,8 @@
       // Adjust the max value
       var p = node.parentNode;
       if (p) {
-        var maxNode = this.findMax(p),
-            max = maxNode.interval[1];
+        var maxNode = this.findMax(p);
+        var max = maxNode.interval[1];
         while (maxNode) {
           if (maxNode.max === node.interval[1]) {
             maxNode.max = max;

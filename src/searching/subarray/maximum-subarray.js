@@ -13,8 +13,8 @@
    *   the elements of subarray of the input
    */
   function maxSubarray(array) {
-    var currentMax = 0,
-      max = 0;
+    var currentMax = 0;
+    var max = 0;
 
     for (var i = 0; i < array.length; i += 1) {
       currentMax = Math.max(0, currentMax + array[i]);

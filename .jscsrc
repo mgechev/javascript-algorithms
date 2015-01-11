@@ -4,6 +4,7 @@
   "requireSpacesInFunctionExpression": {
     "beforeOpeningCurlyBrace": true
   },
+  "disallowMultipleVarDecl": true,
   "requireSpacesInsideObjectBrackets": "allButNested",
   "disallowSpacesInsideArrayBrackets": true,
   "disallowSpacesInsideParentheses": true,
@@ -22,6 +23,7 @@
   "disallowMultipleLineBreaks": true,
   "disallowKeywordsOnNewLine": ["else"],
   "requireLineFeedAtFileEnd": true,
+  "disallowTrailingWhitespace": true,
   "excludeFiles": ["node_modules/**", "bower_components/**"],
   "validateIndentation": 2
 }

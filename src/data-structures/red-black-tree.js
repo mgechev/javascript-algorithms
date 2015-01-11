@@ -1,7 +1,7 @@
 /**
  * Red-Black tree is a data structure which is
  * a type of self-balancing binary search tree.
- * 
+ *
  * @example
  *
  * var RBTree = require('../src/data-structures/red-black-tree').RBTree;
@@ -25,7 +25,7 @@
  * });
  *
  * console.log(rbTree.get(1989)); // { name: 'Garry', surname: 'Fisher' }
- * 
+ *
  * @module data-structures/red-black-tree
  */
 (function (exports) {
@@ -43,7 +43,7 @@
 
   /**
    * Node of the Red-Black tree.
-   * 
+   *
    * @private
    * @constructor
    * @param {Number} key Key of the node.
@@ -105,7 +105,7 @@
 
   /**
    * Red-Black Tree.
-   * 
+   *
    * @public
    * @constructor
    */
@@ -116,7 +116,7 @@
   /**
    * Add value associated with a given key.<br><br>
    * Complexity: O(log N).
-   * 
+   *
    * @public
    * @method
    * @param {Number} key Key.
@@ -130,7 +130,7 @@
   /**
    * Returns true or false depending on whether
    * given node is red.
-   * 
+   *
    * @private
    * @method
    * @param {Node} node Node which sould be checked.
@@ -146,7 +146,7 @@
   /**
    * Helper function for insertion of given key,
    * value pair into the Red-Black tree.
-   * 
+   *
    * @private
    * @method
    * @param {Number} key Key.

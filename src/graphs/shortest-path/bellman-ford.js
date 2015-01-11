@@ -62,7 +62,9 @@
    *   with shortest-path information.
    */
   exports.bellmanFord = function (vertexes, edges, source) {
-    var distances = {}, parents = {}, c;
+    var distances = {};
+    var parents = {};
+    var c;
     for (var i = 0; i < vertexes.length; i += 1) {
       distances[vertexes[i]] = Infinity;
       parents[vertexes[i]] = null;

@@ -40,13 +40,13 @@
      * @returns {array} The array with sorted subarray
      */
     function merge(array, start, middle, end, cmp) {
-      var left = [],
-          right = [],
-          leftSize = middle - start,
-          rightSize = end - middle,
-          maxSize = Math.max(leftSize, rightSize),
-          size = end - start,
-          i;
+      var left = [];
+      var right = [];
+      var leftSize = middle - start;
+      var rightSize = end - middle;
+      var maxSize = Math.max(leftSize, rightSize);
+      var size = end - start;
+      var i;
 
       for (i = 0; i < maxSize; i += 1) {
         if (i < leftSize) {

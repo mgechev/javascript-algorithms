@@ -3,11 +3,11 @@
 
   var dijkstra = (function () {
 
-    var Heap = require('../../data-structures/heap.js').Heap,
-        current,
-        visited,
-        distance,
-        unvisited;
+    var Heap = require('../../data-structures/heap.js').Heap;
+    var current;
+    var visited;
+    var distance;
+    var unvisited;
 
     /**
      * Creates a new node instance.
@@ -63,21 +63,21 @@
     }
 
     /**
-     * Dijkstra's shortest path algorithm. Finds the minimum 
+     * Dijkstra's shortest path algorithm. Finds the minimum
      * distance between two given nodes using a distance matrix.<br><br>
      * For the implementation is not used the most suitable data structure
      * (Fibonacci heap) but the Binary heap gives also good results.<br><br>
      *
      * Time complexity: O(|E|+|V|log(|V|)) where V and E are the number of
      * vertices and edges respectively.
-     * 
+     *
      * @public
      * @module graphs/shortest-path/dijkstra
      * @param {Number} src Source node.
      * @param {Number} dest Destination node.
      * @param {Array} graph A distance matrix of the graph.
      * @returns {Number} The shortest distance between two nodes.
-     * 
+     *
      * @example
      * var dijkstra =
      * require('path-to-algorithms/src/graphs/shortest-path/dijkstra').dijkstra;

@@ -22,9 +22,9 @@
      * @param {number} right The end of the subarray
      */
     function partition(array, left, right, compare) {
-      var cmp = array[right - 1],
-          minEnd = left,
-          maxEnd;
+      var cmp = array[right - 1];
+      var minEnd = left;
+      var maxEnd;
       for (maxEnd = left; maxEnd < right - 1; maxEnd += 1) {
         if (compare(array[maxEnd], cmp) < 0) {
           swap(array, maxEnd, minEnd);

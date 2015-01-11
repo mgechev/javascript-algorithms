@@ -41,9 +41,9 @@
       // Find the maximum prefix and split the current node if prefix exists
       var prefix = maxPrefix(current.value, suffix);
       if (prefix.length) {
-        var temp = current.value,
-            suffixSuffix = suffix.substr(prefix.length, suffix.length),
-            currentSuffix = temp.substr(prefix.length, temp.length);
+        var temp = current.value;
+        var suffixSuffix = suffix.substr(prefix.length, suffix.length);
+        var currentSuffix = temp.substr(prefix.length, temp.length);
         current.value = prefix;
         addNode(currentSuffix, current);
         addNode(suffixSuffix, current);

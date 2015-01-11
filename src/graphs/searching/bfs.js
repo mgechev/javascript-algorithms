@@ -35,10 +35,10 @@
      * var shortestPath = bfs(graph, 1, 5); // [1, 2, 3, 5]
      */
     return function (graph, startNode, targetNode) {
-      var parents = [],
-          queue = [],
-          visited = [],
-          current;
+      var parents = [];
+      var queue = [];
+      var visited = [];
+      var current;
       queue.push(startNode);
       parents[startNode] = null;
       visited[startNode] = true;

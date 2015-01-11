@@ -26,7 +26,7 @@
  * edges.push(new Edge(new Vertex(8), new Vertex(7), 7));
  * graph = new Graph(edges, edges.length);
  *
- * // { edges: 
+ * // { edges:
  * //    [ { e: '1', v: 0, distance: 4 },
  * //      { e: '2', v: 8, distance: 2 },
  * //      { e: '3', v: 2, distance: 7 },
@@ -120,12 +120,12 @@
 
     return function () {
       init.call(this);
-      var inTheTree = {},
-          startVertex = this.edges[0].e.id,
-          spannigTree = [],
-          parents = {},
-          distances = {},
-          current;
+      var inTheTree = {};
+      var startVertex = this.edges[0].e.id;
+      var spannigTree = [];
+      var parents = {};
+      var distances = {};
+      var current;
       inTheTree[startVertex] = true;
       queue.add({
         node: startVertex,
@@ -138,8 +138,8 @@
           if (inTheTree[e.v.id] && inTheTree[e.e.id]) {
             return;
           }
-          var collection = queue.getCollection(),
-              node;
+          var collection = queue.getCollection();
+          var node;
           if (e.e.id === current) {
             node = e.v.id;
           } else if (e.v.id === current) {

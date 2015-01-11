@@ -13,8 +13,8 @@ describe('Advanced (optimised) method that checks number on prime',
   });
 
   it('the 10001st prime number should be 104743', function () {
-    var count = 1, //we know that 2 is prime
-      value = 1;
+    var count = 1; //we know that 2 is prime
+    var value = 1;
 
     while (count < 10001) {
       value += 2;

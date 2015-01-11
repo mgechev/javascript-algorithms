@@ -11,7 +11,8 @@
    * @returns {Array} Sorted array
    */
   function lsd(arr, letterIdx) {
-    var temp, count;
+    var temp;
+    var count;
     letterIdx = letterIdx || 1;
     for (var i = letterIdx - 1; i >= 0; i -= 1) {
       count = [];

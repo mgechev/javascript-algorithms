@@ -38,8 +38,8 @@
    * @param {number} q The second node
    */
   QuickUnion.prototype.union = function (p, q) {
-    var pRoot = this._root(p),
-        qRoot = this._root(q);
+    var pRoot = this._root(p);
+    var qRoot = this._root(q);
     this._ids[pRoot] = qRoot;
   };
 

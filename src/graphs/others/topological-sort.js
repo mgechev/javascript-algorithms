@@ -43,9 +43,9 @@
      * var vertices = topsort(graph); // ['v3', 'v4', 'v1', 'v5', 'v2']
      */
     return function (graph) {
-      var result = [],
-          visited = [],
-          temp = [];
+      var result = [];
+      var visited = [];
+      var temp = [];
       for (var node in graph) {
         if (!visited[node] && !temp[node]) {
           topologicalSortHelper(node, visited, temp, graph, result);
