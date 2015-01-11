@@ -16,6 +16,7 @@
     }
 
     /**
+     * Finds all the combinations of given array.<br><br>
      * A combination is a way of selecting members from a grouping,
      * such that (unlike permutations) the order of selection does not matter.
      * For example given three fruits, say an apple, an orange and a pear,
