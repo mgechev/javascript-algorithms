@@ -2,6 +2,9 @@
  * Sieve of Eratosthenes
  *
  * Simple, ancient algorithm for finding all prime numbers up to any given limit
+ *
+ * For example for limit 12 it should return following list of primes:
+ * [2, 3, 5, 7, 11]
  */
 (function (exports) {
     'use strict';

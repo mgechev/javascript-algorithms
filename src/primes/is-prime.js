@@ -1,5 +1,7 @@
 /**
  * Advanced (optimised) method for checking if provided number is prime
+ *
+ * For example for number 104743 it should return true, for 104744 - false
  */
 (function (exports) {
     'use strict';
