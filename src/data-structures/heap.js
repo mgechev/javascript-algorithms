@@ -97,7 +97,7 @@
   /**
    * Changes the key.<br><br>
    * Complexity: O(log N).
-   * 
+   *
    * @public
    * @param {Number} index Index of the value which should be changed.
    * @param {Number|Object} value New value according to the index.

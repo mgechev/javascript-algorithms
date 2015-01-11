@@ -23,6 +23,7 @@
   "disallowMultipleLineBreaks": true,
   "disallowKeywordsOnNewLine": ["else"],
   "requireLineFeedAtFileEnd": true,
+  "disallowTrailingWhitespace": true,
   "excludeFiles": ["node_modules/**", "bower_components/**"],
   "validateIndentation": 2
 }

@@ -24,7 +24,7 @@
 
   /**
    * Node which describes an interval.
-   * 
+   *
    * @public
    * @constructor
    * @param {Number} start Start of the interval.
@@ -39,7 +39,7 @@
      */
     this.interval = [start, end];
     /**
-     * Max endpoint in subtree which starts from this node. 
+     * Max endpoint in subtree which starts from this node.
      * @member {Number}
      */
     this.max = -Infinity;
@@ -106,7 +106,7 @@
 
   /**
    * Add new interval to the tree.
-   * 
+   *
    * @public
    * @param {Array} intreval Array with start and end points of the interval.
    */
@@ -141,7 +141,7 @@
   /**
    * Checks or point belongs to at least one intarval from the tree.<br><br>
    * Complexity: O(log N).
-   * 
+   *
    * @public
    * @method
    * @param {Number} point Point which should be checked.
@@ -196,7 +196,7 @@
 
   /**
    * Returns height of the tree.
-   * 
+   *
    * @public
    * @method
    * @return {Number} Height of the tree.

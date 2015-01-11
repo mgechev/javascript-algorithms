@@ -41,7 +41,7 @@ describe('BFS', function () {
    *
    *  0 ---> 1
    *   \     |
-   *    \    v 
+   *    \    v
    *      -> 2
    */
   it('should not update the parent node once set', function () {

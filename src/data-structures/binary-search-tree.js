@@ -190,7 +190,7 @@
   /**
    * Finds a node by it's value in a given sub-tree.
    * Average time complexity: O(log N).
-   * 
+   *
    * @private
    * @param {Number|String} Value of the node which should be found.
    * @param {Node} Current node to be checked.
@@ -221,7 +221,7 @@
    * @param {Node} oldChild Child to be replaced.
    * @param {Node} newChild Child replacement.
    */
-  exports.BinaryTree.prototype._replaceChild = 
+  exports.BinaryTree.prototype._replaceChild =
    function (parent, oldChild, newChild) {
     if (!parent) {
       this._root = newChild;
