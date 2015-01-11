@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: data-structures/interval-tree</title>
+    <title>JSDoc: Source: primes/prime-factor-tree.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,152 +17,55 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: data-structures/interval-tree</h1>
+    <h1 class="page-title">Source: primes/prime-factor-tree.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Interval tree is an ordered tree data structure to hold intervals.</div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_interval-tree.js.html">data-structures/interval-tree.js</a>, <a href="data-structures_interval-tree.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var IT = require('path-to-algorithms/src/data-structures/interval-tree');
-var intervalTree = new IT.IntervalTree();
-
-intervalTree.add([0, 100]);
-intervalTree.add([101, 200]);
-intervalTree.add([10, 50]);
-intervalTree.add([120, 220]);
-
-console.log(intervalTree.contains(150)); // true
-console.log(intervalTree.contains(250)); // false
-console.log(intervalTree.intersects([210, 310])); // true
-console.log(intervalTree.intersects([310, 320])); // false</code></pre>
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-data-structures_interval-tree.IntervalTree.html">IntervalTree</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-data-structures_interval-tree.Node.html">Node</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function (exports) {
+  'use strict';
+
+  /**
+   * Method will return list of all primes for provided number.
+   * For example for number 18 it should return following list of primes
+   * [2, 3, 3].
+   *
+   * @module primes/prime-factor-tree
+   * @param {Number} number - Number for which method will find all primes
+   * @returns {Array} List of available primes for provided number
+   *
+   * @example
+   * var primeFactorTree = require('path/to/primes/prime-factor-tree')
+   * .primeFactorTree;
+   *
+   * console.log(primeFactorTree(18)); // [2, 3, 3]
+   * console.log(primeFactorTree(600851475143)); // [71, 839, 1471, 6857]
+   */
+  exports.primeFactorTree = function (number) {
+    var div = 2,
+      array = [];
+
+    while (number > 1) {
+      if (number % div === 0) {
+        number /= div;
+
+        array.push(div);
+      } else {
+        div += 1;
+      }
+    }
+
+    return array;
+  };
+
+}(typeof exports === 'undefined' ? window : exports));
+</code></pre>
+        </article>
+    </section>
 
 
 
