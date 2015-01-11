@@ -7,11 +7,11 @@
    * [2, 3, 3].
    *
    * @module primes/prime-factor-tree
-   * @param {Number} number - Number for which method will find all primes
-   * @returns {Array} List of available primes for provided number
+   * @param {Number} number - Number for which method will find all primes.
+   * @returns {Array} List of available primes for provided number.
    *
    * @example
-   * var primeFactorTree = require('path/to/primes/prime-factor-tree')
+   * var primeFactorTree = require('path-to-algorithms/src/prime-factor-tree')
    * .primeFactorTree;
    *
    * console.log(primeFactorTree(18)); // [2, 3, 3]
