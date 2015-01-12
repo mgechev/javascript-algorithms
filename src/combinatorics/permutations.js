@@ -46,7 +46,6 @@
     * @module combinatorics/permutations
     * @public
     * @param {Array} arr Array to find the permutations of.
-    * @param {Number} current Current element.
     * @returns {Array} Array containing all the permutations.
     */
     return function (arr) {
