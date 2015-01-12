@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: primes/sieve-of-eratosthenes.js</title>
+    <title>JSDoc: Module: others/levenshtein-distance</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,75 +17,230 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: primes/sieve-of-eratosthenes.js</h1>
+    <h1 class="page-title">Module: others/levenshtein-distance</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>(function (exports) {
-  'use strict';
+        
+            
+        
+    
+</header>
 
-  /**
-   * Sieve of Eratosthenes.
-   *
-   * Simple, ancient algorithm for finding all prime numbers up to given limit.
-   *
-   * Returns list of primes up to specified limit.
-   *
-   * For example, for limit 10 it should return following list of primes:
-   * [2, 3, 5, 7].
-   *
-   * @module primes/sieve-of-eratosthenes
-   * @param {Number} limit - Algorithm will returns list of primes up to
-   * specified limit.
-   * @returns {Array} Will return list with all prime numbers up to provided.
-   * limit.
-   *
-   * @example
-   * var sieveOfEratosthenes =
-   * require('path-to-algorithms/src/sieve-of-eratosthenes').sieveOfEratosthenes;
-   *
-   * console.log(sieveOfEratosthenes(12)); // [2, 3, 5, 7, 11]
-   */
-  exports.sieveOfEratosthenes = function (limit) {
-    var sieve = [];
-    var primes = [];
-    var k;
-    var l;
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">The Levenshtein distance between two strings is a minimum number
+of edits needed to transform one string into the other, with the
+allowable edit operations being insertion, deletion,
+or substitution of a single character.</div>
+        
 
-    sieve[1] = false;
+        
+            
 
-    for (k = 2; k &lt;= limit; k += 1) {
-      sieve[k] = true;
-    }
 
-    for (k = 2; k * k &lt;= limit; k += 1) {
-      if (sieve[k] !== true) {
-        continue;
-      }
 
-      for (l = k * k; l &lt;= limit; l += k) {
-        sieve[l] = false;
-      }
-    }
 
-    sieve.forEach(function (value, key) {
-      if (value) {
-        this.push(key);
-      }
-    }, primes);
 
-    return primes;
-  };
 
-}(typeof exports === 'undefined' ? window : exports));
-</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>s</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Source string.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>t</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Target string.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="others_levenshtein-distance.js.html">others/levenshtein-distance.js</a>, <a href="others_levenshtein-distance.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Minimum number of edits needed
+to transform source string into the target string.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var dist = require('path-to-algorithms/src/others/' +
+'levenshtein-distance').levenshteinDistance;
+console.log(dist('kitten', 'sitting')); // 3</code></pre>
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
