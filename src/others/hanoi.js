@@ -9,7 +9,7 @@
    *
    * @example
    *
-   * var hanoi = require('../src/others/hanoi').hanoi;
+   * var hanoi = require('path-to-algorithms/src/others/hanoi').hanoi;
    * var movements = hanoi(3, 'a', 'b', 'c');
    *
    * // Move a to c
