@@ -10,7 +10,8 @@
             "./src/graphs/spanning-trees/",
             "./src/data-structures/",
             "./src/combinatorics/",
-            "./src/primes/"
+            "./src/primes/",
+            "./src/others/"
         ],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "docs"
