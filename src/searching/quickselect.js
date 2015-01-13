@@ -1,7 +1,26 @@
 (function (exports) {
   'use strict';
 
-  // O(n)
+  /**
+   * Returns the n-th smallest element of list within
+   * lo..hi inclusive (i.e. lo <= n <= hi).<br><br>
+   * Time complexity: O(N).
+   *
+   * @example
+   *
+   * var quickselect = require('path-to-algorithms/src/searching/'+
+   * 'quickselect').quickselect;
+   * var result = quickselect([5, 1, 2, 2, 0, 3], 1, 0, 5);
+   * console.log(result); // 1
+   *
+   * @public
+   * @module searching/quickselect
+   * @param {Array} arr Input array.
+   * @param {Number} n A number of an element.
+   * @param {Number} lo Low index.
+   * @param {Number} lo High index.
+   * @return Returns n-th smallest element.
+   */
   function quickselect(arr, n, lo, hi) {
     function partition(arr, lo, hi, pivotIdx) {
       function swap(arr, i, j) {
@@ -45,4 +64,4 @@
   }
   exports.quickselect = quickselect;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
