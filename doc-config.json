@@ -12,7 +12,8 @@
             "./src/combinatorics/",
             "./src/primes/",
             "./src/others/",
-            "./src/searching/"
+            "./src/searching/",
+            "./src/sets/"
         ],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "docs"
