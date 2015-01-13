@@ -1,20 +1,15 @@
-/**
- * Finds the maximum subarray using the divide and conquer algorithm
- * by Bentley, Jon (1984) (complexity O(n(logn)));
- */
-
 (function (exports) {
   'use strict';
 
   /**
    * Accepts an array and range. Finds the maximum sum of elements
    * around the middle of the range.
-   *
-   * @param {array} array
-   * @param {number} left - the left interval of the range
-   * @param {number} middle - the middle of the range
-   * @param {number} right - the right side of the range
-   * @return {number} the maximum sum including the middle element
+   * @private
+   * @param {Array} array Input array.
+   * @param {Number} left Left interval of the range.
+   * @param {Number} middle Middle of the range.
+   * @param {Number} right Right side of the range.
+   * @return {Number} The maximum sum including the middle element.
    */
   function crossSubarray(array, left, middle, right) {
     var leftSum = -Infinity;
@@ -39,13 +34,12 @@
   }
 
   /**
-   * Using divide and conquer finds the maximum sum of subarray of the given
-   *
-   * @param {array} array
-   * @param {number} left side of the range
-   * @param {number} the right side of the range
-   * @return {number} the maximum sum of the elements of
-   *                      subarray whithin the given range
+   * @private
+   * @param {Array} array Input array.
+   * @param {Number} left Left side of the range.
+   * @param {Number} right Right side of the range.
+   * @return {Number} Maximum sum of the elements of
+   * subarray whithin the given range.
    */
   function maxSubarrayPartitioner(array, left, right) {
     if (right - left <= 1) {
@@ -60,10 +54,22 @@
   }
 
   /**
-   * Returns the maximum sum of the elements of a subarray of the given array
+   * Finds the maximum sum of the elements of a subarray in a given array
+   * using the divide and conquer algorithm by Bentley, Jon (1984).
+   * For example, for the sequence of values -2, 1, -3, 4, -1, 2, 1, -5, 4
+   * the contiguous subarray with the largest sum is 4, -1, 2, 1, with sum 6.
+   * <br><br>
+   * Time complexity: O(N log N).
    *
-   * @param {array} the array
-   * @return the maximum sum
+   * @example
+   * var max = require('path-to-algorithms/src/searching/'+
+   * 'maximum-subarray-divide-and-conquer').maxSubarray;
+   * console.log(max([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6
+   *
+   * @public
+   * @module searching/maximum-subarray-divide-and-conquer
+   * @param {Array} array Input array.
+   * @return {Number} Maximum sum of the elements of a subarray.
    */
   function maxSubarray(array) {
     return maxSubarrayPartitioner(array, 0, array.length);
@@ -71,4 +77,4 @@
 
   exports.maxSubarray = maxSubarray;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
