@@ -1,5 +1,5 @@
 var cs =
-  require('../../../src/sorting/linearsort/countingsort').countingSort;
+  require('../../src/sorting/countingsort').countingSort;
 
 describe('countingsort', function () {
   'use strict';

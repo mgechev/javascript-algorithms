@@ -1,5 +1,5 @@
 var bs =
-  require('../../../src/sorting/linearsort/bucketsort').bucketSort;
+  require('../../src/sorting/bucketsort').bucketSort;
 
 describe('bucketsort', function () {
   'use strict';
