@@ -2,15 +2,22 @@
   'use strict';
 
   /**
-   * Finds the maximum sum of subarray's element of given array
-   * using the Kadane's algorithm
-   * It's complexity is O(n). The algorithm can be found here:
-   * https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane.27s_algorithm
+   * Finds the maximum sum of the elements of a subarray in a given array
+   * using the Kadane's algorithm.
+   * For example, for the sequence of values -2, 1, -3, 4, -1, 2, 1, -5, 4
+   * the contiguous subarray with the largest sum is 4, -1, 2, 1, with sum 6.
+   * <br><br>
+   * Time complexity: O(N).
+   *
+   * @example
+   * var max = require('path-to-algorithms/src/searching/'+
+   * 'maximum-subarray').maxSubarray;
+   * console.log(max([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6
    *
    * @public
-   * @param {array} array Input array
-   * @returns {number} max The maximum sum of
-   *   the elements of subarray of the input
+   * @module searching/maximum-subarray
+   * @param {Array} array Input array.
+   * @return {Number} Maximum sum of the elements of a subarray.
    */
   function maxSubarray(array) {
     var currentMax = 0;
@@ -25,4 +32,4 @@
 
   exports.maxSubarray = maxSubarray;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
