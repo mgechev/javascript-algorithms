@@ -9,11 +9,11 @@
    * @example
    *
    * var search = require('path-to-algorithms/src/searching/'+
-   * 'binarysearch/binarysearch').binarySearch;
+   * 'binarysearch').binarySearch;
    * console.log(search([1, 2, 3, 4, 5], 4)); // 3
    *
    * @public
-   * @module searching/binarysearch/binarysearch
+   * @module searching/binarysearch
    * @param {Array} array Input array.
    * @param {Number} value Value of the element which index should be found.
    * @returns {Number} Index of the element or -1 if not found.

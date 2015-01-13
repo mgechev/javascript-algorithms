@@ -1,7 +1,7 @@
 'use strict';
 
 var maxSubArray =
-  require('../../../src/searching/subarray/maximum-subarray-divide-and-conquer')
+  require('../../src/searching/maximum-subarray-divide-and-conquer')
   .maxSubarray;
 
 describe('Maximum subarray implemented with divide and conquer', function () {

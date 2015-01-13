@@ -1,7 +1,7 @@
 'use strict';
 
 var binarySearch =
-  require('../../../src/searching/binarysearch/binarysearch').binarySearch;
+  require('../../src/searching/binarysearch').binarySearch;
 
 describe('Binary search', function () {
 

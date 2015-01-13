@@ -1,8 +1,8 @@
 'use strict';
 
 var longestSubsequence =
-  require('../../../src/searching/' +
-    'longest-increasing-subsequence/longest-increasing-subsequence')
+  require('../../src/searching/' +
+    'longest-increasing-subsequence')
     .longestSubsequence;
 
 describe('longest subsequence', function () {
