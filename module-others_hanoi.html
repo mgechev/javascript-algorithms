@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Vertex</title>
+    <title>JSDoc: Module: others/hanoi</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Vertex</h1>
+    <h1 class="page-title">Module: others/hanoi</h1>
 
     
 
@@ -28,11 +28,8 @@
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="module-graphs_spanning-trees_prim.html">graphs/spanning-trees/prim</a>.</span>
         
-        Vertex
-        </h2>
+            
         
     
 </header>
@@ -41,20 +38,13 @@
     <div class="container-overview">
     
         
+            <div class="description">Returns all movements needed to solve Hanoi Tower problem.</div>
+        
 
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Vertex"><span class="type-signature"></span>new Vertex<span class="signature">(id)</span><span class="type-signature"></span></h4>
-
-    
+        
+            
 
 
-
-<div class="description">
-    Graph vertex.
-</div>
 
 
 
@@ -89,7 +79,7 @@
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>count</code></td>
             
 
             <td class="type">
@@ -105,7 +95,85 @@
 
             
 
-            <td class="description last">Id of the vertex.</td>
+            <td class="description last">Count of the plates/stones.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Identifier of the 1st peg.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Identifier of the 2nd peg.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Identifier of the 3rd peg.</td>
         </tr>
 
     
@@ -145,7 +213,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graphs_spanning-trees_prim.js.html">graphs/spanning-trees/prim.js</a>, <a href="graphs_spanning-trees_prim.js.html#line56">line 56</a>
+        <a href="others_hanoi.js.html">others/hanoi.js</a>, <a href="others_hanoi.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -168,9 +236,38 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Array which contains all the moves required
+in order to place all the plates onto the last peg.
+</div>
 
 
 
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var hanoi = require('path-to-algorithms/src/others/hanoi').hanoi;
+var movements = hanoi(3, 'a', 'b', 'c');
+
+// Move a to c
+// Move a to b
+// Move c to b
+// Move a to c
+// Move b to a
+// Move b to c
+// Move a to c
+movements.forEach(function (move) {
+  console.log('Move', move[0], 'to', move[1]);
+});</code></pre>
+
+
+
+        
     
     </div>
 
