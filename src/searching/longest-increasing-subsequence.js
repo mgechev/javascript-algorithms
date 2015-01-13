@@ -1,26 +1,17 @@
 (function (exports) {
   'use strict';
 
-  /**
-   * Algorithm from dynamic programming.
-   * It finds the longest sub-sequence of
-   * increasing numbers. It is not required
-   * the numbers to be neighboring.
-   *
-   * Example:
-   *     1,5,2
-   * The longest sub-sequence is 1,2.
-   */
   exports.longestSubsequence = (function () {
 
    /**
     * Find the index of the first largest element in array.
-    * Complexity O(n).
+    * Complexity: O(N).
     *
-    * @param {Array}    array The array in which the largest
-    *  element should be found
-    * @param {Function} cmp   Function used for comparison
-    * @return {number}        The index of the first largest element
+    * @private
+    * @param {Array} array The array in which the largest
+    *  element should be found.
+    * @param {Function} cmp Function used for comparison.
+    * @return {Number} index of the first largest element
     */
     function max(array, cmp) {
       if (!array || !array.length) {
@@ -40,6 +31,7 @@
 
    /**
     * Default comparison method.
+    * @private
     */
     function cmp(a, b) {
       return a.distance - b.distance;
@@ -48,11 +40,11 @@
    /**
     * Creates directed graph from given array.
     * Each element's neighbours are the elements which can be
-    * after the element in the resulting sequence.
-    * Complexity O(n^2).
-    *
-    * @param  {Array} array The input array
-    * @return {Object}      Graph represented with list of neighbours
+    * after the element in the resulting sequence.<br><br>
+    * Complexity: O(N^2).
+    * @private
+    * @param  {Array} array The input array.
+    * @return {Object} Graph represented with list of neighbours.
     */
     function buildDag(array) {
       var result = [];
@@ -68,12 +60,12 @@
     }
 
    /**
-    * Finds the longest sub-sequence for given node.
-    * O(n^n).
-    *
+    * Finds the longest sub-sequence for given node.<br><br>
+    * Complexity: O(N^N).
+    * @private
     * @param {Object} dag  Graph represented with list of neighbours.
     * @param {number} node The current node.
-    * @return {object}     The longest sub-sequence for given node.
+    * @return {object} The longest sub-sequence for given node.
     */
     function find(dag, node) {
       node = node || 0;
@@ -106,6 +98,22 @@
       return result;
     }
 
+    /**
+     * Algorithm from dynamic programming. It finds the longest
+     * sub-sequence of increasing numbers. It is not required
+     * the numbers to be neighboring. For example for 1, 5, 2
+     * sequence the longest sub-sequence is 1, 2.
+     *
+     * @example
+     * var subsequence = require('path-to-algorithms/src/searching/'+
+     * 'longest-increasing-subsequence').longestSubsequence;
+     * console.log(subsequence([1, 0, 4, 3, 5])); // 1, 4, 5
+     *
+     * @public
+     * @module searching/longest-increasing-subsequence
+     * @param {Array} array Input sequence.
+     * @return {Array} Longest increasing subsequence.
+     */
     return function (array) {
       var results = [];
       var dag = buildDag(array);
@@ -124,4 +132,4 @@
     };
   })();
 
-}(typeof exports === 'undefined' ? exports : this));
+})(typeof window === 'undefined' ? module.exports : window);
