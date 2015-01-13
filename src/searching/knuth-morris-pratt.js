@@ -27,6 +27,24 @@
       return res;
     }
 
+    /**
+     * Knuth–Morris–Pratt algorithm. Searches for the position of
+     * the first occurrence of a specified value in a string.
+     *
+     * @example
+     *
+     * var indexOf = require('path-to-algorithm/src/searching/'+
+     * 'knuth-morris-pratt').kmp;
+     * console.log(indexOf('hello', 'll')); // 2
+     *
+     * @public
+     * @module searching/knuth-morris-pratt
+     * @param {String} str String.
+     * @param {String} substr Substring.
+     * @return {Number} A Number, representing the position
+     * where the specified substring occurs for the first
+     * time, or -1 if it never occurs.
+     */
     function indexOf(str, substr) {
       var table = builtKMPTable(substr);
       var i = 0;
@@ -54,4 +72,4 @@
 
   exports.kmp = kmp;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
