@@ -19,7 +19,7 @@
  * console.log(qunion.connected(3, 9)); // true
  *
  * @public
- * @module sets/quickunion
+ * @module sets/weightquickunion
  */
 
 (function (exports) {
