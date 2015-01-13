@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Edge</title>
+    <title>JSDoc: Source: searching/quickselect.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,229 +17,85 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Edge</h1>
+    <h1 class="page-title">Source: searching/quickselect.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a>.</span>
-        
-        Edge
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Edge"><span class="type-signature"></span>new Edge<span class="signature">(u, v, weight)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Graph edge.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>u</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Vertex</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Start vertex.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>v</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Vertex</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">End vertex.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>weight</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Weight of the edge.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graphs_shortest-path_bellman-ford.js.html">graphs/shortest-path/bellman-ford.js</a>, <a href="graphs_shortest-path_bellman-ford.js.html#line47">line 47</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function (exports) {
+  'use strict';
+
+  /**
+   * Returns the n-th smallest element of list within
+   * lo..hi inclusive (i.e. lo &lt;= n &lt;= hi).&lt;br>&lt;br>
+   * Time complexity: O(N).
+   *
+   * @example
+   *
+   * var quickselect = require('path-to-algorithms/src/searching/'+
+   * 'quickselect').quickselect;
+   * var result = quickselect([5, 1, 2, 2, 0, 3], 1, 0, 5);
+   * console.log(result); // 1
+   *
+   * @public
+   * @module searching/quickselect
+   * @param {Array} arr Input array.
+   * @param {Number} n A number of an element.
+   * @param {Number} lo Low index.
+   * @param {Number} lo High index.
+   * @return Returns n-th smallest element.
+   */
+  function quickselect(arr, n, lo, hi) {
+    function partition(arr, lo, hi, pivotIdx) {
+      function swap(arr, i, j) {
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+      var pivot = arr[pivotIdx];
+      swap(arr, pivotIdx, hi);
+      for (var i = lo; i &lt; hi; i += 1) {
+        if (arr[i] &lt; pivot) {
+          swap(arr, i, lo);
+          lo += 1;
+        }
+      }
+      swap(arr, hi, lo);
+      return lo;
+    }
+
+    if (arr.length &lt;= n) {
+      return NaN;
+    }
+    lo = lo || 0;
+    hi = hi || arr.length - 1;
+    if (lo === hi) {
+      return arr[lo];
+    }
+    while (hi >= lo) {
+      var pivotIdx =
+      partition(arr, lo, hi, lo + Math.floor(Math.random() * (hi - lo + 1)));
+      if (n === pivotIdx) {
+        return arr[pivotIdx];
+      }
+      if (n &lt; pivotIdx) {
+        hi = pivotIdx - 1;
+      } else {
+        lo = pivotIdx + 1;
+      }
+    }
+    return NaN;
+  }
+  exports.quickselect = quickselect;
+
+})(typeof window === 'undefined' ? module.exports : window);
+</code></pre>
+        </article>
+    </section>
 
 
 

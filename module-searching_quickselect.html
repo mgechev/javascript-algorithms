@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Edge</title>
+    <title>JSDoc: Module: searching/quickselect</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Edge</h1>
+    <h1 class="page-title">Module: searching/quickselect</h1>
 
     
 
@@ -28,11 +28,8 @@
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a>.</span>
         
-        Edge
-        </h2>
+            
         
     
 </header>
@@ -41,20 +38,15 @@
     <div class="container-overview">
     
         
+            <div class="description">Returns the n-th smallest element of list within
+lo..hi inclusive (i.e. lo <= n <= hi).<br><br>
+Time complexity: O(N).</div>
+        
 
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Edge"><span class="type-signature"></span>new Edge<span class="signature">(u, v, weight)</span><span class="type-signature"></span></h4>
-
-    
-
+        
+            
 
 
-<div class="description">
-    Graph edge.
-</div>
 
 
 
@@ -89,13 +81,13 @@
 
         <tr>
             
-                <td class="name"><code>u</code></td>
+                <td class="name"><code>arr</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Vertex</span>
+<span class="param-type">Array</span>
 
 
             
@@ -105,37 +97,14 @@
 
             
 
-            <td class="description last">Start vertex.</td>
+            <td class="description last">Input array.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>v</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Vertex</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">End vertex.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>weight</code></td>
+                <td class="name"><code>n</code></td>
             
 
             <td class="type">
@@ -151,7 +120,53 @@
 
             
 
-            <td class="description last">Weight of the edge.</td>
+            <td class="description last">A number of an element.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Low index.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">High index.</td>
         </tr>
 
     
@@ -191,7 +206,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graphs_shortest-path_bellman-ford.js.html">graphs/shortest-path/bellman-ford.js</a>, <a href="graphs_shortest-path_bellman-ford.js.html#line47">line 47</a>
+        <a href="searching_quickselect.js.html">searching/quickselect.js</a>, <a href="searching_quickselect.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -214,9 +229,28 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Returns n-th smallest element.
+</div>
 
 
 
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var quickselect = require('path-to-algorithms/src/searching/'+
+'quickselect').quickselect;
+var result = quickselect([5, 1, 2, 2, 0, 3], 1, 0, 5);
+console.log(result); // 1</code></pre>
+
+
+
+        
     
     </div>
 

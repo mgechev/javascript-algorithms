@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Edge</title>
+    <title>JSDoc: Source: searching/maximum-subarray.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,229 +17,53 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Edge</h1>
+    <h1 class="page-title">Source: searching/maximum-subarray.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a>.</span>
-        
-        Edge
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Edge"><span class="type-signature"></span>new Edge<span class="signature">(u, v, weight)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Graph edge.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>u</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Vertex</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Start vertex.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>v</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Vertex</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">End vertex.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>weight</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Weight of the edge.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graphs_shortest-path_bellman-ford.js.html">graphs/shortest-path/bellman-ford.js</a>, <a href="graphs_shortest-path_bellman-ford.js.html#line47">line 47</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function (exports) {
+  'use strict';
+
+  /**
+   * Finds the maximum sum of the elements of a subarray in a given array
+   * using the Kadane's algorithm.
+   * For example, for the sequence of values -2, 1, -3, 4, -1, 2, 1, -5, 4
+   * the contiguous subarray with the largest sum is 4, -1, 2, 1, with sum 6.
+   * &lt;br>&lt;br>
+   * Time complexity: O(N).
+   *
+   * @example
+   * var max = require('path-to-algorithms/src/searching/'+
+   * 'maximum-subarray').maxSubarray;
+   * console.log(max([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6
+   *
+   * @public
+   * @module searching/maximum-subarray
+   * @param {Array} array Input array.
+   * @return {Number} Maximum sum of the elements of a subarray.
+   */
+  function maxSubarray(array) {
+    var currentMax = 0;
+    var max = 0;
+
+    for (var i = 0; i &lt; array.length; i += 1) {
+      currentMax = Math.max(0, currentMax + array[i]);
+      max = Math.max(max, currentMax);
+    }
+    return max;
+  }
+
+  exports.maxSubarray = maxSubarray;
+
+})(typeof window === 'undefined' ? module.exports : window);
+</code></pre>
+        </article>
+    </section>
 
 
 

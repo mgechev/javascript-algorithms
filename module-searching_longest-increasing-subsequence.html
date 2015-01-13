@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Edge</title>
+    <title>JSDoc: Module: searching/longest-increasing-subsequence</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Edge</h1>
+    <h1 class="page-title">Module: searching/longest-increasing-subsequence</h1>
 
     
 
@@ -28,11 +28,8 @@
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a>.</span>
         
-        Edge
-        </h2>
+            
         
     
 </header>
@@ -41,20 +38,16 @@
     <div class="container-overview">
     
         
+            <div class="description">Algorithm from dynamic programming. It finds the longest
+sub-sequence of increasing numbers. It is not required
+the numbers to be neighboring. For example for 1, 5, 2
+sequence the longest sub-sequence is 1, 2.</div>
+        
 
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Edge"><span class="type-signature"></span>new Edge<span class="signature">(u, v, weight)</span><span class="type-signature"></span></h4>
-
-    
+        
+            
 
 
-
-<div class="description">
-    Graph edge.
-</div>
 
 
 
@@ -89,13 +82,13 @@
 
         <tr>
             
-                <td class="name"><code>u</code></td>
+                <td class="name"><code>array</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Vertex</span>
+<span class="param-type">Array</span>
 
 
             
@@ -105,53 +98,7 @@
 
             
 
-            <td class="description last">Start vertex.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>v</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Vertex</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">End vertex.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>weight</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Weight of the edge.</td>
+            <td class="description last">Input sequence.</td>
         </tr>
 
     
@@ -191,7 +138,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graphs_shortest-path_bellman-ford.js.html">graphs/shortest-path/bellman-ford.js</a>, <a href="graphs_shortest-path_bellman-ford.js.html#line47">line 47</a>
+        <a href="searching_longest-increasing-subsequence.js.html">searching/longest-increasing-subsequence.js</a>, <a href="searching_longest-increasing-subsequence.js.html#line101">line 101</a>
     </li></ul></dd>
     
 
@@ -214,9 +161,39 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Longest increasing subsequence.
+</div>
 
 
 
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var subsequence = require('path-to-algorithms/src/searching/'+
+'longest-increasing-subsequence').longestSubsequence;
+console.log(subsequence([1, 0, 4, 3, 5])); // 1, 4, 5</code></pre>
+
+
+
+        
     
     </div>
 

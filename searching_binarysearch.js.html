@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Edge</title>
+    <title>JSDoc: Source: searching/binarysearch.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,229 +17,58 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Edge</h1>
+    <h1 class="page-title">Source: searching/binarysearch.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a>.</span>
-        
-        Edge
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Edge"><span class="type-signature"></span>new Edge<span class="signature">(u, v, weight)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Graph edge.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>u</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Vertex</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Start vertex.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>v</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Vertex</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">End vertex.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>weight</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Weight of the edge.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graphs_shortest-path_bellman-ford.js.html">graphs/shortest-path/bellman-ford.js</a>, <a href="graphs_shortest-path_bellman-ford.js.html#line47">line 47</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function (exports) {
+  'use strict';
+
+  /**
+   * Searchs for specific element in a given array using
+   * the binary search algorithm.&lt;br>&lt;br>
+   * Time complexity: O(log N).
+   *
+   * @example
+   *
+   * var search = require('path-to-algorithms/src/searching/'+
+   * 'binarysearch').binarySearch;
+   * console.log(search([1, 2, 3, 4, 5], 4)); // 3
+   *
+   * @public
+   * @module searching/binarysearch
+   * @param {Array} array Input array.
+   * @param {Number} value Value of the element which index should be found.
+   * @returns {Number} Index of the element or -1 if not found.
+   */
+  function binarySearch(array, value) {
+    var middle = Math.floor(array.length / 2);
+    var left = 0;
+    var right = array.length;
+    while (right >= left) {
+      if (array[middle] === value) {
+        return middle;
+      } else if (array[middle] > value) {
+        right = middle - 1;
+      } else {
+        left = middle + 1;
+      }
+      middle = Math.floor((left + right) / 2);
+    }
+    return -1;
+  }
+
+  exports.binarySearch = binarySearch;
+
+})(typeof window === 'undefined' ? module.exports : window);
+</code></pre>
+        </article>
+    </section>
 
 
 
