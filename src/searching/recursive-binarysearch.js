@@ -3,15 +3,12 @@
 
   var binarySearch = (function () {
     /**
-     * Binary search.
-     *
      * @pivate
-     * @param {array} array Array where we should find the index of the element
-     * @param {number} value Value of the element which index should be found
-     * @param {number} left Left index
-     * @param {number} right Right index
-     * @returns {number} index The index of the element or -1 if not found
-     *
+     * @param {Array} array Array where we should find the index of the element
+     * @param {Number} value Value of the element which index should be found
+     * @param {Number} left Left index
+     * @param {Number} right Right index
+     * @returns {Number} index The index of the element or -1 if not found
      */
     function recursiveBinarySearch(array, value, left, right) {
       if (left > right) {
@@ -36,11 +33,11 @@
      * @example
      *
      * var search = require('path-to-algorithms/src/searching/'+
-     * 'binarysearch/recursive-binarysearch').binarySearch;
+     * 'recursive-binarysearch').binarySearch;
      * console.log(search([1, 2, 3, 4, 5], 4)); // 3
      *
      * @public
-     * @module searching/binarysearch/recursive-binarysearch
+     * @module searching/recursive-binarysearch
      * @param {Array} array Input array.
      * @param {Number} value Value of the element which index should be found.
      * @returns {Number} Index of the element or -1 if not found.

@@ -1,4 +1,4 @@
-var lsd = require('../../../src/sorting/least-significant-digit/lsd.js').lsd;
+var lsd = require('../../src/sorting/lsd.js').lsd;
 
 describe('Least-Significant Digit', function () {
   'use strict';
