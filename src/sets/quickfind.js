@@ -1,6 +1,7 @@
 /**
  * Keeps track of a set of elements partitioned into a
  * number of disjoint (nonoverlapping) subsets.
+ * Allows to check whether the path between two nodes exists.
  *
  * @example
  *
@@ -26,24 +27,27 @@
    * Initialization.<br><br>
    * Complexity: O(N).
    *
+   * @public
    * @constructor
    * @param {Numner} size Count of the nodes.
    */
-  function QuickFind(size) {
+  exports.QuickFind = function (size) {
     this._ids = [];
     for (var i = 0; i < size; i += 1) {
       this._ids[i] = i;
     }
-  }
+  };
 
   /**
    * Connects two nodes - p and q.<br><br>
    * Complexity: O(N).
    *
+   * @public
+   * @method
    * @param {Number} p The first node.
    * @param {Number} q The second node.
    */
-  QuickFind.prototype.union = function (p, q) {
+  exports.QuickFind.prototype.union = function (p, q) {
     var size = this._ids.length;
     var pval = this._ids[p];
     var qval = this._ids[q];
@@ -58,14 +62,14 @@
    * Checks whether two nodes are connected.<br><br>
    * Complexity: O(1).
    *
-   * @param {number} p The first node.
-   * @param {number} q The second node.
-   *
+   * @public
+   * @method
+   * @param {Number} p The first node.
+   * @param {Number} q The second node.
+   * @return {Boolean}
    */
-  QuickFind.prototype.connected = function (p, q) {
+  exports.QuickFind.prototype.connected = function (p, q) {
     return this._ids[p] === this._ids[q];
   };
-
-  exports.QuickFind = QuickFind;
 
 })(typeof window === 'undefined' ? module.exports : window);
