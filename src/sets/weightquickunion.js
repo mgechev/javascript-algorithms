@@ -1,30 +1,55 @@
+/**
+ * Keeps track of a set of elements partitioned into a
+ * number of disjoint (nonoverlapping) subsets.
+ * Allows to check whether the path between two nodes exists.
+ *
+ * @example
+ *
+ * var QuickUnion = require('path-to-algorithms/' +
+ * 'src/sets/weightquickunion').QuickUnion;
+ *
+ * var qunion = new QuickUnion(10);
+ * qunion.union(0, 1);
+ * qunion.union(2, 1);
+ * qunion.union(3, 4);
+ * qunion.union(8, 9);
+ * qunion.union(4, 8);
+ *
+ * console.log(qunion.connected(0, 9)); // false
+ * console.log(qunion.connected(3, 9)); // true
+ *
+ * @public
+ * @module sets/quickunion
+ */
+
 (function (exports) {
   'use strict';
 
   /**
-   * Checks whether there is a path between two nodes
-   * Complexity of the initialization O(n).
+   * Initialization.<br><br>
+   * Time complexity: O(N).
    *
+   * @public
    * @constructor
-   * @param {number} n The nodes count
+   * @param {Numner} size Count of the nodes.
    */
-  function QuickUnion(n) {
+  exports.QuickUnion = function (n) {
     this._ids = [];
     this._size = [];
     for (var i = 0; i < n; i += 1) {
       this._ids[i] = i;
       this._size[i] = 1;
     }
-  }
+  };
 
   /**
-   * Finds the root of given node.
-   * The complexity is around O(logn)
-   *
-   * @param {number} i The given node
-   * @return {number} The root of the node
+   * Finds the root of given node.<br><br>
+   * Time complexity: O(log N).
+   * @private
+   * @param {Number} i The given node.
+   * @return {Number} Root of the given node.
    */
-  QuickUnion.prototype._root = function (i) {
+  exports.QuickUnion.prototype._root = function (i) {
     while (i !== this._ids[i]) {
   //    this._ids[i] = this._ids[this._ids[i]]; //enables the path compression
       i = this._ids[i];
@@ -33,25 +58,27 @@
   };
 
   /**
-   * Checks whether two nodes are connected.
-   * Complexity O(logn)
+   * Checks whether two nodes are connected.<br><br>
+   * Time complexity: O(log N).
    *
-   * @param {number} p The first node
-   * @param {number} q The second node
-   * @return {boolean} True/false depending on whether the nodes are connected
+   * @param {Number} p The first node.
+   * @param {Number} q The second node.
+   * @return {Boolean} True/false depending on whether the nodes are connected.
    */
-  QuickUnion.prototype.connected = function (p, q) {
+  exports.QuickUnion.prototype.connected = function (p, q) {
     return this._root(p) === this._root(q);
   };
 
   /**
-   * Unions two nodes.
-   * Complexity O(logn)
+   * Connects two nodes - p and q.<br><br>
+   * Time complexity: O(log N).
    *
-   * @param {number} p The first node
-   * @param {number} q The second node
+   * @public
+   * @method
+   * @param {Number} p The first node.
+   * @param {Number} q The second node.
    */
-  QuickUnion.prototype.union = function (p, q) {
+  exports.QuickUnion.prototype.union = function (p, q) {
     var pf = this._root(p);
     var qf = this._root(q);
     if (pf === qf) {
@@ -68,14 +95,4 @@
     }
   };
 
-  //var union = new QuickUnion(10);
-  //union.union(0, 1);
-  //union.union(2, 1);
-  //union.union(3, 4);
-  //union.union(8, 9);
-  //union.union(4, 8);
-  //
-  //console.log(union.connected(0, 9)); //expected false
-  //console.log(union.connected(3, 9)); //expected true
-  exports.QuickUnion = QuickUnion;
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);

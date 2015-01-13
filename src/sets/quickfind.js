@@ -25,7 +25,7 @@
 
   /**
    * Initialization.<br><br>
-   * Complexity: O(N).
+   * Time complexity: O(N).
    *
    * @public
    * @constructor
@@ -40,7 +40,7 @@
 
   /**
    * Connects two nodes - p and q.<br><br>
-   * Complexity: O(N).
+   * Time complexity: O(N).
    *
    * @public
    * @method
@@ -60,7 +60,7 @@
 
   /**
    * Checks whether two nodes are connected.<br><br>
-   * Complexity: O(1).
+   * Time complexity: O(1).
    *
    * @public
    * @method
@@ -71,5 +71,4 @@
   exports.QuickFind.prototype.connected = function (p, q) {
     return this._ids[p] === this._ids[q];
   };
-
 })(typeof window === 'undefined' ? module.exports : window);

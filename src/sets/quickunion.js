@@ -27,7 +27,7 @@
 
   /**
    * Initialization.<br><br>
-   * Complexity: O(N).
+   * Time complexity: O(N).
    *
    * @public
    * @constructor
@@ -42,7 +42,7 @@
 
   /**
    * Finds the root of given node.<br><br>
-   * Complexity: O(N).
+   * Time complexity: O(N).
    * @private
    * @param {Number} i The given node.
    * @return {Number} Root of the given node.
@@ -56,7 +56,7 @@
 
   /**
    * Connects two nodes - p and q.<br><br>
-   * Complexity: O(N).
+   * Time complexity: O(N).
    *
    * @public
    * @method
@@ -70,12 +70,12 @@
   };
 
   /**
-   * Checks whether two nodes are connected.
-   * Complexity O(n).
+   * Checks whether two nodes are connected.<br><br>
+   * Time complexity: O(N).
    *
-   * @param {number} p The first node.
-   * @param {number} q The second node.
-   * @return {boolean} True/false depending on whether the nodes are connected.
+   * @param {Number} p The first node.
+   * @param {Number} q The second node.
+   * @return {Boolean} True/false depending on whether the nodes are connected.
    */
   exports.QuickUnion.prototype.connected = function (p, q) {
     return this._root(p) === this._root(q);
