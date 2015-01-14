@@ -11,6 +11,7 @@
    * var shuffle = require('path-to-algorithms/src/' +
    * 'shuffle/fisheryates').shuffle;
    * console.log(shuffle([1, 2, 3, 4, 5])); // shuffled array
+   *
    * @public
    * @module shuffle/fisheryates
    * @param {Array} array Array which should be shuffled.
