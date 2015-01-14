@@ -73,5 +73,3 @@
   exports.kmp = kmp;
 
 })(typeof window === 'undefined' ? module.exports : window);
-
-exports.kmp('hello', 'll');
