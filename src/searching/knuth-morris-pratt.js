@@ -46,6 +46,9 @@
      * time, or -1 if it never occurs.
      */
     function indexOf(str, substr) {
+      if (str === substr) {
+        return 0;
+      }
       var table = builtKMPTable(substr);
       var i = 0;
       var j = 0;
