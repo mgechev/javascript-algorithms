@@ -1,12 +1,20 @@
 (function (exports) {
+
   'use strict';
 
   /**
    * The shuffling algorithm of
-   * Fisher-Yates. Complexity O(n)
+   * Fisher-Yates.<br><br>
+   * Time complexity: O(N).
    *
-   * @param {array} array The array which should be shuffled
-   * @return {array} The shuffled array.
+   * @example
+   * var shuffle = require('path-to-algorithms/src/' +
+   * 'shuffle/fisheryates').shuffle;
+   * console.log(shuffle([1, 2, 3, 4, 5])); // shuffled array
+   * @public
+   * @module shuffle/fisheryates
+   * @param {Array} array Array which should be shuffled.
+   * @return {Array} Shuffled array.
    */
   function shuffle(array) {
     var size = array.length;
@@ -23,4 +31,4 @@
 
   exports.shuffle = shuffle;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);

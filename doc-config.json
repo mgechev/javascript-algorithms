@@ -13,7 +13,8 @@
             "./src/primes/",
             "./src/others/",
             "./src/searching/",
-            "./src/sets/"
+            "./src/sets/",
+            "./src/shuffle/"
         ],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "docs"
