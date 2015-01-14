@@ -58,7 +58,7 @@
           return i - j;
         }
         if (i < str.length && str[i] !== substr[j]) {
-          if (table[j - 1] !== 0) {
+          if (j > 0 && table[j - 1] !== 0) {
             j = table[j - 1];
           } else {
             i += 1;
@@ -73,3 +73,5 @@
   exports.kmp = kmp;
 
 })(typeof window === 'undefined' ? module.exports : window);
+
+exports.kmp('hello', 'll');
