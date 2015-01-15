@@ -6,11 +6,22 @@
   }
 
   /**
-   * Insertionsort algorithm. It's complexity is O(n^2).
+   * Insertionsort algorithm.
+   * Time complexity: O(N^2).
+   *
+   * @example
+   *
+   * var sort = require('path-to-algorithms/src' +
+   * '/sorting/insertion-sort').insertionSort;
+   * console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]
    *
    * @public
-   * @param {array} array Input array
-   * @returns {array} array Sorted array
+   * @module sorting/insertionsort
+   * @param {Array} array Input array.
+   * @param {Function} cmp Optional. A function that defines an
+   * alternative sort order. The function should return a negative,
+   * zero, or positive value, depending on the arguments.
+   * @return {Array} Sorted array.
    */
   function insertionSort(array, cmp) {
     cmp = cmp || compare;
