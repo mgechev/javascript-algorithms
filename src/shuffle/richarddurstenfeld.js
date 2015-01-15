@@ -1,17 +1,22 @@
 (function (exports) {
+
   'use strict';
 
   /**
    * Shuffle of an array elements.
    * This algorithm is modified version of Fisher-Yates shuffle
-   * algorithm and is introduced by Richard Durstenfeld.
-   */
-
-  /**
-   * Shuffles an array. Complexity O(n).
+   * algorithm and is introduced by Richard Durstenfeld.<br><br>
+   * Time complexity: O(N).
    *
-   * @param {array} array An array which should be shuffled
-   * @returns {array} Shuffled array
+   * @example
+   * var shuffle = require('path-to-algorithms/src/shuffle' +
+   * '/richarddurstenfeld').shuffle;
+   * console.log(shuffle([1, 2, 3, 4, 5])); // random shuffled
+   *
+   * @public
+   * @module shuffle/richarddurstenfeld
+   * @param {Array} array An array which should be shuffled.
+   * @return {Array} Shuffled array.
    */
   function shuffle(array) {
     var arraySize = array.length - 1;

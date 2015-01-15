@@ -13,7 +13,9 @@
             "./src/primes/",
             "./src/others/",
             "./src/searching/",
-            "./src/sets/"
+            "./src/sets/",
+            "./src/shuffle/",
+            "./src/sorting/"
         ],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "docs"
