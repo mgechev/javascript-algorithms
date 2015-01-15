@@ -55,4 +55,4 @@
 
   exports.insertionBinarySort = insertionBinarySort;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);

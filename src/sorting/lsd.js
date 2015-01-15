@@ -48,4 +48,4 @@
 
   exports.lsd = lsd;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);

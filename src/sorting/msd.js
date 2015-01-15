@@ -54,7 +54,6 @@
    * @param {Number} d Optional. Digit from which sorting should start.
    * @return {Array} Sorted array.
    */
-
   function msd(arr, d) {
     d = d || 0;
     sort(arr, 0, arr.length - 1, d);
@@ -62,4 +61,4 @@
   }
 
   exports.msd = msd;
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);

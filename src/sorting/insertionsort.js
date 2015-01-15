@@ -41,4 +41,4 @@
 
   exports.insertionSort = insertionSort;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
