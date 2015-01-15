@@ -24,7 +24,7 @@
    * @param {Number} max Optional. Index of the element which place
    * we should find in the current function call.
    * @return {Array} Sorted array.
-   */   
+   */
   function recursiveInsertionSort(array, cmp, max) {
     cmp = cmp || compare;
     if (max <= 0) {
