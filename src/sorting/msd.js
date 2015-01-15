@@ -51,7 +51,7 @@
    * @public
    * @module sorting/msd
    * @param {Array} arr Array which should be sorted.
-   * @param {Number} d Digit from which sorting should start.
+   * @param {Number} d Optional. Digit from which sorting should start.
    * @return {Array} Sorted array.
    */
 
