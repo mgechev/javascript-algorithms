@@ -76,7 +76,7 @@
 
     /**
      * Merge sort algorithm.<br><br>
-     * Time complexity: O(N logN).
+     * Time complexity: O(N log(N)).
      *
      * @example
      *
