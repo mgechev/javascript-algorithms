@@ -1,10 +1,6 @@
 (function (exports) {
   'use strict';
 
-  /**
-   * Effective inplace string sorting algorithm.
-   * The algorithm is NOT stable.
-   */
   var quicksort = (function () {
 
     function charAt(str, i) {
@@ -48,6 +44,21 @@
       quicksort(arr, highPointer + 1, hi, d);
     }
 
+    /**
+     * Effective inplace string sorting algorithm.
+     * Algorithm is NOT stable.
+     *
+     * @example
+     *
+     * var sort = require('path-to-algorithms/src/sorting'+
+     * '/3-way-string-quicksort').quicksort;
+     * console.log(sort(['bb', 'aa', 'cc'])); // [ 'aa', 'bb', 'cc' ]
+     *
+     * @public
+     * @module sorting/3-way-string-quicksort
+     * @param arr {Array} array which should be sorted.
+     * @return {Array} Sorted array.
+     */
     return function sort(arr) {
       quicksort(arr, 0, arr.length - 1, 0);
       return arr;
@@ -56,4 +67,4 @@
 
   exports.quicksort = quicksort;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
