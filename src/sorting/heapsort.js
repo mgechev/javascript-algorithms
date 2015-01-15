@@ -64,6 +64,9 @@
      * @public
      * @module sorting/heapsort
      * @param {Array} array Input array.
+     * @param {Function} cmp Optional. A function that defines an
+     * alternative sort order. The function should return a negative,
+     * zero, or positive value, depending on the arguments.
      * @return {Array} Sorted array.
      */
     return function (array, cmp) {
