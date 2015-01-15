@@ -77,7 +77,7 @@
      * console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]
      *
      * @public
-     * @module sorting/mergesort
+     * @module sorting/quicksort-middle
      * @param {Array} array Input array.
      * @param {Function} cmp Optional. A function that defines an
      * alternative sort order. The function should return a negative,
