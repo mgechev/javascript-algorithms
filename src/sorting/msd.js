@@ -37,18 +37,23 @@
 
   /**
    * Sorts given array lexicographically.
-   * The algorithms knows how to treat
-   * differently length strings.
-   * The algorithm is stable.
+   * Algorithms knows how to treat
+   * differently length strings.<br><br>
+   * Algorithm is stable.
+   * Time complexity: O(N*M) for N keys which have M or fewer digits.
    *
-   * Complexity O(n*m)
+   * @example
+   *
+   * var sort = require('../src/sorting/msd').msd;
+   * // [ 'aab', 'aaa', 'acc', 'bbb', 'bcc' ]
+   * console.log(sort(['aab', 'bbb', 'aaa', 'acc', 'bcc']));
    *
    * @public
-   * @param {Array} arr The array, which needs to be sorted
-   * @param {Number} d The digit from which the sorting should start
-   * @return {Array} The sorted array
+   * @module sorting/msd
+   * @param {Array} arr Array which should be sorted.
+   * @param {Number} d Optional. Digit from which sorting should start.
+   * @return {Array} Sorted array.
    */
-
   function msd(arr, d) {
     d = d || 0;
     sort(arr, 0, arr.length - 1, d);
@@ -56,4 +61,4 @@
   }
 
   exports.msd = msd;
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);

@@ -1,9 +1,3 @@
-/**
- * Quicksort algorithm. It's with complexity O(n log(n)).
- * In this version of quicksort I use the middle element of the
- * array for pivot.
- */
-
 (function (exports) {
 
   'use strict';
@@ -72,8 +66,23 @@
     }
 
     /**
-     * Quicksort's initial point
+     * Quicksort algorithm. In this version of quicksort used
+     * middle element of array for the pivot.<br><br>
+     * Time complexity: O(N log(N)).
+     *
+     * @example
+     *
+     * var sort = require('path-to-algorithms/src' +
+     * '/sorting/quicksort-middle').quickSort;
+     * console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]
+     *
      * @public
+     * @module sorting/quicksort-middle
+     * @param {Array} array Input array.
+     * @param {Function} cmp Optional. A function that defines an
+     * alternative sort order. The function should return a negative,
+     * zero, or positive value, depending on the arguments.
+     * @return {Array} Sorted array.
      */
     return function (array, cmp) {
       cmp = cmp || compare;
@@ -85,4 +94,4 @@
 
   exports.quickSort = quickSort;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);

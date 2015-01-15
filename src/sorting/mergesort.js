@@ -75,11 +75,22 @@
     }
 
     /**
-     * Initial call to the mergesort method
+     * Merge sort algorithm.<br><br>
+     * Time complexity: O(N log(N)).
+     *
+     * @example
+     *
+     * var sort = require('path-to-algorithms/src' +
+     * '/sorting/mergesort').mergesortSort;
+     * console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]
      *
      * @public
-     * @param {array} array The array which will be sorted
-     * @returns {array} Sorted array
+     * @module sorting/mergesort
+     * @param {Array} array Input array.
+     * @param {Function} cmp Optional. A function that defines an
+     * alternative sort order. The function should return a negative,
+     * zero, or positive value, depending on the arguments.
+     * @return {Array} Sorted array.
      */
     return function (array, cmp) {
       cmp = cmp || compare;
@@ -90,4 +101,4 @@
 
   exports.mergeSort = mergeSort;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);

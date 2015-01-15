@@ -5,20 +5,15 @@
     return a - b;
   }
 
-  /**
-   * The heapsort algorithm. It's complexity is O(nlog n).
-   *
-   * @public
-   */
   var heapSort = (function () {
 
     /**
      * Finds the correct place of given element in given max heap.
      *
      * @private
-     * @param {array} array Array
-     * @param {number} index Index of the element which palce in
-     *                       the max heap should be found.
+     * @param {Array} array Array.
+     * @param {Number} index Index of the element which palce in
+     * the max heap should be found.
      */
     function heapify(array, index, heapSize, cmp) {
       var left = 2 * index + 1;
@@ -45,8 +40,8 @@
      * Builds max heap from given array.
      *
      * @private
-     * @param {array} array Array which should be turned into max heap
-     * @returns {array} array Array turned into max heap
+     * @param {Array} array Array which should be turned into max heap.
+     * @return {Array} array Array turned into max heap.
      */
     function buildMaxHeap(array, cmp) {
       for (var i = Math.floor(array.length / 2); i >= 0; i -= 1) {
@@ -56,11 +51,23 @@
     }
 
     /**
-     * Heapsort. Turns the input array into max heap and after that sorts it.
+     * Heapsort. Turns the input array into max
+     * heap and after that sorts it.<br><br>
+     * Time complexity: O(N log N).
+     *
+     * @example
+     *
+     * var sort = require('path-to-algorithms/src' +
+     * '/sorting/heapsort').heapSort;
+     * console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]
      *
      * @public
-     * @param {array} array Input array
-     * @returns {array} array Sorted array
+     * @module sorting/heapsort
+     * @param {Array} array Input array.
+     * @param {Function} cmp Optional. A function that defines an
+     * alternative sort order. The function should return a negative,
+     * zero, or positive value, depending on the arguments.
+     * @return {Array} Sorted array.
      */
     return function (array, cmp) {
       cmp = cmp || comparator;
@@ -80,4 +87,4 @@
 
   exports.heapSort = heapSort;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);

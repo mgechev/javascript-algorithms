@@ -2,13 +2,20 @@
   'use strict';
 
   /**
-   * Sorts strings lexicographically.
-   * Complexity O(n*m)
+   * Sorts strings lexicographically.<br><br>
+   * Time complexity: O(N*M) for N keys which have M or fewer digits.
+   *
+   * @example
+   *
+   * var sort = require('../src/sorting/lsd').lsd;
+   * // [ 'aab', 'aaa', 'acc', 'bbb', 'bcc' ]
+   * console.log(sort(['aab', 'bbb', 'aaa', 'acc', 'bcc']));
    *
    * @public
-   * @param {Array} arr Input array
-   * @param {Number} letterIdx Index to start sorting from
-   * @returns {Array} Sorted array
+   * @module sorting/lsd
+   * @param {Array} arr Array which should be sorted.
+   * @param {Number} letterIdx Optional. Index to start sorting from.
+   * @return {Array} Sorted array.
    */
   function lsd(arr, letterIdx) {
     var temp;
@@ -41,4 +48,4 @@
 
   exports.lsd = lsd;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
