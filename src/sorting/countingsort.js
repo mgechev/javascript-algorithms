@@ -1,20 +1,14 @@
 (function (exports) {
   'use strict';
 
-  /**
-   * Counting sort algorithm. It's with complexity O(n) but it's
-   * correct only for array of integers.
-   *
-   * @public
-   */
   var countingSort = (function () {
 
     /**
-     * Gets the count of the elements into the input array
+     * Gets the count of the elements into the input array.
      *
      * @private
-     * @param {array} array The input array
-     * @returns {array} count The count of each element from the input array
+     * @param {Array} array The input array.
+     * @return {Array} The count of each element from the input array.
      */
     function getCount(array) {
       var count = [];
@@ -27,12 +21,12 @@
     }
 
     /**
-     * Gets the count of the elements which are less than a given
+     * Gets the count of the elements which are less than a given.
      *
      * @private
-     * @param {array} array The input array
-     * @returns {array} less The count of the elements which
-     *                       are less than each element from the input
+     * @param {Array} array The input array.
+     * @return {Array} less The count of the elements which.
+     * are less than each element from the input.
      */
     function getLessCount(array) {
       var less = [];
@@ -46,12 +40,12 @@
     }
 
     /**
-     * Sorts the input array
+     * Sorts the input array.
      *
      * @private
-     * @param {array} array Input which should be sorted
-     * @param {array} less Count of the less elements for each element
-     * @returns {array} result The sorted input
+     * @param {Array} array Input which should be sorted.
+     * @param {Array} less Count of the less elements for each element.
+     * @return {Array} The sorted input.
      */
     function sort(array, less) {
       var result = [];
@@ -71,11 +65,19 @@
     }
 
     /**
-     * Sorts a given array
+     * Counting sort algorithm. It's correct only
+     * for array of integers.<br><br>
+     * Time complexity: O(N).
+     *
+     * @example
+     * var sort = require('path-to-algorithms/src/' +
+     * 'sorting/countingsort').countingSort;
+     * console.log(sort([2, 5, 1, 3, 4])); // [ 1, 2, 3, 4, 5 ]
      *
      * @public
-     * @param {array} array Array which should be sorted
-     * @returns {array} array Sorted array
+     * @module sorting/countingsort
+     * @param {Array} array Array which should be sorted.
+     * @return {Array} Sorted array.
      */
     return function (array) {
       var less = getLessCount(getCount(array));
@@ -85,4 +87,4 @@
 
   exports.countingSort = countingSort;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
