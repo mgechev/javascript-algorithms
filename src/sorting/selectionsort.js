@@ -6,11 +6,22 @@
   }
 
   /**
-   * Selection sort. It's complexity is O(n^2)
+   * Selection sort.<br><br>
+   * Time complexity: O(N^2).
+   *
+   * @example
+   *
+   * var sort = require('path-to-algorithms/src/sorting/'+
+   * 'selectionsort').selectionSort;
+   * console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]
    *
    * @public
-   * @param {array} array Array to be sorted
-   * @return {array} The sorted array
+   * @module sorting/selectionsort
+   * @param {Array} array Input array.
+   * @param {Function} cmp Optional. A function that defines an
+   * alternative sort order. The function should return a negative,
+   * zero, or positive value, depending on the arguments.
+   * @return {Array} Sorted array.
    */
   var selectionSort = function (array, cmp) {
     cmp = cmp || compare;
@@ -35,4 +46,4 @@
 
   exports.selectionSort = selectionSort;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
