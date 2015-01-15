@@ -1,12 +1,7 @@
 (function (exports) {
+
   'use strict';
 
-  /**
-   * Bucket sort. This algorithm has complexity O(n) in case the
-   * data is with uniform distribution.
-   *
-   * @public
-   */
   var bucketSort = (function () {
 
     /**
@@ -90,11 +85,20 @@
     }
 
     /**
-     * Sorts given array with bucketsort
+     * Sorts given array with bucketsort.<br><br>
+     * Time complexity: O(N) in case the
+     * data is with uniform distribution.
+     *
+     * @example
+     *
+     * var sort = require('path-to-algorithms/src/'+
+     * 'sorting/bucketsort').bucketSort;
+     * console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]
      *
      * @public
-     * @param {array} array Input array which should be sorted
-     * @returns {array} Sorted array
+     * @module sorting/bucketsort
+     * @param {Array} array Input array which should be sorted.
+     * @return {Array} Sorted array.
      */
     return function (array) {
       var buckets = createBuckets(array);
@@ -105,4 +109,4 @@
 
   exports.bucketSort = bucketSort;
 
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof window === 'undefined' ? module.exports : window);
