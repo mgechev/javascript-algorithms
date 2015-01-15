@@ -6,14 +6,25 @@
   }
 
   /**
-   * Modified version of insertionsort. It uses binary search for finding
+   * Modified version of insertion sort. It uses binary search for finding
    * where the current element should be inserted. It's correct because
    * the binary search looks just in the first part of the array
-   * which is actually sorted. It's complexity is O(n^2)
+   * which is actually sorted.<br><br>
+   * Time complexity: O(N^2).
+   *
+   * @example
+   *
+   * var sort = require('path-to-algorithms/src' +
+   * '/sorting/insertion-binary-sort').insertionBinarySort;
+   * console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]
    *
    * @public
-   * @param {array} array Input array
-   * @param {array} array Sorted array
+   * @module sorting/insertion-binary-sort
+   * @param {Array} array Input array.
+   * @param {Function} cmp Optional. A function that defines an
+   * alternative sort order. The function should return a negative,
+   * zero, or positive value, depending on the arguments.
+   * @return {Array} Sorted array.
    */
   function insertionBinarySort(array, cmp) {
     cmp = cmp || comparator;
