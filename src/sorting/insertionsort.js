@@ -6,7 +6,7 @@
   }
 
   /**
-   * Insertionsort algorithm.
+   * Insertionsort algorithm.<br><br>
    * Time complexity: O(N^2).
    *
    * @example
