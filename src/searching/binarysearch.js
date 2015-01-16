@@ -18,22 +18,27 @@
    * @param {Number} value Value of the element which index should be found.
    * @returns {Number} Index of the element or -1 if not found.
    */
-  function binarySearch(array, value) {
+  function binarySearch(array, value, key) {
+    key = !key ? id : typeof key === 'string' ? get(key) : key;
+    value = key(value);
     var middle = Math.floor(array.length / 2);
     var left = 0;
     var right = array.length;
     while (right >= left) {
-      if (array[middle] === value) {
+      var middleValue = key(array[middle]);
+      if (middleValue === value) {
         return middle;
-      } else if (array[middle] > value) {
+      } else if (middleValue > value) {
         right = middle - 1;
       } else {
         left = middle + 1;
       }
       middle = Math.floor((left + right) / 2);
     }
-    return -1;
+    return -middle - 1;
   }
+  function id (val) { return val; }
+  function get (key) { return function (val) { return val[key]; }; }
 
   exports.binarySearch = binarySearch;
 

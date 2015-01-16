@@ -18,11 +18,19 @@ describe('Binary search', function () {
     expect(binarySearch([1, 8], 8)).toBe(1);
   });
 
-  it('should return -1 for missing elements', function () {
-    expect(binarySearch([1, 2, 3], 4)).toBe(-1);
+  it('should return a negative number for missing elements', function () {
+    expect(binarySearch([1, 2, 3], 4)).toBeLessThan(0);
   });
 
   it('should work with empty arrays', function () {
     expect(binarySearch([], 4)).toBe(-1);
+  });
+
+  it('should work with a key string', function () {
+    expect(binarySearch([{ x: 1 }, { x: 2 }, { x: 3 }], { x: 2 }, 'x')).toBe(1);
+  });
+
+  it('should work with a key function', function () {
+    expect(binarySearch([{ x: 1 }, { x: 2 }, { x: 3 }], { x: 2 }, function (o) { return o.x; })).toBe(1);
   });
 });
