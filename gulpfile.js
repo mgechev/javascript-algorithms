@@ -1,10 +1,10 @@
 'use strict';
-var gulp = require('gulp'),
-    shell = require('gulp-shell'),
-    jshint = require('gulp-jshint'),
-    jasmine = require('gulp-jasmine'),
-    stylish = require('jshint-stylish'),
-    jscs = require('gulp-jscs');
+var gulp = require('gulp');
+var shell = require('gulp-shell');
+var jshint = require('gulp-jshint');
+var jasmine = require('gulp-jasmine');
+var stylish = require('jshint-stylish');
+var jscs = require('gulp-jscs');
 
 gulp.task('jsdoc', shell.task([
   './node_modules/.bin/jsdoc -c ./doc-config.json'
@@ -21,7 +21,6 @@ gulp.task('test', function () {
   return gulp.src('test/**/*.spec.js')
     .pipe(jasmine());
 });
-
 
 gulp.task('jscs', function () {
   return gulp.src(['src/**/*.js', 'test/**/*.js'])
