@@ -29,107 +29,84 @@
             <pre class="prettyprint source linenums"><code>(function (exports) {
   'use strict';
 
-  var mergeSort = (function () {
+  function compare(a, b) {
+    return a - b;
+  }
 
-    function compare(a, b) {
-      return a - b;
+  /**
+   * Mergesort method which is recursively called for sorting the input array.
+   *
+   * @public
+   * @param {array} array The array which should be sorted
+   * @param {Function} cmp Compares two items in an array
+   * @param {number} start Left side of the subarray
+   * @param {number} end Right side of the subarray
+   * @returns {array} Array with sorted subarray
+   */
+  function mergeSort(array, cmp, start, end) {
+    cmp = cmp || compare;
+    start = start || 0;
+    end = end || array.length;
+    if (Math.abs(end - start) &lt;= 1) {
+      return [];
     }
+    var middle = Math.ceil((start + end) / 2);
 
-    /**
-     * Mergesort method which is recursively called for sorting the input array.
-     *
-     * @private
-     * @param {array} array The array which should be sorted
-     * @param {number} start Left side of the subarray
-     * @param {number} end Right side of the subarray
-     * @returns {array} Array with sorted subarray
-     */
-    function mergesort(array, start, end, cmp) {
-      if (Math.abs(end - start) &lt;= 1) {
-        return [];
+    mergeSort(array, cmp, start, middle);
+    mergeSort(array, cmp, middle, end);
+
+    return mergeSort.merge(array, cmp, start, middle, end);
+  }
+
+  /**
+   * Devides and sort merges two subarrays of given array
+   *
+   * @public
+   * @param {array} array The array which subarrays should be sorted
+   * @param {number} start The start of the first subarray.
+   *   This subarray is with end middle - 1.
+   * @param {number} middle The start of the second array
+   * @param {number} end end - 1 is the end of the second array
+   * @returns {array} The array with sorted subarray
+   */
+  mergeSort.merge = function (array, cmp, start, middle, end) {
+    var left = [];
+    var right = [];
+    var leftSize = middle - start;
+    var rightSize = end - middle;
+    var maxSize = Math.max(leftSize, rightSize);
+    var size = end - start;
+    var i;
+
+    for (i = 0; i &lt; maxSize; i += 1) {
+      if (i &lt; leftSize) {
+        left[i] = array[start + i];
       }
-      var middle = Math.ceil((start + end) / 2);
-
-      mergesort(array, start, middle, cmp);
-      mergesort(array, middle, end, cmp);
-
-      return merge(array, start, middle, end, cmp);
+      if (i &lt; rightSize) {
+        right[i] = array[middle + i];
+      }
     }
-
-    /**
-     * Devides and sort merges two subarrays of given array
-     *
-     * @private
-     * @param {array} array The array which subarrays should be sorted
-     * @param {number} start The start of the first subarray.
-     *   This subarray is with end middle - 1.
-     * @param {number} middle The start of the second array
-     * @param {number} end end - 1 is the end of the second array
-     * @returns {array} The array with sorted subarray
-     */
-    function merge(array, start, middle, end, cmp) {
-      var left = [];
-      var right = [];
-      var leftSize = middle - start;
-      var rightSize = end - middle;
-      var maxSize = Math.max(leftSize, rightSize);
-      var size = end - start;
-      var i;
-
-      for (i = 0; i &lt; maxSize; i += 1) {
-        if (i &lt; leftSize) {
-          left[i] = array[start + i];
-        }
-        if (i &lt; rightSize) {
-          right[i] = array[middle + i];
-        }
-      }
-      i = 0;
-      while (i &lt; size) {
-        if (left.length &amp;&amp; right.length) {
-          if (cmp(left[0], right[0]) > 0) {
-            array[start + i] = right.shift();
-          } else {
-            array[start + i] = left.shift();
-          }
-        } else if (left.length) {
-          array[start + i] = left.shift();
-        } else {
+    i = 0;
+    while (i &lt; size) {
+      if (left.length &amp;&amp; right.length) {
+        if (cmp(left[0], right[0]) > 0) {
           array[start + i] = right.shift();
+        } else {
+          array[start + i] = left.shift();
         }
-        i += 1;
+      } else if (left.length) {
+        array[start + i] = left.shift();
+      } else {
+        array[start + i] = right.shift();
       }
-      return array;
+      i += 1;
     }
-
-    /**
-     * Merge sort algorithm.&lt;br>&lt;br>
-     * Time complexity: O(N log(N)).
-     *
-     * @example
-     *
-     * var sort = require('path-to-algorithms/src' +
-     * '/sorting/mergesort').mergesortSort;
-     * console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]
-     *
-     * @public
-     * @module sorting/mergesort
-     * @param {Array} array Input array.
-     * @param {Function} cmp Optional. A function that defines an
-     * alternative sort order. The function should return a negative,
-     * zero, or positive value, depending on the arguments.
-     * @return {Array} Sorted array.
-     */
-    return function (array, cmp) {
-      cmp = cmp || compare;
-      return mergesort(array, 0, array.length, cmp);
-    };
-
-  }());
+    return array;
+  };
 
   exports.mergeSort = mergeSort;
 
-})(typeof window === 'undefined' ? module.exports : window);
+}(typeof exports === 'undefined' ? window : exports));
 </code></pre>
         </article>
     </section>
@@ -140,13 +117,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-combinatorics_cartesianproduct.html">combinatorics/cartesianproduct</a></li><li><a href="module-combinatorics_combinations.html">combinatorics/combinations</a></li><li><a href="module-combinatorics_permutations.html">combinatorics/permutations</a></li><li><a href="module-combinatorics_variations-repetition.html">combinatorics/variations-repetition</a></li><li><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a></li><li><a href="module-data-structures_heap.html">data-structures/heap</a></li><li><a href="module-data-structures_interval-tree.html">data-structures/interval-tree</a></li><li><a href="module-data-structures_linked-list.html">data-structures/linked-list</a></li><li><a href="module-data-structures_red-black-tree.html">data-structures/red-black-tree</a></li><li><a href="module-graphs_others_topological-sort.html">graphs/others/topological-sort</a></li><li><a href="module-graphs_searching_bfs.html">graphs/searching/bfs</a></li><li><a href="module-graphs_searching_dfs.html">graphs/searching/dfs</a></li><li><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a></li><li><a href="module-graphs_shortest-path_dijkstra.html">graphs/shortest-path/dijkstra</a></li><li><a href="module-graphs_shortest-path_floyd-warshall.html">graphs/shortest-path/floyd-warshall</a></li><li><a href="module-graphs_spanning-trees_prim.html">graphs/spanning-trees/prim</a></li><li><a href="module-others_hanoi.html">others/hanoi</a></li><li><a href="module-others_levenshtein-distance.html">others/levenshtein-distance</a></li><li><a href="module-primes_is-prime.html">primes/is-prime</a></li><li><a href="module-primes_prime-factor-tree.html">primes/prime-factor-tree</a></li><li><a href="module-primes_sieve-of-eratosthenes.html">primes/sieve-of-eratosthenes</a></li><li><a href="module-searching_binarysearch.html">searching/binarysearch</a></li><li><a href="module-searching_knuth-morris-pratt.html">searching/knuth-morris-pratt</a></li><li><a href="module-searching_longest-increasing-subsequence.html">searching/longest-increasing-subsequence</a></li><li><a href="module-searching_maximum-subarray.html">searching/maximum-subarray</a></li><li><a href="module-searching_maximum-subarray-divide-and-conquer.html">searching/maximum-subarray-divide-and-conquer</a></li><li><a href="module-searching_quickselect.html">searching/quickselect</a></li><li><a href="module-searching_recursive-binarysearch.html">searching/recursive-binarysearch</a></li><li><a href="module-sets_quickfind.html">sets/quickfind</a></li><li><a href="module-sets_quickunion.html">sets/quickunion</a></li><li><a href="module-sets_weightquickunion.html">sets/weightquickunion</a></li><li><a href="module-shuffle_fisheryates.html">shuffle/fisheryates</a></li><li><a href="module-shuffle_richarddurstenfeld.html">shuffle/richarddurstenfeld</a></li><li><a href="module-sorting_3-way-string-quicksort.html">sorting/3-way-string-quicksort</a></li><li><a href="module-sorting_bubblesort.html">sorting/bubblesort</a></li><li><a href="module-sorting_bucketsort.html">sorting/bucketsort</a></li><li><a href="module-sorting_countingsort.html">sorting/countingsort</a></li><li><a href="module-sorting_heapsort.html">sorting/heapsort</a></li><li><a href="module-sorting_insertion-binary-sort.html">sorting/insertion-binary-sort</a></li><li><a href="module-sorting_insertionsort.html">sorting/insertionsort</a></li><li><a href="module-sorting_lsd.html">sorting/lsd</a></li><li><a href="module-sorting_mergesort.html">sorting/mergesort</a></li><li><a href="module-sorting_msd.html">sorting/msd</a></li><li><a href="module-sorting_quicksort-middle.html">sorting/quicksort-middle</a></li><li><a href="module-sorting_recursive-insertionsort.html">sorting/recursive-insertionsort</a></li><li><a href="module-sorting_selectionsort.html">sorting/selectionsort</a></li><li><a href="module-sorting_shellsort.html">sorting/shellsort</a></li></ul><h3>Classes</h3><ul><li><a href="module-data-structures_binary-search-tree.BinaryTree.html">BinaryTree</a></li><li><a href="module-data-structures_binary-search-tree.Node.html">Node</a></li><li><a href="module-data-structures_heap.Heap.html">Heap</a></li><li><a href="module-data-structures_interval-tree.IntervalTree.html">IntervalTree</a></li><li><a href="module-data-structures_interval-tree.Node.html">Node</a></li><li><a href="module-data-structures_linked-list.LinkedList.html">LinkedList</a></li><li><a href="module-data-structures_linked-list.Node.html">Node</a></li><li><a href="module-data-structures_red-black-tree.RBTree.html">RBTree</a></li><li><a href="module-graphs_shortest-path_bellman-ford.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></li><li><a href="module-graphs_spanning-trees_prim.Vertex.html">Vertex</a></li><li><a href="module-sets_quickfind.QuickFind.html">QuickFind</a></li><li><a href="module-sets_quickunion.QuickUnion.html">QuickUnion</a></li><li><a href="module-sets_weightquickunion.QuickUnion.html">QuickUnion</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-combinatorics_cartesianproduct.html">combinatorics/cartesianproduct</a></li><li><a href="module-combinatorics_combinations.html">combinatorics/combinations</a></li><li><a href="module-combinatorics_permutations.html">combinatorics/permutations</a></li><li><a href="module-combinatorics_variations-repetition.html">combinatorics/variations-repetition</a></li><li><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a></li><li><a href="module-data-structures_heap.html">data-structures/heap</a></li><li><a href="module-data-structures_interval-tree.html">data-structures/interval-tree</a></li><li><a href="module-data-structures_linked-list.html">data-structures/linked-list</a></li><li><a href="module-data-structures_red-black-tree.html">data-structures/red-black-tree</a></li><li><a href="module-graphs_others_topological-sort.html">graphs/others/topological-sort</a></li><li><a href="module-graphs_searching_bfs.html">graphs/searching/bfs</a></li><li><a href="module-graphs_searching_dfs.html">graphs/searching/dfs</a></li><li><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a></li><li><a href="module-graphs_shortest-path_dijkstra.html">graphs/shortest-path/dijkstra</a></li><li><a href="module-graphs_shortest-path_floyd-warshall.html">graphs/shortest-path/floyd-warshall</a></li><li><a href="module-graphs_spanning-trees_prim.html">graphs/spanning-trees/prim</a></li><li><a href="module-others_hanoi.html">others/hanoi</a></li><li><a href="module-others_levenshtein-distance.html">others/levenshtein-distance</a></li><li><a href="module-primes_is-prime.html">primes/is-prime</a></li><li><a href="module-primes_prime-factor-tree.html">primes/prime-factor-tree</a></li><li><a href="module-primes_sieve-of-eratosthenes.html">primes/sieve-of-eratosthenes</a></li><li><a href="module-searching_binarysearch.html">searching/binarysearch</a></li><li><a href="module-searching_knuth-morris-pratt.html">searching/knuth-morris-pratt</a></li><li><a href="module-searching_longest-increasing-subsequence.html">searching/longest-increasing-subsequence</a></li><li><a href="module-searching_maximum-subarray.html">searching/maximum-subarray</a></li><li><a href="module-searching_maximum-subarray-divide-and-conquer.html">searching/maximum-subarray-divide-and-conquer</a></li><li><a href="module-searching_quickselect.html">searching/quickselect</a></li><li><a href="module-searching_recursive-binarysearch.html">searching/recursive-binarysearch</a></li><li><a href="module-sets_quickfind.html">sets/quickfind</a></li><li><a href="module-sets_quickunion.html">sets/quickunion</a></li><li><a href="module-sets_weightquickunion.html">sets/weightquickunion</a></li><li><a href="module-shuffle_fisheryates.html">shuffle/fisheryates</a></li><li><a href="module-shuffle_richarddurstenfeld.html">shuffle/richarddurstenfeld</a></li><li><a href="module-sorting_3-way-string-quicksort.html">sorting/3-way-string-quicksort</a></li><li><a href="module-sorting_bubblesort.html">sorting/bubblesort</a></li><li><a href="module-sorting_bucketsort.html">sorting/bucketsort</a></li><li><a href="module-sorting_countingsort.html">sorting/countingsort</a></li><li><a href="module-sorting_heapsort.html">sorting/heapsort</a></li><li><a href="module-sorting_insertion-binary-sort.html">sorting/insertion-binary-sort</a></li><li><a href="module-sorting_insertionsort.html">sorting/insertionsort</a></li><li><a href="module-sorting_lsd.html">sorting/lsd</a></li><li><a href="module-sorting_msd.html">sorting/msd</a></li><li><a href="module-sorting_quicksort-middle.html">sorting/quicksort-middle</a></li><li><a href="module-sorting_recursive-insertionsort.html">sorting/recursive-insertionsort</a></li><li><a href="module-sorting_selectionsort.html">sorting/selectionsort</a></li><li><a href="module-sorting_shellsort.html">sorting/shellsort</a></li></ul><h3>Classes</h3><ul><li><a href="module-data-structures_binary-search-tree.BinaryTree.html">BinaryTree</a></li><li><a href="module-data-structures_binary-search-tree.Node.html">Node</a></li><li><a href="module-data-structures_heap.Heap.html">Heap</a></li><li><a href="module-data-structures_interval-tree.IntervalTree.html">IntervalTree</a></li><li><a href="module-data-structures_interval-tree.Node.html">Node</a></li><li><a href="module-data-structures_linked-list.LinkedList.html">LinkedList</a></li><li><a href="module-data-structures_linked-list.Node.html">Node</a></li><li><a href="module-data-structures_red-black-tree.RBTree.html">RBTree</a></li><li><a href="module-graphs_shortest-path_bellman-ford.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Edge.html">Edge</a></li><li><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></li><li><a href="module-graphs_spanning-trees_prim.Vertex.html">Vertex</a></li><li><a href="module-sets_quickfind.QuickFind.html">QuickFind</a></li><li><a href="module-sets_quickunion.QuickUnion.html">QuickUnion</a></li><li><a href="module-sets_weightquickunion.QuickUnion.html">QuickUnion</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 15 2015 19:05:32 GMT+0200 (EET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Mon Jan 19 2015 09:10:56 GMT+0200 (EET)
 </footer>
 
 <script> prettyPrint(); </script>
