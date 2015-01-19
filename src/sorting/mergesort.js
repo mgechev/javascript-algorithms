@@ -1,7 +1,6 @@
 (function (exports) {
   /**
    * Mergesort module.
-   * @module sorting/mergesort
    */
   'use strict';
 
@@ -39,7 +38,7 @@
    * Devides and sort merges two subarrays of given array
    *
    * @public
-   * @module sorting/mergesort
+   * @module sorting/mergesort/merge
    * @param {array} array The array which subarrays should be sorted
    * @param {number} start The start of the first subarray.
    *   This subarray is with end middle - 1.
