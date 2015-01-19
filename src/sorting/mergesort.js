@@ -1,4 +1,8 @@
 (function (exports) {
+  /**
+   * Mergesort module.
+   * @module sorting/mergesort
+   */
   'use strict';
 
   function compare(a, b) {
