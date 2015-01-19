@@ -13,6 +13,7 @@
    * Mergesort method which is recursively called for sorting the input array.
    *
    * @public
+   * @module sorting/mergesort
    * @param {array} array The array which should be sorted
    * @param {Function} cmp Compares two items in an array
    * @param {number} start Left side of the subarray
@@ -38,6 +39,7 @@
    * Devides and sort merges two subarrays of given array
    *
    * @public
+   * @module sorting/mergesort
    * @param {array} array The array which subarrays should be sorted
    * @param {number} start The start of the first subarray.
    *   This subarray is with end middle - 1.
