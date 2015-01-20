@@ -21,6 +21,8 @@
    *
    * @example
    * var array = [2, 4, 1, 5, 6, 7];
+   * var mergeSort =
+   *    require('path-to-algorithms/src/sorting/mergesort').mergeSort;
    * mergeSort(array); // [1, 2, 4, 5, 6, 7]
    */
   function mergeSort(array, cmp, start, end) {
@@ -52,6 +54,8 @@
    *
    * @example
    * var array = [1, 2, 3, 1, 4, 5, 6]
+   * var merge =
+   *    require('path-to-algorithms/src/sorting/mergesort').merge;
    * merge(array, function (a, b) {  // [1, 1, 2, 3, 4, 5, 6]
    *  return a - b;
    * }, 0, 4, 7);
