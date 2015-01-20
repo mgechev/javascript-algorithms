@@ -13,11 +13,15 @@
    *
    * @public
    * @module sorting/mergesort
-   * @param {array} array The array which should be sorted
-   * @param {Function} cmp Compares two items in an array
-   * @param {number} start Left side of the subarray
-   * @param {number} end Right side of the subarray
-   * @returns {array} Array with sorted subarray
+   * @param {Array} array The array which should be sorted.
+   * @param {Function} cmp Compares two items in an array.
+   * @param {Number} start Left side of the subarray.
+   * @param {Number} end Right side of the subarray.
+   * @returns {Array} Array with sorted subarray.
+   *
+   * @example
+   * var array = [2, 4, 1, 5, 6, 7];
+   * mergeSort(array); // [1, 2, 4, 5, 6, 7]
    */
   function mergeSort(array, cmp, start, end) {
     cmp = cmp || compare;
@@ -39,12 +43,18 @@
    *
    * @public
    * @module sorting/mergesort/merge
-   * @param {array} array The array which subarrays should be sorted
-   * @param {number} start The start of the first subarray.
+   * @param {Array} array The array which subarrays should be sorted.
+   * @param {Number} start The start of the first subarray.
    *   This subarray is with end middle - 1.
-   * @param {number} middle The start of the second array
-   * @param {number} end end - 1 is the end of the second array
-   * @returns {array} The array with sorted subarray
+   * @param {Number} middle The start of the second array.
+   * @param {Number} end end - 1 is the end of the second array.
+   * @returns {Array} The array with sorted subarray.
+   *
+   * @example
+   * var array = [1, 2, 3, 1, 4, 5, 6]
+   * merge(array, function (a, b) {  // [1, 1, 2, 3, 4, 5, 6]
+   *  return a - b;
+   * }, 0, 4, 7);
    */
   mergeSort.merge = function (array, cmp, start, middle, end) {
     var left = [];
