@@ -19,6 +19,7 @@
      * Partitions the array in two parts by the middle elements.
      * All elemnts which are less than the chosen one goes left from it
      * all which are greater goes right from it.
+     * Uses Hoare's partitioning algorithm.
      *
      * @param {array} array Array which should be partitioned
      * @param {number} left Left part of the array

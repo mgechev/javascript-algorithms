@@ -14,7 +14,7 @@
     }
 
     /**
-     * Partitions given subarray.
+     * Partitions given subarray using Lomuto's partitioning algorithm.
      *
      * @private
      * @param {array} array Input array
