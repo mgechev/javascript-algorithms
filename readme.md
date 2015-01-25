@@ -71,7 +71,9 @@ If the build is not successful fix your code in order the tests and jshint valid
 
 ## Contributors
 
-[<img alt="mgechev" src="https://avatars.githubusercontent.com/u/455023?v=3&s=117" width="117">](https://github.com/mgechev)[<img alt="AndreyGeonya" src="https://avatars.githubusercontent.com/u/773648?v=3&s=117" width="117">](https://github.com/AndreyGeonya)[<img alt="pvoznenko" src="https://avatars.githubusercontent.com/u/1098414?v=3&s=117" width="117">](https://github.com/pvoznenko)[<img alt="Microfed" src="https://avatars.githubusercontent.com/u/613179?v=3&s=117" width="117">](https://github.com/Microfed)[<img alt="secrettriangle" src="https://avatars.githubusercontent.com/u/1765130?v=3&s=117" width="117">](https://github.com/secrettriangle)[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra)
+[<img alt="mgechev" src="https://avatars.githubusercontent.com/u/455023?v=3&s=117" width="117">](https://github.com/mgechev) |[<img alt="AndreyGeonya" src="https://avatars.githubusercontent.com/u/773648?v=3&s=117" width="117">](https://github.com/AndreyGeonya) |[<img alt="pvoznenko" src="https://avatars.githubusercontent.com/u/1098414?v=3&s=117" width="117">](https://github.com/pvoznenko) |[<img alt="secrettriangle" src="https://avatars.githubusercontent.com/u/1765130?v=3&s=117" width="117">](https://github.com/secrettriangle) |[<img alt="Microfed" src="https://avatars.githubusercontent.com/u/613179?v=3&s=117" width="117">](https://github.com/Microfed) |[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |
+:---: |:---: |:---: |:---: |:---: |:---: |
+[mgechev](https://github.com/mgechev) |[AndreyGeonya](https://github.com/AndreyGeonya) |[pvoznenko](https://github.com/pvoznenko) |[secrettriangle](https://github.com/secrettriangle) |[Microfed](https://github.com/Microfed) |[contra](https://github.com/contra) |
 
 ## License
 
