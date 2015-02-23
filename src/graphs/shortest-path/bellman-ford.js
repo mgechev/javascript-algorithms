@@ -35,20 +35,8 @@
 
   'use strict';
 
-  /**
-   * Graph edge.
-   *
-   * @constructor
-   * @public
-   * @param {Vertex} u Start vertex.
-   * @param {Vertex} v End vertex.
-   * @param {Number} weight Weight of the edge.
-   */
-  exports.Edge = function (u, v, weight) {
-    this.from = u;
-    this.to = v;
-    this.weight = weight;
-  };
+  exports.Vertex = require('../../data-structures/vertex').Vertex;
+  exports.Edge = require('../../data-structures/edge').Edge;
 
   /**
    * Computes shortest paths from a single source

@@ -45,32 +45,8 @@
   'use strict';
 
   var Heap = require('../../data-structures/heap').Heap;
-
-  /**
-   * Graph vertex.
-   *
-   * @constructor
-   * @public
-   * @param {Number} id Id of the vertex.
-   */
-  exports.Vertex = function (id) {
-    this.id = id;
-  };
-
-  /**
-   * Graph edge.
-   *
-   * @constructor
-   * @public
-   * @param {Vertex} e Vertex which this edge connects.
-   * @param {Vertex} v Vertex which this edge connects.
-   * @param {Number} distance Weight of the edge.
-   */
-  exports.Edge = function (e, v, distance) {
-    this.e = e;
-    this.v = v;
-    this.distance = distance;
-  };
+  exports.Vertex = require('../../data-structures/vertex').Vertex;
+  exports.Edge = require('../../data-structures/edge').Edge;
 
   /**
    * Graph.
