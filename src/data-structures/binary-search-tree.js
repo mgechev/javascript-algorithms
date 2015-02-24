@@ -181,7 +181,7 @@
    * Average time complexity: O(log N).
    *
    * @public
-   * @param {Number|String} Value of the node which should be found.
+   * @param {Number|String} value of the node which should be found.
    */
   exports.BinaryTree.prototype.find = function (value) {
     return this._find(value, this._root);
@@ -192,8 +192,8 @@
    * Average time complexity: O(log N).
    *
    * @private
-   * @param {Number|String} Value of the node which should be found.
-   * @param {Node} Current node to be checked.
+   * @param {Number|String} value of the node which should be found.
+   * @param {Node} current node to be checked.
    */
   exports.BinaryTree.prototype._find = function (value, current) {
     if (!current) {
@@ -232,7 +232,6 @@
       } else {
         parent._right = newChild;
       }
-
       if (newChild) {
         newChild._parent = parent;
       }
@@ -244,7 +243,7 @@
    * Average runtime complexity: O(log N).
    *
    * @public
-   * @param {Node} Node to be removed
+   * @param {Node} node to be removed
    * @returns {Boolean} True/false depending
    *    on whether the given node is removed.
    */
@@ -261,12 +260,16 @@
       min.value = temp;
       return this.remove(min);
     } else {
-      if (node._left) {
-        this._replaceChild(node._parent, node, node._left);
-      } else if (node._right) {
-        this._replaceChild(node._parent, node, node._right);
-      } else {
-        this._replaceChild(node._parent, node, null);
+      if (node._parent !== null) {
+        if (node._left) {
+          this._replaceChild(node._parent, node, node._left);
+        } else if (node._right) {
+          this._replaceChild(node._parent, node, node._right);
+        } else {
+          this._replaceChild(node._parent, node, null);
+        }
+      }else {
+        this._root = null;
       }
       return true;
     }
