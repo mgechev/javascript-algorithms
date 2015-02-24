@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Node</title>
+    <title>JSDoc: Module: data-structures/splay-tree</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Node</h1>
+    <h1 class="page-title">Module: data-structures/splay-tree</h1>
 
     
 
@@ -28,11 +28,8 @@
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="module-data-structures_linked-list.html">data-structures/linked-list</a>.</span>
         
-        Node
-        </h2>
+            
         
     
 </header>
@@ -41,76 +38,21 @@
     <div class="container-overview">
     
         
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Node"><span class="type-signature"></span>new Node<span class="signature">(data)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Linked list node.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
+            <div class="description">Splay Tree.</div>
         
 
         
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
 
 
-            
-            </td>
 
-            
 
-            
 
-            <td class="description last">Data of the node.</td>
-        </tr>
 
-    
-    </tbody>
-</table>
+
+
+
 
 
 
@@ -145,7 +87,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_linked-list.js.html">data-structures/linked-list.js</a>, <a href="data-structures_linked-list.js.html#line47">line 47</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -170,7 +112,26 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var STree = require('path-to-algorithms/src/data-structures'+
+'/splay-tree');
+var sTree = new STree.SplayTree();
+sTree.insert(10);
+sTree.insert(5);
+sTree.insert(15);
+sTree.insert(7);
+sTree.insert(12);
+sTree.search(10);
+console.log(sTree._root);
+sTree.remove(10);
+console.log(sTree._root);
+sTree.search(15);
+console.log(sTree._root);</code></pre>
 
+
+
+        
     
     </div>
 
@@ -179,231 +140,21 @@
     
 
     
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="module-data-structures_splay-tree.Node.html">Node</a></dt>
+            <dd></dd>
+        
+            <dt><a href="module-data-structures_splay-tree.SplayTree.html">SplayTree</a></dt>
+            <dd></dd>
+        </dl>
+    
 
      
 
     
 
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="data"><span class="type-signature"></span>data<span class="type-signature"> :Object</span></h4>
-
-
-
-
-<div class="description">
-    Data of the node.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_linked-list.js.html">data-structures/linked-list.js</a>, <a href="data-structures_linked-list.js.html#line52">line 52</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="next"><span class="type-signature"></span>next<span class="type-signature"> :Node</span></h4>
-
-
-
-
-<div class="description">
-    Next node.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Node</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_linked-list.js.html">data-structures/linked-list.js</a>, <a href="data-structures_linked-list.js.html#line57">line 57</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="prev"><span class="type-signature"></span>prev<span class="type-signature"> :Node</span></h4>
-
-
-
-
-<div class="description">
-    Previous node.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Node</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_linked-list.js.html">data-structures/linked-list.js</a>, <a href="data-structures_linked-list.js.html#line62">line 62</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
     
 
     

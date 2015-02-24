@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: data-structures/binary-search-tree.js</title>
+    <title>JSDoc: Source: data-structures/splay-tree.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: data-structures/binary-search-tree.js</h1>
+    <h1 class="page-title">Source: data-structures/splay-tree.js</h1>
 
     
 
@@ -27,29 +27,25 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Binary search tree.
+ * Splay Tree.
  *
  * @example
- * var BST = require('path-to-algorithms/src/data-structures'+
- * '/binary-search-tree');
- * var bst = new BST.BinaryTree();
+ * var STree = require('path-to-algorithms/src/data-structures'+
+ * '/splay-tree');
+ * var sTree = new STree.SplayTree();
+ * sTree.insert(10);
+ * sTree.insert(5);
+ * sTree.insert(15);
+ * sTree.insert(7);
+ * sTree.insert(12);
+ * sTree.search(10);
+ * console.log(sTree._root);
+ * sTree.remove(10);
+ * console.log(sTree._root);
+ * sTree.search(15);
+ * console.log(sTree._root);
  *
- * bst.insert(2000);
- * bst.insert(1989);
- * bst.insert(1991);
- * bst.insert(2001);
- * bst.insert(1966);
- *
- * var node = bst.find(1989);
- * console.log(node.value); // 1989
- *
- * var minNode = bst.findMin();
- * console.log(minNode.value); // 1966
- *
- * var maxNode = bst.findMax();
- * console.log(maxNode.value); //2001
- *
- * @module data-structures/binary-search-tree
+ * @module data-structures/splay-tree
  */
 (function (exports) {
   'use strict';
@@ -75,26 +71,182 @@
   };
 
   /**
-   * Binary tree.
-   *
+   * Splay tree.
+   * http://en.wikipedia.org/wiki/Splay_tree
    * @public
    * @constructor
    */
-  exports.BinaryTree = function () {
+  exports.SplayTree = function () {
     this._root = null;
   };
 
   /**
-   * Inserts a node into the binary search tree.&lt;br>&lt;br>
+   * Splays a node to the root.&lt;br>&lt;br>
+   *
+   * @private
+   * @method
+   * @param {Node} node Node to be splayed.
+   */
+  exports.SplayTree.prototype._splay = function (node) {
+    while (this._root !== node) {
+      var hasParent = node._parent !== null;
+      var hasGrandparent = (hasParent &amp;&amp; node._parent._parent !== null);
+      if (hasParent &amp;&amp; hasGrandparent) {
+        var isLeftChild = node._parent._left === node;
+        var isParentLeftChild = node._parent._parent._left === node._parent;
+        if (
+          (isLeftChild &amp;&amp; isParentLeftChild) ||
+          (!isLeftChild &amp;&amp; !isParentLeftChild)
+        ) {
+          node = this._zigZig(node);
+        } else {
+          node = this._zigZag(node);
+        }
+      } else {
+        node = this._zig(node);
+      }
+    }
+    return node;
+  };
+
+  /**
+   * Performs a zig-zig splay pattern&lt;br>&lt;br>
+   *
+   * @private
+   * @method
+   * @param {Node} node Node to be zig-zig'd.
+   */
+  exports.SplayTree.prototype._zigZig = function (node) {
+
+    var parent = node._parent;
+    var grandParent = node._parent._parent;
+    var greatGrandParent = grandParent._parent !== undefined ?
+      grandParent._parent : null;
+
+    var orientation = (parent._right === node) ? '_right' : '_left';
+    var oppositeOrientation = (orientation === '_left') ? '_right' : '_left';
+    var grandParentOrientation = (greatGrandParent !== null &amp;&amp;
+      greatGrandParent._left === grandParent) ? '_left' : '_right';
+
+    // Fix grandparent &amp; great if it exists/not root
+    if (this._root === grandParent) {
+      this._root = node;
+    } else {
+      greatGrandParent[grandParentOrientation] = node;
+    }
+    grandParent._parent = parent;
+    // Fix grandparent subtree
+    grandParent[orientation] = parent[oppositeOrientation];
+    if (grandParent[orientation] !== null) {
+      grandParent[orientation]._parent = grandParent;
+    }
+    // Fix Parent
+    parent[oppositeOrientation] = grandParent;
+    parent[orientation] = node[oppositeOrientation];
+    if (parent[orientation] !== null) {
+      parent[orientation]._parent = parent;
+    }
+    parent._parent = node;
+    // Fix Curr Node
+    node[oppositeOrientation] = parent;
+    if (node === this._root) {
+      node._parent = null;
+    } else if (greatGrandParent !== null) {
+      node._parent = greatGrandParent;
+    }
+
+    return node;
+  };
+
+  /**
+   * Performs a zig-zag splay pattern&lt;br>&lt;br>
+   *
+   * @private
+   * @method
+   * @param {Node} node Node to be zig-zag'd.
+   */
+  exports.SplayTree.prototype._zigZag = function (node) {
+
+    var parent = node._parent;
+    var grandParent = parent._parent;
+    var greatGrandParent = grandParent._parent !== undefined ?
+      grandParent._parent : null;
+
+    var orientation = (parent._left === node) ? '_left' : '_right';
+    var oppositeOrientation = (orientation === '_right') ? '_left' : '_right';
+    var grandParentOrientation = (greatGrandParent !== null &amp;&amp;
+      greatGrandParent._left === grandParent) ? '_left' : '_right';
+
+    // Fix GrandParent
+    if (this._root === grandParent) {
+      this._root = node;
+    } else {
+      greatGrandParent[grandParentOrientation] = node;
+    }
+    grandParent._parent = node;
+    // Fix GrandParent subtree
+    grandParent[oppositeOrientation] = node[orientation];
+    if (grandParent[oppositeOrientation] !== null) {
+      grandParent[oppositeOrientation]._parent = grandParent;
+    }
+    // Fix Parent
+    parent[orientation] = node[oppositeOrientation];
+    if (parent[orientation] !== null) {
+      parent[orientation]._parent = parent;
+    }
+    parent._parent = node;
+    // Fix Curr Node
+    node[orientation] = grandParent;
+    node[oppositeOrientation] = parent;
+    if (this._root === node) {
+      node._parent = null;
+    } else if (greatGrandParent !== null) {
+      node._parent = greatGrandParent;
+    }
+
+    return node;
+  };
+
+  /**
+   * Performs a zig splay pattern&lt;br>&lt;br>
+   *
+   * @private
+   * @method
+   * @param {Node} node Node to be zig'd.
+   */
+  exports.SplayTree.prototype._zig = function (node) {
+
+    var parent = node._parent;
+    var orientation = (parent._right === node) ? '_right' : '_left';
+    var oppositeOrientation = (orientation === '_right') ? '_left' : '_right';
+
+    if (this._root === parent) {
+      this._root = node;
+    }
+    // Fix Parent
+    parent[orientation] = node[oppositeOrientation];
+    if (parent[orientation] !== null) {
+      parent[orientation]._parent = parent;
+    }
+    parent._parent = node;
+    // Fix Curr Node
+    node[oppositeOrientation] = parent;
+    node._parent = null;
+
+    return node;
+  };
+
+  /**
+   * Inserts a node into the splay tree.&lt;br>&lt;br>
    * Time complexity: O(log N) in the average case
-   * and O(N) in the worst case.
+   * and amortized O(log n) in the worst case.
    *
    * @public
    * @method
    * @param {Number|String} value Node value.
    * @param {Node} current Current node.
    */
-  exports.BinaryTree.prototype.insert = function (value, current) {
+  exports.SplayTree.prototype.insert = function (value, current) {
     if (this._root === null) {
       this._root = new exports.Node(value, null, null, null);
       return;
@@ -108,6 +260,7 @@
     }
     if (!current[insertKey]) {
       current[insertKey] = new exports.Node(value, null, null, current);
+      this._splay(current[insertKey]);
     } else {
       this.insert(value, current[insertKey]);
     }
@@ -121,7 +274,7 @@
    * @param {Function} callback Callback which
    *    will be called for each traversed node.
    */
-  exports.BinaryTree.prototype._inorder = function (current, callback) {
+  exports.SplayTree.prototype._inorder = function (current, callback) {
     if (!current) {
       return;
     }
@@ -133,14 +286,14 @@
   };
 
   /**
-   * In-order traversal of the whole binary search tree.
+   * In-order traversal of the whole Splay Tree.
    *
    * @public
    * @method
    * @param {Function} callback Callback which will be
    * called for each traversed node.
    */
-  exports.BinaryTree.prototype.inorder = function (callback) {
+  exports.SplayTree.prototype.inorder = function (callback) {
     return this._inorder(this._root, callback);
   };
 
@@ -152,7 +305,7 @@
    * @param {Function} callback Callback which will
    * be called for each traversed node
    */
-  exports.BinaryTree.prototype._postorder = function (current, callback) {
+  exports.SplayTree.prototype._postorder = function (current, callback) {
     if (!current) {
       return;
     }
@@ -170,7 +323,7 @@
    * @param {Function} callback Callback which
    * will be called for each traversed node.
    */
-  exports.BinaryTree.prototype.postorder = function (callback) {
+  exports.SplayTree.prototype.postorder = function (callback) {
     return this._postorder(this._root, callback);
   };
 
@@ -182,7 +335,7 @@
    * @param {Function} callback Callback which
    * will be called for each traversed node.
    */
-  exports.BinaryTree.prototype._preorder = function (current, callback) {
+  exports.SplayTree.prototype._preorder = function (current, callback) {
     if (!current) {
       return;
     }
@@ -200,7 +353,7 @@
    * @param {Function} callback Callback which will
    * be called for each traversed node.
    */
-  exports.BinaryTree.prototype.preorder = function (callback) {
+  exports.SplayTree.prototype.preorder = function (callback) {
     return this._preorder(this._root, callback);
   };
 
@@ -209,10 +362,22 @@
    * Average time complexity: O(log N).
    *
    * @public
-   * @param {Number|String} value of the node which should be found.
+   * @param {Number|String} Value of the node which should be found.
    */
-  exports.BinaryTree.prototype.find = function (value) {
-    return this._find(value, this._root);
+  exports.SplayTree.prototype.search = function (value) {
+    var node = this._search(value, this._root);
+    return this._splay(node);
+  };
+
+  /**
+   * Finds a node by it's value.&lt;br>&lt;br>
+   * Average time complexity: O(log N).
+   *
+   * @public
+   * @param {Number|String} Value of the node which should be found.
+   */
+  exports.SplayTree.prototype._splaylessSearch = function (value) {
+    return this._search(value, this._root);
   };
 
   /**
@@ -220,10 +385,10 @@
    * Average time complexity: O(log N).
    *
    * @private
-   * @param {Number|String} value of the node which should be found.
-   * @param {Node} current node to be checked.
+   * @param {Number|String} Value of the node which should be found.
+   * @param {Node} Current node to be checked.
    */
-  exports.BinaryTree.prototype._find = function (value, current) {
+  exports.SplayTree.prototype._search = function (value, current) {
     if (!current) {
       return null;
     }
@@ -233,11 +398,11 @@
     }
 
     if (current.value > value) {
-      return this._find(value, current._left);
+      return this._search(value, current._left);
     }
 
     if (current.value &lt; value) {
-      return this._find(value, current._right);
+      return this._search(value, current._right);
     }
   };
 
@@ -249,37 +414,38 @@
    * @param {Node} oldChild Child to be replaced.
    * @param {Node} newChild Child replacement.
    */
-  exports.BinaryTree.prototype._replaceChild =
-   function (parent, oldChild, newChild) {
-    if (!parent) {
-      this._root = newChild;
-      this._root._parent = null;
-    } else {
-      if (parent._left === oldChild) {
-        parent._left = newChild;
+  exports.SplayTree.prototype._replaceChild =
+    function (parent, oldChild, newChild) {
+      if (!parent) {
+        this._root = newChild;
+        this._root._parent = null;
       } else {
-        parent._right = newChild;
+        if (parent._left === oldChild) {
+          parent._left = newChild;
+        } else {
+          parent._right = newChild;
+        }
+
+        if (newChild) {
+          newChild._parent = parent;
+        }
       }
-      if (newChild) {
-        newChild._parent = parent;
-      }
-    }
-  };
+    };
 
   /**
-   * Removes node from the tree. &lt;br>&lt;br>
+   * Removes node with given value from the tree. &lt;br>&lt;br>
    * Average runtime complexity: O(log N).
    *
    * @public
-   * @param {Node} node to be removed
+   * @param {Number|String} value Value to be removed
    * @returns {Boolean} True/false depending
    *    on whether the given node is removed.
    */
-  exports.BinaryTree.prototype.remove = function (node) {
+  exports.SplayTree.prototype.remove = function (value) {
+    var node = this._splaylessSearch(value);
     if (!node) {
       return false;
     }
-
     if (node._left &amp;&amp; node._right) {
       var min = this._findMin(node._right);
       var temp = node.value;
@@ -296,7 +462,8 @@
         } else {
           this._replaceChild(node._parent, node, null);
         }
-      }else {
+        this._splay(node._parent);
+      } else {
         this._root = null;
       }
       return true;
@@ -311,8 +478,10 @@
    * @param {Number|String} current Current minimum value of the sub-tree.
    * @returns {Node} Node with the minimum value in the sub-tree.
    */
-  exports.BinaryTree.prototype._findMin = function (node, current) {
-    current = current || { value: Infinity };
+  exports.SplayTree.prototype._findMin = function (node, current) {
+    current = current || {
+      value: Infinity
+    };
     if (!node) {
       return current;
     }
@@ -322,73 +491,33 @@
     return this._findMin(node._left, current);
   };
 
-  /**
-   * Finds the node with maximum value in given sub-tree.
-   *
-   * @private
-   * @param {Node} node Root of the sub-tree.
-   * @param {Number|String} current Current maximum value of the sub-tree.
-   * @returns {Node} Node with the maximum value in the sub-tree.
-   */
-  exports.BinaryTree.prototype._findMax = function (node, current) {
-    current = current || { value: -Infinity };
-    if (!node) {
-      return current;
-    }
-    if (current.value &lt; node.value) {
-      current = node;
-    }
-    return this._findMax(node._right, current);
-  };
-
-  /**
-   * Finds the node with minimum value in the whole tree.
-   *
-   * @public
-   * @returns {Node} The minimum node of the tree.
-   */
-  exports.BinaryTree.prototype.findMin = function () {
-    return this._findMin(this._root);
-  };
-
-  /**
-   * Finds the node with maximum value in the whole tree.
-   *
-   * @public
-   * @returns {Node} The maximum node of the tree.
-   *
-   */
-  exports.BinaryTree.prototype.findMax = function () {
-    return this._findMax(this._root);
-  };
-
-  exports.BinaryTree.prototype._isBalanced = function (current) {
+  exports.SplayTree.prototype._isBalanced = function (current) {
     if (!current) {
       return true;
     }
-    return this._isBalanced(current._left)  &amp;&amp;
-           this._isBalanced(current._right) &amp;&amp;
-          Math.abs(this._getHeight(current._left) -
-            this._getHeight(current._right)) &lt;= 1;
+    return this._isBalanced(current._left) &amp;&amp;
+      this._isBalanced(current._right) &amp;&amp;
+      Math.abs(this._getHeight(current._left) -
+        this._getHeight(current._right)) &lt;= 1;
   };
 
   /**
-   * Returns whether the BST is balanced.
+   * Returns whether the Splay Tree is balanced.
    *
    * @public
    * @returns {Boolean} Whether the tree is balanced or not.
    */
-  exports.BinaryTree.prototype.isBalanced = function () {
+  exports.SplayTree.prototype.isBalanced = function () {
     return this._isBalanced(this._root);
   };
 
   /**
-   * Finds the diameter of the binary tree.
+   * Finds the diameter of the Splay Tree.
    *
    * @public
-   * @returns {Number} The longest path in the BST.
+   * @returns {Number} The longest path in the tree.
    */
-  exports.BinaryTree.prototype.getDiameter = function () {
+  exports.SplayTree.prototype.getDiameter = function () {
     var getDiameter = function (root) {
       if (!root) {
         return 0;
@@ -407,16 +536,16 @@
    * @public
    * @returns {Number} The height of the tree.
    */
-  exports.BinaryTree.prototype.getHeight = function () {
+  exports.SplayTree.prototype.getHeight = function () {
     return this._getHeight(this._root);
   };
 
-  exports.BinaryTree.prototype._getHeight = function (node) {
+  exports.SplayTree.prototype._getHeight = function (node) {
     if (!node) {
       return 0;
     }
     return 1 + Math.max(this._getHeight(node._left),
-        this._getHeight(node._right));
+      this._getHeight(node._right));
   };
 
   /**
@@ -425,31 +554,32 @@
    * @public
    * @returns {Node} The lowest common ancestor of the two nodes or null.
    */
-  exports.BinaryTree.prototype.lowestCommonAncestor =
-   function (firstNode, secondNode) {
-    return this._lowestCommonAncestor(firstNode, secondNode, this._root);
-  };
+  exports.SplayTree.prototype.lowestCommonAncestor =
+    function (firstNode, secondNode) {
+      return this._lowestCommonAncestor(firstNode, secondNode, this._root);
+    };
 
-  exports.BinaryTree.prototype._lowestCommonAncestor =
-   function (firstNode, secondNode, current) {
-    var firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
-    var secondNodeInLeft = this._existsInSubtree(secondNode, current._left);
-    var firstNodeInRight = this._existsInSubtree(firstNode, current._right);
-    var secondNodeInRight = this._existsInSubtree(secondNode, current._right);
-    if ((firstNodeInLeft &amp;&amp; secondNodeInRight) ||
+  exports.SplayTree.prototype._lowestCommonAncestor =
+    function (firstNode, secondNode, current) {
+      var firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
+      var secondNodeInLeft = this._existsInSubtree(secondNode, current._left);
+      var firstNodeInRight = this._existsInSubtree(firstNode, current._right);
+      var secondNodeInRight = this._existsInSubtree(secondNode, current._right);
+      if ((firstNodeInLeft &amp;&amp; secondNodeInRight) ||
         (firstNodeInRight &amp;&amp; secondNodeInLeft)) {
-      return current;
-    }
-    if (secondNodeInLeft &amp;&amp; firstNodeInLeft) {
-      return this._lowestCommonAncestor(firstNode, secondNode, current._left);
-    }
-    if (secondNodeInRight &amp;&amp; secondNodeInLeft) {
-      return this._lowestCommonAncestor(firstNode, secondNode, current._right);
-    }
-    return null;
-  };
+        return current;
+      }
+      if (secondNodeInLeft &amp;&amp; firstNodeInLeft) {
+        return this._lowestCommonAncestor(firstNode, secondNode, current._left);
+      }
+      if (secondNodeInRight &amp;&amp; secondNodeInLeft) {
+        return this._lowestCommonAncestor(firstNode, secondNode,
+          current._right);
+      }
+      return null;
+    };
 
-  exports.BinaryTree.prototype._existsInSubtree = function (node, root) {
+  exports.SplayTree.prototype._existsInSubtree = function (node, root) {
     if (!root) {
       return false;
     }
