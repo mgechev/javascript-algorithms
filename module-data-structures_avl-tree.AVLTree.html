@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: BinaryTree</title>
+    <title>JSDoc: Class: AVLTree</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: BinaryTree</h1>
+    <h1 class="page-title">Class: AVLTree</h1>
 
     
 
@@ -29,9 +29,9 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a>.</span>
+            <span class="ancestors"><a href="module-data-structures_avl-tree.html">data-structures/avl-tree</a>.</span>
         
-        BinaryTree
+        AVLTree
         </h2>
         
     
@@ -46,14 +46,14 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="BinaryTree"><span class="type-signature"></span>new BinaryTree<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="AVLTree"><span class="type-signature"></span>new AVLTree<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Binary tree.
+    AVL Tree.
 </div>
 
 
@@ -97,7 +97,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line55">line 55</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line49">line 49</a>
     </li></ul></dd>
     
 
@@ -140,6 +140,1286 @@
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="_getHeightAtNode"><span class="type-signature"></span>_getHeightAtNode<span class="signature">(node)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Calculates the height of a node based on height
+property of children.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>node</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Given node's height is returned.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line61">line 61</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_isBalancedAtNode"><span class="type-signature"></span>_isBalancedAtNode<span class="signature">(node)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Checks if a given node has an imbalance.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>node</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Given node's children are checked for
+imbalance.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_leftLeft"><span class="type-signature"></span>_leftLeft<span class="signature">(x, y, z)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Rotates the given nodes from a left left pattern
+to a parent, with 2 children.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">node with lowest height to be restructured.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">parent of x parameter.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>z</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">grandparent of x, largest height.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line197">line 197</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_leftRight"><span class="type-signature"></span>_leftRight<span class="signature">(x, y, z)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Rotates the given nodes from a left right pattern
+to a parent, with 2 children.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">node with lowest height to be restructured.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">parent of x parameter.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>z</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">grandparent of x, largest height.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line280">line 280</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_maintainHeightBalanceProperty"><span class="type-signature"></span>_maintainHeightBalanceProperty<span class="signature">(node)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Maintains the height balance property by
+walking to root and checking for invalid height
+differences between children and restructuring
+appropriately.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>node</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Started node.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line106">line 106</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_restructure"><span class="type-signature"></span>_restructure<span class="signature">(x, y, z)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Identifies the pattern of given nodes, then calls
+the appropriate pattern rotator.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">node with lowest height to be restructured.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">parent of x parameter.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>z</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">grandparent of x, largest height.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line135">line 135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_rightLeft"><span class="type-signature"></span>_rightLeft<span class="signature">(x, y, z)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Rotates the given nodes from a right left pattern
+to a parent, with 2 children.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">node with lowest height to be restructured.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">parent of x parameter.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>z</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">grandparent of x, largest height.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line235">line 235</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_rightRight"><span class="type-signature"></span>_rightRight<span class="signature">(x, y, z)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Rotates the given nodes from a right right pattern
+to a parent, with 2 children.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">node with lowest height to be restructured.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">parent of x parameter.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>z</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">grandparent of x, largest height.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line158">line 158</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
             
@@ -249,7 +1529,7 @@ Average time complexity: O(log N).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line186">line 186</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line444">line 444</a>
     </li></ul></dd>
     
 
@@ -331,7 +1611,7 @@ Average time complexity: O(log N).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line333">line 333</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line591">line 591</a>
     </li></ul></dd>
     
 
@@ -435,7 +1715,7 @@ Average time complexity: O(log N).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line322">line 322</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line580">line 580</a>
     </li></ul></dd>
     
 
@@ -495,7 +1775,7 @@ Average time complexity: O(log N).
 
 
 <div class="description">
-    Finds the diameter of the binary tree.
+    Finds the diameter of the AVL tree.
 </div>
 
 
@@ -539,7 +1819,7 @@ Average time complexity: O(log N).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line363">line 363</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line621">line 621</a>
     </li></ul></dd>
     
 
@@ -566,7 +1846,7 @@ Average time complexity: O(log N).
 
         
 <div class="param-desc">
-    The longest path in the BST.
+    The longest path in the AVL Tree.
 </div>
 
 
@@ -592,7 +1872,7 @@ Average time complexity: O(log N).
 
     
 
-    <h4 class="name" id="getHeight"><span class="type-signature"></span>getHeight<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    <h4 class="name" id="getTreeHeight"><span class="type-signature"></span>getTreeHeight<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
 
     
 
@@ -643,7 +1923,7 @@ Average time complexity: O(log N).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line382">line 382</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line640">line 640</a>
     </li></ul></dd>
     
 
@@ -703,7 +1983,7 @@ Average time complexity: O(log N).
 
 
 <div class="description">
-    In-order traversal of the whole binary search tree.
+    In-order traversal of the whole AVL tree.
 </div>
 
 
@@ -796,7 +2076,7 @@ called for each traversed node.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line115">line 115</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line373">line 373</a>
     </li></ul></dd>
     
 
@@ -834,7 +2114,7 @@ called for each traversed node.</td>
 
 
 <div class="description">
-    Inserts a node into the binary search tree.<br><br>
+    Inserts a node into the AVL Tree.<br><br>
 Time complexity: O(log N) in the average case
 and O(N) in the worst case.
 </div>
@@ -954,7 +2234,7 @@ and O(N) in the worst case.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line69">line 69</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line325">line 325</a>
     </li></ul></dd>
     
 
@@ -992,7 +2272,7 @@ and O(N) in the worst case.
 
 
 <div class="description">
-    Returns whether the BST is balanced.
+    Returns whether the AVL Tree is balanced.
 </div>
 
 
@@ -1036,7 +2316,7 @@ and O(N) in the worst case.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line353">line 353</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line611">line 611</a>
     </li></ul></dd>
     
 
@@ -1140,7 +2420,7 @@ and O(N) in the worst case.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line400">line 400</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line658">line 658</a>
     </li></ul></dd>
     
 
@@ -1293,7 +2573,7 @@ will be called for each traversed node.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line145">line 145</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line403">line 403</a>
     </li></ul></dd>
     
 
@@ -1424,7 +2704,7 @@ be called for each traversed node.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line175">line 175</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line433">line 433</a>
     </li></ul></dd>
     
 
@@ -1555,7 +2835,7 @@ Average runtime complexity: O(log N).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line250">line 250</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line508">line 508</a>
     </li></ul></dd>
     
 

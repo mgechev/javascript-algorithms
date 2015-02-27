@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Node</title>
+    <title>JSDoc: Module: data-structures/avl-tree</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Node</h1>
+    <h1 class="page-title">Module: data-structures/avl-tree</h1>
 
     
 
@@ -28,11 +28,8 @@
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a>.</span>
         
-        Node
-        </h2>
+            
         
     
 </header>
@@ -41,148 +38,22 @@
     <div class="container-overview">
     
         
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Node"><span class="type-signature"></span>new Node<span class="signature">(value, left, right, parent)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Node of the tree.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
+            <div class="description">AVL tree, a Binary Search Tree that satisfies the Height-Balance
+Property.</div>
         
 
         
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-|
-
-<span class="param-type">String</span>
 
 
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Value of the node.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>left</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Node</span>
 
 
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Left sibling.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>right</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Node</span>
 
 
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Right sibling.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>parent</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Node</span>
 
 
-            
-            </td>
 
-            
-
-            
-
-            <td class="description last">Parent of the node.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -217,7 +88,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line39">line 39</a>
+        <a href="data-structures_avl-tree.js.html">data-structures/avl-tree.js</a>, <a href="data-structures_avl-tree.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -242,7 +113,21 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var avlTree = require('path-to-algorithms/src/data-structures'+
+'/avl-tree');
+var avl = new avlTree.AVLTree();
 
+avl.insert(2000);
+avl.insert(1989);
+avl.insert(1991);
+avl.insert(2001);
+avl.insert(1966);</code></pre>
+
+
+
+        
     
     </div>
 
@@ -251,86 +136,21 @@
     
 
     
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="module-data-structures_avl-tree.AVLTree.html">AVLTree</a></dt>
+            <dd></dd>
+        
+            <dt><a href="module-data-structures_avl-tree.Node.html">Node</a></dt>
+            <dd></dd>
+        </dl>
+    
 
      
 
     
 
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="value"><span class="type-signature"></span>value<span class="type-signature"> :Number|String</span></h4>
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Number</span>
-|
-
-<span class="param-type">String</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_binary-search-tree.js.html">data-structures/binary-search-tree.js</a>, <a href="data-structures_binary-search-tree.js.html#line43">line 43</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
     
 
     
