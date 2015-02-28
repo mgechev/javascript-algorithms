@@ -93,6 +93,76 @@
     return true;
   };
 
+  exports.AVLTree.prototype._getNodesToRestructureRemove =
+    function (traveledNodes) {
+    // z is last traveled node - imbalance found at z
+    var zIndex = traveledNodes.length;
+    zIndex -= 1;
+    var z = traveledNodes[zIndex];
+    // y should be child of z with larger height
+    // (cannot be ancestor of removed node)
+    var y;
+    if (z._left !== null && z._right !== null){
+      y = (z._left === y) ? z._right : z._left;
+    }else if (z._left !== null && z._right === null){
+      y = z._left;
+    }else if (z._right !== null && z._left === null){
+      y = z._right;
+    }
+    // x should be tallest child of y.
+    // If children same height, x should be child of y
+    // that has same orientation as z to y.
+    var x;
+    if (y._left !== null && y._right !== null){
+      if (y._left._height > y._right._height){
+        x = y._left;
+      }else if (y._left._height < y._right._height){
+        x = y._right;
+      }else if (y._left._height === y._right._height){
+        x = (z._left === y) ? y._left : y._right;
+      }
+    }else if (y._left !== null && y._right === null){
+      x = y._left;
+    }else if (y._right !== null && y._left === null){
+      x = y._right;
+    }
+    return [x, y, z];
+  };
+
+  exports.AVLTree.prototype._getNodesToRestructureInsert =
+    function (traveledNodes) {
+    // z is last traveled node - imbalance found at z
+    var zIndex = traveledNodes.length;
+    zIndex -= 1;
+    var z = traveledNodes[zIndex];
+    // y should be child of z with larger height
+    // (must be ancestor of inserted node)
+    // therefore, last traveled node is correct.
+    var yIndex = traveledNodes.length;
+    yIndex -= 2;
+    var y = traveledNodes[yIndex];
+    // x should be tallest child of y.
+    // If children same height, x should be ancestor
+    // of inserted node (in traveled path).
+    var x;
+    if (y._left !== null && y._right !== null){
+      if (y._left._height > y._right._height){
+        x = y._left;
+      }else if (y._left._height < y._right._height){
+        x = y._right;
+      }else if (y._left._height === y._right._height){
+        var xIndex = traveledNodes.length;
+        xIndex -= 3;
+        x = traveledNodes[xIndex];
+      }
+    }else if (y._left !== null && y._right === null){
+      x = y._left;
+    }else if (y._right !== null && y._left === null){
+      x = y._right;
+    }
+    return [x, y, z];
+  };
+
   /**
    * Maintains the height balance property by
    * walking to root and checking for invalid height
@@ -102,21 +172,20 @@
    * @public
    * @method
    * @param {Node} node Started node.
+   * @param {Boolean} isRemove Represents if method was called after remove.
    */
-  exports.AVLTree.prototype._maintainHeightBalanceProperty = function (node) {
+  exports.AVLTree.prototype._maintainHeightBalanceProperty =
+    function (node, isRemove) {
     var current = node;
-    var path = []; //During restructure, use last 3 nodes traveled.
+    var traveledNodes = [];
     while (current !== null){
-      path.push(current);
+      traveledNodes.push(current);
       current._height = this._getHeightAtNode(current);
       if (!this._isBalancedAtNode(current)){
-        if (path.length >= 3){
-          var nodesToRestructure = path.slice(0, 3);
-          var x = nodesToRestructure[0];
-          var y = nodesToRestructure[1];
-          var z = nodesToRestructure[2];
-          this._restructure(x, y, z);
-        }
+        var nodesToBeRestructured = (isRemove)
+          ? this._getNodesToRestructureRemove(traveledNodes)
+          : this._getNodesToRestructureInsert(traveledNodes);
+        this._restructure(nodesToBeRestructured);
       }
       current = current._parent;
     }
@@ -128,11 +197,13 @@
    *
    * @public
    * @method
-   * @param {Node} x node with lowest height to be restructured.
-   * @param {Node} y parent of x parameter.
-   * @param {Node} z grandparent of x, largest height.
+   * @param {Array} nodesToBeRestructured
+   * array of nodes, in format, [x, y, z], to be restructured
    */
-  exports.AVLTree.prototype._restructure = function (x, y, z) {
+  exports.AVLTree.prototype._restructure = function (nodesToBeRestructured) {
+    var x = nodesToBeRestructured[0];
+    var y = nodesToBeRestructured[1];
+    var z = nodesToBeRestructured[2];
     //Determine Rotation Pattern
     if (z._right === y && y._right === x){
       this._rightRight(x, y, z);
@@ -337,7 +408,7 @@
     }
     if (!current[insertKey]) {
       current[insertKey] = new exports.Node(value, null, null, current);
-      this._maintainHeightBalanceProperty(current[insertKey]);
+      this._maintainHeightBalanceProperty(current[insertKey], false);
     } else {
       this.insert(value, current[insertKey]);
     }
@@ -481,9 +552,11 @@
    */
   exports.AVLTree.prototype._replaceChild =
    function (parent, oldChild, newChild) {
-    if (!parent) {
+    if (parent === null) {
       this._root = newChild;
-      this._root._parent = null;
+      if (this._root !== null){
+        this._root._parent = null;
+      }
     } else {
       if (parent._left === oldChild) {
         parent._left = newChild;
@@ -501,33 +574,31 @@
    * Average runtime complexity: O(log N).
    *
    * @public
-   * @param {Node} node to be removed
+   * @param {Number|String} value of node to be removed
    * @returns {Boolean} True/false depending
    *    on whether the given node is removed.
    */
-  exports.AVLTree.prototype.remove = function (node) {
+  exports.AVLTree.prototype.remove = function (value) {
+    var node = this.find(value);
     if (!node) {
       return false;
     }
-
     if (node._left && node._right) {
       var min = this._findMin(node._right);
       var temp = node.value;
-
       node.value = min.value;
       min.value = temp;
       return this.remove(min);
     } else {
-      if (node._parent !== null) {
-        if (node._left) {
-          this._replaceChild(node._parent, node, node._left);
-        } else if (node._right) {
-          this._replaceChild(node._parent, node, node._right);
-        } else {
-          this._replaceChild(node._parent, node, null);
-        }
-      }else {
-        this._root = null;
+      if (node._left) {
+        this._replaceChild(node._parent, node, node._left);
+        this._maintainHeightBalanceProperty(node._left, true);
+      } else if (node._right) {
+        this._replaceChild(node._parent, node, node._right);
+        this._maintainHeightBalanceProperty(node._right, true);
+      } else {
+        this._replaceChild(node._parent, node, null);
+        this._maintainHeightBalanceProperty(node._parent, true);
       }
       return true;
     }
@@ -656,12 +727,12 @@
    * @returns {Node} The lowest common ancestor of the two nodes or null.
    */
   exports.AVLTree.prototype.lowestCommonAncestor =
-   function (firstNode, secondNode) {
+    function (firstNode, secondNode) {
     return this._lowestCommonAncestor(firstNode, secondNode, this._root);
   };
 
   exports.AVLTree.prototype._lowestCommonAncestor =
-   function (firstNode, secondNode, current) {
+    function (firstNode, secondNode, current) {
     var firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
     var secondNodeInLeft = this._existsInSubtree(secondNode, current._left);
     var firstNodeInRight = this._existsInSubtree(firstNode, current._right);
