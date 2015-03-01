@@ -24,6 +24,15 @@ describe('Binary Tree', function () {
     bTree.remove(node);
     expect(bTree._root).toBe(null);
   });
+  it('should remove root and replace with valid child', function () {
+    var bTree = new BinaryTree();
+    bTree.insert(15);
+    bTree.insert(30);
+    bTree.insert(45);
+    var node = bTree.find(15);
+    bTree.remove(node);
+    expect(bTree._root.value).toBe(30);
+  });
   it('should insert multiple nodes properly', function () {
     var bTree = new BinaryTree();
     bTree.insert(10);

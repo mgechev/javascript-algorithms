@@ -225,7 +225,9 @@
    function (parent, oldChild, newChild) {
     if (!parent) {
       this._root = newChild;
-      this._root._parent = null;
+      if (this._root !== null){
+        this._root._parent = null;
+      }
     } else {
       if (parent._left === oldChild) {
         parent._left = newChild;
@@ -251,25 +253,19 @@
     if (!node) {
       return false;
     }
-
     if (node._left && node._right) {
       var min = this._findMin(node._right);
       var temp = node.value;
-
       node.value = min.value;
       min.value = temp;
       return this.remove(min);
     } else {
-      if (node._parent !== null) {
-        if (node._left) {
-          this._replaceChild(node._parent, node, node._left);
-        } else if (node._right) {
-          this._replaceChild(node._parent, node, node._right);
-        } else {
-          this._replaceChild(node._parent, node, null);
-        }
-      }else {
-        this._root = null;
+      if (node._left) {
+        this._replaceChild(node._parent, node, node._left);
+      } else if (node._right) {
+        this._replaceChild(node._parent, node, node._right);
+      } else {
+        this._replaceChild(node._parent, node, null);
       }
       return true;
     }
