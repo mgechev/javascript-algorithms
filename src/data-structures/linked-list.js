@@ -165,7 +165,7 @@
   };
 
   /**
-   * Check or linked list contains cycle.
+   * Check if linked list contains cycle.
    *
    * @public
    * @method
