@@ -47,7 +47,7 @@
    *
    * @public
    * @constructor
-   * @param {Function} cmp Function used for comparition between the elements.
+   * @param {Function} cmp Function used for comparison between the elements.
    */
   exports.Heap = function (cmp) {
     this._heap = [];
