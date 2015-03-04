@@ -58,6 +58,7 @@
    * @private
    * @method
    * @param {Node} node Node to be splayed.
+   * @returns {Node} The same node from the parameter, post splayed.
    */
   exports.SplayTree.prototype._splay = function (node) {
     while (this._root !== node) {
@@ -87,6 +88,7 @@
    * @private
    * @method
    * @param {Node} node Node to be zig-zig'd.
+   * @returns {Node} The same node from the parameter, post splayed.
    */
   exports.SplayTree.prototype._zigZig = function (node) {
 
@@ -136,6 +138,7 @@
    * @private
    * @method
    * @param {Node} node Node to be zig-zag'd.
+   * @returns {Node} The same node from the parameter, post splayed.
    */
   exports.SplayTree.prototype._zigZag = function (node) {
 
@@ -185,6 +188,7 @@
    * @private
    * @method
    * @param {Node} node Node to be zig'd.
+   * @returns {Node} The same node from the parameter, post splayed.
    */
   exports.SplayTree.prototype._zig = function (node) {
 
@@ -334,7 +338,7 @@
    * Average time complexity: O(log N).
    *
    * @public
-   * @param {Number|String} Value of the node which should be found.
+   * @param {Number|String} value of the node which should be found.
    */
   exports.SplayTree.prototype.search = function (value) {
     var node = this._search(value, this._root);
@@ -346,7 +350,7 @@
    * Average time complexity: O(log N).
    *
    * @public
-   * @param {Number|String} Value of the node which should be found.
+   * @param {Number|String} value of the node which should be found.
    */
   exports.SplayTree.prototype._splaylessSearch = function (value) {
     return this._search(value, this._root);
@@ -357,8 +361,8 @@
    * Average time complexity: O(log N).
    *
    * @private
-   * @param {Number|String} Value of the node which should be found.
-   * @param {Node} Current node to be checked.
+   * @param {Number|String} value of the node which should be found.
+   * @param {Node} current node to be checked.
    */
   exports.SplayTree.prototype._search = function (value, current) {
     if (!current) {
@@ -512,6 +516,13 @@
     return this._getHeight(this._root);
   };
 
+  /**
+   * Recursive worker function for getHeight()
+   *
+   * @public
+   * @param {Node} node The node of the current recursive frame.
+   * @returns {Number} The height of the tree.
+   */
   exports.SplayTree.prototype._getHeight = function (node) {
     if (!node) {
       return 0;
@@ -531,6 +542,17 @@
       return this._lowestCommonAncestor(firstNode, secondNode, this._root);
     };
 
+  /**
+   * Obtains the lowest common ancestor for the given nodes.
+   *
+   * @private
+   * @param {Node} firstNode First node to be considered when checking
+   * for ancestor.
+   * @param {Node} secondNode Second node to be considered when checking
+   * for ancestor.
+   * @param {Node} current Current node.
+   * @returns {Node} The lowest common ancestor of the two nodes or null.
+   */
   exports.SplayTree.prototype._lowestCommonAncestor =
     function (firstNode, secondNode, current) {
       var firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
@@ -551,6 +573,14 @@
       return null;
     };
 
+  /**
+   * Checks if a given node exists in a subtree.
+   *
+   * @private
+   * @param {Node} node Node to check for.
+   * @param {Node} root Root node of a given subtree.
+   * @returns {Node} The lowest common ancestor of the two nodes or null.
+   */
   exports.SplayTree.prototype._existsInSubtree = function (node, root) {
     if (!root) {
       return false;

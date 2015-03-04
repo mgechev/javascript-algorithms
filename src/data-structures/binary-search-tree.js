@@ -330,6 +330,13 @@
     return this._findMax(this._root);
   };
 
+  /**
+   * Checks if a given node is balanced.
+   *
+   * @private
+   * @param {Node} current Node to have balance checked.
+   * @returns {Boolean} Boolean of whether or not provided node is balanced.
+   */
   exports.BinaryTree.prototype._isBalanced = function (current) {
     if (!current) {
       return true;
@@ -379,6 +386,13 @@
     return this._getHeight(this._root);
   };
 
+  /**
+   * Recursive worker function for getHeight()
+   *
+   * @private
+   * @param {Node} node Node at current recursive frame.
+   * @returns {Number} Height of the Node in the parameter.
+   */
   exports.BinaryTree.prototype._getHeight = function (node) {
     if (!node) {
       return 0;
@@ -391,6 +405,10 @@
    * Finds the lowest common ancestor of two nodes.
    *
    * @public
+   * @param {Node} firstNode First node to be considered when checking
+   * for ancestor.
+   * @param {Node} secondNode Second node to be considered when checking
+   * for ancestor.
    * @returns {Node} The lowest common ancestor of the two nodes or null.
    */
   exports.BinaryTree.prototype.lowestCommonAncestor =
@@ -398,6 +416,17 @@
     return this._lowestCommonAncestor(firstNode, secondNode, this._root);
   };
 
+  /**
+   * Obtains the lowest common ancestor for the given nodes.
+   *
+   * @private
+   * @param {Node} firstNode First node to be considered when checking
+   * for ancestor.
+   * @param {Node} secondNode Second node to be considered when checking
+   * for ancestor.
+   * @param {Node} current Current node.
+   * @returns {Node} The lowest common ancestor of the two nodes or null.
+   */
   exports.BinaryTree.prototype._lowestCommonAncestor =
    function (firstNode, secondNode, current) {
     var firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
@@ -417,6 +446,14 @@
     return null;
   };
 
+  /**
+   * Checks if a given node exists in a subtree.
+   *
+   * @private
+   * @param {Node} node Node to check for.
+   * @param {Node} root Root node of a given subtree.
+   * @returns {Node} The lowest common ancestor of the two nodes or null.
+   */
   exports.BinaryTree.prototype._existsInSubtree = function (node, root) {
     if (!root) {
       return false;

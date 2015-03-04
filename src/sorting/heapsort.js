@@ -14,6 +14,8 @@
      * @param {Array} array Array.
      * @param {Number} index Index of the element which palce in
      * the max heap should be found.
+     * @param {Number} heapSize Size of the heap.
+     * @param {function} cmp Comparison function.
      */
     function heapify(array, index, heapSize, cmp) {
       var left = 2 * index + 1;
@@ -41,6 +43,7 @@
      *
      * @private
      * @param {Array} array Array which should be turned into max heap.
+     * @param {function} cmp Comparison function.
      * @return {Array} array Array turned into max heap.
      */
     function buildMaxHeap(array, cmp) {

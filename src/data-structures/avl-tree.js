@@ -93,6 +93,15 @@
     return true;
   };
 
+  /**
+   * Gets the nodes to be restructured during an AVL restructure
+   * after a remove/delete takes place.
+   *
+   * @public
+   * @method
+   * @param {Array} traveledNodes Array of previously traveled nodes
+   * that are used to help determine the nodes to be restructured.
+   */
   exports.AVLTree.prototype._getNodesToRestructureRemove =
     function (traveledNodes) {
     // z is last traveled node - imbalance found at z
@@ -129,6 +138,15 @@
     return [x, y, z];
   };
 
+  /**
+   * Gets the nodes to be restructured during an AVL restructure
+   * after an insert takes place.
+   *
+   * @public
+   * @method
+   * @param {Array} traveledNodes Array of previously traveled nodes
+   * that are used to help determine the nodes to be restructured.
+   */
   exports.AVLTree.prototype._getNodesToRestructureInsert =
     function (traveledNodes) {
     // z is last traveled node - imbalance found at z
