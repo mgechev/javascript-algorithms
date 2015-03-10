@@ -26,7 +26,7 @@
 
     /**
      * Recursive version of binary search.
-     * Searchs for specific element in a given array using
+     * Searches for specific element in a given array using
      * the binary search algorithm.<br><br>
      * Time complexity: O(log N).
      *

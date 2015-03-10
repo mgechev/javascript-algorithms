@@ -25,8 +25,8 @@
    *
    * @param {Number} count Count of the plates/stones.
    * @param {String|Number} source Identifier of the 1st peg.
-   * @param {String|Number} source Identifier of the 2nd peg.
-   * @param {String|Number} source Identifier of the 3rd peg.
+   * @param {String|Number} intermediate Identifier of the 2nd peg.
+   * @param {String|Number} goal Identifier of the 3rd peg.
    * @return Array which contains all the moves required
    * in order to place all the plates onto the last peg.
    */

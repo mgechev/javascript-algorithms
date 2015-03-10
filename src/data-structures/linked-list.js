@@ -165,7 +165,7 @@
   };
 
   /**
-   * Check or linked list contains cycle.
+   * Check if linked list contains cycle.
    *
    * @public
    * @method
@@ -222,6 +222,12 @@
     return temp;
   };
 
+  /**
+   * Reverses the linked list recursively
+   *
+   * @public
+   * @method
+   */
   exports.LinkedList.prototype.recursiveReverse = function () {
 
     function inverse(current, next) {
@@ -242,6 +248,12 @@
     this.last = temp;
   };
 
+  /**
+   * Reverses the linked list iteratively
+   *
+   * @public
+   * @method
+   */
   exports.LinkedList.prototype.reverse = function () {
     if (!this.first || !this.first.next) {
       return;

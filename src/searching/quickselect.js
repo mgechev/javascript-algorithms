@@ -18,7 +18,7 @@
    * @param {Array} arr Input array.
    * @param {Number} n A number of an element.
    * @param {Number} lo Low index.
-   * @param {Number} lo High index.
+   * @param {Number} hi High index.
    * @return Returns n-th smallest element.
    */
   function quickselect(arr, n, lo, hi) {

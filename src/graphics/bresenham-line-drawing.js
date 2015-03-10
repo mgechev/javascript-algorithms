@@ -8,6 +8,7 @@
    * @param  {number} y1 The second coordinate of the beginning of the line
    * @param  {number} x2 The first coordinate of the end of the line
    * @param  {number} y2 The second coordinate of the end of the line
+   * @param  {function} draw Optional custom drawing function.
    */
   function drawLine(x1, y1, x2, y2, draw) {
     drawPoint = draw || drawPoint;

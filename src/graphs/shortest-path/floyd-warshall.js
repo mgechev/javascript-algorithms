@@ -12,8 +12,8 @@
      * Initialize the distance matrix.
      *
      * @private
-     * @param {array} graph Distance matrix of the array.
-     * @return {array} Distance matrix used for the algorithm.
+     * @param {Array} graph Distance matrix of the array.
+     * @return {Array} Distance matrix used for the algorithm.
      */
     function init(graph) {
       var dist = [];

@@ -123,4 +123,42 @@ describe('AVL Tree', function () {
     expect(avlTree._root._left._right._right.value).toBe(27);
     expect(avlTree._root._left._right._right._height).toBe(1);
   });
+  it('should remove nodes and balance properly (1)', function () {
+    var avlTree = new AVLTree();
+    avlTree.insert(30);
+    avlTree.insert(15);
+    avlTree.insert(60);
+    avlTree.insert(90);
+    avlTree.insert(100);
+    avlTree.remove(15);
+    // depth 1
+    expect(avlTree._root.value).toBe(90);
+    expect(avlTree._root._height).toBe(3);
+    // depth 2
+    expect(avlTree._root._left.value).toBe(30);
+    expect(avlTree._root._left._height).toBe(2);
+
+    expect(avlTree._root._right.value).toBe(100);
+    expect(avlTree._root._right._height).toBe(1);
+    // depth 3
+    expect(avlTree._root._left._right.value).toBe(60);
+    expect(avlTree._root._left._right._height).toBe(1);
+  });
+  it('should remove nodes and balance properly (2)', function () {
+    var avlTree = new AVLTree();
+    avlTree.insert(55);
+    avlTree.insert(25);
+    avlTree.insert(11);
+    avlTree.insert(1);
+    avlTree.remove(55);
+    // depth 1
+    expect(avlTree._root.value).toBe(11);
+    expect(avlTree._root._height).toBe(2);
+    // depth 2
+    expect(avlTree._root._left.value).toBe(1);
+    expect(avlTree._root._left._height).toBe(1);
+
+    expect(avlTree._root._right.value).toBe(25);
+    expect(avlTree._root._right._height).toBe(1);
+  });
 });

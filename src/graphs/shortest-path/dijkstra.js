@@ -39,6 +39,7 @@
      *
      * @private
      * @param {number} src Start node.
+     * @param {Array} graph A distance matrix of the graph.
      */
     function init(src, graph) {
       var currentTemp;
