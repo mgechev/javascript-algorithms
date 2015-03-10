@@ -147,7 +147,159 @@ http://en.wikipedia.org/wiki/Splay_tree
 
     
 
-    <h4 class="name" id="_splaylessSearch"><span class="type-signature"></span>_splaylessSearch<span class="signature">(Value)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="_getHeight"><span class="type-signature"></span>_getHeight<span class="signature">(node)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Recursive worker function for getHeight()
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>node</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The node of the current recursive frame.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line526">line 526</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The height of the tree.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_splaylessSearch"><span class="type-signature"></span>_splaylessSearch<span class="signature">(value)</span><span class="type-signature"></span></h4>
 
     
 
@@ -191,7 +343,7 @@ Average time complexity: O(log N).
 
         <tr>
             
-                <td class="name"><code>Value</code></td>
+                <td class="name"><code>value</code></td>
             
 
             <td class="type">
@@ -250,7 +402,7 @@ Average time complexity: O(log N).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line351">line 351</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line355">line 355</a>
     </li></ul></dd>
     
 
@@ -332,7 +484,7 @@ Average time complexity: O(log N).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line492">line 492</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line496">line 496</a>
     </li></ul></dd>
     
 
@@ -436,7 +588,7 @@ Average time complexity: O(log N).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line511">line 511</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line515">line 515</a>
     </li></ul></dd>
     
 
@@ -589,7 +741,7 @@ called for each traversed node.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line268">line 268</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line272">line 272</a>
     </li></ul></dd>
     
 
@@ -747,7 +899,7 @@ and amortized O(log n) in the worst case.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line221">line 221</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line225">line 225</a>
     </li></ul></dd>
     
 
@@ -829,7 +981,7 @@ and amortized O(log n) in the worst case.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line482">line 482</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line486">line 486</a>
     </li></ul></dd>
     
 
@@ -933,7 +1085,7 @@ and amortized O(log n) in the worst case.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line529">line 529</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line540">line 540</a>
     </li></ul></dd>
     
 
@@ -1086,7 +1238,7 @@ will be called for each traversed node.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line298">line 298</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line302">line 302</a>
     </li></ul></dd>
     
 
@@ -1217,7 +1369,7 @@ be called for each traversed node.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line328">line 328</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line332">line 332</a>
     </li></ul></dd>
     
 
@@ -1351,7 +1503,7 @@ Average runtime complexity: O(log N).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line416">line 416</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line420">line 420</a>
     </li></ul></dd>
     
 
@@ -1405,7 +1557,7 @@ Average runtime complexity: O(log N).
 
     
 
-    <h4 class="name" id="search"><span class="type-signature"></span>search<span class="signature">(Value)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="search"><span class="type-signature"></span>search<span class="signature">(value)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1449,7 +1601,7 @@ Average time complexity: O(log N).
 
         <tr>
             
-                <td class="name"><code>Value</code></td>
+                <td class="name"><code>value</code></td>
             
 
             <td class="type">
@@ -1508,7 +1660,7 @@ Average time complexity: O(log N).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line339">line 339</a>
+        <a href="data-structures_splay-tree.js.html">data-structures/splay-tree.js</a>, <a href="data-structures_splay-tree.js.html#line343">line 343</a>
     </li></ul></dd>
     
 
@@ -1556,7 +1708,7 @@ Average time complexity: O(log N).
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Fri Feb 27 2015 09:39:04 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Tue Mar 10 2015 11:52:43 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>
