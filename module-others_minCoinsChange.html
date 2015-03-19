@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: sets/weightquickunion</title>
+    <title>JSDoc: Module: others/minCoinsChange</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: sets/weightquickunion</h1>
+    <h1 class="page-title">Module: others/minCoinsChange</h1>
 
     
 
@@ -38,12 +38,10 @@
     <div class="container-overview">
     
         
-            <div class="description">Keeps track of a set of elements partitioned into a
-number of disjoint (nonoverlapping) subsets.
-Allows to check whether the path between two nodes exists.
-<br>
-The algorithm is inspired by Robert Sedgewick's Java implementation.
-For further reading http://algs4.cs.princeton.edu/home/.</div>
+            <div class="description">Returns the minimum number of coins from given set,
+which sum equals to given change. This is famous
+problem from the dymanic programming:
+  https://en.wikipedia.org/wiki/Change-making_problem</div>
         
 
         
@@ -58,6 +56,77 @@ For further reading http://algs4.cs.princeton.edu/home/.</div>
 
 
 
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>coins</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The sorted list of the coins used for the change.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>change</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The change, which should be returned.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -92,7 +161,7 @@ For further reading http://algs4.cs.princeton.edu/home/.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sets_weightquickunion.js.html">sets/weightquickunion.js</a>, <a href="sets_weightquickunion.js.html#line1">line 1</a>
+        <a href="others_min-coins-change.js.html">others/min-coins-change.js</a>, <a href="others_min-coins-change.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -115,22 +184,25 @@ For further reading http://algs4.cs.princeton.edu/home/.</div>
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Array which contains the minimum coins from the given
+ list, required for the change.
+</div>
+
+
+
+    
 
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var QuickUnion = require('path-to-algorithms/' +
-'src/sets/weightquickunion').QuickUnion;
-
-var qunion = new QuickUnion(10);
-qunion.union(0, 1);
-qunion.union(2, 1);
-qunion.union(3, 4);
-qunion.union(8, 9);
-qunion.union(4, 8);
-
-console.log(qunion.connected(0, 9)); // false
-console.log(qunion.connected(3, 9)); // true</code></pre>
+    <pre class="prettyprint"><code>var minCoinsChange =
+ require('path-to-algorithms/src/others/min-coins-change')
+ .minCoinsChange;
+var coins = minCoinsChange([1, 2, 3], 5); // [ 2, 3 ]</code></pre>
 
 
 
@@ -142,13 +214,6 @@ console.log(qunion.connected(3, 9)); // true</code></pre>
 
     
 
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-sets_weightquickunion.QuickUnion.html">QuickUnion</a></dt>
-            <dd></dd>
-        </dl>
     
 
      

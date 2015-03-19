@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: sets/weightquickunion</title>
+    <title>JSDoc: Source: others/min-coins-change.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,154 +17,68 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: sets/weightquickunion</h1>
+    <h1 class="page-title">Source: others/min-coins-change.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Keeps track of a set of elements partitioned into a
-number of disjoint (nonoverlapping) subsets.
-Allows to check whether the path between two nodes exists.
-<br>
-The algorithm is inspired by Robert Sedgewick's Java implementation.
-For further reading http://algs4.cs.princeton.edu/home/.</div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sets_weightquickunion.js.html">sets/weightquickunion.js</a>, <a href="sets_weightquickunion.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var QuickUnion = require('path-to-algorithms/' +
-'src/sets/weightquickunion').QuickUnion;
-
-var qunion = new QuickUnion(10);
-qunion.union(0, 1);
-qunion.union(2, 1);
-qunion.union(3, 4);
-qunion.union(8, 9);
-qunion.union(4, 8);
-
-console.log(qunion.connected(0, 9)); // false
-console.log(qunion.connected(3, 9)); // true</code></pre>
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-sets_weightquickunion.QuickUnion.html">QuickUnion</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function (exports) {
+  'use strict';
+
+  /**
+   * Returns the minimum number of coins from given set,
+   * which sum equals to given change. This is famous
+   * problem from the dymanic programming:
+   *   https://en.wikipedia.org/wiki/Change-making_problem
+   *
+   * @public
+   * @module others/minCoinsChange
+   *
+   * @example
+   *
+   * var minCoinsChange =
+   *  require('path-to-algorithms/src/others/min-coins-change')
+   *  .minCoinsChange;
+   * var coins = minCoinsChange([1, 2, 3], 5); // [ 2, 3 ]
+   *
+   * @param {Array} coins The sorted list of the coins used for the change.
+   * @param {Number} change The change, which should be returned.
+   * @return Array which contains the minimum coins from the given
+   *  list, required for the change.
+   */
+  function minCoinsChange(coins, change) {
+    var minChange = [[0]];
+    if (coins.indexOf(change) >= 0) {
+      return [change];
+    }
+    for (var i = 1; i &lt;= change; i += 1) {
+      var current = null;
+      for (var j = 0; j &lt; coins.length &amp;&amp; coins[j] &lt;= change; j += 1) {
+        for (var k = 0; k &lt; minChange.length; k += 1) {
+          if (k + coins[j] === i &amp;&amp;
+             (!current || minChange[k].length + 1 &lt; current.length)) {
+            minChange[i] = minChange[k].concat([coins[j]]);
+          }
+        }
+      }
+    }
+    var result = minChange[change];
+    if (!result) {
+      return undefined;
+    }
+    return result.slice(1);
+  }
+
+  exports.minCoinsChange = minCoinsChange;
+
+})(typeof window === 'undefined' ? module.exports : window);
+</code></pre>
+        </article>
+    </section>
 
 
 
