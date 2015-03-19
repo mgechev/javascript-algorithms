@@ -2,6 +2,10 @@
  * Keeps track of a set of elements partitioned into a
  * number of disjoint (nonoverlapping) subsets.
  * Allows to check whether the path between two nodes exists.
+ * The algorithm is inspired by Robert Sedgewick's Java implementation.
+ * <br>
+ * The algorithm is inspired by Robert Sedgewick's Java implementation.
+ * For further reading http://algs4.cs.princeton.edu/home/.
  *
  * @example
  *
