@@ -41,7 +41,7 @@
     }
 
     if (arr.length <= n) {
-      return NaN;
+      return undefined;
     }
     lo = lo || 0;
     hi = hi || arr.length - 1;
@@ -60,7 +60,7 @@
         lo = pivotIdx + 1;
       }
     }
-    return NaN;
+    return undefined;
   }
   exports.quickselect = quickselect;
 
