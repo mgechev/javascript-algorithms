@@ -98,22 +98,22 @@
       return result;
     }
 
-     /**
-     * Algorithm from dynamic programming. It finds the longest
-     * sub-sequence of increasing numbers. It is not required
-     * the numbers to be neighboring. For example for 1, 5, 2
-     * sequence the longest sub-sequence is 1, 2.
-     *
-     * @example
-     * var subsequence = require('path-to-algorithms/src/searching/'+
-     * 'longest-increasing-subsequence').longestSubsequence;
-     * console.log(subsequence([1, 0, 4, 3, 5])); // 1, 4, 5
-     *
-     * @public
-     * @module searching/longest-increasing-subsequence
-     * @param {Array} array Input sequence.
-     * @return {Array} Longest increasing subsequence.
-     */
+    /**
+    * Algorithm from dynamic programming. It finds the longest
+    * sub-sequence of increasing numbers. It is not required
+    * the numbers to be neighboring. For example for 1, 5, 2
+    * sequence the longest sub-sequence is 1, 2.
+    *
+    * @example
+    * var subsequence = require('path-to-algorithms/src/searching/'+
+    * 'longest-increasing-subsequence').longestSubsequence;
+    * console.log(subsequence([1, 0, 4, 3, 5])); // 1, 4, 5
+    *
+    * @public
+    * @module searching/longest-increasing-subsequence
+    * @param {Array} array Input sequence.
+    * @return {Array} Longest increasing subsequence.
+    */
     return function (array) {
       var results = [];
       var dag = buildDag(array);

@@ -28,14 +28,14 @@
 (function (exports) {
   'use strict';
 
-   /**
-   * Initialization.<br><br>
-   * Time complexity: O(N).
-   *
-   * @public
-   * @constructor
-   * @param {Numner} size Count of the nodes.
-   */
+  /**
+  * Initialization.<br><br>
+  * Time complexity: O(N).
+  *
+  * @public
+  * @constructor
+  * @param {Numner} size Count of the nodes.
+  */
   exports.QuickUnion = function (n) {
     this._ids = [];
     this._size = [];
@@ -45,42 +45,42 @@
     }
   };
 
-   /**
-   * Finds the root of given node.<br><br>
-   * Time complexity: O(log N).
-   * @private
-   * @param {Number} i The given node.
-   * @return {Number} Root of the given node.
-   */
+  /**
+  * Finds the root of given node.<br><br>
+  * Time complexity: O(log N).
+  * @private
+  * @param {Number} i The given node.
+  * @return {Number} Root of the given node.
+  */
   exports.QuickUnion.prototype._root = function (i) {
     while (i !== this._ids[i]) {
-  //    this._ids[i] = this._ids[this._ids[i]]; //enables the path compression
+      // this._ids[i] = this._ids[this._ids[i]]; //enables the path compression
       i = this._ids[i];
     }
     return i;
   };
 
-   /**
-   * Checks whether two nodes are connected.<br><br>
-   * Time complexity: O(log N).
-   *
-   * @param {Number} p The first node.
-   * @param {Number} q The second node.
-   * @return {Boolean} True/false depending on whether the nodes are connected.
-   */
+  /**
+  * Checks whether two nodes are connected.<br><br>
+  * Time complexity: O(log N).
+  *
+  * @param {Number} p The first node.
+  * @param {Number} q The second node.
+  * @return {Boolean} True/false depending on whether the nodes are connected.
+  */
   exports.QuickUnion.prototype.connected = function (p, q) {
     return this._root(p) === this._root(q);
   };
 
-   /**
-   * Connects two nodes - p and q.<br><br>
-   * Time complexity: O(log N).
-   *
-   * @public
-   * @method
-   * @param {Number} p The first node.
-   * @param {Number} q The second node.
-   */
+  /**
+  * Connects two nodes - p and q.<br><br>
+  * Time complexity: O(log N).
+  *
+  * @public
+  * @method
+  * @param {Number} p The first node.
+  * @param {Number} q The second node.
+  */
   exports.QuickUnion.prototype.union = function (p, q) {
     var pf = this._root(p);
     var qf = this._root(q);
