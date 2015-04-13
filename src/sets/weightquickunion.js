@@ -28,7 +28,7 @@
 (function (exports) {
   'use strict';
 
-  /**
+   /**
    * Initialization.<br><br>
    * Time complexity: O(N).
    *
@@ -45,7 +45,7 @@
     }
   };
 
-  /**
+   /**
    * Finds the root of given node.<br><br>
    * Time complexity: O(log N).
    * @private
@@ -60,7 +60,7 @@
     return i;
   };
 
-  /**
+   /**
    * Checks whether two nodes are connected.<br><br>
    * Time complexity: O(log N).
    *
@@ -72,7 +72,7 @@
     return this._root(p) === this._root(q);
   };
 
-  /**
+   /**
    * Connects two nodes - p and q.<br><br>
    * Time complexity: O(log N).
    *

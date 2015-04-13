@@ -3,7 +3,7 @@
 
   exports.longestSubsequence = (function () {
 
-   /**
+    /**
     * Find the index of the first largest element in array.
     * Complexity: O(N).
     *
@@ -29,7 +29,7 @@
       return maxIdx;
     }
 
-   /**
+    /**
     * Default comparison method.
     * @private
     */
@@ -37,7 +37,7 @@
       return a.distance - b.distance;
     }
 
-   /**
+    /**
     * Creates directed graph from given array.
     * Each element's neighbours are the elements which can be
     * after the element in the resulting sequence.<br><br>
@@ -59,7 +59,7 @@
       return result;
     }
 
-   /**
+    /**
     * Finds the longest sub-sequence for given node.<br><br>
     * Complexity: O(N^N).
     * @private
@@ -98,7 +98,7 @@
       return result;
     }
 
-    /**
+     /**
      * Algorithm from dynamic programming. It finds the longest
      * sub-sequence of increasing numbers. It is not required
      * the numbers to be neighboring. For example for 1, 5, 2

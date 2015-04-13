@@ -66,31 +66,6 @@
     }
   };
 
-//  function isSubstr(tree, str) {
-//    if (!tree) {
-//      return false;
-//    }
-//    if (tree.nodes[str[0]]) {
-//      return isSubstr(tree, str.substr(1, str.length));
-//    }
-//    var match = '';
-//    for (var i = 0; i < Math.min(tree.value.length, str.length); i += 1) {
-//      if (tree.value[i] === str[i]) {
-//        match += str[i];
-//      } else {
-//        break;
-//      }
-//    }
-//    if (match.length === str.length) {
-//      return true;
-//    }
-//    return false;
-//  }
-
-  // var suffix = new SuffixTree();
-  // suffix.build('banana');
-  // console.log(suffix);
-
   exports.Node = Node;
   exports.SuffixTree = SuffixTree;
 

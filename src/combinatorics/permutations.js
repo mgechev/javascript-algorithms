@@ -21,7 +21,7 @@
       }
     }
 
-   /**
+    /**
     * Finds all the permutations of given array.<br><br>
     * Permutation relates to the act of rearranging, or permuting,
     * all the members of a set into some sequence or order.
