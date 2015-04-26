@@ -113,7 +113,7 @@
         current = unvisited.extract();
       }
       if (distance[dest]) {
-        return distance[dest].distance || Infinity;
+        return distance[dest].distance;
       }
       return Infinity;
     };
