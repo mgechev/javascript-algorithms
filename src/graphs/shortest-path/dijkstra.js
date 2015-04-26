@@ -112,7 +112,10 @@
         visited[current.node] = true;
         current = unvisited.extract();
       }
-      return distance[dest].distance;
+      if (distance[dest]) {
+        return distance[dest].distance || Infinity;
+      }
+      return Infinity;
     };
 
   })();
