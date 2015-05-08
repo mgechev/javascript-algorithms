@@ -12,7 +12,13 @@
  * var Edge = BellmanFord.Edge;
  * var bellmanFord = BellmanFord.bellmanFord;
  * var edges = [];
- * var vertexes = [0, 1, 2, 3, 4];
+ * var vertexes = [
+ *   new Vertex(0),
+ *   new Vertex(1),
+ *   new Vertex(2),
+ *   new Vertex(3),
+ *   new Vertex(4)
+ * ];
  *
  * edges.push(new Edge(0, 1, -1));
  * edges.push(new Edge(0, 2, 4));
@@ -55,23 +61,23 @@
     var parents = {};
     var c;
     for (var i = 0; i < vertexes.length; i += 1) {
-      distances[vertexes[i]] = Infinity;
-      parents[vertexes[i]] = null;
+      distances[vertexes[i].id] = Infinity;
+      parents[vertexes[i].id] = null;
     }
     distances[source] = 0;
     for (i = 0; i < vertexes.length - 1; i += 1) {
       for (var j = 0; j < edges.length; j += 1) {
         c = edges[j];
-        if (distances[c.from] + c.weight < distances[c.to]) {
-          distances[c.to] = distances[c.from] + c.weight;
-          parents[c.to] = c.from;
+        if (distances[c.from.id] + c.distance < distances[c.to.id]) {
+          distances[c.to.id] = distances[c.from.id] + c.distance;
+          parents[c.to.id] = c.from.id;
         }
       }
     }
 
     for (i = 0; i < edges.length; i += 1) {
       c = edges[i];
-      if (distances[c.from] + c.weight < distances[c.to]) {
+      if (distances[c.from.id] + c.distance < distances[c.to.id]) {
         return undefined;
       }
     }
