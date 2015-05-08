@@ -21,7 +21,7 @@ describe('Bellman-Ford', function () {
     var vs = [new Vertex(1)];
     var e = [];
     expect(bellmanFord(vs, e, vs[0]))
-      .toEqual({ parents: { '1': null }, distances: { '1': 0 }});
+      .toEqual({ parents: { 1: null }, distances: { 1: 0 }});
   });
 
   it('should work in the general case', function () {
