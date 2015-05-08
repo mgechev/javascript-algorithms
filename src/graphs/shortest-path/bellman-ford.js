@@ -47,7 +47,8 @@
    * @param {Array} edges Edges of the graph.
    * @param {Number} source Start vertex.
    * @returns {Object} Object with two arrays (parents and distances)
-   *   with shortest-path information.
+   *   with shortest-path information or undefined if the graph
+   *   has a negative cycle.
    */
   exports.bellmanFord = function (vertexes, edges, source) {
     var distances = {};
