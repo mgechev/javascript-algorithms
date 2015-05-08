@@ -12,8 +12,8 @@
    * @module data-structures/edge
    */
   exports.Edge = function (e, v, distance) {
-    this.e = e;
-    this.v = v;
+    this.from = e;
+    this.to = v;
     this.distance = distance;
   };
 
