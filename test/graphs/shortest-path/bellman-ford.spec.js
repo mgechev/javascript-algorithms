@@ -1,8 +1,8 @@
 var exported =
-  require('../../../src/graphs/shortest-path/bellman-ford'),
-  bellmanFord = exported.bellmanFord,
-  Vertex = exported.Vertex,
-  Edge = exported.Edge;
+  require('../../../src/graphs/shortest-path/bellman-ford');
+var bellmanFord = exported.bellmanFord;
+var Vertex = exported.Vertex;
+var Edge = exported.Edge;
 
 describe('Bellman-Ford', function () {
   'use strict';
