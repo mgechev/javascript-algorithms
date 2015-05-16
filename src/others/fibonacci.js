@@ -19,6 +19,9 @@
   'use strict';
 
   function fibonacci (n) {
+    if (n > 97) {
+      throw 'Input too large, results in inaccurate fibonacci value.';
+    }
     var n1 = 0;
     var n2 = 1;
     var aux;
