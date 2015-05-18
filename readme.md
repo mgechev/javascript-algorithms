@@ -23,7 +23,7 @@ npm install
 - Go to the parent directory of the `javascript-algorithms` folder and call:
 
 ```bash
-git clone git@github.com:mgechev/javascript-algorithms.git javascript-algorithms-docs
+git clone https://github.com/mgechev/javascript-algorithms.git javascript-algorithms-docs
 ```
 
 - Go to the `javascript-algorithms-docs` folder and change current branch to `gh-pages`:
