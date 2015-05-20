@@ -41,8 +41,10 @@
 
     for (i = 0; i < str.length; i += 1) {
       character = str.charCodeAt(i);
+      /*jshint -W016 */
       hashCode = ((hashCode << 5) - hashCode) + character;
       hashCode = hashCode & hashCode;
+      /*jshint -W016 */
     }
 
     return hashCode;
