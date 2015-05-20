@@ -26,7 +26,7 @@
 (function (exports) {
   'use strict';
 
-  exports.HashTable = function () {
+  exports.HashTable = function HashTable() {
     this.elements = [];
   };
 
