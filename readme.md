@@ -75,8 +75,8 @@ If the build is not successful fix your code in order the tests and jshint valid
 :---: |:---: |:---: |:---: |:---: |:---: |
 [mgechev](https://github.com/mgechev) |[AndriiHeonia](https://github.com/AndriiHeonia) |[Jakehp](https://github.com/Jakehp) |[secrettriangle](https://github.com/secrettriangle) |[Microfed](https://github.com/Microfed) |[FilipeFalcaoBatista](https://github.com/FilipeFalcaoBatista) |
 
-[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |[<img alt="fanixk" src="https://avatars.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) | [<img alt="pvoznenko" src="https://avatars.githubusercontent.com/u/1098414?v=3&s=117" width="117">](https://github.com/pvoznenko) |
-:---: |:---: |
+[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |[<img alt="fanixk" src="https://avatars.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |[<img alt="pvoznenko" src="https://avatars.githubusercontent.com/u/1098414?v=3&s=117" width="117">](https://github.com/pvoznenko) |
+:---: |:---: |:---: |
 [contra](https://github.com/contra) |[fanixk](https://github.com/fanixk) | [pvoznenko](https://github.com/pvoznenko)|
 
 ## License
