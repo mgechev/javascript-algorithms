@@ -18,20 +18,29 @@
    * console.log(primeFactorTree(600851475143)); // [71, 839, 1471, 6857]
    */
   exports.primeFactorTree = function (number) {
-    var div = 2;
-    var array = [];
-
-    while (number > 1) {
-      if (number % div === 0) {
-        number /= div;
-
-        array.push(div);
-      } else {
-        div += 1;
-      }
+    var array = [], s = 6;
+    while (number > 1 && number % 2 === 0) {
+        number /= 2;
+        array.push(2);
     }
-
+    while (number > 2 && number % 3 === 0) {
+        number /= 3;
+        array.push(3);
+    }
+    // Remarking that: https://primes.utm.edu/notes/faq/six.html
+    while (number > 4) {
+        var p = s - 1, q = s + 1;
+        while (number > 4 && number % p === 0) {
+            number /= p;
+            array.push(p);
+        }
+        while (number > 4 && number % q === 0) {
+            number /= q;
+            array.push(q);
+        }
+        s += 6;
+    }
     return array;
   };
-
+  
 }(typeof exports === 'undefined' ? window : exports));
