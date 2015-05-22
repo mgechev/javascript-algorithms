@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: sorting/insertionsort</title>
+    <title>JSDoc: Source: others/fibonacci.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,229 +17,58 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: sorting/insertionsort</h1>
+    <h1 class="page-title">Source: others/fibonacci.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Insertionsort algorithm.<br><br>
-Time complexity: O(N^2).</div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>array</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Input array.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cmp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Optional. A function that defines an
-alternative sort order. The function should return a negative,
-zero, or positive value, depending on the arguments.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sorting_insertionsort.js.html">sorting/insertionsort.js</a>, <a href="sorting_insertionsort.js.html#line8">line 8</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Sorted array.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var sort = require('path-to-algorithms/src' +
-'/sorting/insertion-sort').insertionSort;
-console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]</code></pre>
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Nth number of fibonacci's sequence
+ *
+ * Returns the nth number of fibonacci's sequence.
+ *
+ * @public
+ *
+ * @example
+ * var fibonacci = require('path-to-algorithms/src/others/fibonacci').fibonacci;
+ * var nth = fibonacci(20);
+ *
+ * console.log(nth); // 6765
+ *
+ * @param {Number} n The nth position in fibonacci's sequence
+ *
+ * @module others/fibonacci
+*/
+(function (exports) {
+  'use strict';
+
+  function fibonacci (n) {
+    if (n > 97) {
+      throw 'Input too large, results in inaccurate fibonacci value.';
+    }
+    var n1 = 0;
+    var n2 = 1;
+    var aux;
+
+    while (n > 0) {
+      aux = n1;
+      n1 = n2;
+      n2 += aux;
+      n = n - 1;
+    }
+
+    return n1;
+  }
+
+  exports.fibonacci = fibonacci;
+})(typeof window === 'undefined' ? module.exports : window);
+</code></pre>
+        </article>
+    </section>
 
 
 

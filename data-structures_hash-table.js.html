@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: sorting/insertionsort</title>
+    <title>JSDoc: Source: data-structures/hash-table.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,229 +17,85 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: sorting/insertionsort</h1>
+    <h1 class="page-title">Source: data-structures/hash-table.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Insertionsort algorithm.<br><br>
-Time complexity: O(N^2).</div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>array</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Input array.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cmp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Optional. A function that defines an
-alternative sort order. The function should return a negative,
-zero, or positive value, depending on the arguments.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sorting_insertionsort.js.html">sorting/insertionsort.js</a>, <a href="sorting_insertionsort.js.html#line8">line 8</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Sorted array.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var sort = require('path-to-algorithms/src' +
-'/sorting/insertion-sort').insertionSort;
-console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]</code></pre>
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Hash Table
+ *
+ * An associative array, that can map keys
+ * (strings and numbers) to values in O(1).
+ *
+ * @example
+ * var hash = require('path-to-algorithms/src/data-structures'+
+ * '/hash-table');
+ * var HashTable = new hash.HashTable();
+ *
+ * HashTable.put(10, 'value');
+ * HashTable.put('key', 10);
+ *
+ * console.log(HashTable.get(10)); // 'value'
+ * console.log(HashTable.get('key')); // 10
+ *
+ * HashTable.remove(10);
+ * HashTable.remove('key');
+ *
+ * console.log(HashTable.get(10)); // 'undefined'
+ * console.log(HashTable.get('key')); // 'undefined'
+ *
+ * @module data-structures/hash-table
+*/
+(function (exports) {
+  'use strict';
+
+  exports.HashTable = function HashTable() {
+    this.elements = [];
+  };
+
+  exports.HashTable.prototype.hashCode = function (str) {
+    var i;
+    var hashCode = 0;
+    var character;
+
+    if (str.length === 0) {
+      return hashCode;
+    }
+
+    for (i = 0; i &lt; str.length; i += 1) {
+      character = str.charCodeAt(i);
+      /*jshint -W016 */
+      hashCode = ((hashCode &lt;&lt; 5) - hashCode) + character;
+      hashCode = hashCode &amp; hashCode;
+      /*jshint -W016 */
+    }
+
+    return hashCode;
+  };
+
+  exports.HashTable.prototype.put = function (key, value) {
+    var hashCode = this.hashCode(key);
+    this.elements[hashCode] = value;
+  };
+
+  exports.HashTable.prototype.get = function (key) {
+    var hashCode = this.hashCode(key);
+    return this.elements[hashCode];
+  };
+
+  exports.HashTable.prototype.remove = function (key) {
+    var hashCode = this.hashCode(key);
+    this.elements.splice(hashCode, 1);
+  };
+})(typeof window === 'undefined' ? module.exports : window);
+</code></pre>
+        </article>
+    </section>
 
 
 
