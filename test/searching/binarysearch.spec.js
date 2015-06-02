@@ -9,8 +9,9 @@ describe('Binary search', function () {
     expect(binarySearch([1, 2, 3, 4, 6, 8], 1)).toBe(0);
   });
 
-  it('should find the eleent in position arr.length', function () {
-    expect(binarySearch([1, 2, 3, 4, 6, 8], 1)).toBe(0);
+  it('should find the element in position arr.length - 1', function () {
+    var arr = [1, 2, 3, 4, 6, 8];
+    expect(binarySearch(arr, 8)).toBe(arr.length - 1);
   });
 
   it('should work with arrays with 2 elements', function () {
@@ -31,6 +32,7 @@ describe('Binary search', function () {
   });
 
   it('should work with a key function', function () {
-    expect(binarySearch([{ x: 1 }, { x: 2 }, { x: 3 }], { x: 2 }, function (o) { return o.x; })).toBe(1);
+    expect(binarySearch([{ x: 1 }, { x: 2 }, { x: 3 }],
+        { x: 2 }, function (o) { return o.x; })).toBe(1);
   });
 });
