@@ -128,11 +128,11 @@
     if (!current) {
       return;
     }
+    this._postorder(current._left, callback);
+    this._postorder(current._right, callback);
     if (typeof callback === 'function') {
       callback(current);
     }
-    this._postorder(current._left, callback);
-    this._postorder(current._right, callback);
   };
 
   /**
