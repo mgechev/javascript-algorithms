@@ -35,40 +35,53 @@
  * @example
  * var hash = require('path-to-algorithms/src/data-structures'+
  * '/hash-table');
- * var HashTable = new hash.HashTable();
+ * var hashTable = new hash.Hashtable();
  *
- * HashTable.put(10, 'value');
- * HashTable.put('key', 10);
+ * hashTable.put(10, 'value');
+ * hashTable.put('key', 10);
  *
- * console.log(HashTable.get(10)); // 'value'
- * console.log(HashTable.get('key')); // 10
+ * console.log(hashTable.get(10)); // 'value'
+ * console.log(hashTable.get('key')); // 10
  *
- * HashTable.remove(10);
- * HashTable.remove('key');
+ * hashTable.remove(10);
+ * hashTable.remove('key');
  *
- * console.log(HashTable.get(10)); // 'undefined'
- * console.log(HashTable.get('key')); // 'undefined'
+ * console.log(hashTable.get(10)); // undefined
+ * console.log(hashTable.get('key')); // undefined
  *
  * @module data-structures/hash-table
 */
 (function (exports) {
   'use strict';
 
-  exports.HashTable = function HashTable() {
-    this.elements = [];
+  exports.Node = function (key, data) {
+    this.key = key;
+    this.data = data;
+    this.next = undefined;
+    this.prev = undefined;
   };
 
-  exports.HashTable.prototype.hashCode = function (str) {
+  exports.Hashtable = function () {
+    this.buckets = [];
+    // The higher the bucket count; less likely for collisions.
+    this.maxBucketCount = 100;
+  };
+
+  /*
+    Using simple non-crypto x->integer based hash.
+  */
+  exports.Hashtable.prototype.hashCode = function (val) {
     var i;
     var hashCode = 0;
     var character;
 
-    if (str.length === 0) {
-      return hashCode;
+    // If value to be hashed is already an integer, return it.
+    if (val.length === 0 || val.length === undefined) {
+      return val;
     }
 
-    for (i = 0; i &lt; str.length; i += 1) {
-      character = str.charCodeAt(i);
+    for (i = 0; i &lt; val.length; i += 1) {
+      character = val.charCodeAt(i);
       /*jshint -W016 */
       hashCode = ((hashCode &lt;&lt; 5) - hashCode) + character;
       hashCode = hashCode &amp; hashCode;
@@ -78,19 +91,152 @@
     return hashCode;
   };
 
-  exports.HashTable.prototype.put = function (key, value) {
-    var hashCode = this.hashCode(key);
-    this.elements[hashCode] = value;
+  exports.Hashtable.prototype.put = function (key, data, hashCode) {
+    /*
+      Make collision testing easy with optional hashCode parameter.
+      That should not be used! Only by spec/tests.
+    */
+    if (hashCode === undefined) {
+      // Typical use
+      hashCode = this.hashCode(key);
+    } else if (hashCode.length > 0) {
+      // Testing/Spec - String hash passed, convert to int based hash.
+      hashCode = this.hashCode(hashCode);
+    }
+    // Adjust hash to fit within buckets.
+    hashCode = hashCode % this.maxBucketCount;
+
+    var newNode = new exports.Node(key, data);
+
+    // No element exists at hash/index for given key -> put in table.
+    if (this.buckets[hashCode] === undefined) {
+      this.buckets[hashCode] = newNode;
+      return;
+    }
+
+    // Element exists at hash/index for given key, but, same key -> overwrite.
+    if (this.buckets[hashCode].key === key) {
+      this.buckets[hashCode].data = data;
+      return;
+    }
+
+    /*
+      Item exists at hash/index for key, but different key.
+      Handle collision.
+    */
+    var first = this.buckets[hashCode];
+    while (first.next !== undefined) {
+      first = first.next;
+    }
+    first.next = newNode;
+    newNode.prev = first;
   };
 
-  exports.HashTable.prototype.get = function (key) {
-    var hashCode = this.hashCode(key);
-    return this.elements[hashCode];
+  exports.Hashtable.prototype.get = function (key, hashCode) {
+    /*
+      Make collision testing easy with optional hashCode parameter.
+      That should not be used! Only by spec/tests.
+    */
+    if (hashCode === undefined) {
+      // Typical use
+      hashCode = this.hashCode(key);
+    } else if (hashCode.length > 0) {
+      // Testing/Spec - String hash passed, convert to int based hash.
+      hashCode = this.hashCode(hashCode);
+    }
+    hashCode = hashCode % this.maxBucketCount;
+
+    if (this.buckets[hashCode] === undefined) {
+      return undefined;
+    } else if (
+      this.buckets[hashCode].next === undefined &amp;&amp;
+      this.buckets[hashCode].key === key
+    ) {
+      return this.buckets[hashCode].data;
+    } else {
+      var first = this.buckets[hashCode];
+      while (
+        first !== undefined &amp;&amp;
+        first.next !== undefined &amp;&amp;
+        first.key !== key
+      ) {
+        first = first.next;
+      }
+
+      if (first.key === key) {
+        return first.data;
+      } else {
+        return undefined;
+      }
+    }
   };
 
-  exports.HashTable.prototype.remove = function (key) {
-    var hashCode = this.hashCode(key);
-    this.elements.splice(hashCode, 1);
+  exports.Hashtable.prototype.remove = function (key, hashCode) {
+    /*
+      Make collision testing easy with optional hashCode parameter.
+      That should not be used! Only by spec/tests.
+    */
+    if (hashCode === undefined) {
+      // Typical use
+      hashCode = this.hashCode(key);
+    } else if (hashCode.length > 0) {
+      // Testing/Spec - String hash passed, convert to int based hash.
+      hashCode = this.hashCode(hashCode);
+    }
+    hashCode = hashCode % this.maxBucketCount;
+
+    if (this.buckets[hashCode] === undefined) {
+      return undefined;
+    } else if (this.buckets[hashCode].next === undefined) {
+      this.buckets[hashCode] = undefined;
+    } else {
+      var first = this.buckets[hashCode];
+
+      while (
+        first !== undefined &amp;&amp;
+        first.next !== undefined &amp;&amp;
+        first.key !== key
+      ) {
+        first = first.next;
+      }
+
+      var removedValue = first.data;
+
+      // Removing (B)
+      // (B) : only item in bucket
+      if (first.prev === undefined &amp;&amp; first.next === undefined) {
+        first = undefined;
+        return removedValue;
+      }
+
+      // (B) - A - C: start link in bucket
+      if (first.prev === undefined &amp;&amp; first.next !== undefined) {
+        first.data = first.next.data;
+        first.key = first.next.key;
+        if (first.next.next !== undefined) {
+          first.next = first.next.next;
+        } else {
+          first.next = undefined;
+        }
+        return removedValue;
+      }
+
+      // A - (B) : end link in bucket
+      if (first.prev !== undefined &amp;&amp; first.next === undefined) {
+        first.prev.next = undefined;
+        first = undefined;
+        return removedValue;
+      }
+
+      // A - (B) - C : middle link in bucket
+      if (first.prev !== undefined &amp;&amp; first.next !== undefined) {
+        first.prev.next = first.next;
+        first.next.prev = first.prev;
+        first = undefined;
+        return removedValue;
+      }
+
+    }
   };
 })(typeof window === 'undefined' ? module.exports : window);
 </code></pre>
@@ -109,7 +255,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Sun Jun 07 2015 17:32:22 GMT+0300 (EEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Mon Jul 13 2015 16:17:46 GMT+0300 (EEST)
 </footer>
 
 <script> prettyPrint(); </script>
