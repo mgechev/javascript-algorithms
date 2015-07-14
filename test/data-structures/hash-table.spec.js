@@ -49,7 +49,7 @@ describe('Hash table', function () {
     expect(hashTable.buckets[14].data).toBe('value');
     expect(hashTable.buckets[14].next.data).toBe('anotherValue');
   });
-  it('should put() multiple K:Vs with hash collisions in properly (2).', function () {
+  it('should put() multiple K(int):Vs with hash collisions in properly (2).', function () {
     var hashTable = new Hashtable();
     hashTable.put(10, 'value', 'someHash');
     hashTable.put(35, 'anotherValue', 'someHash');
@@ -58,46 +58,46 @@ describe('Hash table', function () {
     expect(hashTable.buckets[14].next.data).toBe('anotherValue');
     expect(hashTable.buckets[14].next.next.data).toBe('lastValue');
   });
-  it('should get() a k:v from table properly.', function () {
+  it('should get() a K(int):V from table properly.', function () {
     var hashTable = new Hashtable();
     hashTable.put(10, 'value');
     expect(hashTable.get(10)).toBe('value');
   });
-  it('should get() a k:v with collisions from table properly (1).', function () {
+  it('should get() a K(int):V with collisions from table properly (1).', function () {
     var hashTable = new Hashtable();
     hashTable.put(10, 'value', 'someHash');
     hashTable.put(35, 'anotherValue', 'someHash');
     expect(hashTable.get(35, 'someHash')).toBe('anotherValue');
   });
-  it('should get() a k:v with collisions from table properly (2).', function () {
+  it('should get() a K(int):V with collisions from table properly (2).', function () {
     var hashTable = new Hashtable();
     hashTable.put(10, 'value', 'someHash');
     hashTable.put(35, 'anotherValue', 'someHash');
     hashTable.put(77, 'lastValue', 'someHash');
     expect(hashTable.get(77, 'someHash')).toBe('lastValue');
   });
-  it('should get() a k:v with collisions from table properly (3).', function () {
+  it('should get() a K(int):V with collisions from table properly (3).', function () {
     var hashTable = new Hashtable();
     hashTable.put(10, 'value', 'someHash');
     hashTable.put(35, 'anotherValue', 'someHash');
     hashTable.put(77, 'lastValue', 'someHash');
     expect(hashTable.get(35, 'someHash')).toBe('anotherValue');
   });
-  it('should get() a k:v with collisions from table properly (4).', function () {
+  it('should get() a K(int):V with collisions from table properly (4).', function () {
     var hashTable = new Hashtable();
     hashTable.put(10, 'value', 'someHash');
     hashTable.put(35, 'anotherValue', 'someHash');
     hashTable.put(77, 'lastValue', 'someHash');
     expect(hashTable.get(10, 'someHash')).toBe('value');
   });
-  it('should remove() a k:v from table properly.', function () {
+  it('should remove() a K(int):V from table properly.', function () {
     // remove only node/link in bucket : (B)
     var hashTable = new Hashtable();
     hashTable.put(10, 'value');
     hashTable.remove(10);
     expect(hashTable.get(10)).toBe(undefined);
   });
-  it('should remove() a k:v with collisions from table properly (2).', function () {
+  it('should remove() a K(int):V with collisions from table properly (2).', function () {
     // remove start node/link in bucket : (B) - A
     var hashTable = new Hashtable();
     hashTable.put(10, 'value', 'someHash');
@@ -106,7 +106,7 @@ describe('Hash table', function () {
     expect(hashTable.get(35, 'someHash')).toBe('anotherValue');
     expect(hashTable.get(10, 'someHash')).toBe(undefined);
   });
-  it('should remove() a k:v with collisions from table properly (3).', function () {
+  it('should remove() a K(int):V with collisions from table properly (3).', function () {
     // remove start node/link in bucket : (B) - A - C
     var hashTable = new Hashtable();
     hashTable.put(10, 'value', 'someHash');
@@ -116,7 +116,7 @@ describe('Hash table', function () {
     expect(hashTable.get(35, 'someHash')).toBe('anotherValue');
     expect(hashTable.get(66, 'someHash')).toBe('lastValue');
   });
-  it('should remove() a k:v with collisions from table properly (4).', function () {
+  it('should remove() a K(int):V with collisions from table properly (4).', function () {
     // remove middle node/link in bucket : A - (B) - C
     var hashTable = new Hashtable();
     hashTable.put(10, 'value', 'someHash');
