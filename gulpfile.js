@@ -5,8 +5,11 @@ var jshint = require('gulp-jshint');
 var jasmine = require('gulp-jasmine');
 var stylish = require('jshint-stylish');
 var jscs = require('gulp-jscs');
+var isWin = /^win/.test(process.platform);
 
 gulp.task('jsdoc', shell.task([
+  (isWin) ?
+  '"node_modules/.bin/jsdoc.cmd" -c ./doc-config.json' :
   './node_modules/.bin/jsdoc -c ./doc-config.json'
 ]));
 
