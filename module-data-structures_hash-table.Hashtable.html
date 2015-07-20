@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: data-structures/hash-table</title>
+    <title>JSDoc: Class: Hashtable</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: data-structures/hash-table</h1>
+    <h1 class="page-title">Class: Hashtable</h1>
 
     
 
@@ -28,8 +28,11 @@
 
 <header>
     
+        <h2>
+            <span class="ancestors"><a href="module-data-structures_hash-table.html">data-structures/hash-table</a>.</span>
         
-            
+        Hashtable
+        </h2>
         
     
 </header>
@@ -38,13 +41,18 @@
     <div class="container-overview">
     
         
-            <div class="description">Hash TableAn associative array, that can map keys(strings and numbers) to values in O(1).</div>
-        
 
-        
-            
+    
+
+    <h4 class="name" id="Hashtable"><span class="type-signature"></span>new Hashtable<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
 
 
+
+<div class="description">
+    Construct a Hash table..
+</div>
 
 
 
@@ -87,7 +95,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_hash-table.js.html">data-structures/hash-table.js</a>, <a href="data-structures_hash-table.js.html#line1">line 1</a>
+        <a href="data-structures_hash-table.js.html">data-structures/hash-table.js</a>, <a href="data-structures_hash-table.js.html#line50">line 50</a>
     </li></ul></dd>
     
 
@@ -112,13 +120,7 @@
 
 
 
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var hash = require('path-to-algorithms/src/data-structures'+'/hash-table');var hashTable = new hash.Hashtable();hashTable.put(10, 'value');hashTable.put('key', 10);console.log(hashTable.get(10)); // 'value'console.log(hashTable.get('key')); // 10hashTable.remove(10);hashTable.remove('key');console.log(hashTable.get(10)); // undefinedconsole.log(hashTable.get('key')); // undefined</code></pre>
 
-
-
-        
     
     </div>
 
@@ -127,16 +129,6 @@
     
 
     
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-data-structures_hash-table.Hashtable.html">Hashtable</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-data-structures_hash-table.Node.html">Node</a></dt>
-            <dd></dd>
-        </dl>
-    
 
      
 
@@ -144,6 +136,572 @@
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(key)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Get's data from the table based on key.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Key for data to be retrieved.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_hash-table.js.html">data-structures/hash-table.js</a>, <a href="data-structures_hash-table.js.html#line142">line 142</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="hashCode"><span class="type-signature"></span>hashCode<span class="signature">(val)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Simple non-crypto hash used to hash keys, which determineswhile bucket the value will be placed in.A javascript implementation of Java's 32bitint hash.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>val</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Key to be hashed.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_hash-table.js.html">data-structures/hash-table.js</a>, <a href="data-structures_hash-table.js.html#line65">line 65</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="put"><span class="type-signature"></span>put<span class="signature">(key, data)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Puts data into the table based on hashed key value.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Key for data.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Data to be stored in table.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_hash-table.js.html">data-structures/hash-table.js</a>, <a href="data-structures_hash-table.js.html#line94">line 94</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">(key)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Removes data from the table based on key.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Key of the data to be removed.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_hash-table.js.html">data-structures/hash-table.js</a>, <a href="data-structures_hash-table.js.html#line188">line 188</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     
