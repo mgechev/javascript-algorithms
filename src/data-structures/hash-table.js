@@ -26,6 +26,14 @@
 (function (exports) {
   'use strict';
 
+  /**
+   * Constructs a Node to store data and next/prev nodes in Hash table.
+   *
+   * @public
+   * @constructor
+   * @param {Number|String} key Key of the node.
+   * @param {Number|String} data Data to be stored in hash table.
+   */
   exports.Node = function (key, data) {
     this.key = key;
     this.data = data;
@@ -33,15 +41,27 @@
     this.prev = undefined;
   };
 
+  /**
+   * Construct a Hash table..
+   *
+   * @public
+   * @constructor
+   */
   exports.Hashtable = function () {
     this.buckets = [];
     // The higher the bucket count; less likely for collisions.
     this.maxBucketCount = 100;
   };
 
-  /*
-    Using simple non-crypto x->integer based hash.
-  */
+  /**
+   * Simple non-crypto hash used to hash keys, which determines
+   * while bucket the value will be placed in.
+   * A javascript implementation of Java's 32bitint hash.
+   *
+   * @public
+   * @method
+   * @param {Number|String} val Key to be hashed.
+   */
   exports.Hashtable.prototype.hashCode = function (val) {
     var i;
     var hashCode = 0;
@@ -63,6 +83,14 @@
     return hashCode;
   };
 
+  /**
+   * Puts data into the table based on hashed key value.
+   *
+   * @public
+   * @method
+   * @param {Number|String} key Key for data.
+   * @param {Number|String} data Data to be stored in table.
+   */
   exports.Hashtable.prototype.put = function (key, data, hashCode) {
     /*
       Make collision testing easy with optional hashCode parameter.
@@ -104,6 +132,13 @@
     newNode.prev = first;
   };
 
+  /**
+   * Get's data from the table based on key.
+   *
+   * @public
+   * @method
+   * @param {Number|String} key Key for data to be retrieved.
+   */
   exports.Hashtable.prototype.get = function (key, hashCode) {
     /*
       Make collision testing easy with optional hashCode parameter.
@@ -143,6 +178,13 @@
     }
   };
 
+  /**
+   * Removes data from the table based on key.
+   *
+   * @public
+   * @method
+   * @param {Number|String} key Key of the data to be removed.
+   */
   exports.Hashtable.prototype.remove = function (key, hashCode) {
     /*
       Make collision testing easy with optional hashCode parameter.
