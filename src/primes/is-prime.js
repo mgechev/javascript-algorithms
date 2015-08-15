@@ -16,45 +16,33 @@
    * console.log(isPrime(18)); // false
    */
   exports.isPrime = function (number) {
-    if (number === 1) {
+
+    if (number < 2) {
       return false;
-
-    } else if (number < 4) {
-      /**
-       * 2 and 3 are prime
-       */
-      return true;
-
-    } else if (number % 2 === 0) {
-      return false;
-
-    } else if (number < 9) {
-      /**
-       * We have already excluded 4,6 and 8
-       */
-      return true;
-
-    } else if (number % 3 === 0) {
-      return false;
-
-    } else {
-      /**
-       * 'number' rounded to the greatest integer 'rounded' so that:
-       * rounded * rounded <= number
-       */
-      var rounded = Math.floor(Math.sqrt(number));
-      var factor = 5;
-      while (factor <= rounded) {
-        if (number % factor === 0) {
-          return false;
-        }
-        if (number % (factor + 2) === 0) {
-          return false;
-        }
-        factor += 6;
-      }
     }
 
+    if (number % 2 === 0) {
+      return (number === 2);
+    }
+
+    if (number % 3 === 0) {
+      return (number === 3);
+    }
+
+    var horizon = Math.floor(Math.sqrt(number));
+    var factor = 5;
+
+    while (factor <= horizon) {
+
+      if (number % factor === 0) {
+        return false;
+      }
+
+      if (number % (factor + 2) === 0) {
+        return false;
+      }
+      factor += 6;
+    }
     return true;
   };
 
