@@ -71,14 +71,13 @@ If the build is not successful fix your code in order the tests and jshint valid
 
 ## Contributors
 
-[<img alt="mgechev" src="https://avatars.githubusercontent.com/u/455023?v=3&s=117" width="117">](https://github.com/mgechev) |[<img alt="AndriiHeonia" src="https://avatars.githubusercontent.com/u/773648?v=3&s=117" width="117">](https://github.com/AndriiHeonia) |[<img alt="Jakehp" src="https://avatars.githubusercontent.com/u/1854569?v=3&s=117" width="117">](https://github.com/Jakehp) |[<img alt="pvoznenko" src="https://avatars.githubusercontent.com/u/1098414?v=3&s=117" width="117">](https://github.com/pvoznenko) |[<img alt="FilipeFalcaoBatista" src="https://avatars.githubusercontent.com/u/9125631?v=3&s=117" width="117">](https://github.com/FilipeFalcaoBatista) |[<img alt="secrettriangle" src="https://avatars.githubusercontent.com/u/1765130?v=3&s=117" width="117">](https://github.com/secrettriangle) |
+[<img alt="mgechev" src="https://avatars.githubusercontent.com/u/455023?v=3&s=117" width="117">](https://github.com/mgechev) |[<img alt="AndriiHeonia" src="https://avatars.githubusercontent.com/u/773648?v=3&s=117" width="117">](https://github.com/AndriiHeonia) |[<img alt="Jakehp" src="https://avatars.githubusercontent.com/u/1854569?v=3&s=117" width="117">](https://github.com/Jakehp) |[<img alt="pvoznenko" src="https://avatars.githubusercontent.com/u/1098414?v=3&s=117" width="117">](https://github.com/pvoznenko) |[<img alt="FilipeFalcaoBatista" src="https://avatars.githubusercontent.com/u/9125631?v=3&s=117" width="117">](https://github.com/FilipeFalcaoBatista) |[<img alt="infusion" src="https://avatars.githubusercontent.com/u/197742?v=3&s=117" width="117">](https://github.com/infusion) |
 :---: |:---: |:---: |:---: |:---: |:---: |
-[mgechev](https://github.com/mgechev) |[AndriiHeonia](https://github.com/AndriiHeonia) |[Jakehp](https://github.com/Jakehp) |[pvoznenko](https://github.com/pvoznenko) |[FilipeFalcaoBatista](https://github.com/FilipeFalcaoBatista) |[secrettriangle](https://github.com/secrettriangle) |
+[mgechev](https://github.com/mgechev) |[AndriiHeonia](https://github.com/AndriiHeonia) |[Jakehp](https://github.com/Jakehp) |[pvoznenko](https://github.com/pvoznenko) |[FilipeFalcaoBatista](https://github.com/FilipeFalcaoBatista) |[infusion](https://github.com/infusion) |
 
-[<img alt="Microfed" src="https://avatars.githubusercontent.com/u/613179?v=3&s=117" width="117">](https://github.com/Microfed) |[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |[<img alt="fanixk" src="https://avatars.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |
-:---: |:---: |:---: |
-[Microfed](https://github.com/Microfed) |[contra](https://github.com/contra) |[fanixk](https://github.com/fanixk) |
-
+[<img alt="Microfed" src="https://avatars.githubusercontent.com/u/613179?v=3&s=117" width="117">](https://github.com/Microfed) |[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |[<img alt="ysharplanguage" src="https://avatars.githubusercontent.com/u/1055314?v=3&s=117" width="117">](https://github.com/ysharplanguage) |[<img alt="fanixk" src="https://avatars.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |
+:---: |:---: |:---: |:---: |
+[Microfed](https://github.com/Microfed) |[contra](https://github.com/contra) |[ysharplanguage](https://github.com/ysharplanguage) |[fanixk](https://github.com/fanixk) |
 ## License
 
 The code in this repository is distributed under the terms of the MIT license.
