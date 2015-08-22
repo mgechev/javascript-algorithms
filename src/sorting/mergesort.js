@@ -4,6 +4,8 @@
    */
   'use strict';
 
+  var ll = require('../data-structures/linked-list.js');
+
   function compare(a, b) {
     return a - b;
   }
@@ -61,8 +63,9 @@
    * }, 0, 4, 7);
    */
   mergeSort.merge = function (array, cmp, start, middle, end) {
-    var left = [];
-    var right = [];
+    var left = new ll.LinkedList();
+    var right = new ll.LinkedList();
+
     var leftSize = middle - start;
     var rightSize = end - middle;
     var maxSize = Math.max(leftSize, rightSize);
@@ -71,24 +74,24 @@
 
     for (i = 0; i < maxSize; i += 1) {
       if (i < leftSize) {
-        left[i] = array[start + i];
+        left.push(array[start + i]);
       }
       if (i < rightSize) {
-        right[i] = array[middle + i];
+        right.push(array[middle + i]);
       }
     }
     i = 0;
     while (i < size) {
-      if (left.length && right.length) {
-        if (cmp(left[0], right[0]) > 0) {
-          array[start + i] = right.shift();
+      if (left.first && right.first) {
+        if (cmp(left.first.data, right.first.data) > 0) {
+          array[start + i] = right.shift().data;
         } else {
-          array[start + i] = left.shift();
+          array[start + i] = left.shift().data;
         }
-      } else if (left.length) {
-        array[start + i] = left.shift();
+      } else if (left.first) {
+        array[start + i] = left.shift().data;
       } else {
-        array[start + i] = right.shift();
+        array[start + i] = right.shift().data;
       }
       i += 1;
     }
