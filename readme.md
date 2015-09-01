@@ -75,9 +75,10 @@ If the build is not successful fix your code in order the tests and jshint valid
 :---: |:---: |:---: |:---: |:---: |:---: |
 [mgechev](https://github.com/mgechev) |[AndriiHeonia](https://github.com/AndriiHeonia) |[Jakehp](https://github.com/Jakehp) |[pvoznenko](https://github.com/pvoznenko) |[FilipeFalcaoBatista](https://github.com/FilipeFalcaoBatista) |[infusion](https://github.com/infusion) |
 
-[<img alt="Microfed" src="https://avatars.githubusercontent.com/u/613179?v=3&s=117" width="117">](https://github.com/Microfed) |[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |[<img alt="ysharplanguage" src="https://avatars.githubusercontent.com/u/1055314?v=3&s=117" width="117">](https://github.com/ysharplanguage) |[<img alt="fanixk" src="https://avatars.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |
-:---: |:---: |:---: |:---: |
-[Microfed](https://github.com/Microfed) |[contra](https://github.com/contra) |[ysharplanguage](https://github.com/ysharplanguage) |[fanixk](https://github.com/fanixk) |
+[<img alt="Microfed" src="https://avatars.githubusercontent.com/u/613179?v=3&s=117" width="117">](https://github.com/Microfed) |[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |[<img alt="ysharplanguage" src="https://avatars.githubusercontent.com/u/1055314?v=3&s=117" width="117">](https://github.com/ysharplanguage) |[<img alt="lekkas" src="https://avatars.githubusercontent.com/u/5211478?v=3&s=117" width="117">](https://github.com/lekkas) |[<img alt="fanixk" src="https://avatars.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |
+:---: |:---: |:---: |:---: |:---: |
+[Microfed](https://github.com/Microfed) |[contra](https://github.com/contra) |[ysharplanguage](https://github.com/ysharplanguage) |[lekkas](https://github.com/lekkas) |[fanixk](https://github.com/fanixk) |
+
 ## License
 
 The code in this repository is distributed under the terms of the MIT license.
