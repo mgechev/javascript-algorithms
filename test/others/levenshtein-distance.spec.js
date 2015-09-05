@@ -4,6 +4,10 @@ var mod = require('../../src/others/levenshtein-distance.js');
 var levenshteinDistance = mod.levenshteinDistance;
 
 describe('Levenstein\'s minimum edit distance algorithm', function () {
+  it('should be defined', function () {
+    expect(levenshteinDistance).toBeDefined();
+  });
+
   it('"" -> "" should return 0.', function () {
     expect(levenshteinDistance('', '')).toBe(0);
   });
@@ -18,6 +22,10 @@ describe('Levenstein\'s minimum edit distance algorithm', function () {
 
   it('"Sofia" -> "Sof" should return 2.', function () {
     expect(levenshteinDistance('Sofia', 'Sof')).toBe(2);
+  });
+
+  it('"kitten" -> "sitting" should return 3', function () {
+    expect(levenshteinDistance('kitten', 'sitting')).toBe(3);
   });
 
   it('"google" -> "lookat" should return 4.', function () {
@@ -38,5 +46,13 @@ describe('Levenstein\'s minimum edit distance algorithm', function () {
 
   it('"rosebud" -> "budrose" should return 6.', function () {
     expect(levenshteinDistance('rosebud', 'budrose')).toBe(6);
+  });
+
+  it('"decided" -> "decisive" should return 4.', function () {
+    expect(levenshteinDistance('decided', 'decisive')).toBe(4);
+  });
+
+  it('"similar" -> "simile" should return 2.', function () {
+    expect(levenshteinDistance('similar', 'simile')).toBe(2);
   });
 });
