@@ -3,22 +3,31 @@
 
   var levenshteinDistance = (function () {
 
-    function levenshteinDistance(s, ls, t, lt) {
-      if (ls === 0) {
-        return lt;
+    function levenshteinDistance (s, ls, t, lt) {
+      var memo = [];
+      var currRowMemo;
+      var i;
+      var k;
+
+      for (k = 0; k <= lt; k += 1) {
+        memo[k] = k;
       }
-      if (lt === 0) {
-        return ls;
+
+      for (i = 1; i <= ls; i += 1) {
+        currRowMemo = [i];
+
+        for (k = 1; k <= lt; k += 1) {
+          currRowMemo[k] = Math.min(
+            currRowMemo[k - 1] + 1,
+            memo[k] + 1,
+            memo[k - 1] + (s[i - 1] !== t[k - 1] ? 1 : 0)
+          );
+        }
+
+        memo = currRowMemo;
       }
-      var cost;
-      if (s[ls - 1] === t[lt - 1]) {
-        cost = 0;
-      } else {
-        cost = 1;
-      }
-      return Math.min(levenshteinDistance(s, ls - 1, t,     lt) + 1,
-                      levenshteinDistance(s, ls,     t, lt - 1) + 1,
-                      levenshteinDistance(s, ls - 1, t, lt - 1) + cost);
+
+      return memo[lt];
     }
 
     /**
@@ -49,3 +58,4 @@
   exports.levenshteinDistance = levenshteinDistance;
 
 }(typeof exports === 'undefined' ? window : exports));
+
