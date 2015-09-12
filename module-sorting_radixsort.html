@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: sorting/insertion-binary-sort</title>
+    <title>JSDoc: Module: sorting/radixsort</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: sorting/insertion-binary-sort</h1>
+    <h1 class="page-title">Module: sorting/radixsort</h1>
 
     
 
@@ -38,11 +38,10 @@
     <div class="container-overview">
     
         
-            <div class="description">Modified version of insertion sort. It uses binary search for finding
-where the current element should be inserted. It's correct because
-the binary search looks just in the first part of the array
-which is actually sorted.<br><br>
-Time complexity: O(N^2).</div>
+            <div class="description">Least significant digit (LSD) Radix sort. A non-comparative,
+stable integer sorting algorithm.<br><br>
+Worst-case time complexity is O(N K) for N keys with K being
+the average key length, measured in number of digits.</div>
         
 
         
@@ -99,32 +98,7 @@ Time complexity: O(N^2).</div>
 
             
 
-            <td class="description last">Input array.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cmp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Optional. A function that defines an
-alternative sort order. The function should return a negative,
-zero, or positive value, depending on the arguments.</td>
+            <td class="description last">Input integer array</td>
         </tr>
 
     
@@ -164,7 +138,7 @@ zero, or positive value, depending on the arguments.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sorting_insertion-binary-sort.js.html">sorting/insertion-binary-sort.js</a>, <a href="sorting_insertion-binary-sort.js.html#line8">line 8</a>
+        <a href="sorting_radixsort.js.html">sorting/radixsort.js</a>, <a href="sorting_radixsort.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -191,7 +165,7 @@ zero, or positive value, depending on the arguments.</td>
 
         
 <div class="param-desc">
-    Sorted array.
+    Sorted array
 </div>
 
 
@@ -213,9 +187,9 @@ zero, or positive value, depending on the arguments.</td>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var sort = require('path-to-algorithms/src' +
-'/sorting/insertion-binary-sort').insertionBinarySort;
-console.log(sort([2, 5, 1, 0, 4])); // [ 0, 1, 2, 4, 5 ]</code></pre>
+    <pre class="prettyprint"><code>var sort = require('path-to-algorithms/src/' +
+'sorting/radixsort').radixSort;
+console.log(sort([2, 5, 1, 3, 4])); // [ 1, 2, 3, 4, 5 ]</code></pre>
 
 
 
