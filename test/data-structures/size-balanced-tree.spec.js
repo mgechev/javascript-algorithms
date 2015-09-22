@@ -107,11 +107,11 @@ describe('SBTree', function () {
     expect(sTree._root).toBe(Nil);
     var count = 10000;
     for (var i = 0; i < count; ++i) {
-      sTree.push(i);
+      sTree.insert(0, i);
     }
     for (var i = 0; i < count; ++i) {
       var node = sTree.remove(count - i - 1); // Always remove the last element;
-      expect(node.value).toBe(count - i - 1);
+      expect(node.value).toBe(i);
       expect(sTree.size).toBe(count - i - 1);
     }
     checkNil();
