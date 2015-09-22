@@ -75,17 +75,17 @@
 
   function updateChild(node, newChild) {
     let parent = node.parent;
-    if (parent !== Nil) {
-      if (parent.right === node) {
-        parent.right = newChild;
-        newChild.parent = parent;
-      } else {
-        parent.left = newChild;
-        newChild.parent = parent;
-      }
-      return parent;
+    if (parent.right === node) {
+      parent.right = newChild;
+      newChild.parent = parent;
+    } else if (parent.left === node) {
+      parent.left = newChild;
+      newChild.parent = parent;
     }
-    return newChild;
+    if (newChild !== Nil) {
+      return newChild;
+    }
+    return parent;
   }
 
   function LeftRotate(node, childNode) {
@@ -267,12 +267,8 @@
       updateChild(node, node.left)
       LRM.right = node.right
       LRM.right.parent = LRM;
-      maintainNode = LRM;
+      maintainNode = node.right;
     }
-    if (maintainNode !== Nil) {
-      maintainNode.updateSize();
-    }
-
     this._root = maintainSizeBalancedTree(maintainNode);
     return removedNode;
   };
