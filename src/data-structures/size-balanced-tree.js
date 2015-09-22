@@ -33,14 +33,7 @@
 
   'use strict';
 
-  var Nil = {
-    parent: Nil,
-    left: Nil,
-    right: Nil,
-    size: 0,
-  };
   
-  exports.Nil = Nil;
 
   /**
    * Node of the Size-Balanced tree.
@@ -72,21 +65,30 @@
   };
 
   exports.Node = Node;
+  var Nil = new Node(null, null, null, null, 0);
+  Nil.parent = Nil;
+  Nil.left = Nil;
+  Nil.right = Nil;
+  exports.Nil = Nil;
 
   function updateChild(node, newChild) {
     let parent = node.parent;
-    if (parent.right === node) {
-      parent.right = newChild;
+    if (parent === Nil) {
       newChild.parent = parent;
-    } else if (parent.left === node) {
-      parent.left = newChild;
-      newChild.parent = parent;
-    }
-    if (newChild !== Nil) {
       return newChild;
     }
-    return parent;
+    if (parent.right === node) {
+      parent.right = newChild;
+    } else {
+      parent.left = newChild;
+    }
+    if (newChild === Nil) {
+      return parent;
+    }
+    newChild.parent = parent;
+    return newChild;
   }
+  exports.updateChild = updateChild;
 
   function LeftRotate(node, childNode) {
     /*
@@ -107,8 +109,8 @@
     node.right = childNode.left;
     node.right.parent = node;
     childNode.left = node;
-    childNode.left.parent = childNode;
-    updateChild(node, childNode)
+    updateChild(node, childNode) //Access node.parent
+    node.parent = childNode;
     node.updateSize();
     return childNode;
   }
@@ -132,8 +134,8 @@
     node.left = childNode.right;
     node.left.parent = node;
     childNode.right = node;
-    childNode.right.parent = childNode;
-    updateChild(node, childNode)
+    updateChild(node, childNode) //Access node.parent
+    node.parent = childNode;
     node.updateSize();
     return childNode;
   }
@@ -156,14 +158,14 @@
     return node;
   }
 
-  function findRightMost = function(node) {
+  function findRightMost(node) {
     while (node.right !== Nil) {
       node = node.right;
     }
     return node;
   }
 
-  function findNodeAtPos = function(node, pos) {
+  function findNodeAtPos(node, pos) {
     while (pos != node.left.size) {
       if (pos < node.left.size) {
         node = node.left;
@@ -185,6 +187,13 @@
     this._root = Nil;
   };
 
+  
+  exports.SBTree.prototype = {
+    get size() {
+      return this._root.size;
+    },
+  }
+ 
   /**
    * Push a value to the end of tree.<br><br>
    * Complexity: O(log N).
@@ -273,8 +282,5 @@
     return removedNode;
   };
 
-  exports.SBTree.prototype.size = function() {
-    return this._root.size;
-  }
 
 })(typeof window === 'undefined' ? module.exports : window);
