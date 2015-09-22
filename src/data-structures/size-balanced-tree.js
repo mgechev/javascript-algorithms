@@ -107,7 +107,7 @@
       NL  CL
     */
     node.right = childNode.left;
-    node.right.parent = node;
+    if (node.right !== Nil) node.right.parent = node;
     childNode.left = node;
     updateChild(node, childNode) //Access node.parent
     node.parent = childNode;
@@ -132,7 +132,7 @@
             CR  NR
     */
     node.left = childNode.right;
-    node.left.parent = node;
+    if (node.left !== Nil) node.left.parent = node;
     childNode.right = node;
     updateChild(node, childNode) //Access node.parent
     node.parent = childNode;
@@ -171,6 +171,7 @@
         node = node.left;
       } else {
         pos -= node.left.size;
+        --pos; //The node element should be decrement by 1
         node = node.right;
       }
     }

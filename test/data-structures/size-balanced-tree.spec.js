@@ -81,5 +81,17 @@ describe('SBTree', function () {
     expect(root.left).toBe(Nil);
     updateChild(Nil, right);
     expect(right.parent).toBe(Nil);
+    checkNil();
+  });
+
+  it('push and get 100000 elements', function () {
+    var sTree = new SBTree();
+    for (var i = 0; i < 100000; ++i) {
+      sTree.push(i);
+    }
+    checkNil();
+    for (var i = 0; i < 100000; ++i) {
+      expect(sTree.get(i).value).toBe(i);
+    }
   });
 });
