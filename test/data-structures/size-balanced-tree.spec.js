@@ -71,20 +71,25 @@ describe('SBTree', function () {
     var right = new Node(15, root, Nil, Nil, 1);
     var leftLeft = new Node(10, left, Nil, Nil, 1);
     left.left = leftLeft;
+    left.updateSize();
     root.left = left;
     root.right = right;
+    root.updateSize();
+    expect(root.size).toBe(4);
+
     updateChild(left, leftLeft);
     expect(leftLeft.parent).toBe(root);
     expect(root.left).toBe(leftLeft);
     updateChild(leftLeft, Nil);
     checkNil();
     expect(root.left).toBe(Nil);
+    expect(root.size).toBe(2);
     updateChild(Nil, right);
     expect(right.parent).toBe(Nil);
     checkNil();
   });
 
-  it('push and get 100000 elements', function () {
+  it('push and get 100000 elements, remove the array by always remove the first/last element', function () {
     var sTree = new SBTree();
     for (var i = 0; i < 100000; ++i) {
       sTree.push(i);
@@ -93,5 +98,22 @@ describe('SBTree', function () {
     for (var i = 0; i < 100000; ++i) {
       expect(sTree.get(i).value).toBe(i);
     }
+    for (var i = 0; i < 100000; ++i) {
+      expect(sTree.get(0).value).toBe(i);
+      var node = sTree.remove(0); // Always remove the first element;
+      expect(node.value).toBe(i);
+    }
+    checkNil();
+    expect(sTree._root).toBe(Nil);
+    var count = 10000;
+    for (var i = 0; i < count; ++i) {
+      sTree.push(i);
+    }
+    for (var i = 0; i < count; ++i) {
+      var node = sTree.remove(count - i - 1); // Always remove the last element;
+      expect(node.value).toBe(count - i - 1);
+      expect(sTree.size).toBe(count - i - 1);
+    }
+    checkNil();
   });
 });

@@ -83,6 +83,7 @@
       parent.left = newChild;
     }
     if (newChild === Nil) {
+      parent.updateSize();
       return parent;
     }
     newChild.parent = parent;
@@ -277,7 +278,7 @@
       updateChild(node, node.left)
       LRM.right = node.right
       LRM.right.parent = LRM;
-      maintainNode = node.right;
+      maintainNode = LRM.right;
     }
     this._root = maintainSizeBalancedTree(maintainNode);
     return removedNode;
