@@ -75,21 +75,17 @@
 
   function updateChild(node, newChild) {
     let parent = node.parent;
-    if (parent === Nil) {
-      newChild.parent = parent;
-      return newChild;
-    }
-    if (parent.right === node) {
-      parent.right = newChild;
-    } else {
-      parent.left = newChild;
-    }
-    if (newChild === Nil) {
+    if (parent !== Nil) {
+      if (parent.right === node) {
+        parent.right = newChild;
+      } else {
+        parent.left = newChild;
+      }
       parent.updateSize();
-      return parent;
     }
-    newChild.parent = parent;
-    return newChild;
+    if (newChild !== Nil) {
+      newChild.parent = parent;
+    }
   }
   exports.updateChild = updateChild;
 
@@ -194,6 +190,13 @@
     return node;
   }
 
+  function findLeftMost(node) {
+    while (node.left !== Nil) {
+      node = node.left;
+    }
+    return node;
+  }
+
   function findNodeAtPos(node, pos) {
     while (pos != node.left.size) {
       if (pos < node.left.size) {
@@ -270,46 +273,59 @@
       return Nil; // There is no element to remove
     }
     let node = findNodeAtPos(this._root, pos);
-    let removedNode = node;
     let maintainNode;
-    if (node.right === Nil) {
-      maintainNode = updateChild(node, node.left)
-    } else if (node.left === Nil) {
-      maintainNode = updateChild(node, node.right)
-    } else {
-      /*
-        Before remove:
-            P(node's parent, be notices, N either be left child or right child of P)
-            |
-            N(node)
-           / \
-          L   R
+
+    /*
+      Before remove:
+          P(node's parent, be notices, N either be left child or right child of P)
+          |
+          N(node)
+         / \
+        L   R
+         \
+          \
+           LRM(Left-Rightmost)
+            \
+             Nil
+      After remove node N:
+            P(node's parent)
+           /
+          L   
            \
             \
              LRM(Left-Rightmost)
               \
-               Nil
-        After remove node N:
-              P(node's parent)
-             /
-            L   
-             \
-              \
-               LRM(Left-Rightmost)
-                \
-                 R
+               R
 
-          N(node) is wild node that was removed
-          
-      */
+        N(node) is wild node that was removed
+        
+    */
+    if (node.left !== Nil){
       let LRM = findRightMost(node.left);
       updateChild(node, node.left)
       LRM.right = node.right
-      LRM.right.parent = LRM;
-      maintainNode = LRM.right;
+      if (LRM.right === Nil) {
+        maintainNode = LRM;
+      } else {
+        LRM.right.parent = LRM;
+        maintainNode = LRM.right;
+      }
+    } else if (node.right !== Nil) {
+      let RLM = findLeftMost(node.right);
+      updateChild(node, node.right)
+      RLM.left = node.left
+      if (RLM.left === Nil) {
+        maintainNode = RLM;
+      } else {
+        RLM.left.parent = RLM;
+        maintainNode = RLM.left;
+      }
+    } else {
+      updateChild(node, Nil)
+      maintainNode = node.parent;
     }
     this._root = maintainSizeBalancedTree(maintainNode);
-    return removedNode;
+    return node;
   };
 
 
