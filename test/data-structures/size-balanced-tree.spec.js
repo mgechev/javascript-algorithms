@@ -104,13 +104,11 @@ describe('SBTree', function () {
       sTree.push(i);
     }
     checkNil();
-    var maxHeight = 0;
     for (var i = 0; i < 2000000; ++i) {
       var node = sTree.get(i);
-      maxHeight = Math.max(maxHeight, node.height);
       expect(node.value).toBe(i);
     }
-    expect(maxHeight).toBe(21);
+    expect(sTree._root.height).toBe(21);
     for (var i = 0; i < 2000000; ++i) {
       expect(sTree.get(0).value).toBe(i);
       var node = sTree.remove(0); // Always remove the first element;
@@ -135,13 +133,11 @@ describe('SBTree', function () {
       expectedArray.splice(newPos, 0, i);
     }
     expect(sTree.size).toBe(expectedArray.length);
-    maxHeight = 0;
     for (var i = 0; i < sTree.size; ++i) {
       var node = sTree.get(i);
-      maxHeight = Math.max(maxHeight, node.height);
       expect(node.value).toBe(expectedArray[i]);
     }
-    console.log(maxHeight);
+    console.log(sTree._root.height);
     for (var i = 0; i < 90000; ++i) {
       var removedPos = getRandomInt(0, sTree.size);
       sTree.remove(removedPos);
@@ -149,10 +145,9 @@ describe('SBTree', function () {
     }
     for (var i = 0; i < sTree.size; ++i) {
       var node = sTree.get(i);
-      maxHeight = Math.max(maxHeight, node.height);
       expect(node.value).toBe(expectedArray[i]);
     }
-    console.log(maxHeight);
+    console.log(sTree._root.height);
     checkNil();
   });
 });
