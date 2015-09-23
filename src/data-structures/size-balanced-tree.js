@@ -52,6 +52,7 @@
     this.left = left;
     this.right = right;
     this.size = size;
+    this.height = 0;
   }
 
   /**
@@ -62,6 +63,7 @@
    */
   Node.prototype.updateSize = function () {
     this.size = this.left.size + this.right.size + 1;
+    this.height = Math.max(this.left.height, this.right.height) + 1;
   };
 
   exports.Node = Node;

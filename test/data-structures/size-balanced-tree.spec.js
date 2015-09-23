@@ -91,14 +91,18 @@ describe('SBTree', function () {
 
   it('push and get 100000 elements, remove the array by always remove the first/last element', function () {
     var sTree = new SBTree();
-    for (var i = 0; i < 100000; ++i) {
+    for (var i = 0; i < 2000000; ++i) {
       sTree.push(i);
     }
     checkNil();
-    for (var i = 0; i < 100000; ++i) {
-      expect(sTree.get(i).value).toBe(i);
+    let maxHeight = 0;
+    for (var i = 0; i < 2000000; ++i) {
+      var node = sTree.get(i);
+      maxHeight = Math.max(maxHeight, node.height);
+      expect(node.value).toBe(i);
     }
-    for (var i = 0; i < 100000; ++i) {
+    expect(maxHeight).toBe(21);
+    for (var i = 0; i < 2000000; ++i) {
       expect(sTree.get(0).value).toBe(i);
       var node = sTree.remove(0); // Always remove the first element;
       expect(node.value).toBe(i);
