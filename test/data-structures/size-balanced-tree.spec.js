@@ -63,9 +63,8 @@ describe('SBTree', function () {
     expect(Nil.value).toBe(null);
   }
   it('test updateChild', function() {
-    var e = updateChild(Nil, Nil);
+    updateChild(Nil, Nil);
     checkNil();
-    expect(e).toBe(Nil);
     var root = new Node(10, Nil, Nil, Nil, 1);
     var left = new Node(5, root, Nil, Nil, 1);
     var right = new Node(15, root, Nil, Nil, 1);
