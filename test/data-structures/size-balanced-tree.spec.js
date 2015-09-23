@@ -130,20 +130,10 @@ describe('SBTree', function () {
     }
     checkNil();
     var expectedArray = [];
-    for (var i = 0; i < 10000; ++i) {
-      var isAdded = sTree.size === 0;
-      if (!isAdded) {
-        isAdded = getRandomIntInclusive(0, 3) < 3;
-      }
-      if (isAdded) {
-        var newPos = getRandomIntInclusive(0, sTree.size);
-        sTree.insert(newPos, i);
-        expectedArray.splice(newPos, 0, i);
-      } else {
-        var removedPos = getRandomInt(0, sTree.size);
-       // sTree.remove(removedPos);
-        //expectedArray.splice(removedPos, 1);
-      }
+    for (var i = 0; i < 100000; ++i) {
+      var newPos = getRandomIntInclusive(0, sTree.size);
+      sTree.insert(newPos, i);
+      expectedArray.splice(newPos, 0, i);
     }
     expect(sTree.size).toBe(expectedArray.length);
     maxHeight = 0;
@@ -151,7 +141,17 @@ describe('SBTree', function () {
       var node = sTree.get(i);
       maxHeight = Math.max(maxHeight, node.height);
       expect(node.value).toBe(expectedArray[i]);
-      //console.log(node.value, expectedArray[i]);
+    }
+    console.log(maxHeight);
+    for (var i = 0; i < 50000; ++i) {
+      var removedPos = getRandomInt(0, sTree.size);
+      sTree.remove(removedPos);
+      expectedArray.splice(removedPos, 1);
+    }
+    for (var i = 0; i < sTree.size; ++i) {
+      var node = sTree.get(i);
+      maxHeight = Math.max(maxHeight, node.height);
+      expect(node.value).toBe(expectedArray[i]);
     }
     console.log(maxHeight);
     checkNil();
