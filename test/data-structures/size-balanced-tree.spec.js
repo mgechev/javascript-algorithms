@@ -143,7 +143,7 @@ describe('SBTree', function () {
       expect(node.value).toBe(expectedArray[i]);
     }
     console.log(maxHeight);
-    for (var i = 0; i < 50000; ++i) {
+    for (var i = 0; i < 90000; ++i) {
       var removedPos = getRandomInt(0, sTree.size);
       sTree.remove(removedPos);
       expectedArray.splice(removedPos, 1);

@@ -143,20 +143,46 @@
     return childNode;
   }
 
+  function maintain(node, leftChild) {
+    if (node === Nil) {
+      return node;
+    }
+    var savedNode = node;
+    if (leftChild) {
+      if (node.left.left.size > node.right.size) {
+        node = RightRotate(node, node.left);
+      } else if (node.left.right.size > node.right.size) {
+        LeftRotate(node.left, node.left.right);
+        node = RightRotate(node, node.left);
+      }
+    } else {
+      if (node.right.right.size > node.left.size) {
+        node = LeftRotate(node, node.right);
+      } else if (node.right.left.size > node.left.size) {
+        RightRotate(node.right, node.right.left);
+        node = LeftRotate(node, node.right);
+      }
+    }
+    node.updateSize();
+    if (node === savedNode) {
+      return node;
+    }
+    maintain(node.left, false);
+    maintain(node.right, true);
+    node = maintain(node, true);
+    node = maintain(node, false);
+    return node;
+  }
+
   function maintainSizeBalancedTree(node) {
     while (node.parent !== Nil) {
       let childNode = node;
       node = node.parent;
-      if (node.right === childNode) {
-        if (childNode.right.size > node.left.size) {
-          node = LeftRotate(node, childNode);
-        }
+      if (node.left == childNode) {
+        node = maintain(node, true);
       } else {
-        if (childNode.left.size > node.right.size) {
-          node = RightRotate(node, childNode);
-        }
+        node = maintain(node, false);
       }
-      node.updateSize();
     }
     return node;
   }
