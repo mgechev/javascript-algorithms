@@ -88,6 +88,16 @@ describe('SBTree', function () {
     expect(right.parent).toBe(Nil);
     checkNil();
   });
+  // Returns a random integer between min (included) and max (excluded)
+  // Using Math.round() will give you a non-uniform distribution!
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  // Returns a random integer between min (included) and max (included)
+  // Using Math.round() will give you a non-uniform distribution!
+  function getRandomIntInclusive(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   it('push and get 100000 elements, remove the array by always remove the first/last element', function () {
     var sTree = new SBTree();
@@ -95,7 +105,7 @@ describe('SBTree', function () {
       sTree.push(i);
     }
     checkNil();
-    let maxHeight = 0;
+    var maxHeight = 0;
     for (var i = 0; i < 2000000; ++i) {
       var node = sTree.get(i);
       maxHeight = Math.max(maxHeight, node.height);
@@ -118,6 +128,32 @@ describe('SBTree', function () {
       expect(node.value).toBe(i);
       expect(sTree.size).toBe(count - i - 1);
     }
+    checkNil();
+    var expectedArray = [];
+    for (var i = 0; i < 10000; ++i) {
+      var isAdded = sTree.size === 0;
+      if (!isAdded) {
+        isAdded = getRandomIntInclusive(0, 3) < 3;
+      }
+      if (isAdded) {
+        var newPos = getRandomIntInclusive(0, sTree.size);
+        sTree.insert(newPos, i);
+        expectedArray.splice(newPos, 0, i);
+      } else {
+        var removedPos = getRandomInt(0, sTree.size);
+       // sTree.remove(removedPos);
+        //expectedArray.splice(removedPos, 1);
+      }
+    }
+    expect(sTree.size).toBe(expectedArray.length);
+    maxHeight = 0;
+    for (var i = 0; i < sTree.size; ++i) {
+      var node = sTree.get(i);
+      maxHeight = Math.max(maxHeight, node.height);
+      expect(node.value).toBe(expectedArray[i]);
+      //console.log(node.value, expectedArray[i]);
+    }
+    console.log(maxHeight);
     checkNil();
   });
 });

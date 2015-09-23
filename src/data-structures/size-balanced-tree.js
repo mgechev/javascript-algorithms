@@ -231,7 +231,7 @@
       newNode = new Node(value, node, Nil, Nil, 1);
       node.left = newNode;
     } else {
-      node = findRightMost(node);
+      node = findRightMost(node.left);
       newNode = new Node(value, node, Nil, Nil, 1);
       node.right = newNode;
     }
