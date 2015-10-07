@@ -27,11 +27,11 @@
    */
   function recursiveInsertionSort(array, cmp, max) {
     cmp = cmp || compare;
-    if (max <= 0) {
-      return array;
-    }
     if (max === undefined) {
       max = array.length - 1;
+    }
+    if (max <= 0) {
+      return array;
     }
     recursiveInsertionSort(array, cmp, max - 1);
     for (var i = max - 1, current = array[max];
