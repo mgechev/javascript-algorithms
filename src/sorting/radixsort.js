@@ -78,7 +78,7 @@
           count[j] += count[j - 1];
         }
 
-        /* Move elements to auxilary array */
+        /* Move elements to auxiliary array */
         var aux = [];
         for (j = size - 1; j >= 0; j -= 1) {
           digit = getDigit(array[j], i) || 0;
