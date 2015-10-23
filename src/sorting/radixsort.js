@@ -68,7 +68,7 @@
         }
 
         /* Count frequency of each array element */
-        for (j = 0; j < array.length; j += 1) {
+        for (j = 0; j < size; j += 1) {
           digit = getDigit(array[j], i) || 0;
           count[digit] += 1;
         }
@@ -78,16 +78,16 @@
           count[j] += count[j - 1];
         }
 
-        /* Move elements to auxilary array */
+        /* Move elements to auxiliary array */
         var aux = [];
-        for (j = array.length - 1; j >= 0; j -= 1) {
+        for (j = size - 1; j >= 0; j -= 1) {
           digit = getDigit(array[j], i) || 0;
           count[digit] -= 1;
           aux[count[digit]] = array[j];
         }
 
         /* Copy elements back from auxilary array */
-        for (j = 0; j < array.length; j += 1) {
+        for (j = 0; j < size; j += 1) {
           array[j] = aux[j];
         }
       }
