@@ -329,4 +329,4 @@
   };
 
 
-})(typeof window === 'undefined' ? module.exports : window);
+})(typeof module === 'undefined' ? window : module.exports);
