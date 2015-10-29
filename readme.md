@@ -75,9 +75,13 @@ If the build is not successful fix your code in order the tests and jshint valid
 :---: |:---: |:---: |:---: |:---: |:---: |
 [mgechev](https://github.com/mgechev) |[AndriiHeonia](https://github.com/AndriiHeonia) |[Jakehp](https://github.com/Jakehp) |[pvoznenko](https://github.com/pvoznenko) |[FilipeFalcaoBatista](https://github.com/FilipeFalcaoBatista) |[lekkas](https://github.com/lekkas) |
 
-[<img alt="deniskyashif" src="https://avatars.githubusercontent.com/u/5999271?v=3&s=117" width="117">](https://github.com/deniskyashif) |[<img alt="infusion" src="https://avatars.githubusercontent.com/u/197742?v=3&s=117" width="117">](https://github.com/infusion) |[<img alt="Microfed" src="https://avatars.githubusercontent.com/u/613179?v=3&s=117" width="117">](https://github.com/Microfed) |[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |[<img alt="ysharplanguage" src="https://avatars.githubusercontent.com/u/1055314?v=3&s=117" width="117">](https://github.com/ysharplanguage) |[<img alt="fanixk" src="https://avatars.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |
+[<img alt="deniskyashif" src="https://avatars.githubusercontent.com/u/5999271?v=3&s=117" width="117">](https://github.com/deniskyashif) |[<img alt="infusion" src="https://avatars.githubusercontent.com/u/197742?v=3&s=117" width="117">](https://github.com/infusion) |[<img alt="designeng" src="https://avatars.githubusercontent.com/u/2807469?v=3&s=117" width="117">](https://github.com/designeng) |[<img alt="Microfed" src="https://avatars.githubusercontent.com/u/613179?v=3&s=117" width="117">](https://github.com/Microfed) |[<img alt="ysharplanguage" src="https://avatars.githubusercontent.com/u/1055314?v=3&s=117" width="117">](https://github.com/ysharplanguage) |[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |
 :---: |:---: |:---: |:---: |:---: |:---: |
-[deniskyashif](https://github.com/deniskyashif) |[infusion](https://github.com/infusion) |[Microfed](https://github.com/Microfed) |[contra](https://github.com/contra) |[ysharplanguage](https://github.com/ysharplanguage) |[fanixk](https://github.com/fanixk) |
+[deniskyashif](https://github.com/deniskyashif) |[infusion](https://github.com/infusion) |[designeng](https://github.com/designeng) |[Microfed](https://github.com/Microfed) |[ysharplanguage](https://github.com/ysharplanguage) |[contra](https://github.com/contra) |
+
+[<img alt="fanixk" src="https://avatars.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |
+:---: |
+[fanixk](https://github.com/fanixk) |
 
 ## License
 
