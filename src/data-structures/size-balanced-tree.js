@@ -74,7 +74,7 @@
   exports.Nil = Nil;
 
   function updateChild(node, newChild) {
-    let parent = node.parent;
+    var parent = node.parent;
     if (parent !== Nil) {
       if (parent.right === node) {
         parent.right = newChild;
@@ -172,7 +172,7 @@
 
   function maintainSizeBalancedTree(node) {
     while (node.parent !== Nil) {
-      let childNode = node;
+      var childNode = node;
       node = node.parent;
       if (node.left == childNode) {
         node = maintain(node, true);
@@ -236,8 +236,8 @@
    * @param {Object} value Value.
    */
   exports.SBTree.prototype.push = function (value) {
-    let node = findRightMost(this._root);
-    let newNode = new Node(value, node, Nil, Nil, 1);
+    var node = findRightMost(this._root);
+    var newNode = new Node(value, node, Nil, Nil, 1);
     if (node !== Nil) node.right = newNode;
     this._root = maintainSizeBalancedTree(newNode);
     return newNode;
@@ -251,9 +251,9 @@
   };
 
   exports.SBTree.prototype.getIndex = function(node) {
-    let index = node.left.size;
+    var index = node.left.size;
     while (node != this._root) {
-      let parent = node.parent;
+      var parent = node.parent;
       if (parent.right === node) {
         index += parent.left.size + 1;
       }
@@ -266,8 +266,8 @@
     if (pos >= this._root.size) {
       return this.push(value)
     }
-    let node = findNodeAtPos(this._root, pos);
-    let newNode
+    var node = findNodeAtPos(this._root, pos);
+    var newNode
     if (node.left === Nil) {
       newNode = new Node(value, node, Nil, Nil, 1);
       node.left = newNode;
@@ -284,8 +284,8 @@
     if (pos >= this._root.size) {
       return Nil; // There is no element to remove
     }
-    let node = findNodeAtPos(this._root, pos);
-    let maintainNode;
+    var node = findNodeAtPos(this._root, pos);
+    var maintainNode;
 
     /*
       Before remove:
@@ -313,7 +313,7 @@
         
     */
     if (node.left !== Nil){
-      let LRM = findRightMost(node.left);
+      var LRM = findRightMost(node.left);
       updateChild(node, node.left)
       LRM.right = node.right
       if (LRM.right === Nil) {
@@ -323,7 +323,7 @@
         maintainNode = LRM.right;
       }
     } else if (node.right !== Nil) {
-      let RLM = findLeftMost(node.right);
+      var RLM = findLeftMost(node.right);
       updateChild(node, node.right)
       RLM.left = node.left
       if (RLM.left === Nil) {
