@@ -30,10 +30,7 @@
  * @module data-structures/size-balanced-tree
  */
 (function (exports) {
-
   'use strict';
-
-  
 
   /**
    * Node of the Size-Balanced tree.
@@ -101,14 +98,16 @@
 
         childNode
          /   \
-       node  CR 
+       node  CR
        /  \
       NL  CL
     */
     node.right = childNode.left;
-    if (node.right !== Nil) node.right.parent = node;
+    if (node.right !== Nil) {
+      node.right.parent = node;
+    }
     childNode.left = node;
-    updateChild(node, childNode) //Access node.parent
+    updateChild(node, childNode); //Access node.parent
     node.parent = childNode;
     node.updateSize();
     return childNode;
@@ -126,14 +125,16 @@
 
         childNode
          /   \
-       CL    node 
+       CL    node
              / \
             CR  NR
     */
     node.left = childNode.right;
-    if (node.left !== Nil) node.left.parent = node;
+    if (node.left !== Nil) {
+      node.left.parent = node;
+    }
     childNode.right = node;
-    updateChild(node, childNode) //Access node.parent
+    updateChild(node, childNode); //Access node.parent
     node.parent = childNode;
     node.updateSize();
     return childNode;
@@ -174,7 +175,7 @@
     while (node.parent !== Nil) {
       var childNode = node;
       node = node.parent;
-      if (node.left == childNode) {
+      if (node.left === childNode) {
         node = maintain(node, true);
       } else {
         node = maintain(node, false);
@@ -198,12 +199,12 @@
   }
 
   function findNodeAtPos(node, pos) {
-    while (pos != node.left.size) {
+    while (pos !== node.left.size) {
       if (pos < node.left.size) {
         node = node.left;
       } else {
         pos -= node.left.size;
-        --pos; //The node element should be decrement by 1
+        pos -= 1; //The node element should be decrement by 1
         node = node.right;
       }
     }
@@ -220,13 +221,12 @@
     this._root = Nil;
   };
 
-  
   exports.SBTree.prototype = {
     get size() {
       return this._root.size;
     },
-  }
- 
+  };
+
   /**
    * Push a value to the end of tree.<br><br>
    * Complexity: O(log N).
@@ -238,21 +238,23 @@
   exports.SBTree.prototype.push = function (value) {
     var node = findRightMost(this._root);
     var newNode = new Node(value, node, Nil, Nil, 1);
-    if (node !== Nil) node.right = newNode;
+    if (node !== Nil) {
+      node.right = newNode;
+    }
     this._root = maintainSizeBalancedTree(newNode);
     return newNode;
   };
 
-  exports.SBTree.prototype.get = function(pos) {
+  exports.SBTree.prototype.get = function (pos) {
     if (pos >= this._root.size) {
       return Nil;
     }
     return findNodeAtPos(this._root, pos);
   };
 
-  exports.SBTree.prototype.getIndex = function(node) {
+  exports.SBTree.prototype.getIndex = function (node) {
     var index = node.left.size;
-    while (node != this._root) {
+    while (node !== this._root) {
       var parent = node.parent;
       if (parent.right === node) {
         index += parent.left.size + 1;
@@ -262,12 +264,12 @@
     return index;
   };
 
-  exports.SBTree.prototype.insert = function(pos, value) {
+  exports.SBTree.prototype.insert = function (pos, value) {
     if (pos >= this._root.size) {
-      return this.push(value)
+      return this.push(value);
     }
     var node = findNodeAtPos(this._root, pos);
-    var newNode
+    var newNode;
     if (node.left === Nil) {
       newNode = new Node(value, node, Nil, Nil, 1);
       node.left = newNode;
@@ -280,7 +282,7 @@
     return newNode;
   };
 
-  exports.SBTree.prototype.remove = function(pos) {
+  exports.SBTree.prototype.remove = function (pos) {
     if (pos >= this._root.size) {
       return Nil; // There is no element to remove
     }
@@ -289,7 +291,8 @@
 
     /*
       Before remove:
-          P(node's parent, be notices, N either be left child or right child of P)
+          P (node's parent, be notices,
+          |   N either be left child or right child of P)
           |
           N(node)
          / \
@@ -302,7 +305,7 @@
       After remove node N:
             P(node's parent)
            /
-          L   
+          L
            \
             \
              LRM(Left-Rightmost)
@@ -310,12 +313,12 @@
                R
 
         N(node) is wild node that was removed
-        
+
     */
     if (node.left !== Nil){
       var LRM = findRightMost(node.left);
-      updateChild(node, node.left)
-      LRM.right = node.right
+      updateChild(node, node.left);
+      LRM.right = node.right;
       if (LRM.right === Nil) {
         maintainNode = LRM;
       } else {
@@ -324,8 +327,8 @@
       }
     } else if (node.right !== Nil) {
       var RLM = findLeftMost(node.right);
-      updateChild(node, node.right)
-      RLM.left = node.left
+      updateChild(node, node.right);
+      RLM.left = node.left;
       if (RLM.left === Nil) {
         maintainNode = RLM;
       } else {
@@ -333,12 +336,11 @@
         maintainNode = RLM.left;
       }
     } else {
-      updateChild(node, Nil)
+      updateChild(node, Nil);
       maintainNode = node.parent;
     }
     this._root = maintainSizeBalancedTree(maintainNode);
     return node;
   };
-
 
 })(typeof module === 'undefined' ? window : module.exports);

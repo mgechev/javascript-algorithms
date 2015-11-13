@@ -62,7 +62,8 @@ describe('SBTree', function () {
     expect(Nil.parent).toBe(Nil);
     expect(Nil.value).toBe(null);
   }
-  it('test updateChild', function() {
+
+  it('test updateChild', function () {
     updateChild(Nil, Nil);
     checkNil();
     var root = new Node(10, Nil, Nil, Nil, 1);
@@ -149,15 +150,15 @@ describe('SBTree', function () {
     checkNil();
   });
 
-  it('test getIndex', function(){
+  it('test getIndex', function () {
     var sTree = new SBTree();
-    for (let i = 0; i < 10000; ++i) {
-      let key = i.toString();
+    for (var i = 0; i < 10000; ++i) {
+      var key = i.toString();
       sTree.push(key);
     }
 
-    for (let i=0; i<100; ++i) {
-      let item = sTree.get(i);
+    for (var i = 0; i < 100; ++i) {
+      var item = sTree.get(i);
       expect(item.value).toBe(i.toString());
       expect(sTree.getIndex(item)).toBe(i);
     }
