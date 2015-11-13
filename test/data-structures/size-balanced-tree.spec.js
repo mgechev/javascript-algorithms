@@ -100,16 +100,16 @@ describe('SBTree', function () {
 
   it('push and get 100000 elements, remove the array by always remove the first/last element', function () {
     var sTree = new SBTree();
-    for (var i = 0; i < 2000000; ++i) {
+    for (var i = 0; i < 200000; ++i) {
       sTree.push(i);
     }
     checkNil();
-    for (var i = 0; i < 2000000; ++i) {
+    for (var i = 0; i < 200000; ++i) {
       var node = sTree.get(i);
       expect(node.value).toBe(i);
     }
-    expect(sTree._root.height).toBe(21);
-    for (var i = 0; i < 2000000; ++i) {
+    expect(sTree._root.height).toBe(18);
+    for (var i = 0; i < 200000; ++i) {
       expect(sTree.get(0).value).toBe(i);
       var node = sTree.remove(0); // Always remove the first element;
       expect(node.value).toBe(i);
@@ -137,7 +137,6 @@ describe('SBTree', function () {
       var node = sTree.get(i);
       expect(node.value).toBe(expectedArray[i]);
     }
-    console.log(sTree._root.height);
     for (var i = 0; i < 90000; ++i) {
       var removedPos = getRandomInt(0, sTree.size);
       sTree.remove(removedPos);
@@ -147,7 +146,20 @@ describe('SBTree', function () {
       var node = sTree.get(i);
       expect(node.value).toBe(expectedArray[i]);
     }
-    console.log(sTree._root.height);
     checkNil();
+  });
+
+  it('test getIndex', function(){
+    var sTree = new SBTree();
+    for (let i = 0; i < 10000; ++i) {
+      let key = i.toString();
+      sTree.push(key);
+    }
+
+    for (let i=0; i<100; ++i) {
+      let item = sTree.get(i);
+      expect(item.value).toBe(i.toString());
+      expect(sTree.getIndex(item)).toBe(i);
+    }
   });
 });

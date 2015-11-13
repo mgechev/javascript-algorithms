@@ -248,7 +248,19 @@
       return Nil;
     }
     return findNodeAtPos(this._root, pos);
-  },
+  };
+
+  exports.SBTree.prototype.getIndex = function(node) {
+    let index = node.left.size;
+    while (node != this._root) {
+      let parent = node.parent;
+      if (parent.right === node) {
+        index += parent.left.size + 1;
+      }
+      node = parent;
+    }
+    return index;
+  };
 
   exports.SBTree.prototype.insert = function(pos, value) {
     if (pos >= this._root.size) {
