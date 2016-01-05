@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Size balanced tree is a data structure which is
  * a type of self-balancing binary search tree that use
@@ -29,47 +31,8 @@
  *
  * @module data-structures/size-balanced-tree
  */
-(function (exports) {
-  'use strict';
 
-  /**
-   * Node of the Size-Balanced tree.
-   *
-   * @private
-   * @constructor
-   * @param {Object} value Value assigned to the node.
-   * @param {Node} parent Parent node.
-   * @param {Node} left Left node.
-   * @param {Node} right Right node.
-   * @param {Number} size Node's, means the Node count of this subtree.
-   */
-  function Node(value, parent, left, right, size) {
-    this.value = value;
-    this.parent = parent;
-    this.left = left;
-    this.right = right;
-    this.size = size;
-    this.height = 0;
-  }
-
-  /**
-   * Update node's size.
-   *
-   * @private
-   * @method
-   */
-  Node.prototype.updateSize = function () {
-    this.size = this.left.size + this.right.size + 1;
-    this.height = Math.max(this.left.height, this.right.height) + 1;
-  };
-
-  exports.Node = Node;
-  var Nil = new Node(null, null, null, null, 0);
-  Nil.parent = Nil;
-  Nil.left = Nil;
-  Nil.right = Nil;
-  exports.Nil = Nil;
-
+function CreateSBTreeClass (Node, Nil) {
   function updateChild(node, newChild) {
     var parent = node.parent;
     if (parent !== Nil) {
@@ -84,7 +47,6 @@
       newChild.parent = parent;
     }
   }
-  exports.updateChild = updateChild;
 
   function LeftRotate(node, childNode) {
     /*
@@ -212,30 +174,49 @@
   }
 
   /**
-   * Red-Black Tree.
+   * Size Balanced Tree.
    *
    * @public
    * @constructor
    */
-  exports.SBTree = function () {
-    this._root = Nil;
-  };
+  var SBTree = function () {};
 
-  exports.SBTree.prototype = {
+  SBTree.prototype = {
+    _root: Nil,
+    updateChild: updateChild,
     get size() {
       return this._root.size;
+    },
+
+    get root() {
+      return this._root;
+    },
+
+    binarySearch: function (cmp, value) {
+      var left = -1;
+      var right = this.size;
+      while (left + 1 < right) {
+        var middle = (left + right) >> 1; // jshint ignore:line
+        var result = cmp(this.get(middle).value, value);
+        if (result <= 0) {
+          left = middle;
+        } else {
+          right = middle;
+        }
+      }
+      return left + 1;
     },
   };
 
   /**
-   * Push a value to the end of tree.<br><br>
+   * Push a value to the end of tree.
    * Complexity: O(log N).
    *
    * @public
    * @method
    * @param {Object} value Value.
    */
-  exports.SBTree.prototype.push = function (value) {
+  SBTree.prototype.push = function (value) {
     var node = findRightMost(this._root);
     var newNode = new Node(value, node, Nil, Nil, 1);
     if (node !== Nil) {
@@ -245,14 +226,14 @@
     return newNode;
   };
 
-  exports.SBTree.prototype.get = function (pos) {
+  SBTree.prototype.get = function (pos) {
     if (pos >= this._root.size) {
       return Nil;
     }
     return findNodeAtPos(this._root, pos);
   };
 
-  exports.SBTree.prototype.getIndex = function (node) {
+  SBTree.prototype.getIndex = function (node) {
     var index = node.left.size;
     while (node !== this._root) {
       var parent = node.parent;
@@ -264,7 +245,7 @@
     return index;
   };
 
-  exports.SBTree.prototype.insert = function (pos, value) {
+  SBTree.prototype.insert = function (pos, value) {
     if (pos >= this._root.size) {
       return this.push(value);
     }
@@ -282,7 +263,7 @@
     return newNode;
   };
 
-  exports.SBTree.prototype.remove = function (pos) {
+  SBTree.prototype.remove = function (pos) {
     if (pos >= this._root.size) {
       return Nil; // There is no element to remove
     }
@@ -342,5 +323,67 @@
     this._root = maintainSizeBalancedTree(maintainNode);
     return node;
   };
+
+  return SBTree;
+}
+
+(function (exports) {
+
+  /**
+   * Node constructor of the Size-Balanced tree.
+   *
+   * @private
+   * @constructor
+   * @param {Object} value Value assigned to the node.
+   * @param {Node} parent Parent node.
+   * @param {Node} left Left node.
+   * @param {Node} right Right node.
+   * @param {Number} size Node's, means the Node count of this  .
+   */
+  var NodeConstructor = function (value, parent, left, right, size) {
+    this.value = value;
+    this.parent = parent;
+    this.left = left;
+    this.right = right;
+    this.size = size;
+    this.height = 0;
+  };
+
+  /**
+   * Update node's size.
+   *
+   * @private
+   * @method
+   */
+  var updateSize = function () {
+    this.size = this.left.size + this.right.size + 1;
+    this.height = Math.max(this.left.height, this.right.height) + 1;
+  };
+
+  var createNil = function (Node, value) {
+    var Nil = new Node(value, null, null, null, 0);
+    Nil.parent = Nil;
+    Nil.left = Nil;
+    Nil.right = Nil;
+    return Nil;
+  };
+
+  var Node = function () {
+    NodeConstructor.apply(this, arguments);
+  };
+
+  Node.prototype.updateSize = updateSize;
+
+  var Nil = createNil(Node, null);
+
+  exports.NodeConstructor = NodeConstructor;
+  exports.createNil = createNil;
+  exports.updateSize = updateSize;
+  exports.CreateSBTreeClass = CreateSBTreeClass;
+
+  exports.Node = Node;
+  exports.Nil = Nil;
+  exports.SBTree = CreateSBTreeClass(Node, Nil);
+  exports.updateChild = exports.SBTree.prototype.updateChild;
 
 })(typeof module === 'undefined' ? window : module.exports);

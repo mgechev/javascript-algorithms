@@ -163,4 +163,19 @@ describe('SBTree', function () {
       expect(sTree.getIndex(item)).toBe(i);
     }
   });
+
+  it('test binary search', function () {
+    var sTree = new SBTree();
+    for (var i = 0; i < 10000; ++i) {
+      sTree.push(i);
+    }
+    var cmp = function (a, b) {
+      return a - b;
+    }
+    expect(sTree.binarySearch(cmp, 10.5)).toBe(11)
+    expect(sTree.binarySearch(cmp, 0)).toBe(1)
+    expect(sTree.binarySearch(cmp, -1)).toBe(0)
+    expect(sTree.binarySearch(cmp, 9999)).toBe(10000)
+    expect(sTree.binarySearch(cmp, 10000)).toBe(10000)
+  });
 });
