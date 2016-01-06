@@ -309,7 +309,6 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
     this.left = left;
     this.right = right;
     this.size = size;
-    this.height = 0;
   };
 
   var createNil = function (Node, value) {
@@ -328,7 +327,6 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
    */
   var updateSize = function () {
     this.size = this.left.size + this.right.size + 1;
-    this.height = Math.max(this.left.height, this.right.height) + 1;
   };
 
   // node, childNode must not be Nil,

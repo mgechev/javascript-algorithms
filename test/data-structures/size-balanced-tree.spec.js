@@ -103,7 +103,6 @@ describe('SBTree', function () {
       var node = sTree.get(i);
       expect(node.value).toBe(i);
     }
-    expect(sTree._root.height).toBe(18);
     for (var i = 0; i < 200000; ++i) {
       expect(sTree.get(0).value).toBe(i);
       var node = sTree.remove(0); // Always remove the first element;
