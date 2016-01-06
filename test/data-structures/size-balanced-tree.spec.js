@@ -64,7 +64,6 @@ describe('SBTree', function () {
   }
 
   it('test updateChild', function () {
-    updateChild(Nil, Nil);
     checkNil();
     var root = new Node(10, Nil, Nil, Nil, 1);
     var left = new Node(5, root, Nil, Nil, 1);
@@ -80,12 +79,7 @@ describe('SBTree', function () {
     updateChild(left, leftLeft);
     expect(leftLeft.parent).toBe(root);
     expect(root.left).toBe(leftLeft);
-    updateChild(leftLeft, Nil);
-    checkNil();
-    expect(root.left).toBe(Nil);
-    expect(root.size).toBe(2);
-    updateChild(Nil, right);
-    expect(right.parent).toBe(Nil);
+    expect(root.left.size).toBe(1);
     checkNil();
   });
   // Returns a random integer between min (included) and max (excluded)

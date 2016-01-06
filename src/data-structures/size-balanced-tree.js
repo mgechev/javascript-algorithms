@@ -32,22 +32,7 @@
  * @module data-structures/size-balanced-tree
  */
 
-function CreateSBTreeClass (Node, Nil) {
-  function updateChild(node, newChild) {
-    var parent = node.parent;
-    if (parent !== Nil) {
-      if (parent.right === node) {
-        parent.right = newChild;
-      } else {
-        parent.left = newChild;
-      }
-      parent.updateSize();
-    }
-    if (newChild !== Nil) {
-      newChild.parent = parent;
-    }
-  }
-
+function CreateSBTreeClass (Node, Nil, updateChild) {
   function LeftRotate(node, childNode) {
     /*
       Before rotate:
@@ -69,9 +54,8 @@ function CreateSBTreeClass (Node, Nil) {
       node.right.parent = node;
     }
     childNode.left = node;
-    updateChild(node, childNode); //Access node.parent
-    node.parent = childNode;
-    node.updateSize();
+    // setting childNode's parent to node's parent
+    updateChild(node, childNode);
     return childNode;
   }
 
@@ -96,9 +80,8 @@ function CreateSBTreeClass (Node, Nil) {
       node.left.parent = node;
     }
     childNode.right = node;
-    updateChild(node, childNode); //Access node.parent
-    node.parent = childNode;
-    node.updateSize();
+    // setting childNode's parent to node's parent
+    updateChild(node, childNode);
     return childNode;
   }
 
@@ -122,7 +105,6 @@ function CreateSBTreeClass (Node, Nil) {
         node = LeftRotate(node, node.right);
       }
     }
-    node.updateSize();
     if (node === savedNode) {
       return node;
     }
@@ -142,20 +124,6 @@ function CreateSBTreeClass (Node, Nil) {
       } else {
         node = maintain(node, false);
       }
-    }
-    return node;
-  }
-
-  function findRightMost(node) {
-    while (node.right !== Nil) {
-      node = node.right;
-    }
-    return node;
-  }
-
-  function findLeftMost(node) {
-    while (node.left !== Nil) {
-      node = node.left;
     }
     return node;
   }
@@ -183,7 +151,6 @@ function CreateSBTreeClass (Node, Nil) {
 
   SBTree.prototype = {
     _root: Nil,
-    updateChild: updateChild,
     get size() {
       return this._root.size;
     },
@@ -208,26 +175,8 @@ function CreateSBTreeClass (Node, Nil) {
     },
   };
 
-  /**
-   * Push a value to the end of tree.
-   * Complexity: O(log N).
-   *
-   * @public
-   * @method
-   * @param {Object} value Value.
-   */
-  SBTree.prototype.push = function (value) {
-    var node = findRightMost(this._root);
-    var newNode = new Node(value, node, Nil, Nil, 1);
-    if (node !== Nil) {
-      node.right = newNode;
-    }
-    this._root = maintainSizeBalancedTree(newNode);
-    return newNode;
-  };
-
   SBTree.prototype.get = function (pos) {
-    if (pos >= this._root.size) {
+    if (pos >= this.size) {
       return Nil;
     }
     return findNodeAtPos(this._root, pos);
@@ -245,22 +194,89 @@ function CreateSBTreeClass (Node, Nil) {
     return index;
   };
 
+  SBTree.prototype.shiftDown = function (node) {
+    var direction = 0;
+    while (true) {
+      if (node.left !== Nil && node.right !== Nil) {
+        switch (direction) {
+          case 0:
+            RightRotate(node, node.left);
+            break;
+          case 1:
+            LeftRotate(node, node.right);
+            break;
+        }
+        direction = 1 - direction;
+      } else if (node.left !== Nil) {
+        RightRotate(node, node.left);
+      } else if (node.right !== Nil) {
+        LeftRotate(node, node.right);
+      } else {
+        break; // The node could be able to removed
+      }
+    }
+  };
+
+  SBTree.prototype.insertLeafNode = function (node) {
+    var parent = node.parent;
+    while (parent !== Nil) {
+      parent.size = parent.size + 1;
+      parent = parent.parent;
+    }
+  };
+
+  SBTree.prototype.removeLeafNode = function (node) {
+    var parent = node.parent;
+    while (parent !== Nil) {
+      parent.size = parent.size - 1;
+      parent = parent.parent;
+    }
+  };
+
   SBTree.prototype.insert = function (pos, value) {
-    if (pos >= this._root.size) {
-      return this.push(value);
-    }
-    var node = findNodeAtPos(this._root, pos);
-    var newNode;
-    if (node.left === Nil) {
-      newNode = new Node(value, node, Nil, Nil, 1);
-      node.left = newNode;
+    var node = Nil;
+    var newNode = new Node(value, Nil, Nil, Nil, 1);
+    if (pos === this.size) {
+      if (pos > 0) {
+        node = findNodeAtPos(this._root, pos - 1);
+        node.right = newNode;
+      }
     } else {
-      node = findRightMost(node.left);
-      newNode = new Node(value, node, Nil, Nil, 1);
-      node.right = newNode;
+      node = findNodeAtPos(this._root, pos);
+      if (node.left !== Nil) {
+        this.shiftDown(node);
+      }
+      node.left = newNode;
     }
+    newNode.parent = node;
+    this.insertLeafNode(newNode);
     this._root = maintainSizeBalancedTree(newNode);
     return newNode;
+  };
+
+  /**
+   * Push a value to the end of tree.
+   * Complexity: O(log N).
+   *
+   * @public
+   * @method
+   * @param {Object} value Value.
+   */
+  SBTree.prototype.push = function (value) {
+    this.insert(this.size, value);
+  };
+
+  SBTree.prototype.removeNode = function (node) {
+    this.shiftDown(node);
+    var maintainNode = node.parent;
+    if (maintainNode.left === node) {
+      maintainNode.left = Nil;
+    } else if (maintainNode.right === node) {
+      maintainNode.right = Nil;
+    }
+    this.removeLeafNode(node);
+    this._root = maintainSizeBalancedTree(maintainNode);
+    return node;
   };
 
   SBTree.prototype.remove = function (pos) {
@@ -268,60 +284,7 @@ function CreateSBTreeClass (Node, Nil) {
       return Nil; // There is no element to remove
     }
     var node = findNodeAtPos(this._root, pos);
-    var maintainNode;
-
-    /*
-      Before remove:
-          P (node's parent, be notices,
-          |   N either be left child or right child of P)
-          |
-          N(node)
-         / \
-        L   R
-         \
-          \
-           LRM(Left-Rightmost)
-            \
-             Nil
-      After remove node N:
-            P(node's parent)
-           /
-          L
-           \
-            \
-             LRM(Left-Rightmost)
-              \
-               R
-
-        N(node) is wild node that was removed
-
-    */
-    if (node.left !== Nil){
-      var LRM = findRightMost(node.left);
-      updateChild(node, node.left);
-      LRM.right = node.right;
-      if (LRM.right === Nil) {
-        maintainNode = LRM;
-      } else {
-        LRM.right.parent = LRM;
-        maintainNode = LRM.right;
-      }
-    } else if (node.right !== Nil) {
-      var RLM = findLeftMost(node.right);
-      updateChild(node, node.right);
-      RLM.left = node.left;
-      if (RLM.left === Nil) {
-        maintainNode = RLM;
-      } else {
-        RLM.left.parent = RLM;
-        maintainNode = RLM.left;
-      }
-    } else {
-      updateChild(node, Nil);
-      maintainNode = node.parent;
-    }
-    this._root = maintainSizeBalancedTree(maintainNode);
-    return node;
+    return this.removeNode(node);
   };
 
   return SBTree;
@@ -349,6 +312,14 @@ function CreateSBTreeClass (Node, Nil) {
     this.height = 0;
   };
 
+  var createNil = function (Node, value) {
+    var Nil = new Node(value, null, null, null, 0);
+    Nil.parent = Nil;
+    Nil.left = Nil;
+    Nil.right = Nil;
+    return Nil;
+  };
+
   /**
    * Update node's size.
    *
@@ -360,12 +331,22 @@ function CreateSBTreeClass (Node, Nil) {
     this.height = Math.max(this.left.height, this.right.height) + 1;
   };
 
-  var createNil = function (Node, value) {
-    var Nil = new Node(value, null, null, null, 0);
-    Nil.parent = Nil;
-    Nil.left = Nil;
-    Nil.right = Nil;
-    return Nil;
+  // node, childNode must not be Nil,
+  // if the childNode turn out to be the root, the parent should be Nil
+  var updateChild = function (node, childNode) {
+    var parent = node.parent;
+    node.parent = childNode;
+    childNode.parent = parent;
+
+    node.updateSize();
+    childNode.updateSize();
+    if (parent.right === node) {
+      parent.right = childNode;
+      parent.updateSize();
+    } else if (parent.left === node) {
+      parent.left = childNode;
+      parent.updateSize();
+    } // otherwise parent is Nil
   };
 
   var Node = function () {
@@ -379,11 +360,11 @@ function CreateSBTreeClass (Node, Nil) {
   exports.NodeConstructor = NodeConstructor;
   exports.createNil = createNil;
   exports.updateSize = updateSize;
+  exports.updateChild = updateChild;
   exports.CreateSBTreeClass = CreateSBTreeClass;
 
   exports.Node = Node;
   exports.Nil = Nil;
-  exports.SBTree = CreateSBTreeClass(Node, Nil);
-  exports.updateChild = exports.SBTree.prototype.updateChild;
+  exports.SBTree = CreateSBTreeClass(Node, Nil, updateChild);
 
 })(typeof module === 'undefined' ? window : module.exports);
