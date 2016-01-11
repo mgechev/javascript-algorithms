@@ -1,6 +1,6 @@
 {
-  "name": "javascript-algorithms",
-  "version": "0.0.0",
+  "name": "javascript-algorithms-wendy",
+  "version": "0.0.1",
   "description": "Implementations of different computer science algorithms",
   "main": "index.js",
   "directories": {
@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mgechev/javascript-algorithms"
+    "url": "git://github.com/Sweetymeow/javascript-algorithms"
   },
   "author": "@mgechev",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mgechev/javascript-algorithms/issues"
+    "url": "https://github.com/Sweetymeow/javascript-algorithms/issues"
   },
-  "homepage": "https://github.com/mgechev/javascript-algorithms"
+  "homepage": "https://github.com/Sweetymeow/javascript-algorithms"
 }
