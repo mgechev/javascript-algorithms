@@ -20,7 +20,7 @@
    * @param  {function} draw Optional custom drawing function.
    */
   function drawLine(x1, y1, x2, y2, draw) {
-    drawPoint = draw || drawPoint;
+    var drawPointStrategy = draw || drawPoint;
     var dx = Math.abs(x2 - x1);
     var dy = Math.abs(y2 - y1);
     var cx = (x1 < x2) ? 1 : -1;
@@ -29,7 +29,7 @@
     var doubledError;
 
     while (x1 !== x2 || y1 !== y2) {
-      drawPoint(x1, y1);
+      drawPointStrategy(x1, y1);
       doubledError = error + error;
       if (doubledError > -dy) {
         error -= dy;
