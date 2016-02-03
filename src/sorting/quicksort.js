@@ -14,6 +14,22 @@
     }
 
     /**
+     * Swap the places of two elements
+     *
+     * @private
+     * @param {array} array The array which contains the elements
+     * @param {number} i The index of the first element
+     * @param {number} j The index of the second element
+     * @returns {array} array The array with swaped elements
+     */
+    function swap(array, i, j) {
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+      return array;
+    }
+
+    /**
      * Partitions given subarray using Lomuto's partitioning algorithm.
      *
      * @private
@@ -33,22 +49,6 @@
       }
       swap(array, minEnd, right - 1);
       return minEnd;
-    }
-
-    /**
-     * Swap the places of two elements
-     *
-     * @private
-     * @param {array} array The array which contains the elements
-     * @param {number} i The index of the first element
-     * @param {number} j The index of the second element
-     * @returns {array} array The array with swaped elements
-     */
-    function swap(array, i, j) {
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-      return array;
     }
 
     /**

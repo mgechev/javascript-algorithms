@@ -72,15 +72,6 @@
     var queue;
 
     /**
-     * Initialize the algorithm.
-     *
-     * @private
-     */
-    function init() {
-      queue = new Heap(compareEdges);
-    }
-
-    /**
      * Used for comparitions in the heap
      *
      * @private
@@ -92,6 +83,15 @@
      */
     function compareEdges(a, b) {
       return b.distance - a.distance;
+    }
+
+    /**
+     * Initialize the algorithm.
+     *
+     * @private
+     */
+    function init() {
+      queue = new Heap(compareEdges);
     }
 
     return function () {

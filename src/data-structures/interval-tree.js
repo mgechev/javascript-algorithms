@@ -151,6 +151,11 @@
     return contains(point, this.root);
   };
 
+  function intersects(a, b) {
+    return (a[0] <= b[0] && a[1] >= b[0]) || (a[0] <= b[1] && a[1] >= b[1]) ||
+      (b[0] <= a[0] && b[1] >= a[0]) || (b[0] <= a[1] && b[1] >= a[1]);
+  }
+
   function intersectsHelper(interval, node) {
     if (!node) {
       return false;
@@ -167,11 +172,6 @@
       }
     });
     return result;
-  }
-
-  function intersects(a, b) {
-    return (a[0] <= b[0] && a[1] >= b[0]) || (a[0] <= b[1] && a[1] >= b[1]) ||
-           (b[0] <= a[0] && b[1] >= a[0]) || (b[0] <= a[1] && b[1] >= a[1]);
   }
 
   /**

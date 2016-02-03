@@ -1,6 +1,9 @@
 (function (exports) {
   'use strict';
 
+  function id (val) { return val; }
+  function get (key) { return function (val) { return val[key]; }; }
+
   /**
    * Searchs for specific element in a given array using
    * the binary search algorithm.<br><br>
@@ -37,8 +40,6 @@
     }
     return -middle - 1;
   }
-  function id (val) { return val; }
-  function get (key) { return function (val) { return val[key]; }; }
 
   exports.binarySearch = binarySearch;
 
