@@ -10,7 +10,7 @@
 | insertion-binary-sort.js   | O(N^2)                                              |              |
 | insertionsort.js           | O(N^2)                                              |              |
 | lsd.js                     | O(N*M) for N keys which have M or fewer digits      |              |
-| mergesort.js               |                                                     |              |
+| mergesort.js               | O(n log(n))                                         |              |
 | msd.js                     | O(N*M) for N keys which have M or fewer digits      |              |
 | oddeven-sort.js            | O(N^2)                                              |              |
 | quicksort-middle.js        | O(N log(N))                                         |              |
@@ -18,4 +18,4 @@
 | radixsort.js               | O(N K) for N keys with K being                      |              |
 | recursive-insertionsort.js | O(N^2)                                              |              |
 | selectionsort.js           | O(N^2)                                              |              |
-| shellsort.js               |                                                     |              |
+| shellsort.js               | O((nlog(n))^2)                                      |              |
