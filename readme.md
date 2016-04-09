@@ -71,17 +71,17 @@ If the build is not successful fix your code in order the tests and jshint valid
 
 ## Contributors
 
-[<img alt="mgechev" src="https://avatars.githubusercontent.com/u/455023?v=3&s=117" width="117">](https://github.com/mgechev) |[<img alt="AndriiHeonia" src="https://avatars.githubusercontent.com/u/773648?v=3&s=117" width="117">](https://github.com/AndriiHeonia) |[<img alt="Jakehp" src="https://avatars.githubusercontent.com/u/1854569?v=3&s=117" width="117">](https://github.com/Jakehp) |[<img alt="pvoznenko" src="https://avatars.githubusercontent.com/u/1098414?v=3&s=117" width="117">](https://github.com/pvoznenko) |[<img alt="FilipeFalcaoBatista" src="https://avatars.githubusercontent.com/u/9125631?v=3&s=117" width="117">](https://github.com/FilipeFalcaoBatista) |[<img alt="lekkas" src="https://avatars.githubusercontent.com/u/5211478?v=3&s=117" width="117">](https://github.com/lekkas) |
+[<img alt="mgechev" src="https://avatars.githubusercontent.com/u/455023?v=3&s=117" width="117">](https://github.com/mgechev) |[<img alt="AndriiHeonia" src="https://avatars.githubusercontent.com/u/773648?v=3&s=117" width="117">](https://github.com/AndriiHeonia) |[<img alt="Jakehp" src="https://avatars.githubusercontent.com/u/1854569?v=3&s=117" width="117">](https://github.com/Jakehp) |[<img alt="lygstate" src="https://avatars.githubusercontent.com/u/121040?v=3&s=117" width="117">](https://github.com/lygstate) |[<img alt="pvoznenko" src="https://avatars.githubusercontent.com/u/1098414?v=3&s=117" width="117">](https://github.com/pvoznenko) |[<img alt="filipefalcaos" src="https://avatars.githubusercontent.com/u/9125631?v=3&s=117" width="117">](https://github.com/filipefalcaos) |
 :---: |:---: |:---: |:---: |:---: |:---: |
-[mgechev](https://github.com/mgechev) |[AndriiHeonia](https://github.com/AndriiHeonia) |[Jakehp](https://github.com/Jakehp) |[pvoznenko](https://github.com/pvoznenko) |[FilipeFalcaoBatista](https://github.com/FilipeFalcaoBatista) |[lekkas](https://github.com/lekkas) |
+[mgechev](https://github.com/mgechev) |[AndriiHeonia](https://github.com/AndriiHeonia) |[Jakehp](https://github.com/Jakehp) |[lygstate](https://github.com/lygstate) |[pvoznenko](https://github.com/pvoznenko) |[filipefalcaos](https://github.com/filipefalcaos) |
 
-[<img alt="deniskyashif" src="https://avatars.githubusercontent.com/u/5999271?v=3&s=117" width="117">](https://github.com/deniskyashif) |[<img alt="infusion" src="https://avatars.githubusercontent.com/u/197742?v=3&s=117" width="117">](https://github.com/infusion) |[<img alt="designeng" src="https://avatars.githubusercontent.com/u/2807469?v=3&s=117" width="117">](https://github.com/designeng) |[<img alt="Microfed" src="https://avatars.githubusercontent.com/u/613179?v=3&s=117" width="117">](https://github.com/Microfed) |[<img alt="ysharplanguage" src="https://avatars.githubusercontent.com/u/1055314?v=3&s=117" width="117">](https://github.com/ysharplanguage) |[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |
+[<img alt="lekkas" src="https://avatars.githubusercontent.com/u/5211478?v=3&s=117" width="117">](https://github.com/lekkas) |[<img alt="deniskyashif" src="https://avatars.githubusercontent.com/u/5999271?v=3&s=117" width="117">](https://github.com/deniskyashif) |[<img alt="infusion" src="https://avatars.githubusercontent.com/u/197742?v=3&s=117" width="117">](https://github.com/infusion) |[<img alt="designeng" src="https://avatars.githubusercontent.com/u/2807469?v=3&s=117" width="117">](https://github.com/designeng) |[<img alt="Microfed" src="https://avatars.githubusercontent.com/u/613179?v=3&s=117" width="117">](https://github.com/Microfed) |[<img alt="ysharplanguage" src="https://avatars.githubusercontent.com/u/1055314?v=3&s=117" width="117">](https://github.com/ysharplanguage) |
 :---: |:---: |:---: |:---: |:---: |:---: |
-[deniskyashif](https://github.com/deniskyashif) |[infusion](https://github.com/infusion) |[designeng](https://github.com/designeng) |[Microfed](https://github.com/Microfed) |[ysharplanguage](https://github.com/ysharplanguage) |[contra](https://github.com/contra) |
+[lekkas](https://github.com/lekkas) |[deniskyashif](https://github.com/deniskyashif) |[infusion](https://github.com/infusion) |[designeng](https://github.com/designeng) |[Microfed](https://github.com/Microfed) |[ysharplanguage](https://github.com/ysharplanguage) |
 
-[<img alt="fanixk" src="https://avatars.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |
-:---: |
-[fanixk](https://github.com/fanixk) |
+[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |[<img alt="fanixk" src="https://avatars.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |
+:---: |:---: |
+[contra](https://github.com/contra) |[fanixk](https://github.com/fanixk) |
 
 ## License
 
