@@ -1,0 +1,32 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "source": {
+        "include": [
+            "./src/graphs/searching/",
+            "./src/graphs/others/",
+            "./src/graphs/shortest-path/",
+            "./src/graphs/spanning-trees/",
+            "./src/data-structures/",
+            "./src/combinatorics/",
+            "./src/primes/",
+            "./src/others/",
+            "./src/searching/",
+            "./src/sets/",
+            "./src/shuffle/",
+            "./src/sorting/"
+        ],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "docs"
+    },
+    "plugins": [],
+    "opts": {
+        "template": "templates/default",
+        "encoding": "utf8",
+        "destination": "../javascript-algorithms-docs",
+        "recurse": true,
+        "private": false,
+        "readme": "./readme.md"
+    }
+}

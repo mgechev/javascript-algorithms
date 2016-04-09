@@ -1,4 +1,6 @@
 {
+  "browser": true,
+  "jquery": true,
   "node": true,
   "esnext": true,
   "bitwise": true,
@@ -21,15 +23,16 @@
   "plusplus": true,
   "undef": true,
   "laxbreak": true,
-  "maxdepth": 3,
+  "maxdepth": 4,
   "loopfunc": true,
-  "maxcomplexity": 9,
+  "maxcomplexity": 13,
   "maxlen": 80,
+  "maxparams": 5,
   "globals": {
-    "window": true,
+    "expect": true,
     "it": true,
-    "beforeEach": true,
     "describe": true,
-    "expect": true
+    "beforeEach": true,
+    "afterEach": true
   }
 }
