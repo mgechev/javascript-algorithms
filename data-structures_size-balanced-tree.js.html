@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: data-structures/size-balanced-tree.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: data-structures/size-balanced-tree.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+
+/**
+ * Size balanced tree is a data structure which is
+ * a type of self-balancing binary search tree that use
+ * the tree size attribute for re-balancing the tree.
+ *
+ * @example
+ *
+ * var SBTree = require('../src/data-structures/size-balanced-tree').SBTree;
+ * var sbTree = new SBTree();
+ *
+ * var treeNode = sbTree.push({
+ *   name: 'John',
+ *   surname: 'Smith'
+ * });
+ * sbTree.insert(0, {
+ *   name: 'Pavlo',
+ *   surname: 'Popov'
+ * });
+ * sbTree.insert(1, {
+ *   name: 'Garry',
+ *   surname: 'Fisher'
+ * });
+ * sbTree.insert(0, {
+ *   name: 'Derek',
+ *   surname: 'Anderson'
+ * });
+ *
+ * console.log(sbTree.get(0)); // { name: 'Derek', surname: 'Anderson' }
+ *
+ * @module data-structures/size-balanced-tree
+ */
+
+function CreateSBTreeClass (Node, Nil, updateChild) {
+  function LeftRotate(node, childNode) {
+    /*
+      Before rotate:
+       node
+       / \
+      NL childNode
+         / \
+        CL  CR
+      After rotate:
+
+        childNode
+         /   \
+       node  CR
+       /  \
+      NL  CL
+    */
+    node.right = childNode.left;
+    if (node.right !== Nil) {
+      node.right.parent = node;
+    }
+    childNode.left = node;
+    // setting childNode's parent to node's parent
+    updateChild(node, childNode);
+    return childNode;
+  }
+
+  function RightRotate(node, childNode) {
+    /*
+      Before rotate:
+          node
+           / \
+  childNode  NR
+         / \
+        CL  CR
+      After rotate:
+
+        childNode
+         /   \
+       CL    node
+             / \
+            CR  NR
+    */
+    node.left = childNode.right;
+    if (node.left !== Nil) {
+      node.left.parent = node;
+    }
+    childNode.right = node;
+    // setting childNode's parent to node's parent
+    updateChild(node, childNode);
+    return childNode;
+  }
+
+  function maintain(node, leftChild) {
+    if (node === Nil) {
+      return node;
+    }
+    var savedNode = node;
+    if (leftChild) {
+      if (node.left.left.size > node.right.size) {
+        node = RightRotate(node, node.left);
+      } else if (node.left.right.size > node.right.size) {
+        LeftRotate(node.left, node.left.right);
+        node = RightRotate(node, node.left);
+      }
+    } else {
+      if (node.right.right.size > node.left.size) {
+        node = LeftRotate(node, node.right);
+      } else if (node.right.left.size > node.left.size) {
+        RightRotate(node.right, node.right.left);
+        node = LeftRotate(node, node.right);
+      }
+    }
+    if (node === savedNode) {
+      return node;
+    }
+    maintain(node.left, false);
+    maintain(node.right, true);
+    node = maintain(node, true);
+    node = maintain(node, false);
+    return node;
+  }
+
+  function maintainSizeBalancedTree(node) {
+    while (node.parent !== Nil) {
+      var childNode = node;
+      node = node.parent;
+      if (node.left === childNode) {
+        node = maintain(node, true);
+      } else {
+        node = maintain(node, false);
+      }
+    }
+    return node;
+  }
+
+  function findNodeAtPos(node, pos) {
+    while (pos !== node.left.size) {
+      if (pos &lt; node.left.size) {
+        node = node.left;
+      } else {
+        pos -= node.left.size;
+        pos -= 1; //The node element should be decrement by 1
+        node = node.right;
+      }
+    }
+    return node;
+  }
+
+  /**
+   * Size Balanced Tree.
+   *
+   * @public
+   * @constructor
+   */
+  var SBTree = function () {};
+
+  SBTree.prototype = {
+    _root: Nil,
+    get size() {
+      return this._root.size;
+    },
+
+    get root() {
+      return this._root;
+    },
+
+    binarySearch: function (cmp, value) {
+      var left = -1;
+      var right = this.size;
+      while (left + 1 &lt; right) {
+        var middle = (left + right) >> 1; // jshint ignore:line
+        var result = cmp(this.get(middle).value, value);
+        if (result &lt;= 0) {
+          left = middle;
+        } else {
+          right = middle;
+        }
+      }
+      return left + 1;
+    },
+  };
+
+  SBTree.prototype.get = function (pos) {
+    if (pos >= this.size) {
+      return Nil;
+    }
+    return findNodeAtPos(this._root, pos);
+  };
+
+  SBTree.prototype.getIndex = function (node) {
+    var index = node.left.size;
+    while (node !== this._root) {
+      var parent = node.parent;
+      if (parent.right === node) {
+        index += parent.left.size + 1;
+      }
+      node = parent;
+    }
+    return index;
+  };
+
+  SBTree.prototype.shiftDown = function (node) {
+    var direction = 0;
+    while (true) {
+      if (node.left !== Nil &amp;&amp; node.right !== Nil) {
+        switch (direction) {
+          case 0:
+            RightRotate(node, node.left);
+            break;
+          case 1:
+            LeftRotate(node, node.right);
+            break;
+        }
+        direction = 1 - direction;
+      } else if (node.left !== Nil) {
+        RightRotate(node, node.left);
+      } else if (node.right !== Nil) {
+        LeftRotate(node, node.right);
+      } else {
+        break; // The node could be able to removed
+      }
+    }
+  };
+
+  SBTree.prototype.insertLeafNode = function (node) {
+    var parent = node.parent;
+    while (parent !== Nil) {
+      parent.size = parent.size + 1;
+      parent = parent.parent;
+    }
+  };
+
+  SBTree.prototype.removeLeafNode = function (node) {
+    var parent = node.parent;
+    while (parent !== Nil) {
+      parent.size = parent.size - 1;
+      parent = parent.parent;
+    }
+  };
+
+  SBTree.prototype.insert = function (pos, value) {
+    var node = Nil;
+    var newNode = new Node(value, Nil, Nil, Nil, 1);
+    if (pos === this.size) {
+      if (pos > 0) {
+        node = findNodeAtPos(this._root, pos - 1);
+        node.right = newNode;
+      }
+    } else {
+      node = findNodeAtPos(this._root, pos);
+      if (node.left !== Nil) {
+        this.shiftDown(node);
+      }
+      node.left = newNode;
+    }
+    newNode.parent = node;
+    this.insertLeafNode(newNode);
+    this._root = maintainSizeBalancedTree(newNode);
+    return newNode;
+  };
+
+  /**
+   * Push a value to the end of tree.
+   * Complexity: O(log N).
+   *
+   * @public
+   * @method
+   * @param {Object} value Value.
+   */
+  SBTree.prototype.push = function (value) {
+    this.insert(this.size, value);
+  };
+
+  SBTree.prototype.removeNode = function (node) {
+    this.shiftDown(node);
+    var maintainNode = node.parent;
+    if (maintainNode.left === node) {
+      maintainNode.left = Nil;
+    } else if (maintainNode.right === node) {
+      maintainNode.right = Nil;
+    }
+    this.removeLeafNode(node);
+    this._root = maintainSizeBalancedTree(maintainNode);
+    return node;
+  };
+
+  SBTree.prototype.remove = function (pos) {
+    if (pos >= this._root.size) {
+      return Nil; // There is no element to remove
+    }
+    var node = findNodeAtPos(this._root, pos);
+    return this.removeNode(node);
+  };
+
+  return SBTree;
+}
+
+(function (exports) {
+
+  /**
+   * Node constructor of the Size-Balanced tree.
+   *
+   * @private
+   * @constructor
+   * @param {Object} value Value assigned to the node.
+   * @param {Node} parent Parent node.
+   * @param {Node} left Left node.
+   * @param {Node} right Right node.
+   * @param {Number} size Node's, means the Node count of this  .
+   */
+  var NodeConstructor = function (value, parent, left, right, size) {
+    this.value = value;
+    this.parent = parent;
+    this.left = left;
+    this.right = right;
+    this.size = size;
+  };
+
+  var createNil = function (Node, value) {
+    var Nil = new Node(value, null, null, null, 0);
+    Nil.parent = Nil;
+    Nil.left = Nil;
+    Nil.right = Nil;
+    return Nil;
+  };
+
+  /**
+   * Update node's size.
+   *
+   * @private
+   * @method
+   */
+  var updateSize = function () {
+    this.size = this.left.size + this.right.size + 1;
+  };
+
+  // node, childNode must not be Nil,
+  // if the childNode turn out to be the root, the parent should be Nil
+  var updateChild = function (node, childNode) {
+    var parent = node.parent;
+    node.parent = childNode;
+    childNode.parent = parent;
+
+    node.updateSize();
+    childNode.updateSize();
+    if (parent.right === node) {
+      parent.right = childNode;
+      parent.updateSize();
+    } else if (parent.left === node) {
+      parent.left = childNode;
+      parent.updateSize();
+    } // otherwise parent is Nil
+  };
+
+  var Node = function () {
+    NodeConstructor.apply(this, arguments);
+  };
+
+  Node.prototype.updateSize = updateSize;
+
+  var Nil = createNil(Node, null);
+
+  exports.NodeConstructor = NodeConstructor;
+  exports.createNil = createNil;
+  exports.updateSize = updateSize;
+  exports.updateChild = updateChild;
+  exports.CreateSBTreeClass = CreateSBTreeClass;
+
+  exports.Node = Node;
+  exports.Nil = Nil;
+  exports.SBTree = CreateSBTreeClass(Node, Nil, updateChild);
+
+})(typeof module === 'undefined' ? window : module.exports);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-combinatorics_cartesianproduct.html">combinatorics/cartesianproduct</a></li><li><a href="module-combinatorics_combinations.html">combinatorics/combinations</a></li><li><a href="module-combinatorics_permutations.html">combinatorics/permutations</a></li><li><a href="module-combinatorics_variations-repetition.html">combinatorics/variations-repetition</a></li><li><a href="module-data-structures_avl-tree.html">data-structures/avl-tree</a></li><li><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a></li><li><a href="module-data-structures_edge.html">data-structures/edge</a></li><li><a href="module-data-structures_hash-table.html">data-structures/hash-table</a></li><li><a href="module-data-structures_heap.html">data-structures/heap</a></li><li><a href="module-data-structures_interval-tree.html">data-structures/interval-tree</a></li><li><a href="module-data-structures_linked-list.html">data-structures/linked-list</a></li><li><a href="module-data-structures_red-black-tree.html">data-structures/red-black-tree</a></li><li><a href="module-data-structures_size-balanced-tree.html">data-structures/size-balanced-tree</a></li><li><a href="module-data-structures_splay-tree.html">data-structures/splay-tree</a></li><li><a href="module-data-structures_vertex.html">data-structures/vertex</a></li><li><a href="module-graphs_others_topological-sort.html">graphs/others/topological-sort</a></li><li><a href="module-graphs_searching_bfs.html">graphs/searching/bfs</a></li><li><a href="module-graphs_searching_dfs.html">graphs/searching/dfs</a></li><li><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a></li><li><a href="module-graphs_shortest-path_dijkstra.html">graphs/shortest-path/dijkstra</a></li><li><a href="module-graphs_shortest-path_floyd-warshall.html">graphs/shortest-path/floyd-warshall</a></li><li><a href="module-graphs_spanning-trees_prim.html">graphs/spanning-trees/prim</a></li><li><a href="module-others_fibonacci.html">others/fibonacci</a></li><li><a href="module-others_hanoi.html">others/hanoi</a></li><li><a href="module-others_levenshtein-distance.html">others/levenshtein-distance</a></li><li><a href="module-others_minCoinsChange.html">others/minCoinsChange</a></li><li><a href="module-primes_is-prime.html">primes/is-prime</a></li><li><a href="module-primes_prime-factor-tree.html">primes/prime-factor-tree</a></li><li><a href="module-primes_sieve-of-eratosthenes.html">primes/sieve-of-eratosthenes</a></li><li><a href="module-searching_binarysearch.html">searching/binarysearch</a></li><li><a href="module-searching_knuth-morris-pratt.html">searching/knuth-morris-pratt</a></li><li><a href="module-searching_longest-increasing-subsequence.html">searching/longest-increasing-subsequence</a></li><li><a href="module-searching_maximum-subarray.html">searching/maximum-subarray</a></li><li><a href="module-searching_maximum-subarray-divide-and-conquer.html">searching/maximum-subarray-divide-and-conquer</a></li><li><a href="module-searching_quickselect.html">searching/quickselect</a></li><li><a href="module-searching_recursive-binarysearch.html">searching/recursive-binarysearch</a></li><li><a href="module-sets_quickfind.html">sets/quickfind</a></li><li><a href="module-sets_quickunion.html">sets/quickunion</a></li><li><a href="module-sets_weightquickunion.html">sets/weightquickunion</a></li><li><a href="module-shuffle_fisheryates.html">shuffle/fisheryates</a></li><li><a href="module-shuffle_richarddurstenfeld.html">shuffle/richarddurstenfeld</a></li><li><a href="module-sorting_3-way-string-quicksort.html">sorting/3-way-string-quicksort</a></li><li><a href="module-sorting_bubblesort.html">sorting/bubblesort</a></li><li><a href="module-sorting_bucketsort.html">sorting/bucketsort</a></li><li><a href="module-sorting_countingsort.html">sorting/countingsort</a></li><li><a href="module-sorting_heapsort.html">sorting/heapsort</a></li><li><a href="module-sorting_insertion-binary-sort.html">sorting/insertion-binary-sort</a></li><li><a href="module-sorting_insertionsort.html">sorting/insertionsort</a></li><li><a href="module-sorting_lsd.html">sorting/lsd</a></li><li><a href="module-sorting_mergesort.html">sorting/mergesort</a></li><li><a href="module-sorting_mergesort_merge.html">sorting/mergesort/merge</a></li><li><a href="module-sorting_msd.html">sorting/msd</a></li><li><a href="module-sorting_oddeven-sort.html">sorting/oddeven-sort</a></li><li><a href="module-sorting_quicksort-middle.html">sorting/quicksort-middle</a></li><li><a href="module-sorting_radixsort.html">sorting/radixsort</a></li><li><a href="module-sorting_recursive-insertionsort.html">sorting/recursive-insertionsort</a></li><li><a href="module-sorting_selectionsort.html">sorting/selectionsort</a></li><li><a href="module-sorting_shellsort.html">sorting/shellsort</a></li></ul><h3>Classes</h3><ul><li><a href="module-data-structures_avl-tree.AVLTree.html">AVLTree</a></li><li><a href="module-data-structures_avl-tree.Node.html">Node</a></li><li><a href="module-data-structures_binary-search-tree.BinaryTree.html">BinaryTree</a></li><li><a href="module-data-structures_binary-search-tree.Node.html">Node</a></li><li><a href="module-data-structures_hash-table.Hashtable.html">Hashtable</a></li><li><a href="module-data-structures_hash-table.Node.html">Node</a></li><li><a href="module-data-structures_heap.Heap.html">Heap</a></li><li><a href="module-data-structures_interval-tree.IntervalTree.html">IntervalTree</a></li><li><a href="module-data-structures_interval-tree.Node.html">Node</a></li><li><a href="module-data-structures_linked-list.LinkedList.html">LinkedList</a></li><li><a href="module-data-structures_linked-list.Node.html">Node</a></li><li><a href="module-data-structures_red-black-tree.RBTree.html">RBTree</a></li><li><a href="module-data-structures_size-balanced-tree-CreateSBTreeClass-SBTree.html">SBTree</a></li><li><a href="module-data-structures_splay-tree.Node.html">Node</a></li><li><a href="module-data-structures_splay-tree.SplayTree.html">SplayTree</a></li><li><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></li><li><a href="module-sets_quickfind.QuickFind.html">QuickFind</a></li><li><a href="module-sets_quickunion.QuickUnion.html">QuickUnion</a></li><li><a href="module-sets_weightquickunion.QuickUnion.html">QuickUnion</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Sat Apr 09 2016 13:29:19 GMT+0300 (EEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

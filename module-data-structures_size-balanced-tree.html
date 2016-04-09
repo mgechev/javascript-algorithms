@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: graphs/shortest-path/floyd-warshall.js</title>
+    <title>JSDoc: Module: data-structures/size-balanced-tree</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,102 +17,153 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: graphs/shortest-path/floyd-warshall.js</h1>
+    <h1 class="page-title">Module: data-structures/size-balanced-tree</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>(function (exports) {
-  'use strict';
+        
+            
+        
+    
+</header>
 
-  var floydWarshall = (function () {
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Size balanced tree is a data structure which is
+a type of self-balancing binary search tree that use
+the tree size attribute for re-balancing the tree.</div>
+        
 
-    /**
-     * Matrix used for the algorithm.
-     */
-    var dist;
+        
+            
 
-    /**
-     * Initialize the distance matrix.
-     *
-     * @private
-     * @param {Array} graph Distance matrix of the array.
-     * @return {Array} Distance matrix used for the algorithm.
-     */
-    function init(graph) {
-      var dist = [];
-      var size = graph.length;
-      for (var i = 0; i &lt; size; i += 1) {
-        dist[i] = [];
-        for (var j = 0; j &lt; size; j += 1) {
-          if (i === j) {
-            dist[i][j] = 0;
-          } else if (!isFinite(graph[i][j])) {
-            dist[i][j] = Infinity;
-          } else {
-            dist[i][j] = graph[i][j];
-          }
-        }
-      }
-      return dist;
-    }
 
-    /**
-     * Floyd-Warshall algorithm. Finds the shortest path between
-     * each two vertices.&lt;br>&lt;br>
-     * Complexity: O(|V|^3) where V is the number of vertices.
-     *
-     * @public
-     * @module graphs/shortest-path/floyd-warshall
-     * @param {Array} graph A distance matrix of the graph.
-     * @return {Array} Array which contains the shortest
-     *    distance between each two vertices.
-     *
-     * @example
-     * var floydWarshall =
-     * require('path-to-algorithms/src/graphs/shortest-path/floyd-warshall').floydWarshall;
-     * var distMatrix =
-     *    [[Infinity, 7,        9,       Infinity,  Infinity, 16],
-     *     [7,        Infinity, 10,       15,       Infinity, Infinity],
-     *     [9,        10,       Infinity, 11,       Infinity, 2],
-     *     [Infinity, 15,       11,       Infinity, 6,        Infinity],
-     *     [Infinity, Infinity, Infinity, 6,        Infinity, 9],
-     *     [16,       Infinity, 2,        Infinity, 9,        Infinity]];
-     *
-     * // [ [ 0, 7, 9, 20, 20, 11 ],
-     * //   [ 7, 0, 10, 15, 21, 12 ],
-     * //   [ 9, 10, 0, 11, 11, 2 ],
-     * //   [ 20, 15, 11, 0, 6, 13 ],
-     * //   [ 20, 21, 11, 6, 0, 9 ],
-     * //   [ 11, 12, 2, 13, 9, 0 ] ]
-     * var shortestDists = floydWarshall(distMatrix);
-     */
-    return function (graph) {
-      dist = init(graph);
-      var size = graph.length;
-      for (var k = 0; k &lt; size; k += 1) {
-        for (var i = 0; i &lt; size; i += 1) {
-          for (var j = 0; j &lt; size; j += 1) {
-            if (dist[i][j] > dist[i][k] + dist[k][j]) {
-              dist[i][j] = dist[i][k] + dist[k][j];
-            }
-          }
-        }
-      }
-      return dist;
-    };
-  }());
 
-  exports.floydWarshall = floydWarshall;
 
-})(typeof window === 'undefined' ? module.exports : window);
-</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="data-structures_size-balanced-tree.js.html">data-structures/size-balanced-tree.js</a>, <a href="data-structures_size-balanced-tree.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var SBTree = require('../src/data-structures/size-balanced-tree').SBTree;
+var sbTree = new SBTree();
+
+var treeNode = sbTree.push({
+  name: 'John',
+  surname: 'Smith'
+});
+sbTree.insert(0, {
+  name: 'Pavlo',
+  surname: 'Popov'
+});
+sbTree.insert(1, {
+  name: 'Garry',
+  surname: 'Fisher'
+});
+sbTree.insert(0, {
+  name: 'Derek',
+  surname: 'Anderson'
+});
+
+console.log(sbTree.get(0)); // { name: 'Derek', surname: 'Anderson' }</code></pre>
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
