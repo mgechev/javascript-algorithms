@@ -3,7 +3,7 @@
 | Algorithm                  | Complexity                                          | When to use? |
 |----------------------------|-----------------------------------------------------|--------------|
 | 3-way-string-quicksort.js  | O(N^2)                                              |              |
-| bubblesort.js              | O(N) in case the, data is with uniform distribution |              |
+| bubblesort.js              | O(N^2)                                              |              |
 | bucketsort.js              | O(N)                                                |              |
 | countingsort.js            | O(N)                                                |              |
 | heapsort.js                | O(N log N)                                          |              |
