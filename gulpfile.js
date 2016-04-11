@@ -3,6 +3,8 @@ var gulp = require('gulp');
 var shell = require('gulp-shell');
 var jshint = require('gulp-jshint');
 var jasmine = require('gulp-jasmine');
+var istanbul = require('gulp-istanbul');
+var reporters = require('jasmine-reporters');
 var stylish = require('jshint-stylish');
 var jscs = require('gulp-jscs');
 var isWin = /^win/.test(process.platform);
@@ -20,9 +22,26 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test', function () {
+gulp.task('pre-test', function () {
+  return gulp.src(['./src/**/*.js'])
+    // Covering files 
+    .pipe(istanbul())
+    // Force `require` to return covered files 
+    .pipe(istanbul.hookRequire());
+});
+ 
+gulp.task('test', ['pre-test'], function () {
   return gulp.src('test/**/*.spec.js')
-    .pipe(jasmine());
+    .pipe(jasmine({
+    	reporter: new reporters.JUnitXmlReporter({
+    		savePath: 'test/reports'
+    	})
+    }))
+    // Creating the reports after tests ran 
+    .pipe(istanbul.writeReports({
+    	dir: './test/reports/coverage',
+    	reporters: ['clover', 'cobertura']
+    }));
 });
 
 gulp.task('jscs', function () {
