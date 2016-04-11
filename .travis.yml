@@ -2,5 +2,14 @@ language: node_js
 node_js:
   - "0.12"
 before_script:
+  # Install Testspace Runner
+  - ./testspace_install.sh
   - npm install -g gulp
-script: gulp build
+script: 
+  - gulp build
+  
+  # Publish Test Results along with Coverage
+  - export PATH="${HOME}/testspace:${PATH}"
+  # Testspace credentials: "credentials@myorg.testspace.com/myproject/myspace"
+  - testspace config url ${TESTSPACE_USER_TOKEN}:@${TESTSPACE_URL}
+  - testspace publish [Tests]junitresults.xml{test/reports} test/reports/coverage/clover.xml
