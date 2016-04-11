@@ -1,0 +1,18 @@
+language: javascript
+
+env:
+  global:
+    - secure: c013J4rEn4RTsfrHmQZHYkGbI0yo0XpknnuIYgn6dSxw9j8Hz+YdPFVvumqZrpAoR/Bt24StIcsB6SHShKA0LErs4X/PJL2gjCSuzaywiUq+2sBlYAb6YuBhPDlrRGR0pTX1cj3VxkarOgw0sUegRfE5YODgjupNFxgblLpPfUuJ7aTrsLfmBjfrSWivwLq5uMDt3njJmwI8qcDn3OrZ5UgF4mObQ/4/V4ImhBox9BHjKr38BpSigDdW15+QuhbrGIuC8LqmQ5dclhDScC5tvPsix41K1Ni1wLYtkhRbqF9FLpIk+IDnyWai4NjuJWACLdY9NlknjpSPTf1Uoji6yg==
+
+before_script:
+  - ./testspace_install.sh
+  - mkdir -p shippable/codecoverage
+  - mkdir -p shippable/testresults
+
+script:
+  - export PATH="${HOME}/testspace:${PATH}"
+  - testspace config url $TESTSPACE_TOKEN
+  - testspace run
+
+  - cp test/reports/junitresults.xml shippable/testresults
+  - cp test/reports/coverage/clover.xml shippable/codecoverage
