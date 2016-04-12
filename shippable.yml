@@ -1,4 +1,7 @@
-language: javascript
+language: node_js
+
+node_js:
+  - "0.12"
 
 env:
   global:
@@ -6,10 +9,11 @@ env:
 
 before_script:
   - ./testspace_install.sh
+  - npm install -g gulp
   - mkdir -p shippable/codecoverage
   - mkdir -p shippable/testresults
-
 script:
+  - gulp build
   - export PATH="${HOME}/testspace:${PATH}"
   - testspace config url $TESTSPACE_TOKEN
   - testspace run
