@@ -1,88 +1,38 @@
-## About
+[![Testspace](http://www.testspace.com/public/img/testspace_logo.png)](http://www.testspace.com)
+***
 
-![](https://travis-ci.org/mgechev/javascript-algorithms.svg?branch=master)
+## JavaScript/Jasmine sample for demonstrating Testspace 
 
-This repository contains JavaScript implementations of different famous Computer Science algorithms.
+Sample demonstrates techniques for using Testspace with Javascript code and the [Jasmine test framework]() together with [Istanbul code coverage tool]() and [Gulp JS build system].
 
-API reference with usage examples available <a href="https://mgechev.github.io/javascript-algorithms/" target="_blank">here</a>.
+[![Build Status](https://travis-ci.org/testspace-samples/javascript.jasmine.svg?branch=master)](https://travis-ci.org/testspace-samples/php.phpunit)
+[![Space Health](https://samples.testspace.com/projects/89/spaces/298/badge)](https://samples.testspace.com/projects/89/spaces/298 "Test Cases")
+[![Space Metric](https://samples.testspace.com/projects/89/spaces/298/metrics/198/badge)](https://samples.testspace.com/projects/89/spaces/298/metrics#metric-198 "Branch/Condition Coverage")
+[![Space Metric](https://samples.testspace.com/projects/89/spaces/298/metrics/197/badge)](https://samples.testspace.com/projects/89/spaces/298/metrics#metric-197 "Function/Method Coverage")
+[![Space Metric](https://samples.testspace.com/projects/89/spaces/298/metrics/191/badge)](https://samples.testspace.com/projects/89/spaces/298/metrics#metric-191 "Line/Statement Coverage")
 
-*Note: not all algorithms are well tested so bugs are quite possible.*
 
-## Development
+***
 
-**To install all dev dependencies**
+In order to run this sample you will need a host workstation with installed npm.
 
-Call:
-
-```bash
-npm install
-```
-
-**To setup repository with documentation**
-
-- Go to the parent directory of the `javascript-algorithms` folder and call:
-
-```bash
-git clone https://github.com/mgechev/javascript-algorithms.git javascript-algorithms-docs
-```
-
-- Go to the `javascript-algorithms-docs` folder and change current branch to `gh-pages`:
-
-```bash
-git checkout gh-pages
-```
-
-Now you can see `index.html` file in this folder and open it in your browser.
-
-**To update .html files with documentation**
-
-Go to the `javascript-algorithms` folder and call:
-
-```bash
-gulp jsdoc
-```
-
-and all files in `javascript-algorithms-docs` folder will be updated.
-
-**To run tests**
-
-Call:
-
-```bash
-gulp test
-```
-
-and all `*.spec.js` files will be executed.
-
-## Contributions
-
-Fork the repo and make requred changes. After that push your changes in branch, which is named according to the changes you did.
-Initiate the PR.
-
-Make sure you're editor makes validations according to the `.jshintrc` in the root directory of the repository.
-
-Before pushing to the repository run:
-
-```bash
+<pre>
+npm install -g gulp
 gulp build
-```
+</pre>
 
-If the build is not successful fix your code in order the tests and jshint validation to run successfully and after that create a pull request.
+Publishing results example: 
 
-## Contributors
+<pre>
+testspace publish [Tests]test/reports/junitresults.xml test/reports/coverage/clover.xml
+</pre> 
 
-[<img alt="mgechev" src="https://avatars.githubusercontent.com/u/455023?v=3&s=117" width="117">](https://github.com/mgechev) |[<img alt="AndriiHeonia" src="https://avatars.githubusercontent.com/u/773648?v=3&s=117" width="117">](https://github.com/AndriiHeonia) |[<img alt="Jakehp" src="https://avatars.githubusercontent.com/u/1854569?v=3&s=117" width="117">](https://github.com/Jakehp) |[<img alt="pvoznenko" src="https://avatars.githubusercontent.com/u/1098414?v=3&s=117" width="117">](https://github.com/pvoznenko) |[<img alt="FilipeFalcaoBatista" src="https://avatars.githubusercontent.com/u/9125631?v=3&s=117" width="117">](https://github.com/FilipeFalcaoBatista) |[<img alt="lekkas" src="https://avatars.githubusercontent.com/u/5211478?v=3&s=117" width="117">](https://github.com/lekkas) |
-:---: |:---: |:---: |:---: |:---: |:---: |
-[mgechev](https://github.com/mgechev) |[AndriiHeonia](https://github.com/AndriiHeonia) |[Jakehp](https://github.com/Jakehp) |[pvoznenko](https://github.com/pvoznenko) |[FilipeFalcaoBatista](https://github.com/FilipeFalcaoBatista) |[lekkas](https://github.com/lekkas) |
+Checkout the [Space](https://samples.testspace.com/projects/javascript/spaces/jasmine). 
 
-[<img alt="deniskyashif" src="https://avatars.githubusercontent.com/u/5999271?v=3&s=117" width="117">](https://github.com/deniskyashif) |[<img alt="infusion" src="https://avatars.githubusercontent.com/u/197742?v=3&s=117" width="117">](https://github.com/infusion) |[<img alt="designeng" src="https://avatars.githubusercontent.com/u/2807469?v=3&s=117" width="117">](https://github.com/designeng) |[<img alt="Microfed" src="https://avatars.githubusercontent.com/u/613179?v=3&s=117" width="117">](https://github.com/Microfed) |[<img alt="ysharplanguage" src="https://avatars.githubusercontent.com/u/1055314?v=3&s=117" width="117">](https://github.com/ysharplanguage) |[<img alt="contra" src="https://avatars.githubusercontent.com/u/425716?v=3&s=117" width="117">](https://github.com/contra) |
-:---: |:---: |:---: |:---: |:---: |:---: |
-[deniskyashif](https://github.com/deniskyashif) |[infusion](https://github.com/infusion) |[designeng](https://github.com/designeng) |[Microfed](https://github.com/Microfed) |[ysharplanguage](https://github.com/ysharplanguage) |[contra](https://github.com/contra) |
+***
 
-[<img alt="fanixk" src="https://avatars.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |
-:---: |
-[fanixk](https://github.com/fanixk) |
-
-## License
-
-The code in this repository is distributed under the terms of the MIT license.
+To fork this example using Travis requires:
+  - Create an account at www.testspace.com
+  - Travis Environment Variables:
+    - `TESTSPACE_USER_TOKEN` set to the `value` defined as your [Access token](http://help.testspace.com/using-your-organization:user-settings).
+    - `TESTSPACE_URL` set to `my-org-name.testspace.com/my-project/my-space`. Refer [here](http://help.testspace.com/reference:runner-reference#config) for more details. This example uses `samples.testspace.com/javascript/jasmine`.
