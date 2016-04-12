@@ -1,9 +1,9 @@
 [![Testspace](http://www.testspace.com/public/img/testspace_logo.png)](http://www.testspace.com)
 ***
 
-## JavaScript/Jasmine sample for demonstrating Testspace 
+## JavaScript/Jasmine sample for demonstrating Testspace based on the great [javascript-algorithms repo](mgechev/javascript-algorithms)
 
-Sample demonstrates techniques for using Testspace with Javascript code and the [Jasmine test framework]() together with [Istanbul code coverage tool]() and [Gulp JS build system].
+Sample demonstrates techniques for using Testspace with Javascript code and the [Jasmine test framework](http://jasmine.github.io/) together with [Istanbul code coverage tool](https://gotwarlost.github.io/istanbul/) and [Gulp JS build system](http://gulpjs.com/).
 
 [![Build Status](https://travis-ci.org/testspace-samples/javascript.jasmine.svg?branch=master)](https://travis-ci.org/testspace-samples/php.phpunit)
 [![Space Health](https://samples.testspace.com/projects/89/spaces/298/badge)](https://samples.testspace.com/projects/89/spaces/298 "Test Cases")
