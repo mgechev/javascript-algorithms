@@ -3,12 +3,14 @@
   <root>
     <suite name="Install.prerequisites" state="1" id=".sh" description="**Install** system prerequisites ">
       <attributes>
-        <![CDATA[npm install -g gulp]]>
+        <![CDATA[npm install -g gulp
+npm install]]>
       </attributes>
     </suite>
     <suite name="Tests" state="1" id=".sh" description="run **all** of the unit tests">
       <attributes>
-        <![CDATA[gulp build; echo "$PWD/test/reports/junitresults.xml" > ${self.result}]]>
+        <![CDATA[gulp build
+echo "$PWD/test/reports/junitresults.xml{test}" > ${self.result}]]>
       </attributes>
     </suite>
     <suite name="Coverage" state="1" id=".sh" description="Code coverage based on latest run. Review the ==Reports== tab for historical tracking">
