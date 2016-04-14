@@ -9,7 +9,7 @@ npm install]]>
     </suite>
     <suite name="Tests" state="1" id=".sh" description="run **all** of the unit tests">
       <attributes>
-        <![CDATA[gulp build
+        <![CDATA[gulp test
 echo "$PWD/test/reports/junitresults.xml{test}" > ${self.result}]]>
       </attributes>
     </suite>
