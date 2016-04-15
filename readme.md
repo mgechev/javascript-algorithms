@@ -1,7 +1,7 @@
 [![Testspace](http://www.testspace.com/public/img/testspace_logo.png)](http://www.testspace.com)
 ***
 
-## JavaScript/Jasmine sample for demonstrating Testspace based on the [javascript-algorithms repo](mgechev/javascript-algorithms)
+## JavaScript/Jasmine sample for demonstrating Testspace based on the [javascript-algorithms repo](https://github.com/mgechev/javascript-algorithms)
 
 Sample demonstrates techniques for using Testspace with Javascript code and the [Jasmine test framework](http://jasmine.github.io/) together with [Istanbul code coverage tool](https://gotwarlost.github.io/istanbul/) and [Gulp JS build system](http://gulpjs.com/).
 
