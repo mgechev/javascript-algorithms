@@ -1,5 +1,7 @@
-var sortTestCase = require('./sort.testcase.js');
+var sortTestCases = require('./sort.testcases.js');
 var shellSort = require('../../src/sorting/shellsort.js')
       .shellSort;
 
-sortTestCase(shellSort, 'Shell sort');
+describe('Shell sort', function () {
+  sortTestCases(shellSort);
+});

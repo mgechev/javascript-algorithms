@@ -12,4 +12,4 @@ script:
   - export PATH="${HOME}/testspace:${PATH}"
   # Testspace credentials: "credentials@myorg.testspace.com/myproject/myspace"
   - testspace config url ${TESTSPACE_USER_TOKEN}:@${TESTSPACE_URL}
-  - testspace publish [Tests]test/reports/junitresults.xml test/reports/coverage/clover.xml
+  - testspace publish [Tests]test/reports/junitresults.xml{test} test/reports/coverage/clover.xml

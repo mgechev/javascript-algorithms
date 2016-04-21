@@ -1,5 +1,7 @@
-var sortTestCase = require('./sort.testcase.js');
+var sortTestCases = require('./sort.testcases.js');
 var insertionSort = require('../../src/sorting/' +
       'insertionsort.js').insertionSort;
 
-sortTestCase(insertionSort, 'Insertion sort');
+describe('Insertion sort', function () {
+  sortTestCases(insertionSort);
+});

@@ -1,5 +1,7 @@
-var sortTestCase = require('./sort.testcase.js');
+var sortTestCases = require('./sort.testcases.js');
 var recursiveInsertionSort = require('../../src/sorting/' +
       'recursive-insertionsort.js').recursiveInsertionSort;
 
-sortTestCase(recursiveInsertionSort, 'Recursive insertion sort');
+describe('Recursive insertion sort', function () {
+  sortTestCases(recursiveInsertionSort);
+});

@@ -1,5 +1,7 @@
-var sortTestCase = require('./sort.testcase.js');
+var sortTestCases = require('./sort.testcases.js');
 var bubbleSort =
       require('../../src/sorting/bubblesort.js').bubbleSort;
 
-sortTestCase(bubbleSort, 'Bubble sort');
+describe('Bubble sort', function () {
+  sortTestCases(bubbleSort);
+});
