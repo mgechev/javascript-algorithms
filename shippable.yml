@@ -5,17 +5,16 @@ node_js:
 
 env:
   global:
-    - secure: c013J4rEn4RTsfrHmQZHYkGbI0yo0XpknnuIYgn6dSxw9j8Hz+YdPFVvumqZrpAoR/Bt24StIcsB6SHShKA0LErs4X/PJL2gjCSuzaywiUq+2sBlYAb6YuBhPDlrRGR0pTX1cj3VxkarOgw0sUegRfE5YODgjupNFxgblLpPfUuJ7aTrsLfmBjfrSWivwLq5uMDt3njJmwI8qcDn3OrZ5UgF4mObQ/4/V4ImhBox9BHjKr38BpSigDdW15+QuhbrGIuC8LqmQ5dclhDScC5tvPsix41K1Ni1wLYtkhRbqF9FLpIk+IDnyWai4NjuJWACLdY9NlknjpSPTf1Uoji6yg==
-
+    - secure: RxFIwZUbf+Kec/kF37Iu8YaekLQDCjDP2YTCbqLi4mNHsbc4WRohUGXXYgCS6wSV8vEW3ditOFhTx/rchMJdJRonL1fNI6hSVLbFU39RGB/vhJXTGE8oU9dV0bK1a3vPmSoyWIhbODhS751nAlgMgd0U6QNxhRE/3SLuiD3pTGbV5XY13iJGzNIijCrrIu0FfgfNwkf5ezJBW+lzd/Cr5PJyu+mwRv3L5WPmhDslr6KGh4gkxnu+o1pa0x/S+M7YIQ+uy+5Y5N4pSS3TboVfsufrkCGI8CPr5WZjnKbejeN88kIUxSxEu0+xOo1vNX29uwh98HGpGcbmwSQgbUtFow==
+  
 before_script:
   - ./testspace_install.sh
   - export PATH="${HOME}/testspace:${PATH}"
   - mkdir -p shippable/codecoverage
   - mkdir -p shippable/testresults
 script:
-  - testspace config url $TESTSPACE_TOKEN
-  - testspace import .testspace.xml
-  - testspace run
+  - testspace import .testspace.xml ${TESTSPACE_URL}
+  - testspace run ${TESTSPACE_URL}
 
 after_script:
   - cp test/reports/junitresults.xml shippable/testresults
