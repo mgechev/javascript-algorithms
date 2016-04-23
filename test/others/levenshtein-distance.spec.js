@@ -3,7 +3,7 @@
 var mod = require('../../src/others/levenshtein-distance.js');
 var levenshteinDistance = mod.levenshteinDistance;
 
-describe('Levenstein\'s minimum edit distance algorithm', function () {
+describe('Levenstein minimum edit distance algorithm', function () {
   it('should be defined', function () {
     expect(levenshteinDistance).toBeDefined();
   });

@@ -1,5 +1,7 @@
-var sortTestCase = require('./sort.testcase.js');
+var sortTestCases = require('./sort.testcases.js');
 var mergeSort =
       require('../../src/sorting/mergesort.js').mergeSort;
 
-sortTestCase(mergeSort, 'Merge sort');
+describe('Merge sort', function () {
+  sortTestCases(mergeSort);
+});
