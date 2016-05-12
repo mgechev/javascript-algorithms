@@ -10,4 +10,4 @@ before_script:
 script: 
   - gulp build
 # Publish Test Results along with Coverage
-  - testspace publish [Tests]test/reports/junitresults.xml test/reports/coverage/clover.xml ${TESTSPACE_URL}
+  - testspace publish [Tests]test/reports/junitresults.xml{test} test/reports/coverage/clover.xml ${TESTSPACE_URL}
