@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: others/hanoi.js</title>
+    <title>JSDoc: Source: searching/longest-subsequence.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: others/hanoi.js</h1>
+    <h1 class="page-title">Source: searching/longest-subsequence.js</h1>
 
     
 
@@ -29,50 +29,138 @@
             <pre class="prettyprint source linenums"><code>(function (exports) {
   'use strict';
 
-  /**
-   * Returns all movements needed to solve Hanoi Tower problem.
-   *
-   * @public
-   * @module others/hanoi
-   *
-   * @example
-   *
-   * var hanoi = require('path-to-algorithms/src/others/hanoi').hanoi;
-   * var movements = hanoi(3, 'a', 'b', 'c');
-   *
-   * // Move a to c
-   * // Move a to b
-   * // Move c to b
-   * // Move a to c
-   * // Move b to a
-   * // Move b to c
-   * // Move a to c
-   * movements.forEach(function (move) {
-   *   console.log('Move', move[0], 'to', move[1]);
-   * });
-   *
-   * @param {Number} count Count of the plates/stones.
-   * @param {String|Number} source Identifier of the 1st peg.
-   * @param {String|Number} intermediate Identifier of the 2nd peg.
-   * @param {String|Number} goal Identifier of the 3rd peg.
-   * @return Array which contains all the moves required
-   * in order to place all the plates onto the last peg.
-   */
-  function hanoi(count, source, intermediate, goal, result) {
-    result = result || [];
-    if (count === 1) {
-      result.push([source, goal]);
-    } else {
-      hanoi(count - 1, source, goal, intermediate, result);
-      result.push([source, goal]);
-      hanoi(count - 1, intermediate, source, goal, result);
-    }
-    return result;
-  }
+  exports.longestSubsequence = (function () {
 
-  exports.hanoi = hanoi;
+    /**
+    * Find the index of the first largest element in array.
+    * Complexity: O(N).
+    *
+    * @private
+    * @param {Array} array The array in which the largest
+    *  element should be found.
+    * @return {Number} index of the first largest element
+    */
+    function max(array) {
+      if (!array || !array.length) {
+        return -1;
+      }
+      var maxIdx = 0;
+      for (var i = 1; i &lt; array.length; i += 1) {
+        if (array[maxIdx].distance &lt; array[i].distance) {
+          maxIdx = i;
+        }
+      }
+      return maxIdx;
+    }
+
+    /**
+    * Default comparison method.
+    * @private
+    */
+    function asc(a, b) {
+      return a - b;
+    }
+
+    /**
+    * Creates directed graph from given array.
+    * Each element's neighbours are the elements which can be
+    * after the element in the resulting sequence.&lt;br>&lt;br>
+    * Complexity: O(N^2).
+    * @private
+    * @param  {Array} array The input array.
+    * @param  {Function} cmp Comparator.
+    * @return {Object} Graph represented with list of neighbours.
+    */
+    function buildDag(array, cmp) {
+      var result = [];
+      for (var i = 0; i &lt; array.length; i += 1) {
+        result[i] = [];
+        for (var j = i + 1; j &lt; array.length; j += 1) {
+          if (cmp(array[i], array[j]) &lt; 0) {
+            result[i].push(j);
+          }
+        }
+      }
+      return result;
+    }
+
+    /**
+    * Finds the longest sub-sequence for given node.&lt;br>&lt;br>
+    * Complexity: O(N^N).
+    * @private
+    * @param {Object} dag  Graph represented with list of neighbours.
+    * @param {number} node The current node.
+    * @return {object} The longest sub-sequence for given node.
+    */
+    function find(dag, node) {
+      node = node || 0;
+      if (find.memo[node]) {
+        return find.memo[node];
+      }
+      var neighbours = dag[node];
+      var neighboursDistance = [];
+      var maxDist;
+      var maxNode;
+      var distance;
+      var result;
+
+      if (!neighbours.length) {
+        return { distance: 1, neighbour: undefined, node: node };
+      }
+
+      for (var i = 0; i &lt; neighbours.length; i += 1) {
+        neighboursDistance[i] = find(dag, neighbours[i]);
+      }
+
+      maxDist = max(neighboursDistance);
+      maxNode = neighbours[maxDist];
+      distance = 1 + neighboursDistance[maxDist].distance;
+      find.memo[node] = result = {
+        distance: distance,
+        neighbour: neighboursDistance[maxDist],
+        node: node
+      };
+      return result;
+    }
+
+    /**
+    * Algorithm from dynamic programming. It finds the longest
+    * sub-sequence of increasing numbers. It is not required
+    * the numbers to be neighboring. For example for 1, 5, 2
+    * sequence the longest sub-sequence is 1, 2.
+    *
+    * @example
+    * var subsequence = require('path-to-algorithms/src/searching/'+
+    * 'longest-increasing-subsequence').longestSubsequence;
+    * console.log(subsequence([1, 0, 4, 3, 5])); // 1, 4, 5
+    *
+    * @public
+    * @module searching/longest-increasing-subsequence
+    * @param {Array} array Input sequence.
+    * @param {Function} cmp Comparator.
+    * @return {Array} Longest increasing subsequence.
+    */
+    return function (array, cmp) {
+      cmp = cmp || asc;
+      var results = [];
+      var dag = buildDag(array, cmp);
+      var maxPath;
+      find.memo = [];
+      for (var i = 0; i &lt; array.length; i += 1) {
+        results.push(find(dag, i));
+      }
+      maxPath = results[max(results)];
+      results = [];
+      while (maxPath) {
+        results.push(array[maxPath.node]);
+        maxPath = maxPath.neighbour;
+      }
+      return results;
+    };
+  })();
 
 })(typeof window === 'undefined' ? module.exports : window);
+
 </code></pre>
         </article>
     </section>
