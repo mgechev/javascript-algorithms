@@ -40,6 +40,7 @@
     * Complexity: O(N^2).
     * @private
     * @param  {Array} array The input array.
+    * @param  {Function} cmp Comparator.
     * @return {Object} Graph represented with list of neighbours.
     */
     function buildDag(array, cmp) {
@@ -108,6 +109,7 @@
     * @public
     * @module searching/longest-increasing-subsequence
     * @param {Array} array Input sequence.
+    * @param {Function} cmp Comparator.
     * @return {Array} Longest increasing subsequence.
     */
     return function (array, cmp) {
