@@ -17,7 +17,7 @@ describe('longest subsequence', function () {
   });
 
   it('should return the only element in a single element array', function () {
-    let array = [1];
+    var array = [1];
     expect(longestSubsequence(array)).toEqual([1]);
   });
 
