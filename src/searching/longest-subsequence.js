@@ -10,19 +10,15 @@
     * @private
     * @param {Array} array The array in which the largest
     *  element should be found.
-    * @param {Function} cmp Function used for comparison.
     * @return {Number} index of the first largest element
     */
-    function max(array, cmp) {
+    function max(array) {
       if (!array || !array.length) {
         return -1;
       }
-      if (!cmp) {
-        cmp = function (a, b) { return a - b; };
-      }
       var maxIdx = 0;
       for (var i = 1; i < array.length; i += 1) {
-        if (cmp(array[maxIdx], array[i]) < 0) {
+        if (array[maxIdx].distance < array[i].distance) {
           maxIdx = i;
         }
       }
@@ -33,8 +29,8 @@
     * Default comparison method.
     * @private
     */
-    function cmp(a, b) {
-      return a.distance - b.distance;
+    function asc(a, b) {
+      return a - b;
     }
 
     /**
@@ -46,12 +42,12 @@
     * @param  {Array} array The input array.
     * @return {Object} Graph represented with list of neighbours.
     */
-    function buildDag(array) {
+    function buildDag(array, cmp) {
       var result = [];
       for (var i = 0; i < array.length; i += 1) {
         result[i] = [];
         for (var j = i + 1; j < array.length; j += 1) {
-          if (array[i] < array[j]) {
+          if (cmp(array[i], array[j]) < 0) {
             result[i].push(j);
           }
         }
@@ -87,7 +83,7 @@
         neighboursDistance[i] = find(dag, neighbours[i]);
       }
 
-      maxDist = max(neighboursDistance, cmp);
+      maxDist = max(neighboursDistance);
       maxNode = neighbours[maxDist];
       distance = 1 + neighboursDistance[maxDist].distance;
       find.memo[node] = result = {
@@ -114,15 +110,16 @@
     * @param {Array} array Input sequence.
     * @return {Array} Longest increasing subsequence.
     */
-    return function (array) {
+    return function (array, cmp) {
+      cmp = cmp || asc;
       var results = [];
-      var dag = buildDag(array);
+      var dag = buildDag(array, cmp);
       var maxPath;
       find.memo = [];
       for (var i = 0; i < array.length; i += 1) {
         results.push(find(dag, i));
       }
-      maxPath = results[max(results, cmp)];
+      maxPath = results[max(results)];
       results = [];
       while (maxPath) {
         results.push(array[maxPath.node]);
@@ -133,3 +130,4 @@
   })();
 
 })(typeof window === 'undefined' ? module.exports : window);
+

@@ -2,7 +2,7 @@
 
 var longestSubsequence =
   require('../../src/searching/' +
-    'longest-increasing-subsequence')
+    'longest-subsequence')
     .longestSubsequence;
 
 describe('longest subsequence', function () {
@@ -33,4 +33,15 @@ describe('longest subsequence', function () {
     expect(longestSubsequence(sequence).toString())
       .toBe([2, 3, 6, 9, 11].toString());
   });
+
+  it('should work with a custom comparator', function () {
+    var cmp = function (a, b) {
+      return b - a;
+    };
+    var seq = [1, 2, -1];
+    var result = longestSubsequence(seq, cmp);
+    expect(result.length).toBe(2);
+    expect(result).toEqual([1, -1]);
+  });
 });
+
