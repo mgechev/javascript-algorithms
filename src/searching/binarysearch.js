@@ -38,7 +38,7 @@
       }
       middle = Math.floor((left + right) / 2);
     }
-    return -middle - 1;
+    return -1;
   }
 
   exports.binarySearch = binarySearch;
