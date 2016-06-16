@@ -9,7 +9,6 @@ Sample demonstrates techniques for using Testspace with Javascript code and the 
 [![Space Health](https://samples.testspace.com/projects/89/spaces/298/badge)](https://samples.testspace.com/projects/89/spaces/298 "Test Cases")
 [![Space Metric](https://samples.testspace.com/projects/89/spaces/298/metrics/191/badge)](https://samples.testspace.com/projects/89/spaces/298/metrics#metric-191 "Line/Statement Coverage")
 [![Space Metric](https://samples.testspace.com/projects/89/spaces/298/metrics/198/badge)](https://samples.testspace.com/projects/89/spaces/298/metrics#metric-198 "Branch/Condition Coverage")
-[![Space Metric](https://samples.testspace.com/projects/89/spaces/298/metrics/197/badge)](https://samples.testspace.com/projects/89/spaces/298/metrics#metric-197 "Function/Method Coverage")
 
 
 ***
