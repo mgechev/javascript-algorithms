@@ -1,6 +1,7 @@
 (function (exports) {
+  'use strict';
 
- /**
+  /**
    * Tarjan's algorithm for finding the connected components in a graph.<br><br>
    * Time complexity: O(|E| + |V|) where E is a number of edges and |V|
    * is the number of nodes.
@@ -30,15 +31,15 @@
     const onStack = {};
     const result = [];
     const stack = [];
-    let index = 1;
+    var index = 1;
 
-    const connectedComponent = node => {
+    const connectedComponent = function (node) {
       stack.push(node);
       onStack[node] = true;
       indexes[node] = index;
       lowIndexes[node] = index;
       index += 1;
-      graph[node].forEach(n => {
+      graph[node].forEach(function (n) {
         if (indexes[n] === undefined) {
           connectedComponent(n);
           lowIndexes[node] = Math.min(lowIndexes[n], lowIndexes[node]);
@@ -49,7 +50,7 @@
       // This is a "root" node
       const cc = [];
       if (indexes[node] === lowIndexes[node]) {
-        let current;
+        var current;
         do {
           current = stack.pop();
           onStack[current] = false;
@@ -60,7 +61,11 @@
     };
 
     Object.keys(graph)
-      .forEach(n => !indexes[n] && connectedComponent(n));
+      .forEach(function (n) {
+        if (!indexes[n]) {
+          connectedComponent(n);
+        }
+      });
 
     return result;
   }

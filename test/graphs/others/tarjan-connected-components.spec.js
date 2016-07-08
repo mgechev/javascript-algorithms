@@ -16,7 +16,6 @@ var cyclicGraph = {
   v5: ['v1']
 };
 
-
 describe('Tarjan\'s algorithm for finding connected components', function () {
   'use strict';
   it('should be defined', function () {
@@ -31,8 +30,7 @@ describe('Tarjan\'s algorithm for finding connected components', function () {
     expect(tj(nonConnected)).toEqual([['v1'], ['v2'], ['v3'], ['v4'], ['v5']]);
   });
 
-  it('should workw ith cycles', () => {
+  it('should workw ith cycles', function () {
     expect(tj(cyclicGraph)).toEqual([['v5', 'v4', 'v3', 'v2', 'v1']]);
   });
-
 });
