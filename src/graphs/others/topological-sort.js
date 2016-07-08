@@ -22,7 +22,8 @@
 
     /**
      * Topological sort algorithm of a directed acyclic graph.<br><br>
-     * Time complexity: O(|E|) where E is a number of edges.
+     * Time complexity: O(|E| + |V|) where E is a number of edges
+     * and |V| is the number of nodes.
      *
      * @public
      * @module graphs/others/topological-sort
