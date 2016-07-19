@@ -82,7 +82,8 @@
     }
 
     if (right < this._heap.length &&
-        this._cmp(this._heap[right], this._heap[index]) > 0) {
+        this._cmp(this._heap[right], this._heap[index]) > 0 &&
+        this._cmp(this._heap[right], this._heap[left]) > 0) {
       extr = right;
     }
 
@@ -116,6 +117,7 @@
         index = parent;
         parent = Math.floor(parent / 2);
       }
+      this._heapify(index);
     }
     return parent;
   };

@@ -58,4 +58,38 @@ describe('Heap', function () {
     res = heap.extract();
     expect(res).toBe(66);
   });
+  it('should update top node properly', function () {
+    var heap = new Heap(function (a, b) {
+      return a.val - b.val;
+    });
+    var objectToUpdate = { val: 66 };
+    heap.add(objectToUpdate);
+    heap.add({ val: 11 });
+    heap.add({ val: 55 });
+    objectToUpdate.val = 0;
+    heap.update(objectToUpdate);
+    var res = heap.extract();
+    expect(res.val).toBe(55);
+    res = heap.extract();
+    expect(res.val).toBe(11);
+    res = heap.extract();
+    expect(res.val).toBe(0);
+  });
+  it('should update bottom node properly', function () {
+    var heap = new Heap(function (a, b) {
+      return a.val - b.val;
+    });
+    var objectToUpdate = { val: 0 };
+    heap.add(objectToUpdate);
+    heap.add({ val: 11 });
+    heap.add({ val: 55 });
+    objectToUpdate.val = 66;
+    heap.update(objectToUpdate);
+    var res = heap.extract();
+    expect(res.val).toBe(66);
+    res = heap.extract();
+    expect(res.val).toBe(55);
+    res = heap.extract();
+    expect(res.val).toBe(11);
+  });
 });
