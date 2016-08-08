@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: data-structures/hash-table</title>
+    <title>JSDoc: Module: graphs/others/tarjan-connected-components</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: data-structures/hash-table</h1>
+    <h1 class="page-title">Module: graphs/others/tarjan-connected-components</h1>
 
     
 
@@ -38,10 +38,9 @@
     <div class="container-overview">
     
         
-            <div class="description">Hash Table
-
-An associative array, that can map keys
-(strings and numbers) to values in O(1).</div>
+            <div class="description">Tarjan's algorithm for finding the connected components in a graph.<br><br>
+Time complexity: O(|E| + |V|) where E is a number of edges and |V|
+is the number of nodes.</div>
         
 
         
@@ -56,6 +55,54 @@ An associative array, that can map keys
 
 
 
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>graph</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Adjacency list, which represents the graph.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -90,7 +137,7 @@ An associative array, that can map keys
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_hash-table.js.html">data-structures/hash-table.js</a>, <a href="data-structures_hash-table.js.html#line1">line 1</a>
+        <a href="graphs_others_tarjan-connected-components.js.html">graphs/others/tarjan-connected-components.js</a>, <a href="graphs_others_tarjan-connected-components.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -113,25 +160,43 @@ An associative array, that can map keys
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Connected components.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var hash = require('path-to-algorithms/src/data-structures'+
-'/hash-table');
-var hashTable = new hash.Hashtable();
-
-hashTable.put(10, 'value');
-hashTable.put('key', 10);
-
-console.log(hashTable.get(10)); // 'value'
-console.log(hashTable.get('key')); // 10
-
-hashTable.remove(10);
-hashTable.remove('key');
-
-console.log(hashTable.get(10)); // undefined
-console.log(hashTable.get('key')); // undefined</code></pre>
+    <pre class="prettyprint"><code>var tarjanConnectedComponents =
+ require('path-to-algorithms/src/graphs/' +
+'others/tarjan-connected-components').tarjanConnectedComponents;
+var graph = {
+    v1: ['v2', 'v5'],
+    v2: [],
+    v3: ['v1', 'v2', 'v4', 'v5'],
+    v4: [],
+    v5: []
+};
+var vertices = topsort(graph); // ['v3', 'v4', 'v1', 'v5', 'v2']</code></pre>
 
 
 
@@ -143,16 +208,6 @@ console.log(hashTable.get('key')); // undefined</code></pre>
 
     
 
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-data-structures_hash-table.Hashtable.html">Hashtable</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-data-structures_hash-table.Node.html">Node</a></dt>
-            <dd></dd>
-        </dl>
     
 
      

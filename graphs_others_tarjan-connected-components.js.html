@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: data-structures/hash-table</title>
+    <title>JSDoc: Source: graphs/others/tarjan-connected-components.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,158 +17,93 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: data-structures/hash-table</h1>
+    <h1 class="page-title">Source: graphs/others/tarjan-connected-components.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Hash Table
-
-An associative array, that can map keys
-(strings and numbers) to values in O(1).</div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="data-structures_hash-table.js.html">data-structures/hash-table.js</a>, <a href="data-structures_hash-table.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var hash = require('path-to-algorithms/src/data-structures'+
-'/hash-table');
-var hashTable = new hash.Hashtable();
-
-hashTable.put(10, 'value');
-hashTable.put('key', 10);
-
-console.log(hashTable.get(10)); // 'value'
-console.log(hashTable.get('key')); // 10
-
-hashTable.remove(10);
-hashTable.remove('key');
-
-console.log(hashTable.get(10)); // undefined
-console.log(hashTable.get('key')); // undefined</code></pre>
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-data-structures_hash-table.Hashtable.html">Hashtable</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-data-structures_hash-table.Node.html">Node</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function (exports) {
+  'use strict';
+
+  /**
+   * Tarjan's algorithm for finding the connected components in a graph.&lt;br>&lt;br>
+   * Time complexity: O(|E| + |V|) where E is a number of edges and |V|
+   * is the number of nodes.
+   *
+   * @public
+   * @module graphs/others/tarjan-connected-components
+   * @param {Array} graph Adjacency list, which represents the graph.
+   * @returns {Array} Connected components.
+   *
+   * @example
+   * var tarjanConnectedComponents =
+   *  require('path-to-algorithms/src/graphs/' +
+   * 'others/tarjan-connected-components').tarjanConnectedComponents;
+   * var graph = {
+   *     v1: ['v2', 'v5'],
+   *     v2: [],
+   *     v3: ['v1', 'v2', 'v4', 'v5'],
+   *     v4: [],
+   *     v5: []
+   * };
+   * var vertices = topsort(graph); // ['v3', 'v4', 'v1', 'v5', 'v2']
+   */
+  function tarjanConnectedComponents(graph) {
+    graph = graph || {};
+    const indexes = {};
+    const lowIndexes = {};
+    const onStack = {};
+    const result = [];
+    const stack = [];
+    var index = 1;
+
+    const connectedComponent = function (node) {
+      stack.push(node);
+      onStack[node] = true;
+      indexes[node] = index;
+      lowIndexes[node] = index;
+      index += 1;
+      graph[node].forEach(function (n) {
+        if (indexes[n] === undefined) {
+          connectedComponent(n);
+          lowIndexes[node] = Math.min(lowIndexes[n], lowIndexes[node]);
+        } else if (onStack[n]) {
+          lowIndexes[node] = Math.min(lowIndexes[node], indexes[n]);
+        }
+      });
+      // This is a "root" node
+      const cc = [];
+      if (indexes[node] === lowIndexes[node]) {
+        var current;
+        do {
+          current = stack.pop();
+          onStack[current] = false;
+          cc.push(current);
+        } while (stack.length > 0 &amp;&amp; node !== current);
+        result.push(cc);
+      }
+    };
+
+    Object.keys(graph)
+      .forEach(function (n) {
+        if (!indexes[n]) {
+          connectedComponent(n);
+        }
+      });
+
+    return result;
+  }
+
+  exports.tarjanConnectedComponents = tarjanConnectedComponents;
+
+}(typeof exports === 'undefined' ? window : exports));
+</code></pre>
+        </article>
+    </section>
 
 
 
