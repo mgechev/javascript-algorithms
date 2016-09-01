@@ -1,13 +1,15 @@
 language: node_js
 node_js:
-  - "0.12"
+  - "4.0"
+  
 before_script:
-  # Install Testspace Runner
-  - ./testspace_install.sh
-  - export PATH="${HOME}/testspace:${PATH}"
   - npm install -g gulp
+  - npm install
   
 script: 
   - gulp build
-# Publish Test Results along with Coverage
-  - testspace publish [Tests]test/reports/junitresults.xml{test} test/reports/coverage/clover.xml ${TESTSPACE_URL}
+  
+  - export CI_REPORTS=$PWD/test/reports
+  - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
+  - testspace publish @.testspace $TESTSPACE_TOKEN/${TRAVIS_BRANCH}#travis.Build.${TRAVIS_BUILD_NUMBER}
+  

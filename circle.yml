@@ -1,0 +1,14 @@
+machine:
+  node_js:
+    version: 4.0
+    
+test:
+  override:
+    - npm install -g gulp
+    - hpm install
+    - gulp build
+ 
+  post:
+    - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
+    - export CI_REPORTS=$CIRCLE_TEST_REPORTS
+    - testspace publish @.testspace $TESTSPACE_TOKEN/${CIRCLE_BRANCH}#circle.Build.${CIRCLE_BUILD_NUM}
