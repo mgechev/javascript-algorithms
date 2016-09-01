@@ -9,7 +9,7 @@ env:
  
 script:
   - npm install -g gulp
-  - hpm install
+  - npm install
   - gulp build
 
 after_script:

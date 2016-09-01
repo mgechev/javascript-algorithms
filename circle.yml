@@ -5,7 +5,7 @@ machine:
 test:
   override:
     - npm install -g gulp
-    - hpm install
+    - npm install
     - gulp build
  
   post:
