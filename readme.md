@@ -16,6 +16,7 @@ Sample demonstrates techniques for using Testspace with Javascript code and the 
 In order to run this sample you will need a host workstation with installed npm.
 
 <pre>
+npm install -g minimatch@3.0.2
 npm install -g gulp
 npm install
 gulp build

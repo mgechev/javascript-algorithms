@@ -3,7 +3,8 @@
   <root>
     <suite name="Install.prerequisites" state="1" id=".sh" description="**Install** system prerequisites ">
       <attributes>
-        <![CDATA[npm install -g gulp
+        <![CDATA[npm install -g minimatch@3.0.2
+npm install -g gulp
 npm install]]>
       </attributes>
     </suite>
