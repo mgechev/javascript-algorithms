@@ -1,5 +1,5 @@
 machine:
-  node_js:
+  node:
     version: 4.0
     
 test:
