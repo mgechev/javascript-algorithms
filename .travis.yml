@@ -1,11 +1,10 @@
 language: node_js
 node_js:
-  - "0.12"
+  - "4.0"
 before_script:
   # Install Testspace Runner
   - ./testspace_install.sh
   - export PATH="${HOME}/testspace:${PATH}"
-  - npm install -g minimatch@3.0.2
   - npm install -g gulp
   
 script: 
