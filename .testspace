@@ -1,0 +1,3 @@
+## Test Content files to publish
+[Tests]$CI_REPORTS/junitresults.xml{test}
+$CI_REPORTS/coverage/clover.xml
