@@ -35,8 +35,7 @@ Publishing results example:
 
 <pre>
 curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
-export CI_REPORTS=$PWD/test/reports
-testspace publish @.testspace $TESTSPACE_TOKEN/$BRANCH_NAME
+CI_REPORTS=$PWD/test/reports testspace publish @.testspace $TESTSPACE_TOKEN/$BRANCH_NAME
 </pre> 
 
 Checkout the [Space](http://munderseth.stridespace.com/projects/javascript.jasmine/spaces/master). 
