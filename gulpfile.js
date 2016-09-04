@@ -46,7 +46,7 @@ gulp.task('test', ['pre-test'], function () {
     // Creating the reports after tests ran 
     .pipe(istanbul.writeReports({
     	dir: './test/reports/coverage',
-    	reporters: ['clover', 'cobertura']
+    	reporters: ['clover']
     }));
 });
 
