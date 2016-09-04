@@ -1,5 +1,12 @@
-## Test Content files to publish
-$CI_REPORTS/jshint.xml
+# Test Content files to publish
+
+# "Static Analyis"
 $CI_REPORTS/jscs.xml
+$CI_REPORTS/jshint.xml
+
+# "Tests"
 [Tests]$CI_REPORTS/junitresults.xml{test}
+
+# "Code Coverage"
 $CI_REPORTS/coverage/clover.xml
+[Code Coverage]+$CI_REPORTS/coverage/clover.xml{attaching actual content for example only}
