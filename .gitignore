@@ -3,4 +3,4 @@ npm-debug.log
 debug
 .idea
 
-test/reports/
+test/reports/*.*
