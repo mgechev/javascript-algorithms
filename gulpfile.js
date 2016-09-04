@@ -6,7 +6,9 @@ var jasmine = require('gulp-jasmine');
 var istanbul = require('gulp-istanbul');
 var reporters = require('jasmine-reporters');
 var stylish = require('jshint-stylish');
+var jshintXMLReporter = require('gulp-jshint-xml-file-reporter');
 var jscs = require('gulp-jscs');
+var jscs = require('gulp-jscs-custom');
 var isWin = /^win/.test(process.platform);
 
 gulp.task('jsdoc', shell.task([
@@ -17,9 +19,13 @@ gulp.task('jsdoc', shell.task([
 
 gulp.task('lint', function () {
   return gulp.src(['./src/**/*.js'], ['./test/**/*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish))
-    .pipe(jshint.reporter('fail'));
+        .pipe(jshint())
+        .pipe(jshint.reporter(jshintXMLReporter))
+        .on('end', jshintXMLReporter.writeFile({
+            format: 'checkstyle',
+            filePath: './test/reports/jshint.xml',
+            alwaysReport: 'true'
+        }));
 });
 
 gulp.task('pre-test', function () {
@@ -46,7 +52,14 @@ gulp.task('test', ['pre-test'], function () {
 
 gulp.task('jscs', function () {
   return gulp.src(['src/**/*.js', 'test/**/*.js'])
-    .pipe(jscs());
+     .pipe(jscs({
+            esnext: false,
+            configPath: '.jscsrc',
+            reporter: 'checkstyle',
+            filePath: './test/reports/jscs.xml',
+            failOnError: false
+        }));
 });
+
 
 gulp.task('build', ['lint', 'jscs', 'test']);

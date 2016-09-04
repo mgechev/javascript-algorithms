@@ -1,3 +1,5 @@
 ## Test Content files to publish
+$CI_REPORTS/jshint.xml
+$CI_REPORTS/jscs.xml
 [Tests]$CI_REPORTS/junitresults.xml{test}
 $CI_REPORTS/coverage/clover.xml
