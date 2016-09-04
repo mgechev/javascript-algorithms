@@ -18,8 +18,8 @@ Publising **Test Content** using www.testspace.com
 
 [![Space Health](http://munderseth.stridespace.com/projects/278/spaces/910/badge)](http://munderseth.stridespace.com/projects/278/spaces/910 "Test Cases")
 [![Space Metric](http://munderseth.stridespace.com/projects/278/spaces/910/metrics/363/badge)](http://munderseth.stridespace.com/spaces/910/schema/Code%20Coverage "Code Coverage (branches)")
-<a title="Code Coverage (methods)" href="http://munderseth.stridespace.com/spaces/910/schema/Code%20Coverage"><img alt="Space Metric" src="http://munderseth.stridespace.com/projects/278/spaces/910/metrics/364/badge" /></a>
-
+[![Space Metric](http://munderseth.stridespace.com/projects/278/spaces/911/metrics/367/badge)](http://munderseth.stridespace.com/spaces/911/schema/Code%20Coverage "Code Coverage (methods)")
+[![Space Metric](http://munderseth.stridespace.com/projects/278/spaces/911/metrics/390/badge)](http://munderseth.stridespace.com/spaces/911/schema/Static%20Analysis "Static Analysis (issues)")
 
 ***
 
