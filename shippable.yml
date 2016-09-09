@@ -5,17 +5,13 @@ node_js:
 
 env:
   global:
-    - secure: RxFIwZUbf+Kec/kF37Iu8YaekLQDCjDP2YTCbqLi4mNHsbc4WRohUGXXYgCS6wSV8vEW3ditOFhTx/rchMJdJRonL1fNI6hSVLbFU39RGB/vhJXTGE8oU9dV0bK1a3vPmSoyWIhbODhS751nAlgMgd0U6QNxhRE/3SLuiD3pTGbV5XY13iJGzNIijCrrIu0FfgfNwkf5ezJBW+lzd/Cr5PJyu+mwRv3L5WPmhDslr6KGh4gkxnu+o1pa0x/S+M7YIQ+uy+5Y5N4pSS3TboVfsufrkCGI8CPr5WZjnKbejeN88kIUxSxEu0+xOo1vNX29uwh98HGpGcbmwSQgbUtFow==
-  
-before_script:
-  - ./testspace_install.sh
-  - export PATH="${HOME}/testspace:${PATH}"
-  - mkdir -p shippable/codecoverage
-  - mkdir -p shippable/testresults
+   - secure: cfRsskJX4S4Mu+b4jsfmmWKNYPDrumKQh8TKa1kIlNh3R2nU7GIEeDe/G/lvfN9dtyZJBuXxrn1pSV+rdjHlyc6iF+/6KyBnnLvf0tfQvxuArKsUia3ieAvQ0vt3Ibk8wuzlLkc0JYy62p89d14KTDz1RrHE0qY9QhGoHr40aOQtXpj2lzOhE+mzPqqGl89ix7kEKQ0o8vYMe/j1o7Q7lzQJN4e7Tv+7DCjs68TzcIftXvdtfTvK3WiND3TVNF+lgogRxFd15a89ZXVDGATXfoQcOkJLpie6DN9MyKOLAWdXX39bMn5+C3EGo6WNsrXOEI8co+GXnN6whyMdUhMBYA==
+ 
 script:
-  - testspace import .testspace.xml ${TESTSPACE_URL}
-  - testspace run ${TESTSPACE_URL}
+  - npm install -g gulp
+  - npm install
+  - gulp build
 
 after_script:
-  - cp test/reports/junitresults.xml shippable/testresults
-  - cp test/reports/coverage/clover.xml shippable/codecoverage
+  - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
+  - CI_REPORTS=$PWD/test/reports testspace publish @.testspace $TESTSPACE_TOKEN/${BRANCH}#ship.Build.${BUILD_NUMBER}

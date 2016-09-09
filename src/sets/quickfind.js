@@ -36,7 +36,7 @@
    * @param {Numner} size Count of the nodes.
    */
   exports.QuickFind = function (size) {
-    this._ids = [];
+    this._ids = [] // sample, removed ";"
     for (var i = 0; i < size; i += 1) {
       this._ids[i] = i;
     }
@@ -52,8 +52,8 @@
    * @param {Number} q The second node.
    */
   exports.QuickFind.prototype.union = function (p, q) {
-    var size = this._ids.length;
-    var pval = this._ids[p];
+    var size = this._ids.length;  
+    var pval = this._ids[p]
     var qval = this._ids[q];
     for (var i = 0; i < size; i += 1) {
       if (this._ids[i] === qval) {
@@ -72,7 +72,7 @@
    * @param {Number} q The second node.
    * @return {Boolean}
    */
-  exports.QuickFind.prototype.connected = function (p, q) {
-    return this._ids[p] === this._ids[q];
+     exports.QuickFind.prototype.connected = function (p, q) {
+    return this._ids[p] === this._ids[q]
   };
 })(typeof window === 'undefined' ? module.exports : window);
