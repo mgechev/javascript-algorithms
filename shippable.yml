@@ -5,8 +5,8 @@ node_js:
 
 env:
   global:
-   - secure: cfRsskJX4S4Mu+b4jsfmmWKNYPDrumKQh8TKa1kIlNh3R2nU7GIEeDe/G/lvfN9dtyZJBuXxrn1pSV+rdjHlyc6iF+/6KyBnnLvf0tfQvxuArKsUia3ieAvQ0vt3Ibk8wuzlLkc0JYy62p89d14KTDz1RrHE0qY9QhGoHr40aOQtXpj2lzOhE+mzPqqGl89ix7kEKQ0o8vYMe/j1o7Q7lzQJN4e7Tv+7DCjs68TzcIftXvdtfTvK3WiND3TVNF+lgogRxFd15a89ZXVDGATXfoQcOkJLpie6DN9MyKOLAWdXX39bMn5+C3EGo6WNsrXOEI8co+GXnN6whyMdUhMBYA==
- 
+   - secure: dS551dAR1+AWu+lKPqoObGME/BRgPcMJJ8G+U/TkhSMyeUi0y9Xjr87LJJJs2/aEKW63vdrAuwdMhIzcev9jU0/ZAGz2/pmyfDzj0iM+wh2MQYydwb2vughPVr7qb2j9EDczKuxW+S/DIPqkvNgS2oXjIyMsiJJbYPu7bOaBbVNcB2zFraNQShAz8/lMOwsDRPkKYf5rbtWeO4nNwD1OilfUU8t+hVcKiFZZY/iLbqamI1anXNhSnB6w5MptYDw0YNiHZMOA43oEUe4clayHssKjiG26UDDBvfUyRGh6KpTYT13EG1ddCVzsOLhw6a4P0l2wOBikN7cEhsNPFgq7tw==
+  
 script:
   - npm install -g gulp
   - npm install
