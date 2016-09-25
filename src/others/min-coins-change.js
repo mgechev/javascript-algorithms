@@ -5,7 +5,7 @@
    * Returns the minimum number of coins from given set,
    * which sum equals to given change. This is famous
    * problem from the dymanic programming:
-   *   https://en.wikipedia.org/wiki/Change-making_problem
+   *  {@link https://en.wikipedia.org/wiki/Change-making_problem}
    *
    * @public
    * @module others/minCoinsChange
