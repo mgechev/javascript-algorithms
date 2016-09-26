@@ -4,7 +4,7 @@
  * Allows to check whether the path between two nodes exists.
  * <br>
  * The algorithm is inspired by Robert Sedgewick's Java implementation.
- * For further reading http://algs4.cs.princeton.edu/home/.
+ * {@link http://algs4.cs.princeton.edu/home/}
  *
  * @example
  *

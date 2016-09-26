@@ -44,7 +44,7 @@
 
   /**
    * Splay tree.
-   * http://en.wikipedia.org/wiki/Splay_tree
+   * {@link http://en.wikipedia.org/wiki/Splay_tree}
    * @public
    * @constructor
    */
