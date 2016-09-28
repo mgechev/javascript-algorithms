@@ -7,11 +7,12 @@ env:
   global:
    - secure: dS551dAR1+AWu+lKPqoObGME/BRgPcMJJ8G+U/TkhSMyeUi0y9Xjr87LJJJs2/aEKW63vdrAuwdMhIzcev9jU0/ZAGz2/pmyfDzj0iM+wh2MQYydwb2vughPVr7qb2j9EDczKuxW+S/DIPqkvNgS2oXjIyMsiJJbYPu7bOaBbVNcB2zFraNQShAz8/lMOwsDRPkKYf5rbtWeO4nNwD1OilfUU8t+hVcKiFZZY/iLbqamI1anXNhSnB6w5MptYDw0YNiHZMOA43oEUe4clayHssKjiG26UDDBvfUyRGh6KpTYT13EG1ddCVzsOLhw6a4P0l2wOBikN7cEhsNPFgq7tw==
   
-script:
+build:
+ ci:
   - npm install -g gulp
   - npm install
   - gulp build
 
-after_script:
+ post_ci:
   - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
   - CI_REPORTS=$PWD/test/reports testspace @.testspace $TESTSPACE_TOKEN/${BRANCH}#ship.Build.${BUILD_NUMBER}
