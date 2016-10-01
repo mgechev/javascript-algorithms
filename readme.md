@@ -56,7 +56,7 @@ and all `*.spec.js` files will be executed.
 
 ## Contributions
 
-Fork the repo and make requred changes. After that push your changes in branch, which is named according to the changes you did.
+Fork the repo and make required changes. After that push your changes in branch, which is named according to the changes you did.
 Initiate the PR.
 
 Make sure you're editor makes validations according to the `.jshintrc` in the root directory of the repository.
