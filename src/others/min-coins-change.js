@@ -28,11 +28,9 @@
       return [change];
     }
     for (var i = 1; i <= change; i += 1) {
-      var current = null;
       for (var j = 0; j < coins.length && coins[j] <= change; j += 1) {
         for (var k = 0; k < minChange.length; k += 1) {
-          if (k + coins[j] === i &&
-             (!current || minChange[k].length + 1 < current.length)) {
+          if (k + coins[j] === i) {
             minChange[i] = minChange[k].concat([coins[j]]);
           }
         }
