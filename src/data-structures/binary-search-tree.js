@@ -71,13 +71,8 @@
       this._root = new exports.Node(value, null, null, null);
       return;
     }
-    var insertKey;
     current = current || this._root;
-    if (current.value > value) {
-      insertKey = '_left';
-    } else {
-      insertKey = '_right';
-    }
+    var insertKey = current.value > value ? '_left' : '_right';
     if (!current[insertKey]) {
       current[insertKey] = new exports.Node(value, null, null, current);
     } else {
@@ -200,43 +195,35 @@
       return null;
     }
 
-    if (current.value === value) {
-      return current;
-    }
-
     if (current.value > value) {
       return this._find(value, current._left);
-    }
+    } 
 
     if (current.value < value) {
       return this._find(value, current._right);
     }
+    
+    return current;
   };
 
   /**
    * Replaces given child with new one, for given parent.
    *
    * @private
-   * @param {Node} parent Parent node.
    * @param {Node} oldChild Child to be replaced.
    * @param {Node} newChild Child replacement.
    */
   exports.BinaryTree.prototype._replaceChild =
-   function (parent, oldChild, newChild) {
-    if (!parent) {
-      this._root = newChild;
-      if (this._root !== null){
-        this._root._parent = null;
-      }
+   function (oldChild, newChild) {
+    var parent = oldChild._parent;
+    if (newChild) {
+      newChild._parent = parent;    
+    }
+
+    if (parent) {
+      parent[oldChild === parent._left ? '_left' : '_right'] = newChild;
     } else {
-      if (parent._left === oldChild) {
-        parent._left = newChild;
-      } else {
-        parent._right = newChild;
-      }
-      if (newChild) {
-        newChild._parent = parent;
-      }
+      this._root = newChild;
     }
   };
 
@@ -254,18 +241,21 @@
       return false;
     }
     if (node._left && node._right) {
-      var min = this._findMin(node._right);
+      var min = this.
+      
+      
+      (node._right);
       var temp = node.value;
       node.value = min.value;
       min.value = temp;
       return this.remove(min);
     } else {
       if (node._left) {
-        this._replaceChild(node._parent, node, node._left);
+        this._replaceChild(node, node._left);
       } else if (node._right) {
-        this._replaceChild(node._parent, node, node._right);
+        this._replaceChild(node, node._right);
       } else {
-        this._replaceChild(node._parent, node, null);
+        this._replaceChild(node, null);
       }
       return true;
     }
@@ -276,18 +266,14 @@
    *
    * @private
    * @param {Node} node Root of the sub-tree.
-   * @param {Number|String} current Current minimum value of the sub-tree.
    * @returns {Node} Node with the minimum value in the sub-tree.
    */
-  exports.BinaryTree.prototype._findMin = function (node, current) {
-    current = current || { value: Infinity };
-    if (!node) {
-      return current;
+  exports.BinaryTree.prototype._findMin = function (node) {
+    var minNode = node || { value: Infinity };
+    while(minNode._left) {
+      minNode = minNode._left;
     }
-    if (current.value > node.value) {
-      current = node;
-    }
-    return this._findMin(node._left, current);
+    return minNode;
   };
 
   /**
@@ -295,18 +281,14 @@
    *
    * @private
    * @param {Node} node Root of the sub-tree.
-   * @param {Number|String} current Current maximum value of the sub-tree.
    * @returns {Node} Node with the maximum value in the sub-tree.
    */
-  exports.BinaryTree.prototype._findMax = function (node, current) {
-    current = current || { value: -Infinity };
-    if (!node) {
-      return current;
+  exports.BinaryTree.prototype._findMax = function (node) {
+    var maxNode = node || { value: -Infinity };
+    while(maxNode._right) {
+      maxNode = maxNode._right;
     }
-    if (current.value < node.value) {
-      current = node;
-    }
-    return this._findMax(node._right, current);
+    return maxNode;
   };
 
   /**
