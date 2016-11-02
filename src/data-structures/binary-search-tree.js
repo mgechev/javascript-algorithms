@@ -197,12 +197,12 @@
 
     if (current.value > value) {
       return this._find(value, current._left);
-    } 
+    }
 
     if (current.value < value) {
       return this._find(value, current._right);
     }
-    
+
     return current;
   };
 
@@ -217,7 +217,7 @@
    function (oldChild, newChild) {
     var parent = oldChild._parent;
     if (newChild) {
-      newChild._parent = parent;    
+      newChild._parent = parent;
     }
 
     if (parent) {
@@ -241,10 +241,7 @@
       return false;
     }
     if (node._left && node._right) {
-      var min = this.
-      
-      
-      (node._right);
+      var min = this._findMin(node._right);
       var temp = node.value;
       node.value = min.value;
       min.value = temp;
@@ -270,7 +267,7 @@
    */
   exports.BinaryTree.prototype._findMin = function (node) {
     var minNode = node || { value: Infinity };
-    while(minNode._left) {
+    while (minNode._left) {
       minNode = minNode._left;
     }
     return minNode;
@@ -285,7 +282,7 @@
    */
   exports.BinaryTree.prototype._findMax = function (node) {
     var maxNode = node || { value: -Infinity };
-    while(maxNode._right) {
+    while (maxNode._right) {
       maxNode = maxNode._right;
     }
     return maxNode;
