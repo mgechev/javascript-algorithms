@@ -23,8 +23,8 @@ describe('IntervalTree', function () {
     expect(it.intersects([9303743, 9303744])).toBe(true)
     expect(it.intersects([9303742, 9303742])).toBe(false)
 
-    expect(it.intersects([9404967,9404967 ])).toBe(true)
-    expect(it.intersects([9404968,9404969 ])).toBe(false)
+    expect(it.intersects([9404967,9404967])).toBe(true)
+    expect(it.intersects([9404968,9404969])).toBe(false)
 
     it = new IntervalTree();
 
