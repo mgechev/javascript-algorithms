@@ -1,0 +1,12 @@
+# Test Content files to publish
+
+# "Static Analyis"
+$PWD/test/reports/jscs.xml
+$PWD/test/reports/jshint.xml
+
+# "Tests"
+[Tests]$PWD/test/reports/junitresults.xml{test}
+
+# "Code Coverage"
+$PWD/test/reports/coverage/clover.xml
+[Code Coverage]+$PWD/test/reports/coverage/clover.xml{attaching actual content for example only}

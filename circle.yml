@@ -7,7 +7,8 @@ test:
     - npm install -g gulp
     - npm install
     - gulp build
- 
+    
+ # Requires TESTSPACE_TOKEN environment variable.      
   post:
     - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
-    - CI_REPORTS=$PWD/test/reports testspace @.testspace $TESTSPACE_TOKEN/${CIRCLE_BRANCH}#circle.Build.${CIRCLE_BUILD_NUM}
+    - testspace @.testspace.txt $TESTSPACE_TOKEN/${CIRCLE_PROJECT_USERNAME}:${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}#circle.Build.${CIRCLE_BUILD_NUM}
