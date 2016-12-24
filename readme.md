@@ -7,21 +7,9 @@
 Sample demonstrates techniques for using Testspace with Javascript code and the [Jasmine test framework](http://jasmine.github.io/) together with [Istanbul code coverage tool](https://gotwarlost.github.io/istanbul/) and [Gulp JS build system](http://gulpjs.com/).
 
 *** 
-Using Multiple Online CI Services:
+Example branching only: **development**
 
-[![Build Status](https://travis-ci.org/testspace-samples/javascript.jasmine.svg?branch=master)](https://travis-ci.org/testspace-samples/javascript.jasmine)
-[![CircleCI](https://circleci.com/gh/testspace-samples/javascript.jasmine.svg?style=svg)](https://circleci.com/gh/testspace-samples/javascript.jasmine)
-[![Run Status](https://api.shippable.com/projects/5707eeda2a8192902e1bd7b4/badge?branch=master)](https://app.shippable.com/projects/5707eeda2a8192902e1bd7b4)
-
-***
-Publising **Test Content** using www.testspace.com
-
-[![Space Health](https://samples.testspace.com/projects/165/spaces/804/badge)](https://samples.testspace.com/projects/165/spaces/804 "Test Cases")
-[![Space Metric](https://samples.testspace.com/projects/165/spaces/804/metrics/755/badge)](https://samples.testspace.com/spaces/804/schema/Code%20Coverage "Code Coverage (branches)")
-[![Space Metric](https://samples.testspace.com/projects/165/spaces/804/metrics/756/badge)](https://samples.testspace.com/spaces/804/schema/Code%20Coverage "Code Coverage (methods)")
-[![Space Metric](https://samples.testspace.com/projects/165/spaces/804/metrics/758/badge)](https://samples.testspace.com/spaces/804/schema/Static%20Analysis "Static Analysis (issues)")
-
-
+* Reference article: [git branching workflow](https://git-scm.com/book/en/v1/Git-Branching-Branching-Workflows)
 
 ***
 
