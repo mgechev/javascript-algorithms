@@ -1,7 +1,7 @@
 (function (exports) {
   'use strict';
 
-  exports.longestSubsequence = (function () {
+  exports.longestIncreasingSubsequence = (function () {
 
     /**
     * Find the index of the first largest element in array.
@@ -57,12 +57,12 @@
     }
 
     /**
-    * Finds the longest sub-sequence for given node.<br><br>
+    * Finds the longest increasing sub-sequence for given node.<br><br>
     * Complexity: O(N^N).
     * @private
     * @param {Object} dag  Graph represented with list of neighbours.
     * @param {number} node The current node.
-    * @return {object} The longest sub-sequence for given node.
+    * @return {object} The longest increasing sub-sequence for given node.
     */
     function find(dag, node) {
       node = node || 0;
@@ -103,7 +103,7 @@
     *
     * @example
     * var subsequence = require('path-to-algorithms/src/searching/'+
-    * 'longest-increasing-subsequence').longestSubsequence;
+    * 'longest-increasing-subsequence').longestIncreasingSubsequence;
     * console.log(subsequence([1, 0, 4, 3, 5])); // 1, 4, 5
     *
     * @public

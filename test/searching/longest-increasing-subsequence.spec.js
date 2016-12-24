@@ -1,11 +1,11 @@
 'use strict';
 
-var longestSubsequence =
+var longestIncreasingSubsequence =
   require('../../src/searching/' +
-    'longest-subsequence')
-    .longestSubsequence;
+    'longest-increasing-subsequence')
+    .longestIncreasingSubsequence;
 
-describe('longest subsequence', function () {
+describe('longest increasing subsequence', function () {
 
   var sequence;
   beforeEach(function () {
@@ -13,24 +13,24 @@ describe('longest subsequence', function () {
   });
 
   it('should work with empty array', function () {
-    expect(longestSubsequence([]).length).toBe(0);
+    expect(longestIncreasingSubsequence([]).length).toBe(0);
   });
 
   it('should return the only element in a single element array', function () {
     var array = [1];
-    expect(longestSubsequence(array)).toEqual([1]);
+    expect(longestIncreasingSubsequence(array)).toEqual([1]);
   });
 
   it('should give the right length', function () {
-    expect(longestSubsequence(sequence).length).toBe(5);
+    expect(longestIncreasingSubsequence(sequence).length).toBe(5);
   });
 
   it('should work with empty arrays', function () {
-    expect(longestSubsequence([]).length).toBe(0);
+    expect(longestIncreasingSubsequence([]).length).toBe(0);
   });
 
   it('should return the correct path', function () {
-    expect(longestSubsequence(sequence).toString())
+    expect(longestIncreasingSubsequence(sequence).toString())
       .toBe([2, 3, 6, 9, 11].toString());
   });
 
@@ -39,7 +39,7 @@ describe('longest subsequence', function () {
       return b - a;
     };
     var seq = [1, 2, -1];
-    var result = longestSubsequence(seq, cmp);
+    var result = longestIncreasingSubsequence(seq, cmp);
     expect(result.length).toBe(2);
     expect(result).toEqual([1, -1]);
   });
