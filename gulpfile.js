@@ -11,6 +11,11 @@ var jscs = require('gulp-jscs');
 var jscs = require('gulp-jscs-custom');
 var isWin = /^win/.test(process.platform);
 
+function handleError(err) {
+  console.log(err.toString());
+  this.emit('end');
+}
+
 gulp.task('jsdoc', shell.task([
   (isWin) ?
   '"node_modules/.bin/jsdoc.cmd" -c ./doc-config.json' :
@@ -30,12 +35,12 @@ gulp.task('lint', function () {
 
 gulp.task('pre-test', function () {
   return gulp.src(['./src/**/*.js'])
-    // Covering files 
+    // Covering files
     .pipe(istanbul())
-    // Force `require` to return covered files 
+    // Force `require` to return covered files
     .pipe(istanbul.hookRequire());
 });
- 
+
 gulp.task('test', ['pre-test'], function () {
   return gulp.src('test/**/*.spec.js')
     .pipe(jasmine({
@@ -43,7 +48,8 @@ gulp.task('test', ['pre-test'], function () {
     		savePath: 'test/reports'
     	})
     }))
-    // Creating the reports after tests ran 
+    .on("error", handleError)
+    // Creating the reports after tests ran
     .pipe(istanbul.writeReports({
     	dir: './test/reports/coverage',
     	reporters: ['clover']
