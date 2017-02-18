@@ -8,6 +8,7 @@ Sample demonstrates techniques for using Testspace with Javascript code and the 
 
 *** 
 Publishing **Test Content** using www.testspace.com.
+
 [![Space Health](https://samples.testspace.com/spaces/804/badge)](https://samples.testspace.com/spaces/804 "Test Cases")
 [![Space Metric](https://samples.testspace.com/spaces/804/metrics/755/badge)](https://samples.testspace.com/spaces/804/schema/Code%20Coverage "Code Coverage (branches)") 
 [![Space Metric](https://samples.testspace.com/spaces/804/metrics/756/badge)](https://samples.testspace.com/spaces/804/schema/Code%20Coverage "Code Coverage (methods)") 
