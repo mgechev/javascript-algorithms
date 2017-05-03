@@ -266,4 +266,34 @@
     }
   };
 
+  /**
+  * Get Level Order Traversal for the given Red Black Tree,
+  * returns 'Tree is empty' string when tree has no Nodes.
+  * Complexity: O(N).
+  *
+  * @public
+  * @return {String} The keys of the tree in level order traversal.
+  *
+  */
+  exports.RBTree.prototype.levelOrderTraversal = function () {
+    var queue = [];
+    var levelOrderString = '';
+    if (this._root){
+      queue.push(this._root);
+    }else {
+      levelOrderString = ' Tree is empty';
+    }
+    while (queue.length !== 0){
+      var tempNode = queue.shift();
+      levelOrderString += ' ' + tempNode.getKey();
+      if (tempNode.getLeft() !== null){
+        queue.push(tempNode.getLeft());
+      }
+      if (tempNode.getRight() !== null){
+        queue.push(tempNode.getRight());
+      }
+    }
+    return 'Level Order Traversal -:' + levelOrderString;
+  };
+
 })(typeof window === 'undefined' ? module.exports : window);

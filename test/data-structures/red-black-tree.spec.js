@@ -97,4 +97,20 @@ describe('RBTree', function () {
     });
   });
 
+  describe('levelOrderTraversal method', function () {
+    it('should be able to traverse tree in level order', function () {
+      var tree = new RBTree();
+      expect(tree.levelOrderTraversal()).toBe('Level Order Traversal -: Tree is empty');
+      tree.put(10);
+      tree.put(20);
+      expect(tree.levelOrderTraversal()).toBe('Level Order Traversal -: 20 10');
+      tree.put(30);
+      expect(tree.levelOrderTraversal()).toBe('Level Order Traversal -: 20 10 30');
+      tree.put(45);
+      expect(tree.levelOrderTraversal()).toBe('Level Order Traversal -: 20 10 45 30');
+      tree.put(5);
+      expect(tree.levelOrderTraversal()).toBe('Level Order Traversal -: 20 10 45 5 30');
+    });
+  });
+
 });
