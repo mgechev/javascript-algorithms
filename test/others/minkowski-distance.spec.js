@@ -20,22 +20,22 @@ describe('Minkowski Distance', function () {
     expect(minkowskiDistance([0, 1, 4], [1, 1, 6], Number.NEGATIVE_INFINITY)).toBe(0);
   });
   it('should throw when 2 points are not in equal length', function () {
-    expect( function () {
+    expect(function () {
       minkowskiDistance([1, 2], [1], 1)
     }).toThrow('2 points must have same array length');
   });
   it('should throw when p is not defined', function () {
-    expect( function () {
+    expect(function () {
       minkowskiDistance([1, 2], [1, 2])
     }).toThrow('p must be a number');
   });
   it('should throw when p is not a number', function () {
-    expect( function () {
+    expect(function () {
       minkowskiDistance([1, 2], [1, 2], NaN)
     }).toThrow('p must be a number');
   });
   it('should throw when p is less than 1', function () {
-    expect( function () {
+    expect(function () {
       minkowskiDistance([1, 2], [1, 2], 0)
     }).toThrow('p less than 1 will violate triangle inequality');
   });
