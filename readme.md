@@ -83,9 +83,9 @@ If the build is not successful fix your code in order the tests and jshint valid
 :---: |:---: |:---: |:---: |:---: |:---: |
 [pkerpedjiev](https://github.com/pkerpedjiev) |[Xuefeng-Zhu](https://github.com/Xuefeng-Zhu) |[mik-laj](https://github.com/mik-laj) |[amilajack](https://github.com/amilajack) |[ysharplanguage](https://github.com/ysharplanguage) |[contra](https://github.com/contra) |
 
-[<img alt="liesislukas" src="https://avatars0.githubusercontent.com/u/2733862?v=3&s=117" width="117">](https://github.com/liesislukas) |[<img alt="millerrach" src="https://avatars1.githubusercontent.com/u/12432794?v=3&s=117" width="117">](https://github.com/millerrach) |[<img alt="fanixk" src="https://avatars1.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |[<img alt="shaunak1111" src="https://avatars0.githubusercontent.com/u/1323960?v=3&s=117" width="117">](https://github.com/shaunak1111) |
+[<img alt="liesislukas" src="https://avatars0.githubusercontent.com/u/2733862?v=3&s=117" width="117">](https://github.com/liesislukas) |[<img alt="millerrach" src="https://avatars1.githubusercontent.com/u/12432794?v=3&s=117" width="117">](https://github.com/millerrach) |[<img alt="fanixk" src="https://avatars1.githubusercontent.com/u/921156?v=3&s=117" width="117">](https://github.com/fanixk) |[<img alt="shaunak1111" src="https://avatars0.githubusercontent.com/u/3318312?v=3&s=117" width="117">](https://github.com/shaunak1111) | |[<img alt="kdamball" src="https://avatars0.githubusercontent.com/u/3318312?v=3&s=117" width="117">](https://github.com/kdamball) |
 :---: |:---: |:---: |:---: |
-[liesislukas](https://github.com/liesislukas) |[millerrach](https://github.com/millerrach) |[fanixk](https://github.com/fanixk) |[shaunak1111](https://github.com/shaunak1111) |
+[liesislukas](https://github.com/liesislukas) |[millerrach](https://github.com/millerrach) |[fanixk](https://github.com/fanixk) |[shaunak1111](https://github.com/shaunak1111) |[kdamball](https://github.com/kdamball) |
 
 ## License
 
