@@ -17,26 +17,26 @@ describe('Minkowski Distance', function () {
     expect(minkowskiDistance([0, 1, 4], [1, 1, 6], Number.NEGATIVE_INFINITY)).toBe(0);
   });
   it('should return 8.372966759705923 with points (0, 3, 4, 5), (7, 6, 3, -1) in order 3.', function () {
-    expect(minkowskiDistance([0, 1, 4], [1, 1, 6], Number.NEGATIVE_INFINITY)).toBe(0);
+    expect(minkowskiDistance([0, 3, 4, 5], [7, 6, 3, -1], 3)).toBe(8.372966759705923);
   });
-  it('should throw when 2 points are not in equal length', function () {
+  it('should throw when both vectors don\'t have same dimension', function () {
     expect(function () {
       minkowskiDistance([1, 2], [1], 1)
-    }).toThrow('2 points must have same array length');
+    }).toThrow('Both vectors should have same dimension');
   });
   it('should throw when p is not defined', function () {
     expect(function () {
       minkowskiDistance([1, 2], [1, 2])
-    }).toThrow('p must be a number');
+    }).toThrow('The order "p" must be a number');
   });
   it('should throw when p is not a number', function () {
     expect(function () {
       minkowskiDistance([1, 2], [1, 2], NaN)
-    }).toThrow('p must be a number');
+    }).toThrow('The order "p" must be a number');
   });
   it('should throw when p is less than 1', function () {
     expect(function () {
       minkowskiDistance([1, 2], [1, 2], 0)
-    }).toThrow('p less than 1 will violate triangle inequality');
+    }).toThrow('Order less than 1 will violate the triangle inequality');
   });
 });

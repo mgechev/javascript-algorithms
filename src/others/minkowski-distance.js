@@ -19,11 +19,11 @@
       var i;
 
       if (lx !== ly) {
-        throw '2 points must have same array length';
+        throw 'Both vectors should have same dimension';
       }
 
       if (isNaN(p)) {
-        throw 'p must be a number';
+        throw 'The order "p" must be a number';
       }
 
       if (p === Number.POSITIVE_INFINITY) {
@@ -31,7 +31,7 @@
       } else if (p === Number.NEGATIVE_INFINITY) {
         return chebyshevDistance(x, y, lx, p, Math.min);
       } else if (p < 1) {
-        throw 'p less than 1 will violate triangle inequality';
+        throw 'Order less than 1 will violate the triangle inequality';
       } else {
         d = 0;
 
