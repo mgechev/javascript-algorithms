@@ -100,7 +100,7 @@
             !visited[i] && //and if we haven't visited this node
             //and this node is sibling of the current...
             Number.isFinite(graph[i][current.node])) {
-              
+
             tempDistance = current.distance + graph[i][current.node];
             if (tempDistance < distance[i].distance) {
               distance[i].distance = tempDistance;
