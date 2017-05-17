@@ -92,7 +92,7 @@
      * var shortestDist = dijkstra(0, 2, distMatrix); // 9
      */
     return function (src, dest, graph) {
-      var  tempDistance = 0;
+      var tempDistance = 0;
       init(src, graph);
       while (current.node !== dest && isFinite(current.distance)) {
         for (var i = 0; i < graph.length; i += 1) {
@@ -100,11 +100,10 @@
             !visited[i] && //and if we haven't visited this node
             //and this node is sibling of the current...
             Number.isFinite(graph[i][current.node])) {
-
+              
             tempDistance = current.distance + graph[i][current.node];
             if (tempDistance < distance[i].distance) {
               distance[i].distance = tempDistance;
-              current.distance = tempDistance;
               unvisited.update(current);
             }
           }
