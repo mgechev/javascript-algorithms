@@ -29,7 +29,7 @@
       const [x, ...rest] = arr;
 
       return [
-          ...quickSort(rest.filter(v => cmp(v, x) < 0),
+          ...quickSort(rest.filter(v => cmp(v, x) < 0)),
           x,
           ...quickSort(rest.filter(v => cmp(v, x) >= 0))
       ]
