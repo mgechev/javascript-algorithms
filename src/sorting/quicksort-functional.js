@@ -22,7 +22,7 @@
      * @param {array} array Array which should be processed
      */
     return function quickSort(array, cmp) {
-      if (arr.length < 1) {
+      if (array.length < 1) {
         return arr;
       }
 
@@ -33,7 +33,6 @@
           x,
           ...quickSort(rest.filter(v => cmp(v, x) >= 0))
       ]
-      return array;
     }
 
 
@@ -58,7 +57,7 @@
      */
     return function (array, cmp) {
       cmp = cmp || compare;
-      quicksort(array, 0, array.length - 1, cmp);
+      quickSort(array, 0, array.length - 1, cmp);
       return array;
     };
 
