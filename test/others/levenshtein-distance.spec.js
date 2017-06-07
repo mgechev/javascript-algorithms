@@ -1,9 +1,9 @@
-'use strict';
-
 var mod = require('../../src/others/levenshtein-distance.js');
 var levenshteinDistance = mod.levenshteinDistance;
 
 describe('Levenstein\'s minimum edit distance algorithm', function () {
+  'use strict';
+
   it('should be defined', function () {
     expect(levenshteinDistance).toBeDefined();
   });

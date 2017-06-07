@@ -1,10 +1,10 @@
-'use strict';
-
 var mod = require('../../src/data-structures/splay-tree.js');
 var Node = mod.Node;
 var SplayTree = mod.SplayTree;
 
 describe('Node', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof Node).toBe('function');
   });
@@ -29,6 +29,8 @@ describe('Node', function () {
 });
 
 describe('SplayTree', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof SplayTree).toBe('function');
   });

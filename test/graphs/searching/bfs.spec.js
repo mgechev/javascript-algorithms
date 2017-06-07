@@ -1,7 +1,5 @@
 /* jshint multistr: true */
 
-'use strict';
-
 var graph = [[0, 0, 0, 0, 1],
              [0, 0, 0, 1, 0],
              [0, 0, 0, 0, 0],
@@ -11,6 +9,7 @@ var graph = [[0, 0, 0, 0, 1],
 var bfs = require('../../../src/graphs/searching/bfs').bfs;
 
 describe('BFS', function () {
+  'use strict';
 
   it('should work with empty graph', function () {
     expect(bfs([], 0, 0)).toEqual([0]);

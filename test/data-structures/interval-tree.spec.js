@@ -1,9 +1,9 @@
-'use strict';
-
 var mod = require('../../src/data-structures/interval-tree.js');
 var IntervalTree = mod.IntervalTree;
 
 describe('IntervalTree', function () {
+  'use strict';
+
   it('should correctly detect intersections', function () {
     var it = new IntervalTree();
 

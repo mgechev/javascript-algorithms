@@ -1,11 +1,10 @@
-'use strict';
-
 var longestCommonSubsequence =
   require('../../src/searching/' +
     'longest-common-subsequence')
     .longestCommonSubsequence;
 
 describe('longest common subsequence', function () {
+  'use strict';
 
   it('should work with empty strings', function () {
     expect(longestCommonSubsequence('', '')).toBe('');

@@ -1,11 +1,10 @@
-'use strict';
-
 var longestIncreasingSubsequence =
   require('../../src/searching/' +
     'longest-increasing-subsequence')
     .longestIncreasingSubsequence;
 
 describe('longest increasing subsequence', function () {
+  'use strict';
 
   var sequence;
   beforeEach(function () {

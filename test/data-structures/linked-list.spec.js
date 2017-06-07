@@ -1,22 +1,24 @@
-'use strict';
-
 var mod = require('../../src/data-structures/linked-list.js');
 var Node = mod.Node;
 var LinkedList = mod.LinkedList;
 
 describe('Node', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof Node).toBe('function');
   });
   it('should construct properly', function () {
-    var node = new Node("data");
-    expect(node.data).toBe("data");
+    var node = new Node('data');
+    expect(node.data).toBe('data');
     expect(node.next).toBe(null);
     expect(node.prev).toBe(null);
   });
 });
 
 describe('Linked List', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof LinkedList).toBe('function');
   });
@@ -133,7 +135,8 @@ describe('Linked List', function () {
     linkedList.push(5);
     var pushedValue = 1;
     function callback(node){
-      expect(node.data).toBe(pushedValue++);
+      expect(node.data).toBe(pushedValue);
+      pushedValue += 1;
     }
     linkedList.inorder(callback);
   });

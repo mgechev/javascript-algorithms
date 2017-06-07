@@ -5,7 +5,6 @@
     "beforeOpeningCurlyBrace": true
   },
   "disallowMultipleVarDecl": true,
-  "requireSpacesInsideObjectBrackets": "allButNested",
   "disallowSpacesInsideArrayBrackets": true,
   "disallowSpacesInsideParentheses": true,
   "disallowSpaceAfterObjectKeys": true,

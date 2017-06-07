@@ -1,9 +1,9 @@
-'use strict';
-
 var minCoinsChange =
   require('../../src/others/min-coins-change.js').minCoinsChange;
 
 describe('Change making problem', function () {
+  'use strict';
+
   it('should be defined', function () {
     expect(minCoinsChange).toBeDefined();
   });
@@ -23,8 +23,7 @@ describe('Change making problem', function () {
     expect(minCoinsChange([1, 2, 3], 10).length).toEqual(4);
   });
 
-  it('should return undefined for combination, which is not possible',
-    function () {
-      expect(minCoinsChange([1, 2, 3], 0.5)).not.toBeDefined();
-    });
+  it('should return undefined for combination, which is not possible', function () {
+    expect(minCoinsChange([1, 2, 3], 0.5)).not.toBeDefined();
+  });
 });

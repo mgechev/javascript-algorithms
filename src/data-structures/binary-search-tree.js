@@ -221,8 +221,7 @@
    * @param {Node} oldChild Child to be replaced.
    * @param {Node} newChild Child replacement.
    */
-  exports.BinaryTree.prototype._replaceChild =
-   function (parent, oldChild, newChild) {
+  exports.BinaryTree.prototype._replaceChild = function (parent, oldChild, newChild) {
     if (!parent) {
       this._root = newChild;
       if (this._root !== null){
@@ -411,8 +410,7 @@
    * for ancestor.
    * @returns {Node} The lowest common ancestor of the two nodes or null.
    */
-  exports.BinaryTree.prototype.lowestCommonAncestor =
-   function (firstNode, secondNode) {
+  exports.BinaryTree.prototype.lowestCommonAncestor = function (firstNode, secondNode) {
     return this._lowestCommonAncestor(firstNode, secondNode, this._root);
   };
 
@@ -427,8 +425,7 @@
    * @param {Node} current Current node.
    * @returns {Node} The lowest common ancestor of the two nodes or null.
    */
-  exports.BinaryTree.prototype._lowestCommonAncestor =
-   function (firstNode, secondNode, current) {
+  exports.BinaryTree.prototype._lowestCommonAncestor = function (firstNode, secondNode, current) {
     var firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
     var secondNodeInLeft = this._existsInSubtree(secondNode, current._left);
     var firstNodeInRight = this._existsInSubtree(firstNode, current._right);

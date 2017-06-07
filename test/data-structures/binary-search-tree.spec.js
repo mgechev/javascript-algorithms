@@ -1,16 +1,18 @@
-'use strict';
-
 var mod = require('../../src/data-structures/binary-search-tree.js');
 var Node = mod.Node;
 var BinaryTree = mod.BinaryTree;
 
 describe('Node', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof Node).toBe('function');
   });
 });
 
 describe('Binary Tree', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof BinaryTree).toBe('function');
   });

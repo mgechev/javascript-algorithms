@@ -1,16 +1,18 @@
-'use strict';
-
 var mod = require('../../src/data-structures/hash-table.js');
 var Node = mod.Node;
 var Hashtable = mod.Hashtable;
 
 describe('Node', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof Node).toBe('function');
   });
 });
 
 describe('Hash table', function () {
+  'use strict';
+
   it('should be a constructor function.', function () {
     expect(typeof Hashtable).toBe('function');
   });

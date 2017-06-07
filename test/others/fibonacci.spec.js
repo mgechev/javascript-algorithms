@@ -1,9 +1,9 @@
-'use strict';
-
 var mod = require('../../src/others/fibonacci.js');
 var fibonacci = mod.fibonacci;
 
 describe('fibonacci algorithm', function () {
+  'use strict';
+
   it('should return value 1 with input 1.', function () {
     expect(fibonacci(1)).toBe(1);
   });
