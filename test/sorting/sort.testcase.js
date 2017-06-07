@@ -39,7 +39,7 @@ module.exports = function (sort, algorithmName, options) {
           precision: 0
         });
       }
-      sort(array);
+      array = sort(array);
       for (var i = 0; i < array.length - 1; i += 1) {
         expect(array[i] <= array[i + 1]).toBeTruthy();
       }
@@ -53,7 +53,7 @@ module.exports = function (sort, algorithmName, options) {
         }
 
         var array = createRandomArray();
-        sort(array, comparator);
+        array = sort(array, comparator);
 
         for (var i = 0; i < array.length - 1; i += 1) {
           expect(array[i] >= array[i + 1]).toBeTruthy();

@@ -21,18 +21,18 @@
      * @private
      * @param {array} array Array which should be processed
      */
-    function quickSort(array, cmp) {
+    function quicksort(array, cmp) {
       if (array.length < 1) {
-        return arr;
+        return array;
       }
 
-      const [x, ...rest] = arr;
+      const [x, ...rest] = array;
 
       return [
-          ...quickSort(rest.filter(v => cmp(v, x) < 0)),
-          x,
-          ...quickSort(rest.filter(v => cmp(v, x) >= 0))
-      ]
+        ...quicksort(rest.filter(v => cmp(v, x) < 0), cmp),
+        x,
+        ...quicksort(rest.filter(v => cmp(v, x) >= 0), cmp)
+      ];
     }
 
 
@@ -57,7 +57,7 @@
      */
     return function (array, cmp) {
       cmp = cmp || compare;
-      quickSort(array, 0, array.length - 1, cmp);
+      array = quicksort(array, cmp);
       return array;
     };
 
