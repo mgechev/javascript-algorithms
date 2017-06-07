@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Algorithms Test</title>
+</head>
+<body>
+    <div>
+        <h2>Algorithms Test - Searching</h2>
+    </div>
+<!--  加载require.js以后，下一步就要加载我们自己的代码了。我们自己的代码文件是main.js，放在scripts目录下面。 data-main属性的作用是，指定网页程序的主模块。在上例中，就是js目录下面的main.js，这个文件会第一个被require.js加载。由于require.js默认的文件后缀名是js，所以可以把main.js简写成main。-->
+    <script src="src/data-structures/linked-list.js"></script>
+    <script src="src/sorting/3-way-string-quicksort.js"></script>
+    <script src="src/sorting/mergesort-noreq.js"></script>
+    <script src="src/sorting/insertionsort.js"></script>
+    <script src="main.js"></script>
+    
+    <script>
+        var array = ['bb', 'aa', 'cc', 12, 6, 8, 'e', 'b','a'];
+//      var mergeSort = require('src/sorting/mergesort').mergeSort;
+        console.log("Original Array: ");
+        console.log(array);
+        console.log("quicksort: ");
+        console.log(quicksort(array));
+        console.log("mergeSort: ");
+        console.log(mergeSort(array));
+        console.log("insertionSort: ");
+        console.log(insertionSort(array));
+    </script>
+</body>
+</html>
