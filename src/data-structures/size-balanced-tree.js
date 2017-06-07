@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Size balanced tree is a data structure which is
  * a type of self-balancing binary search tree that use
@@ -33,6 +31,8 @@
  */
 
 function CreateSBTreeClass (Node, Nil, updateChild) {
+  'use strict';
+
   function LeftRotate(node, childNode) {
     /*
       Before rotate:
@@ -291,6 +291,7 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
 }
 
 (function (exports) {
+  'use strict';
 
   /**
    * Node constructor of the Size-Balanced tree.

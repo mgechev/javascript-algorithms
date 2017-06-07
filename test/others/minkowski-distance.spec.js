@@ -1,9 +1,9 @@
-'use strict';
-
 var mod = require('../../src/others/minkowski-distance.js');
 var minkowskiDistance = mod.minkowskiDistance;
 
 describe('Minkowski Distance', function () {
+  'use strict';
+
   it('should return 1 with points (0, 1), (1, 1) in order 1.', function () {
     expect(minkowskiDistance([0, 1], [1, 1], 1)).toBe(1);
   });

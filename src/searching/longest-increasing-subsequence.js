@@ -72,7 +72,7 @@
       var neighbours = dag[node];
       var neighboursDistance = [];
       var maxDist;
-      var maxNode;
+      // var maxNode;
       var distance;
       var result;
 
@@ -85,7 +85,7 @@
       }
 
       maxDist = max(neighboursDistance);
-      maxNode = neighbours[maxDist];
+      // maxNode = neighbours[maxDist];
       distance = 1 + neighboursDistance[maxDist].distance;
       find.memo[node] = result = {
         distance: distance,

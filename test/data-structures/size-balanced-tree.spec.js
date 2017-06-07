@@ -1,5 +1,3 @@
-'use strict';
-
 var mod = require('../../src/data-structures/size-balanced-tree.js');
 var Node = mod.Node;
 var Nil = mod.Nil;
@@ -7,6 +5,8 @@ var SBTree = mod.SBTree;
 var updateChild = mod.updateChild;
 
 describe('Node', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof Node).toBe('function');
   });
@@ -39,6 +39,8 @@ describe('Node', function () {
 });
 
 describe('SBTree', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof SBTree).toBe('function');
   });
@@ -95,15 +97,15 @@ describe('SBTree', function () {
 
   it('push and get 100000 elements, remove the array by always remove the first/last element', function () {
     var sTree = new SBTree();
-    for (var i = 0; i < 200000; ++i) {
+    for (var i = 0; i < 200000; i += 1) {
       sTree.push(i);
     }
     checkNil();
-    for (var i = 0; i < 200000; ++i) {
+    for (var i = 0; i < 200000; i += 1) {
       var node = sTree.get(i);
       expect(node.value).toBe(i);
     }
-    for (var i = 0; i < 200000; ++i) {
+    for (var i = 0; i < 200000; i += 1) {
       expect(sTree.get(0).value).toBe(i);
       var node = sTree.remove(0); // Always remove the first element;
       expect(node.value).toBe(i);
@@ -111,32 +113,32 @@ describe('SBTree', function () {
     checkNil();
     expect(sTree._root).toBe(Nil);
     var count = 10000;
-    for (var i = 0; i < count; ++i) {
+    for (var i = 0; i < count; i += 1) {
       sTree.insert(0, i);
     }
-    for (var i = 0; i < count; ++i) {
+    for (var i = 0; i < count; i += 1) {
       var node = sTree.remove(count - i - 1); // Always remove the last element;
       expect(node.value).toBe(i);
       expect(sTree.size).toBe(count - i - 1);
     }
     checkNil();
     var expectedArray = [];
-    for (var i = 0; i < 100000; ++i) {
+    for (var i = 0; i < 100000; i += 1) {
       var newPos = getRandomIntInclusive(0, sTree.size);
       sTree.insert(newPos, i);
       expectedArray.splice(newPos, 0, i);
     }
     expect(sTree.size).toBe(expectedArray.length);
-    for (var i = 0; i < sTree.size; ++i) {
+    for (var i = 0; i < sTree.size; i += 1) {
       var node = sTree.get(i);
       expect(node.value).toBe(expectedArray[i]);
     }
-    for (var i = 0; i < 90000; ++i) {
+    for (var i = 0; i < 90000; i += 1) {
       var removedPos = getRandomInt(0, sTree.size);
       sTree.remove(removedPos);
       expectedArray.splice(removedPos, 1);
     }
-    for (var i = 0; i < sTree.size; ++i) {
+    for (var i = 0; i < sTree.size; i += 1) {
       var node = sTree.get(i);
       expect(node.value).toBe(expectedArray[i]);
     }
@@ -145,12 +147,12 @@ describe('SBTree', function () {
 
   it('test getIndex', function () {
     var sTree = new SBTree();
-    for (var i = 0; i < 10000; ++i) {
+    for (var i = 0; i < 10000; i += 1) {
       var key = i.toString();
       sTree.push(key);
     }
 
-    for (var i = 0; i < 100; ++i) {
+    for (var i = 0; i < 100; i += 1) {
       var item = sTree.get(i);
       expect(item.value).toBe(i.toString());
       expect(sTree.getIndex(item)).toBe(i);
@@ -159,7 +161,7 @@ describe('SBTree', function () {
 
   it('test binary search', function () {
     var sTree = new SBTree();
-    for (var i = 0; i < 10000; ++i) {
+    for (var i = 0; i < 10000; i += 1) {
       sTree.push(i);
     }
     var cmp = function (a, b) {

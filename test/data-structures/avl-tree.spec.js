@@ -1,16 +1,18 @@
-'use strict';
-
 var mod = require('../../src/data-structures/avl-tree.js');
 var Node = mod.Node;
 var AVLTree = mod.AVLTree;
 
 describe('Node', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof Node).toBe('function');
   });
 });
 
 describe('AVL Tree', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof AVLTree).toBe('function');
   });

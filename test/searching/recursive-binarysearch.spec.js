@@ -1,9 +1,8 @@
-'use strict';
-
 var binarySearch =
   require('../../src/searching/recursive-binarysearch').binarySearch;
 
 describe('Binary search', function () {
+  'use strict';
 
   it('should find the element at position 0 ', function () {
     expect(binarySearch([1, 2, 3, 4, 6, 8], 1)).toBe(0);

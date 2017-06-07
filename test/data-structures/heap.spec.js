@@ -1,9 +1,9 @@
-'use strict';
-
 var mod = require('../../src/data-structures/heap.js');
 var Heap = mod.Heap;
 
 describe('Heap', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof Heap).toBe('function');
   });

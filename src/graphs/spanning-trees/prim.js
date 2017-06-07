@@ -107,42 +107,43 @@
         node: startVertex,
         distance: 0
       });
+      const process = function (e) {
+        if (inTheTree[e.v.id] && inTheTree[e.e.id]) {
+          return;
+        }
+        var collection = queue.getCollection();
+        var node;
+        if (e.e.id === current) {
+          node = e.v.id;
+        } else if (e.v.id === current) {
+          node = e.e.id;
+        } else {
+          return;
+        }
+        for (var i = 0; i < collection.length; i += 1) {
+          if (collection[i].node === node) {
+            if (collection[i].distance > e.distance) {
+              queue.changeKey(i, {
+                node: node,
+                distance: e.distance
+              });
+              parents[node] = current;
+              distances[node] = e.distance;
+            }
+            return;
+          }
+        }
+        queue.add({
+          node: node,
+          distance: e.distance
+        });
+        parents[node] = current;
+        distances[node] = e.distance;
+      };
       for (var i = 0; i < this.nodesCount - 1; i += 1) {
         current = queue.extract().node;
         inTheTree[current] = true;
-        this.edges.forEach(function (e) {
-          if (inTheTree[e.v.id] && inTheTree[e.e.id]) {
-            return;
-          }
-          var collection = queue.getCollection();
-          var node;
-          if (e.e.id === current) {
-            node = e.v.id;
-          } else if (e.v.id === current) {
-            node = e.e.id;
-          } else {
-            return;
-          }
-          for (var i = 0; i < collection.length; i += 1) {
-            if (collection[i].node === node) {
-              if (collection[i].distance > e.distance) {
-                queue.changeKey(i, {
-                  node: node,
-                  distance: e.distance
-                });
-                parents[node] = current;
-                distances[node] = e.distance;
-              }
-              return;
-            }
-          }
-          queue.add({
-            node: node,
-            distance: e.distance
-          });
-          parents[node] = current;
-          distances[node] = e.distance;
-        });
+        this.edges.forEach(process);
       }
       for (var node in parents) {
         spannigTree.push(

@@ -1,13 +1,13 @@
-'use strict';
-
 var SegmentTree = require('../../src/data-structures/segment-tree.js')
   .SegmentTree;
 
 var defaultAggregate = function (a, b) {
+  'use strict';
   return Math.min(a, b);
 };
 
 describe('Segment Tree', function () {
+  'use strict';
 
   describe('indexing', function () {
 

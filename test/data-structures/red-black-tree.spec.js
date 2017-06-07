@@ -1,11 +1,10 @@
-'use strict';
-
 var mod = require('../../src/data-structures/red-black-tree.js');
 var Vertex = mod.Node;
 var RBTree = mod.RBTree;
 var Colors = mod.Colors;
 
 describe('Node', function () {
+  'use strict';
 
   it('should be a constructor function', function () {
     expect(typeof Vertex).toBe('function');
@@ -37,6 +36,8 @@ describe('Node', function () {
 });
 
 describe('RBTree', function () {
+  'use strict';
+
   it('should be a constructor function', function () {
     expect(typeof RBTree).toBe('function');
   });

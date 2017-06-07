@@ -63,11 +63,11 @@
       var height = Math.max(node._left._height, node._right._height);
       height += 1;
       return height;
-    }else if (node._left !== null){
+    } else if (node._left !== null){
       return node._left._height + 1;
-    }else if (node._right !== null){
+    } else if (node._right !== null){
       return node._right._height + 1;
-    }else {
+    } else {
       return 1;
     }
   };
@@ -102,8 +102,7 @@
    * @param {Array} traveledNodes Array of previously traveled nodes
    * that are used to help determine the nodes to be restructured.
    */
-  exports.AVLTree.prototype._getNodesToRestructureRemove =
-    function (traveledNodes) {
+  exports.AVLTree.prototype._getNodesToRestructureRemove = function (traveledNodes) {
     // z is last traveled node - imbalance found at z
     var zIndex = traveledNodes.length;
     zIndex -= 1;
@@ -113,9 +112,9 @@
     var y;
     if (z._left !== null && z._right !== null){
       y = (z._left === y) ? z._right : z._left;
-    }else if (z._left !== null && z._right === null){
+    } else if (z._left !== null && z._right === null){
       y = z._left;
-    }else if (z._right !== null && z._left === null){
+    } else if (z._right !== null && z._left === null){
       y = z._right;
     }
     // x should be tallest child of y.
@@ -125,14 +124,14 @@
     if (y._left !== null && y._right !== null){
       if (y._left._height > y._right._height){
         x = y._left;
-      }else if (y._left._height < y._right._height){
+      } else if (y._left._height < y._right._height){
         x = y._right;
-      }else if (y._left._height === y._right._height){
+      } else if (y._left._height === y._right._height){
         x = (z._left === y) ? y._left : y._right;
       }
-    }else if (y._left !== null && y._right === null){
+    } else if (y._left !== null && y._right === null){
       x = y._left;
-    }else if (y._right !== null && y._left === null){
+    } else if (y._right !== null && y._left === null){
       x = y._right;
     }
     return [x, y, z];
@@ -147,8 +146,7 @@
    * @param {Array} traveledNodes Array of previously traveled nodes
    * that are used to help determine the nodes to be restructured.
    */
-  exports.AVLTree.prototype._getNodesToRestructureInsert =
-    function (traveledNodes) {
+  exports.AVLTree.prototype._getNodesToRestructureInsert = function (traveledNodes) {
     // z is last traveled node - imbalance found at z
     var zIndex = traveledNodes.length;
     zIndex -= 1;
@@ -166,16 +164,16 @@
     if (y._left !== null && y._right !== null){
       if (y._left._height > y._right._height){
         x = y._left;
-      }else if (y._left._height < y._right._height){
+      } else if (y._left._height < y._right._height){
         x = y._right;
-      }else if (y._left._height === y._right._height){
+      } else if (y._left._height === y._right._height){
         var xIndex = traveledNodes.length;
         xIndex -= 3;
         x = traveledNodes[xIndex];
       }
-    }else if (y._left !== null && y._right === null){
+    } else if (y._left !== null && y._right === null){
       x = y._left;
-    }else if (y._right !== null && y._left === null){
+    } else if (y._right !== null && y._left === null){
       x = y._right;
     }
     return [x, y, z];
@@ -192,8 +190,7 @@
    * @param {Node} node Started node.
    * @param {Boolean} isRemove Represents if method was called after remove.
    */
-  exports.AVLTree.prototype._maintainHeightBalanceProperty =
-    function (node, isRemove) {
+  exports.AVLTree.prototype._maintainHeightBalanceProperty = function (node, isRemove) {
     var current = node;
     var traveledNodes = [];
     while (current !== null){
@@ -225,11 +222,11 @@
     //Determine Rotation Pattern
     if (z._right === y && y._right === x){
       this._rightRight(x, y, z);
-    }else if (z._left === y && y._left === x){
+    } else if (z._left === y && y._left === x){
       this._leftLeft(x, y, z);
-    }else if (z._right === y && y._left === x){
+    } else if (z._right === y && y._left === x){
       this._rightLeft(x, y, z);
-    }else if (z._left === y && y._right === x){
+    } else if (z._left === y && y._right === x){
       this._leftRight(x, y, z);
     }
   };
@@ -255,7 +252,7 @@
       var orientation = (z._parent._left === z) ? '_left' : '_right';
       z._parent[orientation] = y;
       y._parent = z._parent;
-    }else {
+    } else {
       this._root = y;
       y._parent = null;
     }
@@ -294,7 +291,7 @@
       var orientation = (z._parent._left === z) ? '_left' : '_right';
       z._parent[orientation] = y;
       y._parent = z._parent;
-    }else {
+    } else {
       this._root = y;
       y._parent = null;
     }
@@ -332,7 +329,7 @@
       var orientation = (z._parent._left === z) ? '_left' : '_right';
       z._parent[orientation] = x;
       x._parent = z._parent;
-    }else {
+    } else {
       this._root = x;
       x._parent = null;
     }
@@ -377,7 +374,7 @@
       var orientation = (z._parent._left === z) ? '_left' : '_right';
       z._parent[orientation] = x;
       x._parent = z._parent;
-    }else {
+    } else {
       this._root = x;
       x._parent = null;
     }
@@ -568,8 +565,7 @@
    * @param {Node} oldChild Child to be replaced.
    * @param {Node} newChild Child replacement.
    */
-  exports.AVLTree.prototype._replaceChild =
-   function (parent, oldChild, newChild) {
+  exports.AVLTree.prototype._replaceChild = function (parent, oldChild, newChild) {
     if (parent === null) {
       this._root = newChild;
       if (this._root !== null){
@@ -744,13 +740,11 @@
    * @public
    * @returns {Node} The lowest common ancestor of the two nodes or null.
    */
-  exports.AVLTree.prototype.lowestCommonAncestor =
-    function (firstNode, secondNode) {
+  exports.AVLTree.prototype.lowestCommonAncestor = function (firstNode, secondNode) {
     return this._lowestCommonAncestor(firstNode, secondNode, this._root);
   };
 
-  exports.AVLTree.prototype._lowestCommonAncestor =
-    function (firstNode, secondNode, current) {
+  exports.AVLTree.prototype._lowestCommonAncestor = function (firstNode, secondNode, current) {
     var firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
     var secondNodeInLeft = this._existsInSubtree(secondNode, current._left);
     var firstNodeInRight = this._existsInSubtree(firstNode, current._right);

@@ -1,0 +1,144 @@
+{
+  "env": {
+    "browser": true,
+    "jquery": true,
+    "node": true
+  },
+  "globals": {
+    "expect": true,
+    "it": true,
+    "describe": true,
+    "beforeEach": true,
+    "afterEach": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "rules": {
+
+    "camelcase": 2,
+    "curly": 2,
+    "eqeqeq": 2,
+    "indent": [
+      2,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "no-use-before-define": [
+      2,
+      {
+        "functions": false
+      }
+    ],
+    "no-caller": 2,
+    "new-cap": 0,
+    "quotes": [
+      2,
+      "single"
+    ],
+    "no-unused-vars": 2,
+    "strict": [
+      2,
+      "function"
+    ],
+    "no-extend-native": 2,
+    "wrap-iife": [
+      2,
+      "any"
+    ],
+    "no-empty": 2,
+    "no-plusplus": 2,
+    "no-undef": 2,
+    "linebreak-style": 2,
+    "max-depth": [
+      2,
+      4
+    ],
+    "no-loop-func": 2,
+    "complexity": [
+      2,
+      13
+    ],
+    "max-len": [
+      2,
+      {
+        "code": 120,
+        "ignoreComments": true
+      }
+    ],
+    "max-params": [
+      2,
+      5
+    ],
+
+
+    "curly": [
+      2,
+      "all"
+    ],
+    "keyword-spacing": [
+      2,
+      {}
+    ],
+    "one-var": [
+      2,
+      "never"
+    ],
+    "array-bracket-spacing": [
+      2,
+      "never",
+      {}
+    ],
+    "space-in-parens": [
+      2,
+      "never"
+    ],
+    "key-spacing": [
+      2,
+      {
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ],
+    "quote-props": [
+      2,
+      "as-needed"
+    ],
+    "space-infix-ops": 2,
+    "space-unary-ops": [
+      2,
+      {
+        "words": false,
+        "nonwords": false
+      }
+    ],
+    "no-implicit-coercion": [
+      2,
+      {
+        "boolean": false,
+        "string": true,
+        "number": true
+      }
+    ],
+    "no-with": 2,
+    "no-multiple-empty-lines": 2,
+    "brace-style": [
+      2,
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "eol-last": 2,
+    "no-trailing-spaces": 2,
+    "indent": [
+      2,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ]
+  }
+}

@@ -280,7 +280,7 @@
     var levelOrderString = '';
     if (this._root){
       queue.push(this._root);
-    }else {
+    } else {
       levelOrderString = ' Tree is empty';
     }
     while (queue.length !== 0){
