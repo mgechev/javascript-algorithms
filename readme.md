@@ -6,8 +6,6 @@ This repository contains JavaScript implementations of different famous Computer
 
 API reference with usage examples available <a href="https://mgechev.github.io/javascript-algorithms/" target="_blank">here</a>.
 
-*Note: not all algorithms are well tested so bugs are quite possible.*
-
 ## Development
 
 **To install all dev dependencies**
