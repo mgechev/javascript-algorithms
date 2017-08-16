@@ -4,18 +4,13 @@
 npm install -g gulp
 npm install
 
-# Analysis
-
-# Test
+# Analysis and Test
 gulp build
 
-# Push content
+# Download and configure the Testspace client
+mkdir -p $HOME/bin
+curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C $HOME/bin
+CI=true testspace config url samples.testspace.com
 
-## Requires TESTSPACE_TOKEN = $ACCESS_TOKEN:@samples.testspace.com. 
-
-BRANCH_NAME=`git symbolic-ref --short HEAD`
-GIT_URL=`git remote show origin -n | grep Fetch\ URL: | sed 's/.*URL: //'`
-REPO_SLUG=`echo ${GIT_URL#*github.com?} | sed 's/.git//'`
-
-curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
-testspace @.testspace.txt $TESTSPACE_TOKEN/${REPO_SLUG/\//:}/${BRANCH_NAME}#c9.Build
+# Push content (refer to ".testspace.txt" for list of content)
+testspace @.testspace.txt "#c9.Build" --repo git

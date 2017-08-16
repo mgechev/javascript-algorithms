@@ -3,13 +3,15 @@ node_js:
   - "4.0"
   
 before_script:
+  - mkdir -p $HOME/bin
+  - curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C $HOME/bin
+  - testspace config url samples.testspace.com
   - npm install -g gulp
   - npm install
   
 script: 
   - gulp build
   
-# Requires TESTSPACE_TOKEN environment variable.   
+# refer to ".testspace.txt" for list of content
 after_script:
-  - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
-  - testspace @.testspace.txt $TESTSPACE_TOKEN/${TRAVIS_REPO_SLUG/\//:}/${TRAVIS_BRANCH}#travis.Build.${TRAVIS_BUILD_NUMBER}
+  - testspace @.testspace.txt

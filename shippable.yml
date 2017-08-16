@@ -3,21 +3,18 @@ language: node_js
 node_js:
   - "4.0"
 
-env:
-  global:
-   - secure: hG019jypQeIigMnNCKU3LZ7+lfMV5xzKMadSLDYjAerUFfiNizFIMU37r4+1hOqhB5coqnUe39ljfvRnZ6hvKysOBOrJMOWgdrxzNdT9c1g9rgPfkrBq3BHDp2eh5wSN5rFQwEU+83mcgKHLDwo0xnw9D98UFaNNr/00tHt3zA3Kk0FjSf4Zcv9JVE9LxG6Hr/05jHWd7N/41pxdnIQ59fPN1LbCkQsBcVizw6o2MuLy0Jqprv1SniH1Kj4FGsNG8lNTYvVAA2hLcFJ31iYzFFmrFtaqu1hYDgW8mNQMMFr59NGWeeA1BXuDNUZHPRSYK/FioBj+RuYGq0kupGT1UA==
- 
 build:
  ci:
+  - mkdir -p $HOME/bin
+  - curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C $HOME/bin
+  - testspace config url samples.testspace.com
   - npm install -g gulp
   - npm install
   - gulp build
 
- # Requires TESTSPACE_TOKEN environment variable. 
+# refer to ".testspace.txt" for list of content
  on_success:
-   - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
-   - testspace @.testspace.txt $TESTSPACE_TOKEN/${SHIPPABLE_REPO_SLUG/\//:}/${BRANCH}#ship.Build.${BUILD_NUMBER}
+   - testspace @.testspace.txt 
 
  on_failure:
-   - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
-   - testspace @.testspace.txt $TESTSPACE_TOKEN/${SHIPPABLE_REPO_SLUG/\//:}/${BRANCH}#ship.Build.${BUILD_NUMBER}
+   - testspace @.testspace.txt 
