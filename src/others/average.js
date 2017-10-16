@@ -9,14 +9,14 @@
  *
  * console.log(average(list)); // 516.2
  *
- * @param {list} the list that you want the average of.
+ * @param {array} the list that you want the average of.
  *
  * @module others/average
 */
 (function (exports) {
   'use strict';
 
-  average(list) {
+  function average(array) {
     const summed = this.sum(array);
     const average = summed / array.length;
     return average;
