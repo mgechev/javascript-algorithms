@@ -23,7 +23,7 @@
       return array[half];
     }
     else {
-      return (array[half-1] + array[half]) / 2);
+      return (array[half-1] + array[half] / 2);
     }
 
   exports.median = median;
