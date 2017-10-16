@@ -17,7 +17,10 @@
   'use strict';
 
   function average(array) {
-    const summed = this.sum(array);
+    function sum(array) {
+      return array.reduce((a, b) => a + b);
+    }
+    const summed = sum(array);
     const average = summed / array.length;
     return average;
   }
