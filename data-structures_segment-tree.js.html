@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: data-structures/segment-tree.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: data-structures/segment-tree.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Implementation of a segment tree.
+ *
+ * @example
+ * var SegmentTree = require('path-to-algorithms/src/data-structures'+
+ * '/segment-tree').SegmentTree;
+ *
+ * var tree = SegmentTree.indexArray([-1, 2, 4, 0], Infinity, function (a, b) {
+ *   return Math.min(a, b);
+ * });
+ *
+ * @public
+ * @constructor
+ * @param {any} placeholder A placeholder value dpendent on the aggregate.
+ * @param {Function} aggregate Generates the values for the intermediate nodes.
+ * @module data-structures/segment-tree
+ */
+(function (exports) {
+
+  'use strict';
+
+  /**
+   * SegmentTree constructor.
+   *
+   * @public
+   * @constructor
+   * @param {any} invalidValue Invalid value to be returned depending
+   *  on the aggregate.
+   * @param {Function} aggregate Function to generate the intermediate
+   *  values in the tree.
+   */
+  function SegmentTree(invalidValue, aggregate) {
+    this._data = [];
+    this._original = null;
+    this._invalidValue = invalidValue;
+    this._aggregate = aggregate;
+  }
+
+  /**
+   * Creates a segment tree using an array passed as element.
+   *
+   * @static
+   * @public
+   * @param {Array} array Array to be indexed.
+   * @param {Function} aggregate Function used for generation of
+   *  intermediate nodes.
+   */
+  SegmentTree.indexArray = function (array, placeholder, aggregate) {
+    var segmentize = function (original, data, lo, hi, idx) {
+      if (lo === hi) {
+        data[idx] = original[lo];
+      } else {
+        var mid = Math.floor((lo + hi) / 2);
+        var left = 2 * idx + 1;
+        var right = 2 * idx + 2;
+        segmentize(original, data, lo, mid, left);
+        segmentize(original, data, mid + 1, hi, right);
+        data[idx] = aggregate(data[left], data[right]);
+      }
+    };
+    var result = [];
+    if (array &amp;&amp; array.length) {
+      segmentize(array, result, 0, array.length - 1, 0);
+    }
+    var tree = new SegmentTree(placeholder, aggregate);
+    tree._data = result;
+    tree._original = array;
+    return tree;
+  };
+
+  /**
+   * Queries the SegmentTree in given range based on the set aggregate.
+   *
+   * @param {Number} start The start index of the interval.
+   * @param {Number} end The end index of the interval.
+   */
+  SegmentTree.prototype.query = function (start, end) {
+    if (start > end) {
+      throw new Error('The start index should be smaller by the end index');
+    }
+    var findEl = function (originalArrayStart, originalArrayEnd, current) {
+      if (start > originalArrayEnd) {
+        return this._invalidValue;
+      }
+      if (end &lt; originalArrayStart) {
+        return this._invalidValue;
+      }
+      if (start === originalArrayStart &amp;&amp; end === originalArrayEnd ||
+          originalArrayStart === originalArrayEnd) {
+        return this._data[current];
+      }
+      var originalArrayMid =
+        Math.floor((originalArrayStart + originalArrayEnd) / 2);
+      return this._aggregate(
+        findEl(originalArrayStart, originalArrayMid, 2 * current + 1),
+        findEl(originalArrayMid + 1, originalArrayEnd, 2 * current + 2)
+      );
+    }.bind(this);
+    return findEl(0, this._original.length - 1, 0, this._aggregate);
+  };
+
+  exports.SegmentTree = SegmentTree;
+
+}(typeof window === 'undefined' ? module.exports : window));
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-combinatorics_cartesianproduct.html">combinatorics/cartesianproduct</a></li><li><a href="module-combinatorics_combinations.html">combinatorics/combinations</a></li><li><a href="module-combinatorics_permutations.html">combinatorics/permutations</a></li><li><a href="module-combinatorics_variations-repetition.html">combinatorics/variations-repetition</a></li><li><a href="module-data-structures_avl-tree.html">data-structures/avl-tree</a></li><li><a href="module-data-structures_binary-search-tree.html">data-structures/binary-search-tree</a></li><li><a href="module-data-structures_edge.html">data-structures/edge</a></li><li><a href="module-data-structures_hash-table.html">data-structures/hash-table</a></li><li><a href="module-data-structures_heap.html">data-structures/heap</a></li><li><a href="module-data-structures_interval-tree.html">data-structures/interval-tree</a></li><li><a href="module-data-structures_linked-list.html">data-structures/linked-list</a></li><li><a href="module-data-structures_red-black-tree.html">data-structures/red-black-tree</a></li><li><a href="module-data-structures_segment-tree.html">data-structures/segment-tree</a></li><li><a href="module-data-structures_size-balanced-tree.html">data-structures/size-balanced-tree</a></li><li><a href="module-data-structures_splay-tree.html">data-structures/splay-tree</a></li><li><a href="module-data-structures_vertex.html">data-structures/vertex</a></li><li><a href="module-graphs_others_tarjan-connected-components.html">graphs/others/tarjan-connected-components</a></li><li><a href="module-graphs_others_topological-sort.html">graphs/others/topological-sort</a></li><li><a href="module-graphs_searching_bfs.html">graphs/searching/bfs</a></li><li><a href="module-graphs_searching_dfs.html">graphs/searching/dfs</a></li><li><a href="module-graphs_shortest-path_bellman-ford.html">graphs/shortest-path/bellman-ford</a></li><li><a href="module-graphs_shortest-path_dijkstra.html">graphs/shortest-path/dijkstra</a></li><li><a href="module-graphs_shortest-path_floyd-warshall.html">graphs/shortest-path/floyd-warshall</a></li><li><a href="module-graphs_spanning-trees_prim.html">graphs/spanning-trees/prim</a></li><li><a href="module-others_fibonacci.html">others/fibonacci</a></li><li><a href="module-others_hanoi.html">others/hanoi</a></li><li><a href="module-others_levenshtein-distance.html">others/levenshtein-distance</a></li><li><a href="module-others_minCoinsChange.html">others/minCoinsChange</a></li><li><a href="module-others_minkowski-distance.html">others/minkowski-distance</a></li><li><a href="module-primes_is-prime.html">primes/is-prime</a></li><li><a href="module-primes_prime-factor-tree.html">primes/prime-factor-tree</a></li><li><a href="module-primes_sieve-of-eratosthenes.html">primes/sieve-of-eratosthenes</a></li><li><a href="module-searching_binarysearch.html">searching/binarysearch</a></li><li><a href="module-searching_knuth-morris-pratt.html">searching/knuth-morris-pratt</a></li><li><a href="module-searching_longest-common-subsequence.html">searching/longest-common-subsequence</a></li><li><a href="module-searching_longest-increasing-subsequence.html">searching/longest-increasing-subsequence</a></li><li><a href="module-searching_maximum-subarray.html">searching/maximum-subarray</a></li><li><a href="module-searching_maximum-subarray-divide-and-conquer.html">searching/maximum-subarray-divide-and-conquer</a></li><li><a href="module-searching_quickselect.html">searching/quickselect</a></li><li><a href="module-searching_recursive-binarysearch.html">searching/recursive-binarysearch</a></li><li><a href="module-sets_quickfind.html">sets/quickfind</a></li><li><a href="module-sets_quickunion.html">sets/quickunion</a></li><li><a href="module-sets_weightquickunion.html">sets/weightquickunion</a></li><li><a href="module-shuffle_fisheryates.html">shuffle/fisheryates</a></li><li><a href="module-shuffle_richarddurstenfeld.html">shuffle/richarddurstenfeld</a></li><li><a href="module-sorting_3-way-string-quicksort.html">sorting/3-way-string-quicksort</a></li><li><a href="module-sorting_bubblesort.html">sorting/bubblesort</a></li><li><a href="module-sorting_bucketsort.html">sorting/bucketsort</a></li><li><a href="module-sorting_countingsort.html">sorting/countingsort</a></li><li><a href="module-sorting_heapsort.html">sorting/heapsort</a></li><li><a href="module-sorting_insertion-binary-sort.html">sorting/insertion-binary-sort</a></li><li><a href="module-sorting_insertionsort.html">sorting/insertionsort</a></li><li><a href="module-sorting_lsd.html">sorting/lsd</a></li><li><a href="module-sorting_mergesort.html">sorting/mergesort</a></li><li><a href="module-sorting_mergesort_merge.html">sorting/mergesort/merge</a></li><li><a href="module-sorting_msd.html">sorting/msd</a></li><li><a href="module-sorting_oddeven-sort.html">sorting/oddeven-sort</a></li><li><a href="module-sorting_quicksort-declarative.html">sorting/quicksort-declarative</a></li><li><a href="module-sorting_quicksort-middle.html">sorting/quicksort-middle</a></li><li><a href="module-sorting_radixsort.html">sorting/radixsort</a></li><li><a href="module-sorting_recursive-insertionsort.html">sorting/recursive-insertionsort</a></li><li><a href="module-sorting_selectionsort.html">sorting/selectionsort</a></li><li><a href="module-sorting_shellsort.html">sorting/shellsort</a></li></ul><h3>Classes</h3><ul><li><a href="module-data-structures_avl-tree.AVLTree.html">AVLTree</a></li><li><a href="module-data-structures_avl-tree.Node.html">Node</a></li><li><a href="module-data-structures_binary-search-tree.BinaryTree.html">BinaryTree</a></li><li><a href="module-data-structures_binary-search-tree.Node.html">Node</a></li><li><a href="module-data-structures_hash-table.Hashtable.html">Hashtable</a></li><li><a href="module-data-structures_hash-table.Node.html">Node</a></li><li><a href="module-data-structures_heap.Heap.html">Heap</a></li><li><a href="module-data-structures_interval-tree.IntervalTree.html">IntervalTree</a></li><li><a href="module-data-structures_interval-tree.Node.html">Node</a></li><li><a href="module-data-structures_linked-list.LinkedList.html">LinkedList</a></li><li><a href="module-data-structures_linked-list.Node.html">Node</a></li><li><a href="module-data-structures_red-black-tree.RBTree.html">RBTree</a></li><li><a href="module-data-structures_size-balanced-tree-CreateSBTreeClass-SBTree.html">SBTree</a></li><li><a href="module-data-structures_splay-tree.Node.html">Node</a></li><li><a href="module-data-structures_splay-tree.SplayTree.html">SplayTree</a></li><li><a href="module-graphs_spanning-trees_prim.Graph.html">Graph</a></li><li><a href="module-sets_quickfind.QuickFind.html">QuickFind</a></li><li><a href="module-sets_quickunion.QuickUnion.html">QuickUnion</a></li><li><a href="module-sets_weightquickunion.QuickUnion.html">QuickUnion</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Nov 28 2017 18:59:03 GMT-0800 (PST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
