@@ -25,7 +25,7 @@
     "opts": {
         "template": "node_modules/@jeremyckahn/minami",
         "encoding": "utf8",
-        "destination": "../javascript-algorithms-docs",
+        "destination": "dist",
         "recurse": true,
         "private": false,
         "readme": "./readme.md"
