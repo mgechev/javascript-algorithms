@@ -39,6 +39,14 @@ gulp test
 
 and all `*.spec.js` files will be executed.
 
+**To deploy documentation site**
+
+```bash
+npm run deploy
+```
+
+This requires you to have commit access to your Git remote.
+
 ## Contributions
 
 Fork the repo and make required changes. After that push your changes in branch, which is named according to the changes
