@@ -19,29 +19,15 @@ npm install
 
 **To setup repository with documentation**
 
-* Go to the parent directory of the `javascript-algorithms` folder and call:
-
 ```bash
-git clone https://github.com/mgechev/javascript-algorithms.git javascript-algorithms-docs
+npm run:doc
 ```
 
-* Go to the `javascript-algorithms-docs` folder and change current branch to `gh-pages`:
-
-```bash
-git checkout gh-pages
-```
-
-Now you can see `index.html` file in this folder and open it in your browser.
+This will build the documentation and open it in your browser.
 
 **To update .html files with documentation**
 
-Go to the `javascript-algorithms` folder and call:
-
-```bash
-gulp jsdoc
-```
-
-and all files in `javascript-algorithms-docs` folder will be updated.
+Just run `npm run:doc` again.
 
 **To run tests**
 
