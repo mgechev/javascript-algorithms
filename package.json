@@ -12,7 +12,6 @@
     "gulp": "^3.8.10",
     "gulp-eslint": "^3.0.1",
     "gulp-jasmine": "^2.0.1",
-    "gulp-shell": "^0.2.11",
     "jsdoc": "3.5.5",
     "live-server": "^1.2.0"
   },
