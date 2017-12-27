@@ -236,6 +236,7 @@
       }
       inverse(next, next.next);
       next.next = current;
+      current.prev = next;
     }
 
     if (!this.first) {
