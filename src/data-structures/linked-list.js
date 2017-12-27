@@ -244,6 +244,7 @@
     }
     inverse(this.first, this.first.next);
     this.first.next = null;
+    this.last.prev = null;
     var temp = this.first;
     this.first = this.last;
     this.last = temp;
