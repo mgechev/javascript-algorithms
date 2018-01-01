@@ -20,14 +20,14 @@ npm install
 **To setup repository with documentation**
 
 ```bash
-npm run:doc
+npm run doc
 ```
 
 This will build the documentation and open it in your browser.
 
 **To update .html files with documentation**
 
-Just run `npm run:doc` again.
+Just run `npm run doc` again.
 
 **To run tests**
 
