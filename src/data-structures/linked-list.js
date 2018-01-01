@@ -237,6 +237,7 @@
       inverse(next, next.next);
       next.prev = next.next;
       next.next = current;
+      current.prev = next;
     }
 
     if (!this.first) {
@@ -245,6 +246,7 @@
     inverse(this.first, this.first.next);
     this.first.prev = this.first.next;
     this.first.next = null;
+    this.last.prev = null;
     var temp = this.first;
     this.first = this.last;
     this.last = temp;
