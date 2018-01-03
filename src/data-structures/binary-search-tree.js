@@ -455,7 +455,7 @@
     if (!root) {
       return false;
     }
-    if (node === root.value) {
+    if (node.value === root.value) {
       return true;
     }
     return this._existsInSubtree(node, root._left) ||
