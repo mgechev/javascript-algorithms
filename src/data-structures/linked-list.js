@@ -235,6 +235,7 @@
         return;
       }
       inverse(next, next.next);
+      next.prev = next.next;
       next.next = current;
     }
 
@@ -242,6 +243,7 @@
       return;
     }
     inverse(this.first, this.first.next);
+    this.first.prev = this.first.next;
     this.first.next = null;
     var temp = this.first;
     this.first = this.last;
