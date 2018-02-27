@@ -20,11 +20,10 @@
    * @return {Number} Maximum sum of the elements of a subarray.
    */
   function maxSubarray(array) {
-    var currentMax = 0;
-    var max = 0;
-
-    for (var i = 0; i < array.length; i += 1) {
-      currentMax = Math.max(0, currentMax + array[i]);
+    var currentMax = array[0];
+    var max = array[0];
+    for (var i = 1; i < array.length; i += 1) {
+      currentMax = Math.max(array[i], currentMax + array[i]);
       max = Math.max(max, currentMax);
     }
     return max;
