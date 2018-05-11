@@ -55,7 +55,7 @@
 
   /**
    * Simple non-crypto hash used to hash keys, which determines
-   * while bucket the value will be placed in.
+   * which bucket the value will be placed in.
    * A javascript implementation of Java's 32bitint hash.
    *
    * @public
