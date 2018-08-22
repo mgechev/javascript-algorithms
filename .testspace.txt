@@ -1,12 +1,12 @@
 # Test Content files to publish
 
 # "Static Analyis"
-$HOME/project/test/reports/jscs.xml
-$HOME/project/test/reports/jshint.xml
+test/reports/jscs.xml
+test/reports/jshint.xml
 
 # "Tests"
-[Tests]$HOME/project/test/reports/junitresults.xml{test}
+[Tests]test/reports/junitresults.xml{test}
 
 # "Code Coverage"
-$HOME/project/test/reports/coverage/clover.xml
-[Code Coverage]+$HOME/project/test/reports/coverage/clover.xml{attaching actual content for example only}
+test/reports/coverage/clover.xml
+[Code Coverage]+test/reports/coverage/clover.xml{attaching actual content for example only}
