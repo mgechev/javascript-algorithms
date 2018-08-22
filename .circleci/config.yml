@@ -1,0 +1,17 @@
+version: 2.0
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:6-browsers
+    steps:
+      - checkout
+      - run: "curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin"
+      - run: "testspace config url samples.testspace.com"
+      - run: sudo npm install -g gulp
+      - run: npm install
+      - run: gulp build
+      - run:
+          name: Send reports to testspace
+          command: "testspace @.testspace.txt"
+          when: always
