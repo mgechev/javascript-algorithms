@@ -34,7 +34,7 @@ Just run `npm run doc` again.
 Call:
 
 ```bash
-gulp test
+npm run test
 ```
 
 and all `*.spec.js` files will be executed.
@@ -57,7 +57,7 @@ Make sure you're editor makes validations according to the `.jshintrc` in the ro
 Before pushing to the repository run:
 
 ```bash
-gulp build
+npm run build
 ```
 
 If the build is not successful fix your code in order the tests and jshint validation to run successfully and after that
