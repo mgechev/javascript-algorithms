@@ -16,6 +16,7 @@
     "live-server": "^1.2.0"
   },
   "scripts": {
+    "build": "gulp build",
     "test": "gulp test",
     "deploy": "npm run doc:build && gh-pages -d dist -b gh-pages",
     "doc": "npm run doc:build && npm run doc:view",
