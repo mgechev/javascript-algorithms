@@ -5,6 +5,7 @@
     "source": {
         "include": [
             "./src/combinatorics/",
+            "./src/compression/",
             "./src/data-structures/",
             "./src/graphics/",
             "./src/graphs/others/",
