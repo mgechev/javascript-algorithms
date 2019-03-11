@@ -7,22 +7,22 @@ describe('Bitmap', function() {
 
   it('should be able to get and set values', function() {
     var bitmap = new Bitmap(1024);
-    expect(bitmap.get(0)).toBe(false);
+    expect(bitmap.exists(0)).toBe(false);
     bitmap.set(0, true);
-    expect(bitmap.get(0)).toBe(true);
-    expect(bitmap.get(1023)).toBe(false);
+    expect(bitmap.exists(0)).toBe(true);
+    expect(bitmap.exists(1023)).toBe(false);
     bitmap.set(1023, 1);
-    expect(bitmap.get(1023)).toBe(true);
+    expect(bitmap.exists(1023)).toBe(true);
   });
 
   it('should be able to change everthing back', function() {
     var bitmap = new Bitmap(2048);
     for (var i = 0; i < 2048; i = i + 1) {
-      expect(bitmap.get(i)).toBe(false);
+      expect(bitmap.get(i)).toBe(0);
       bitmap.set(i, 1);
-      expect(bitmap.get(i)).toBe(true);
+      expect(bitmap.get(i)).toBe(1);
       bitmap.set(i, 0);
-      expect(bitmap.get(i)).toBe(false);
+      expect(bitmap.get(i)).toBe(0);
     }
   });
 });
