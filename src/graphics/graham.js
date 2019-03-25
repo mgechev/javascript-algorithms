@@ -9,10 +9,8 @@
     const sa = slope(p, a);
     const sb = slope(p, b);
     [[sa, a], [sb, b]].forEach(e => {
-      if (!memo.has(e[0])) {
-        memo.set(e[0], new Set());
-      }
-      memo.get(e[0]).add(e[1]);
+      const el = memo.get(e[0]);
+      if (!el || dist(p, el) < dist(p, e[1])) memo.set(e[0], e[1]);
     });
     return sa - sb;
   };
@@ -50,21 +48,19 @@
       if (a.x < c.x) return a;
       return c;
     });
-    const memo = new Map();
-    const points = all.sort(sort.bind(null, p, memo)).filter(c => {
-      const s = slope(p, c);
-      // Liner check, can consider more efficient data structure
-      const set = Array.from(memo.get(s));
-      return !set.some(e => dist(p, e) > dist(p, c));
-    });
 
+    const memo = new Map();
     const stack = [];
-    points.forEach(p => {
-      while (stack.length > 1 && ccw(stack[stack.length - 2], stack[stack.length - 1], p) < 0) {
-        stack.pop();
-      }
-      stack.push(p);
-    });
+
+    all
+      .sort(sort.bind(null, p, memo))
+      .filter(c => memo.get(slope(p, c)) === c)
+      .forEach(p => {
+        while (stack.length > 1 && ccw(stack[stack.length - 2], stack[stack.length - 1], p) < 0)
+          stack.pop();
+        stack.push(p);
+      });
+
     return stack;
   };
 
