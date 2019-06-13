@@ -1,12 +1,11 @@
-(function (exports) {
+(function(exports) {
   'use strict';
 
   function comparator(a, b) {
     return a - b;
   }
 
-  var heapSort = (function () {
-
+  var heapSort = (function() {
     /**
      * Finds the correct place of given element in given max heap.
      *
@@ -70,10 +69,9 @@
      * zero, or positive value, depending on the arguments.
      * @return {Array} Sorted array.
      */
-    return function (array, cmp) {
+    return function(array, cmp) {
       cmp = cmp || comparator;
       var size = array.length;
-      var temp;
       buildMaxHeap(array, cmp);
       for (var i = array.length - 1; i > 0; i -= 1) {
         [array[0], array[i]] = [array[i], array[0]];
@@ -82,8 +80,7 @@
       }
       return array;
     };
-  }());
+  })();
 
   exports.heapSort = heapSort;
-
 })(typeof window === 'undefined' ? module.exports : window);
