@@ -31,9 +31,7 @@
       }
 
       if (largest !== index) {
-        var temp = array[index];
-        array[index] = array[largest];
-        array[largest] = temp;
+        [array[index], array[largest]] = [array[largest], array[index]];
         heapify(array, largest, heapSize, cmp);
       }
     }
@@ -78,9 +76,7 @@
       var temp;
       buildMaxHeap(array, cmp);
       for (var i = array.length - 1; i > 0; i -= 1) {
-        temp = array[0];
-        array[0] = array[i];
-        array[i] = temp;
+        [array[0], array[i]] = [array[i], array[0]];
         size -= 1;
         heapify(array, 0, size, cmp);
       }
