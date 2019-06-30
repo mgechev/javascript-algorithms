@@ -3,7 +3,7 @@
 
   var binarySearch = (function () {
     /**
-     * @pivate
+     * @private
      * @param {Array} array Array where we should find the index of the element
      * @param {Number} value Value of the element which index should be found
      * @param {Number} left Left index

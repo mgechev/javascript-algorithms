@@ -20,7 +20,7 @@
      * @param {array} array The array which contains the elements
      * @param {number} i The index of the first element
      * @param {number} j The index of the second element
-     * @returns {array} array The array with swaped elements
+     * @returns {array} array The array with swapped elements
      */
     function swap(array, i, j) {
       var temp = array[i];

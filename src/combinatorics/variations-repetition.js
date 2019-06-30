@@ -1,7 +1,7 @@
 (function (exports) {
   'use strict';
 
-  var variationsWithRepetion = (function () {
+  var variationsWithRepetition = (function () {
     var res;
 
     function variations(arr, k, index, current) {
@@ -21,7 +21,7 @@
      *
      * @example
      * var variations = require('path-to-algorithms/src/combinatorics/' +
-     * 'variations-repetition').variationsWithRepetion;
+     * 'variations-repetition').variationsWithRepetition;
      * var result = variations(['apple', 'orange', 'pear'], 2);
      *
      * // [['apple', 'apple'],
@@ -50,6 +50,6 @@
     };
   }());
 
-  exports.variationsWithRepetion = variationsWithRepetion;
+  exports.variationsWithRepetition = variationsWithRepetition;
 
 }((typeof window === 'undefined') ? module.exports : window));
