@@ -17,7 +17,7 @@
 
     /**
      * Partitions the array in two parts by the middle elements.
-     * All elemnts which are less than the chosen one goes left from it
+     * All elements which are less than the chosen one goes left from it
      * all which are greater goes right from it.
      * Uses Hoare's partitioning algorithm.
      *

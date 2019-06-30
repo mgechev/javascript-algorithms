@@ -10,7 +10,9 @@
     const sb = slope(p, b);
     [[sa, a], [sb, b]].forEach(e => {
       const el = memo.get(e[0]);
-      if (!el || dist(p, el) < dist(p, e[1])) memo.set(e[0], e[1]);
+      if (!el || dist(p, el) < dist(p, e[1])) {
+        memo.set(e[0], e[1]);
+      }
     });
     return sa - sb;
   };
@@ -40,12 +42,20 @@
    * //  { x: 0, y: 1 }]
    */
   const convexHull = all => {
-    if (!all.length) return [];
+    if (!all.length) {
+      return [];
+    }
 
     const p = all.reduce((a, c) => {
-      if (a.y < c.y) return a;
-      if (a.y > c.y) return c;
-      if (a.x < c.x) return a;
+      if (a.y < c.y) {
+        return a;
+      }
+      if (a.y > c.y) {
+        return c;
+      }
+      if (a.x < c.x) {
+        return a;
+      }
       return c;
     });
 
@@ -56,8 +66,9 @@
       .sort(sort.bind(null, p, memo))
       .filter(c => memo.get(slope(p, c)) === c)
       .forEach(p => {
-        while (stack.length > 1 && ccw(stack[stack.length - 2], stack[stack.length - 1], p) < 0)
+        while (stack.length > 1 && ccw(stack[stack.length - 2], stack[stack.length - 1], p) < 0) {
           stack.pop();
+        }
         stack.push(p);
       });
 

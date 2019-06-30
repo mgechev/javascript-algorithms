@@ -8,7 +8,7 @@ const points = [
   { x: 0.5, y: 0.5 }
 ];
 
-describe("Graham's algorithm for convex hull", function() {
+describe('Graham\'s algorithm for convex hull', function() {
   'use strict';
 
   it('should not throw with empty list', () => {

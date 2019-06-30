@@ -10,7 +10,7 @@
   var runLengthEncoding = (function () {
 
     /**
-     * Convers a given string to sequence of numbers
+     * Converts a given string to sequence of numbers
      * This takes O(n).
      */
     function convertToAscii(str) {

@@ -4,7 +4,7 @@
   /**
    * Returns the minimum number of coins from given set,
    * which sum equals to given change. This is famous
-   * problem from the dymanic programming:
+   * problem from the dynamic programming:
    *  {@link https://en.wikipedia.org/wiki/Change-making_problem}
    *
    * @public
