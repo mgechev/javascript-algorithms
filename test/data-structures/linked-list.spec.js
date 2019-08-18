@@ -140,4 +140,38 @@ describe('Linked List', function () {
     }
     linkedList.inorder(callback);
   });
+  it('should delete data properly', function () {
+    var linkedList = new LinkedList();
+    linkedList.push(1);
+    linkedList.push(2);
+    linkedList.push(3);
+    linkedList.push(4);
+    linkedList.push(5);
+    linkedList.remove(3);
+    expect(linkedList.first.data).toBe(1);
+    expect(linkedList.first.next.data).toBe(2);
+    expect(linkedList.first.next.next.data).toBe(4);
+    expect(linkedList.first.next.next.next.data).toBe(5);
+    expect(linkedList.last.data).toBe(5);
+  });
+  it('should delete complex data properly', function () {
+    var linkedList = new LinkedList();
+    var item1 = {id: 1};
+    var item2 = {id: 2};
+    var item3 = {id: 3};
+    var item4 = {id: 4};
+    var item5 = {id: 5};
+    linkedList.push(item1);
+    linkedList.push(item2);
+    linkedList.push(item3);
+    linkedList.push(item4);
+    linkedList.push(item5);
+    var equals = function(a, b) { return a.id === b.id };
+    linkedList.remove({id: 3}, equals);
+    expect(linkedList.first.data).toBe(item1);
+    expect(linkedList.first.next.data).toBe(item2);
+    expect(linkedList.first.next.next.data).toBe(item4);
+    expect(linkedList.first.next.next.next.data).toBe(item5);
+    expect(linkedList.last.data).toBe(item5);
+  });
 });
