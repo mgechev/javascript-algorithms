@@ -134,7 +134,7 @@
    * @param {Object} data Data which should be removed.
    * @return {Boolean} Returns true if data has been removed.
    */
-  exports.LinkedList.prototype.remove = function (data) {
+  exports.LinkedList.prototype.remove = function (data, equals) {
     if (this.first === null) {
       return false;
     }
@@ -142,7 +142,8 @@
     var next;
     var prev;
     while (temp) {
-      if (temp.data === data) {
+      var dataFound = equals ? equals(temp.data, data) : temp.data === data;
+      if (dataFound) {
         next = temp.next;
         prev = temp.prev;
         if (next) {
