@@ -19,3 +19,4 @@
 | recursive-insertionsort.js | O(N^2)                                              |              |
 | selectionsort.js           | O(N^2)                                              |              |
 | shellsort.js               | O((nlog(n))^2)                                      |              |
+| bogosort.js                | o(n*(n-1)!)                                         |     NEVER    |
