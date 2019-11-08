@@ -25,20 +25,17 @@
    */
   var selectionSort = function (array, cmp) {
     cmp = cmp || compare;
-    var min;
     var idx;
     var temp;
-    for (var i = 0; i < array.length; i += 1) {
+    for (var i = 0; i < array.length - 1; i += 1) {
       idx = i;
-      min = array[i];
       for (var j = i + 1; j < array.length; j += 1) {
-        if (cmp(min, array[j]) > 0) {
-          min = array[j];
+        if (cmp(array[idx], array[j]) > 0) {
           idx = j;
         }
       }
       temp = array[i];
-      array[i] = min;
+      array[i] = array[idx];
       array[idx] = temp;
     }
     return array;
