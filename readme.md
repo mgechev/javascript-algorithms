@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/mgechev/javascript-algorithms.svg?branch=Jakehp-patch-1)](https://travis-ci.org/mgechev/javascript-algorithms)
 
-This repository contains JavaScript implementations of different famous Computer Science algorithms.
+This repository contains JavaScript implementations of famous computer science algorithms.
 
 API reference with usage examples available
 <a href="https://mgechev.github.io/javascript-algorithms/" target="_blank">here</a>.
@@ -37,7 +37,7 @@ Call:
 npm run test
 ```
 
-and all `*.spec.js` files will be executed.
+This will execute all `*.spec.js` files.
 
 **To deploy documentation site**
 
@@ -49,19 +49,17 @@ This requires you to have commit access to your Git remote.
 
 ## Contributions
 
-Fork the repo and make required changes. After that push your changes in branch, which is named according to the changes
-you did. Initiate the PR.
+Fork the repo and make required changes. Afterwards, push your changes in branch. The name will be according to the changes you did. Initiate the pull request.
 
-Make sure you're editor makes validations according to the `.jshintrc` in the root directory of the repository.
+Make sure your editor makes validations according to the `.jshintrc` in the root directory of the repository.
 
-Before pushing to the repository run:
+Before pushing to the repository, run:
 
 ```bash
 npm run build
 ```
 
-If the build is not successful fix your code in order the tests and jshint validation to run successfully and after that
-create a pull request.
+If the build is not successful, fix your code in order for the tests and jshint validation to run successfully. Then create a pull request.
 
 ## Contributors
 
