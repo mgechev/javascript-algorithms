@@ -163,4 +163,31 @@ describe('AVL Tree', function () {
     expect(avlTree._root._right.value).toBe(25);
     expect(avlTree._root._right._height).toBe(1);
   });
+  it('should remove nodes and balance properly (3)', function () {
+    var avlTree = new AVLTree();
+    avlTree.insert(55);
+    avlTree.insert(25);
+    avlTree.insert(11);
+    avlTree.insert(1);
+    avlTree.remove(55);
+    avlTree.insert(32);
+    avlTree.insert(37);
+    avlTree.insert(41);
+    avlTree.insert(8);
+    avlTree.insert(44);
+    avlTree.insert(6);
+    avlTree.remove(32);
+    avlTree.remove(11);
+    avlTree.remove(25);    
+    
+    // depth 1
+    expect(avlTree._root.value).toBe(37);
+    expect(avlTree._root._height).toBe(4);
+    // depth 2
+    expect(avlTree._root._left.value).toBe(6);
+    expect(avlTree._root._left._height).toBe(3);
+
+    expect(avlTree._root._right.value).toBe(41);
+    expect(avlTree._root._right._height).toBe(2);
+  });
 });

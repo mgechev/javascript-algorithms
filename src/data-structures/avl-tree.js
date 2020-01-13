@@ -110,9 +110,7 @@
     // y should be child of z with larger height
     // (cannot be ancestor of removed node)
     var y;
-    if (z._left !== null && z._right !== null){
-      y = (z._left === y) ? z._right : z._left;
-    } else if (z._left !== null && z._right === null){
+    if ((z._left !== null && z._right !== null) || (z._left !== null && z._right === null)){
       y = z._left;
     } else if (z._right !== null && z._left === null){
       y = z._right;
@@ -602,7 +600,7 @@
       var temp = node.value;
       node.value = min.value;
       min.value = temp;
-      return this.remove(min);
+      return this.remove(temp);
     } else {
       if (node._left) {
         this._replaceChild(node._parent, node, node._left);
