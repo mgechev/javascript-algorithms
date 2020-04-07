@@ -19,7 +19,7 @@
    */
   function jumpSearch(sortedArray, seekIndex) {
     // exit if array empty
-    var arrayLength = sortedArray.length;
+    const arrayLength = sortedArray.length;
     if (!arrayLength) {
       return -1;
     }
