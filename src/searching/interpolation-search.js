@@ -8,7 +8,7 @@
    * @example
    *
    * var search = require('path-to-algorithms/src/searching/'+
-   * 'innterpolation-search').interpolationSearch;
+   * 'interpolation-search').interpolationSearch;
    * console.log(search([1, 2, 3, 4, 5], 4)); // 3
    *
    * @public
