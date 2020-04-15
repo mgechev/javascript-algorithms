@@ -2,8 +2,9 @@
   'use strict';
   /**
    * Searches for specific element in a given array using
-   * the jump search algorithm.<br><br>
-   * Time complexity: O(log N).
+   * the interpolation search algorithm.<br><br>
+   * Time complexity: O(log log N) when elements are uniformly
+   * distributed, and O(N) in the worst case
    *
    * @example
    *
