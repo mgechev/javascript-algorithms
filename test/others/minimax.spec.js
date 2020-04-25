@@ -1,4 +1,4 @@
-var minimax = require('../../src/others/minimax.js').minimax;
+const minimaxBuilder = require('../../src/others/minimax.js').minimaxBuilder;
 
 describe('Minimax with tic tac toe', function () {
   'use strict';
@@ -14,25 +14,20 @@ describe('Minimax with tic tac toe', function () {
     }));
   }
 
-  function minimaxFor(player, state) {
-    const getScoreFn = player === 'x'
-      ? state => game.getScore(state).x - game.getScore(state).o
-      : state => game.getScore(state).o - game.getScore(state).x;
+  const minimaxForX = minimaxBuilder(
+    getAllNextStates,
+    state => game.isGameOver(state),
+    state => game.getScore(state).x - game.getScore(state).o
+  )
 
-    return minimax(
-      state,
-      true,
-      5,
-      -Infinity,
-      Infinity,
-      getAllNextStates,
-      state => game.isGameOver(state),
-      getScoreFn
-    );
-  }
+  const minimaxForO = minimaxBuilder(
+    getAllNextStates,
+    state => game.isGameOver(state),
+    state => game.getScore(state).o - game.getScore(state).x
+  )
 
   it('should be defined', function () {
-    expect(minimax).toBeDefined();
+    expect(minimaxBuilder).toBeDefined();
   });
 
   it('should win versus dumb agent as first player', function () {
@@ -40,7 +35,7 @@ describe('Minimax with tic tac toe', function () {
 
     while (!game.isGameOver(state)) {
       if (state.turn === 'x') {
-        state = game.nextState(state, minimaxFor(state.turn, state).move);
+        state = game.nextState(state, minimaxForX(state, true, 5, -Infinity, Infinity).move);
       } else {
         const move = game.emptyCells(state)[0];
         state = game.nextState(state, move);
@@ -56,7 +51,7 @@ describe('Minimax with tic tac toe', function () {
 
     while (!game.isGameOver(state)) {
       if (state.turn === 'o') {
-        state = game.nextState(state, minimaxFor(state.turn, state).move);
+        state = game.nextState(state, minimaxForO(state, true, 5, -Infinity, Infinity).move);
       } else {
         const move = game.emptyCells(state)[0];
         state = game.nextState(state, move);
@@ -72,7 +67,11 @@ describe('Minimax with tic tac toe', function () {
     let state = game.newState('x');
 
     while (!game.isGameOver(state)) {
-      state = game.nextState(state, minimaxFor(state.turn, state).move);
+      if (state.turn === 'o') {
+        state = game.nextState(state, minimaxForO(state, true, 5, -Infinity, Infinity).move);
+      } else {
+        state = game.nextState(state, minimaxForX(state, true, 5, -Infinity, Infinity).move);
+      }
     }
     expect(game.isGameOver(state)).toBe(true);
     expect(game.getScore(state)).toEqual({x: 0, o: 0});
@@ -149,13 +148,10 @@ function ticTacToe() {
   }
 
   function nextState(state, move) {
-    const board = state.board;
+    const newBoard = state.board.map(row => row.slice());
+    newBoard[move.y][move.x] = state.turn;
     return {
-      board: [
-        ...board.slice(0, move.y),
-        [...board[move.y].slice(0, move.x), state.turn, ...board[move.y].slice(move.x + 1)],
-        ...board.slice(move.y + 1)
-      ],
+      board: newBoard,
       turn: state.turn === 'x' ? 'o' : 'x',
     };
   }
