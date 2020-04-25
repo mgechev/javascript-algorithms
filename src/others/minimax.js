@@ -113,7 +113,6 @@
     }
   }
 
-
   exports.minimax = minimax;
 
 })(typeof window === 'undefined' ? module.exports : window);
