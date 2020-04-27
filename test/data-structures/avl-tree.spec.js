@@ -178,8 +178,8 @@ describe('AVL Tree', function () {
     avlTree.insert(6);
     avlTree.remove(32);
     avlTree.remove(11);
-    avlTree.remove(25);    
-    
+    avlTree.remove(25);
+
     // depth 1
     expect(avlTree._root.value).toBe(37);
     expect(avlTree._root._height).toBe(4);
