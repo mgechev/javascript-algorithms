@@ -1,4 +1,4 @@
-## About
+## About Project
 
 [![Build Status](https://travis-ci.org/mgechev/javascript-algorithms.svg?branch=Jakehp-patch-1)](https://travis-ci.org/mgechev/javascript-algorithms)
 
