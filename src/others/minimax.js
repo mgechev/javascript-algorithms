@@ -70,7 +70,7 @@
             false,
             depth - 1,
             alpha,
-            beta,
+            beta
           );
 
           if (result.score > maxResult.score) {
@@ -94,7 +94,7 @@
             true,
             depth - 1,
             alpha,
-            beta,
+            beta
           );
 
           if (result.score < minResult.score) {
