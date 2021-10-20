@@ -1,0 +1,32 @@
+(function(exports) {
+  'use strict';
+  /**
+   * Searches for specific element in a given array using
+   * the linear search algorithm.
+   *
+   * @example
+   *
+   * var search = require('path-to-algorithms/src/searching/'+
+   * 'linear-search').linearSearch;
+   * console.log(search([1, 2, 3, 4, 5], 4)); // 3
+   *
+   * @public
+   * @module searching/linear-search
+   * @param {Array} sorted array Input array
+   * @param {Number} seek index of the element which index should be found
+   * @returns {Number} Index of the element or -1 if not found
+   */
+  function linearSearch(arr, key) {
+    let results = []
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === key) {
+            results.push(i)
+        }
+    }
+    if (!results) {
+        return -1
+    }
+    return results
+  }
+  exports.linearSearch = linearSearch;
+})(typeof window === 'undefined' ? module.exports : window);
