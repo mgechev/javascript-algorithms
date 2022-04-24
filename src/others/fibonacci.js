@@ -18,22 +18,11 @@
 (function (exports) {
   'use strict';
 
-  function fibonacci (n) {
-    if (n > 97) {
-      throw 'Input too large, results in inaccurate fibonacci value.';
-    }
-    var n1 = 0;
-    var n2 = 1;
-    var aux;
-
-    while (n > 0) {
-      aux = n1;
-      n1 = n2;
-      n2 += aux;
-      n = n - 1;
-    }
-
-    return n1;
+  function fibonacci (n , memo = []) {
+    if(memo[n]) return memo[n];
+    if(n <= 2) return 1;
+    memo[n] = fibonacci(n - 1, memo) + fibonacci( n - 2 , memo);
+    return memo[n];
   }
 
   exports.fibonacci = fibonacci;
