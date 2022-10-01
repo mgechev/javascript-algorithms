@@ -1,6 +1,6 @@
-var mod = require('../../src/data-structures/splay-tree.js');
-var Node = mod.Node;
-var SplayTree = mod.SplayTree;
+let mod = require('../../src/data-structures/splay-tree.js');
+let Node = mod.Node;
+let SplayTree = mod.SplayTree;
 
 describe('Node', function () {
   'use strict';
@@ -9,16 +9,16 @@ describe('Node', function () {
     expect(typeof Node).toBe('function');
   });
   it('should be a construct properly', function () {
-    var node = new Node(10, null, null, null);
+    let node = new Node(10, null, null, null);
     expect(node.value).toBe(10);
     expect(node._left).toBe(null);
     expect(node._right).toBe(null);
     expect(node._parent).toBe(null);
   });
   it('should reference children/parent properly', function () {
-    var root = new Node(10, null, null, null);
-    var left = new Node(5, null, null, root);
-    var right = new Node(15, null, null, root);
+    let root = new Node(10, null, null, null);
+    let left = new Node(5, null, null, root);
+    let right = new Node(15, null, null, root);
     root._left = left;
     root._right = right;
     expect(root.value).toBe(10);
@@ -38,13 +38,13 @@ describe('SplayTree', function () {
     expect(new SplayTree()._root).toBe(null);
   });
   it('should insert and remove correctly', function () {
-    var sTree = new SplayTree();
+    let sTree = new SplayTree();
     sTree.insert(10);
     sTree.remove(10);
     expect(sTree._root).toBe(null);
   });
   it('should splay correctly upon inserts', function () {
-    var sTree = new SplayTree();
+    let sTree = new SplayTree();
     sTree.insert(10);
     sTree.insert(5);
     sTree.insert(15);
@@ -55,7 +55,7 @@ describe('SplayTree', function () {
     expect(sTree._root._right.value).toBe(15);
   });
   it('should splay correctly upon search', function () {
-    var sTree = new SplayTree();
+    let sTree = new SplayTree();
     sTree.insert(10);
     sTree.insert(5);
     sTree.insert(15);
@@ -67,7 +67,7 @@ describe('SplayTree', function () {
     expect(sTree._root._right._right.value).toBe(12);
   });
   it('should splay correctly upon remove', function () {
-    var sTree = new SplayTree();
+    let sTree = new SplayTree();
     sTree.insert(10);
     sTree.insert(5);
     sTree.insert(15);

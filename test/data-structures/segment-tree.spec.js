@@ -1,7 +1,7 @@
-var SegmentTree = require('../../src/data-structures/segment-tree.js')
+let SegmentTree = require('../../src/data-structures/segment-tree.js')
   .SegmentTree;
 
-var defaultAggregate = function (a, b) {
+let defaultAggregate = function (a, b) {
   'use strict';
   return Math.min(a, b);
 };
@@ -25,19 +25,19 @@ describe('Segment Tree', function () {
     });
 
     it('should work with empty arrays', function () {
-      var tree = SegmentTree.indexArray([], Infinity, defaultAggregate);
+      let tree = SegmentTree.indexArray([], Infinity, defaultAggregate);
       expect(tree._data).toBeTruthy();
       expect(tree._data.length).toBe(0);
     });
 
     it('should index arrays with one element', function () {
-      var tree = SegmentTree.indexArray([1], Infinity, defaultAggregate);
+      let tree = SegmentTree.indexArray([1], Infinity, defaultAggregate);
       expect(tree._data).toBeTruthy();
       expect(tree._data.length).toBe(1);
     });
 
     it('should index any array', function () {
-      var tree = SegmentTree.indexArray([1, 2, 3], Infinity, defaultAggregate);
+      let tree = SegmentTree.indexArray([1, 2, 3], Infinity, defaultAggregate);
       expect(tree._data).toEqual([1, 1, 3, 1, 2]);
 
       tree = SegmentTree.indexArray([1, 2, 3, 6], Infinity, defaultAggregate);
@@ -49,7 +49,7 @@ describe('Segment Tree', function () {
   describe('should find the proper value at given interval', function () {
 
     it('should properly find the minimum when in range', function () {
-      var tree = SegmentTree.indexArray([1], Infinity, defaultAggregate);
+      let tree = SegmentTree.indexArray([1], Infinity, defaultAggregate);
       expect(tree.query(0, 0)).toBe(1);
 
       tree = SegmentTree.indexArray([1, 2], Infinity, defaultAggregate);
@@ -66,7 +66,7 @@ describe('Segment Tree', function () {
     });
 
     it('should properly find the minimum when outside range', function () {
-      var tree = SegmentTree.indexArray([1], Infinity, defaultAggregate);
+      let tree = SegmentTree.indexArray([1], Infinity, defaultAggregate);
       expect(tree.query(0, 2)).toBe(1);
 
       tree = SegmentTree.indexArray([1, 2, 3], Infinity, defaultAggregate);
@@ -76,7 +76,7 @@ describe('Segment Tree', function () {
     });
 
     it('should throw when the start index is bigger than end', function () {
-      var tree = SegmentTree.indexArray([1], Infinity, defaultAggregate);
+      let tree = SegmentTree.indexArray([1], Infinity, defaultAggregate);
       expect(function () {
         tree.query(2, 1);
       }).toThrow();

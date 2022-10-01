@@ -6,10 +6,10 @@
   }
 
   function sort(arr, lo, hi, d) {
-    var temp = [];
-    var count = [];
-    var j;
-    var idx;
+    let temp = [];
+    let count = [];
+    let j;
+    let idx;
     // Use Insertion sort when the
     // array is smaller than given threshold
     for (j = lo; j <= hi; j += 1) {

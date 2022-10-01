@@ -1,5 +1,5 @@
-var mod = require('../../src/others/levenshtein-distance.js');
-var levenshteinDistance = mod.levenshteinDistance;
+let mod = require('../../src/others/levenshtein-distance.js');
+let levenshteinDistance = mod.levenshteinDistance;
 
 describe('Levenstein\'s minimum edit distance algorithm', function () {
   'use strict';

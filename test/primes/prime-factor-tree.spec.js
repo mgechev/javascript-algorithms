@@ -1,4 +1,4 @@
-var primeFactorTree = require('../../src/primes/prime-factor-tree').primeFactorTree;
+let primeFactorTree = require('../../src/primes/prime-factor-tree').primeFactorTree;
 
 describe('Prime factor tree', function () {
   'use strict';
@@ -18,8 +18,8 @@ describe('Prime factor tree', function () {
   });
 
   it('sum of primes for given number 600851475143 should be 9238', function () {
-    var primes = primeFactorTree(600851475143);
-    var sumOfPrimes = primes.reduce(function (previousValue, currentValue) {
+    let primes = primeFactorTree(600851475143);
+    let sumOfPrimes = primes.reduce(function (previousValue, currentValue) {
       return previousValue + currentValue;
     });
 

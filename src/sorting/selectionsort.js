@@ -23,13 +23,13 @@
    * zero, or positive value, depending on the arguments.
    * @return {Array} Sorted array.
    */
-  var selectionSort = function (array, cmp) {
+  let selectionSort = function (array, cmp) {
     cmp = cmp || compare;
-    var idx;
-    var temp;
-    for (var i = 0; i < array.length - 1; i += 1) {
+    let idx;
+    let temp;
+    for (let i = 0; i < array.length - 1; i += 1) {
       idx = i;
-      for (var j = i + 1; j < array.length; j += 1) {
+      for (let j = i + 1; j < array.length; j += 1) {
         if (cmp(array[idx], array[j]) > 0) {
           idx = j;
         }

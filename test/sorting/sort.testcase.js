@@ -10,12 +10,12 @@ module.exports = function (sort, algorithmName, options) {
 
     function createRandomArray(config) {
       config = config || {};
-      var size = config.size || 100;
-      var precision = config.precision || 2;
-      var multiplier = config.multiplier || 100;
-      var result = [];
+      let size = config.size || 100;
+      let precision = config.precision || 2;
+      let multiplier = config.multiplier || 100;
+      let result = [];
 
-      for (var i = size; i > 0; i -= 1) {
+      for (let i = size; i > 0; i -= 1) {
         result.push(parseFloat((Math.random() *
             multiplier).toFixed(precision)));
       }
@@ -31,7 +31,7 @@ module.exports = function (sort, algorithmName, options) {
     });
 
     it('should work with random non-sorted arrays', function () {
-      var array;
+      let array;
       if (options.integers) {
         array = createRandomArray();
       } else {
@@ -40,7 +40,7 @@ module.exports = function (sort, algorithmName, options) {
         });
       }
       array = sort(array);
-      for (var i = 0; i < array.length - 1; i += 1) {
+      for (let i = 0; i < array.length - 1; i += 1) {
         expect(array[i] <= array[i + 1]).toBeTruthy();
       }
     });
@@ -52,10 +52,10 @@ module.exports = function (sort, algorithmName, options) {
           return b - a;
         }
 
-        var array = createRandomArray();
+        let array = createRandomArray();
         array = sort(array, comparator);
 
-        for (var i = 0; i < array.length - 1; i += 1) {
+        for (let i = 0; i < array.length - 1; i += 1) {
           expect(array[i] >= array[i + 1]).toBeTruthy();
         }
       });

@@ -35,7 +35,7 @@
   /**
    * Enum for the different colors
    */
-  var Colors = {
+  let Colors = {
     RED: 0,
     BLACK: 1
   };
@@ -92,7 +92,7 @@
   'key value left right color'
   .split(' ')
   .forEach(function (key) {
-    var valueName = key.substr(0, 1).toUpperCase() + key.substr(1, key.length);
+    let valueName = key.substr(0, 1).toUpperCase() + key.substr(1, key.length);
     Node.prototype['get' + valueName] = function () {
       return this['_' + key];
     };
@@ -154,7 +154,7 @@
    * @param {Node} node Node.
    */
   exports.RBTree.prototype._put = function (key, value, node) {
-    var newRoot = node;
+    let newRoot = node;
     if (node === null) {
       return new Node(key, value, null, null, Colors.RED);
     }
@@ -200,9 +200,9 @@
    * @return {Node} Right node.
    */
   exports.RBTree.prototype._rotateLeft = function (node) {
-    var x = node.getRight();
+    let x = node.getRight();
     if (x !== null) {
-      var temp = x.getLeft();
+      let temp = x.getLeft();
       node.setRight(temp);
       x.setLeft(node);
       x.setColor(node.getColor());
@@ -221,9 +221,9 @@
    * @return {Node} Left node.
    */
   exports.RBTree.prototype._rotateRight = function (node) {
-    var x = node.getLeft();
+    let x = node.getLeft();
     if (x !== null) {
-      var temp = x.getRight();
+      let temp = x.getRight();
       node.setLeft(temp);
       x.setRight(node);
       x.setColor(node.getColor());
@@ -276,15 +276,15 @@
   *
   */
   exports.RBTree.prototype.levelOrderTraversal = function () {
-    var queue = [];
-    var levelOrderString = '';
+    let queue = [];
+    let levelOrderString = '';
     if (this._root){
       queue.push(this._root);
     } else {
       levelOrderString = ' Tree is empty';
     }
     while (queue.length !== 0){
-      var tempNode = queue.shift();
+      let tempNode = queue.shift();
       levelOrderString += ' ' + tempNode.getKey();
       if (tempNode.getLeft() !== null){
         queue.push(tempNode.getLeft());

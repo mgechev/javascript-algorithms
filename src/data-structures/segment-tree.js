@@ -46,23 +46,23 @@
    *  intermediate nodes.
    */
   SegmentTree.indexArray = function (array, placeholder, aggregate) {
-    var segmentize = function (original, data, lo, hi, idx) {
+    const segmentize = function (original, data, lo, hi, idx) {
       if (lo === hi) {
         data[idx] = original[lo];
       } else {
-        var mid = Math.floor((lo + hi) / 2);
-        var left = 2 * idx + 1;
-        var right = 2 * idx + 2;
+        let mid = Math.floor((lo + hi) / 2);
+        let left = 2 * idx + 1;
+        let right = 2 * idx + 2;
         segmentize(original, data, lo, mid, left);
         segmentize(original, data, mid + 1, hi, right);
         data[idx] = aggregate(data[left], data[right]);
       }
     };
-    var result = [];
+    let result = [];
     if (array && array.length) {
       segmentize(array, result, 0, array.length - 1, 0);
     }
-    var tree = new SegmentTree(placeholder, aggregate);
+    let tree = new SegmentTree(placeholder, aggregate);
     tree._data = result;
     tree._original = array;
     return tree;
@@ -78,7 +78,7 @@
     if (start > end) {
       throw new Error('The start index should be smaller by the end index');
     }
-    var findEl = function (originalArrayStart, originalArrayEnd, current) {
+    const findEl = function (originalArrayStart, originalArrayEnd, current) {
       if (start > originalArrayEnd) {
         return this._invalidValue;
       }
@@ -89,7 +89,7 @@
           originalArrayStart === originalArrayEnd) {
         return this._data[current];
       }
-      var originalArrayMid =
+      let originalArrayMid =
         Math.floor((originalArrayStart + originalArrayEnd) / 2);
       return this._aggregate(
         findEl(originalArrayStart, originalArrayMid, 2 * current + 1),

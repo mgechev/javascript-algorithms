@@ -1,4 +1,4 @@
-var quickselect = require('../../src/searching/quickselect').quickselect;
+let quickselect = require('../../src/searching/quickselect').quickselect;
 
 describe('quickselect', function () {
   'use strict';

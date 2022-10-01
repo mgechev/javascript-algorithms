@@ -63,9 +63,9 @@
    * @param {Number|String} val Key to be hashed.
    */
   exports.Hashtable.prototype.hashCode = function (val) {
-    var i;
-    var hashCode = 0;
-    var character;
+    let i;
+    let hashCode = 0;
+    let character;
 
     // If value to be hashed is already an integer, return it.
     if (val.length === 0 || val.length === undefined) {
@@ -106,7 +106,7 @@
     // Adjust hash to fit within buckets.
     hashCode = hashCode % this.maxBucketCount;
 
-    var newNode = new exports.Node(key, data);
+    let newNode = new exports.Node(key, data);
 
     // No element exists at hash/index for given key -> put in table.
     if (this.buckets[hashCode] === undefined) {
@@ -124,7 +124,7 @@
       Item exists at hash/index for key, but different key.
       Handle collision.
     */
-    var first = this.buckets[hashCode];
+    let first = this.buckets[hashCode];
     while (first.next !== undefined) {
       first = first.next;
     }
@@ -161,7 +161,7 @@
     ) {
       return this.buckets[hashCode].data;
     } else {
-      var first = this.buckets[hashCode];
+      let first = this.buckets[hashCode];
       while (
         first !== undefined &&
         first.next !== undefined &&
@@ -204,7 +204,7 @@
     } else if (this.buckets[hashCode].next === undefined) {
       this.buckets[hashCode] = undefined;
     } else {
-      var first = this.buckets[hashCode];
+      let first = this.buckets[hashCode];
 
       while (
         first !== undefined &&
@@ -214,7 +214,7 @@
         first = first.next;
       }
 
-      var removedValue = first.data;
+      let removedValue = first.data;
 
       // Removing (B)
       // (B) : only item in bucket

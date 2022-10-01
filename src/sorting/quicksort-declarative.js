@@ -13,7 +13,7 @@
    * @param {array} array Array which should be sorted.
    * @return {array} Sorted array.
    */
-  var quickSort = (function () {
+  let quickSort = (function () {
 
     /**
      * Recursively calls itself.

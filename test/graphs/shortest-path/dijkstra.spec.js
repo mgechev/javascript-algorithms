@@ -1,4 +1,4 @@
-var dijkstra =
+let dijkstra =
   require('../../../src/graphs/shortest-path/dijkstra').dijkstra;
 
 describe('dijkstra', function () {

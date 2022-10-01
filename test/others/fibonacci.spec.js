@@ -1,5 +1,5 @@
-var mod = require('../../src/others/fibonacci.js');
-var fibonacci = mod.fibonacci;
+let mod = require('../../src/others/fibonacci.js');
+let fibonacci = mod.fibonacci;
 
 describe('fibonacci algorithm', function () {
   'use strict';

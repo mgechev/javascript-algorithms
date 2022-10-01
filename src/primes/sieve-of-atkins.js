@@ -32,14 +32,14 @@
 
     const testingLimit = Math.ceil(Math.sqrt(limit));
 
-    var i;
-    var j;
-    var n;
+    let i;
+    let j;
+    let n;
 
     for (i = 1; i < testingLimit; i += 1) {
-      var ii = i * i;
+      let ii = i * i;
       for (j = 1; j < testingLimit; j += 1) {
-        var jj = j * j;
+        let jj = j * j;
         if (ii + jj >= limit) {
 	  break;
         }

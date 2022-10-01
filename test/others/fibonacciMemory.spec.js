@@ -1,5 +1,5 @@
-var mod = require('../../src/others/fibonacciMemory.js');
-var fibonacci = mod.fibonacciMemory;
+let mod = require('../../src/others/fibonacciMemory.js');
+let fibonacci = mod.fibonacciMemory;
 
 describe('fibonacci with Memory algorithm', function () {
   'use strict';
@@ -21,7 +21,7 @@ describe('fibonacci with Memory algorithm', function () {
   });
   it('should return value 10 with input 55.', function () {
     expect(fibonacci(10)).toBe(55);
-  });  
+  });
   it('should be 135301852344706760000 with input 98.', function () {
     expect(fibonacci(98)).toBe(135301852344706760000);
   });

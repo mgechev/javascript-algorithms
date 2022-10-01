@@ -19,10 +19,10 @@
    * @return {Array} Shuffled array.
    */
   function shuffle(array) {
-    var arraySize = array.length - 1;
-    var rand;
-    var temp;
-    for (var i = arraySize; i >= 0; i -= 1) {
+    let arraySize = array.length - 1;
+    let rand;
+    let temp;
+    for (let i = arraySize; i >= 0; i -= 1) {
       rand = Math.round(Math.random() * arraySize);
       temp = array[i];
       array[i] = array[rand];

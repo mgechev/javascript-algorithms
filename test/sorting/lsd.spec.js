@@ -1,4 +1,4 @@
-var lsd = require('../../src/sorting/lsd.js').lsd;
+let lsd = require('../../src/sorting/lsd.js').lsd;
 
 describe('Least-Significant Digit', function () {
   'use strict';
@@ -8,14 +8,14 @@ describe('Least-Significant Digit', function () {
   });
 
   it('should work with arrays with a single element', function () {
-    var arr = ['a'];
+    let arr = ['a'];
     lsd(arr);
     expect(arr.length).toBe(1);
     expect(arr[0]).toBe('a');
   });
 
   it('should work with arrays with equally length strings', function () {
-    var arr = ['bb', 'aa', 'cc'];
+    let arr = ['bb', 'aa', 'cc'];
     lsd(arr);
     expect(arr.length).toBe(3);
     expect(arr[0]).toBe('aa');
@@ -24,7 +24,7 @@ describe('Least-Significant Digit', function () {
   });
 
   it('should work with arrays with equally length strings', function () {
-    var arr = ['bbb', 'aac', 'aaa'];
+    let arr = ['bbb', 'aac', 'aaa'];
     lsd(arr, 3);
     expect(arr.length).toBe(3);
     expect(arr[0]).toBe('aaa');

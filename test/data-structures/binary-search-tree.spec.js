@@ -1,6 +1,6 @@
-var mod = require('../../src/data-structures/binary-search-tree.js');
-var Node = mod.Node;
-var BinaryTree = mod.BinaryTree;
+let mod = require('../../src/data-structures/binary-search-tree.js');
+let Node = mod.Node;
+let BinaryTree = mod.BinaryTree;
 
 describe('Node', function () {
   'use strict';
@@ -20,23 +20,23 @@ describe('Binary Tree', function () {
     expect(new BinaryTree()._root).toBe(null);
   });
   it('should insert and remove single node properly', function () {
-    var bTree = new BinaryTree();
+    let bTree = new BinaryTree();
     bTree.insert(15);
-    var node = bTree.find(15);
+    let node = bTree.find(15);
     bTree.remove(node);
     expect(bTree._root).toBe(null);
   });
   it('should remove root and replace with valid child', function () {
-    var bTree = new BinaryTree();
+    let bTree = new BinaryTree();
     bTree.insert(15);
     bTree.insert(30);
     bTree.insert(45);
-    var node = bTree.find(15);
+    let node = bTree.find(15);
     bTree.remove(node);
     expect(bTree._root.value).toBe(30);
   });
   it('should insert multiple nodes properly', function () {
-    var bTree = new BinaryTree();
+    let bTree = new BinaryTree();
     bTree.insert(10);
     bTree.insert(5);
     bTree.insert(15);
@@ -44,8 +44,8 @@ describe('Binary Tree', function () {
     bTree.insert(6);
     bTree.insert(14);
     bTree.insert(16);
-    var leftRootChild = bTree._root._left;
-    var rightRootChild = bTree._root._right;
+    let leftRootChild = bTree._root._left;
+    let rightRootChild = bTree._root._right;
     expect(bTree._root.value).toBe(10);
     expect(leftRootChild.value).toBe(5);
     expect(rightRootChild.value).toBe(15);
@@ -55,7 +55,7 @@ describe('Binary Tree', function () {
     expect(rightRootChild._right.value).toBe(16);
   });
   it('should remove multiple nodes properly', function () {
-    var bTree = new BinaryTree();
+    let bTree = new BinaryTree();
     bTree.insert(10);
     bTree.insert(5);
     bTree.insert(15);
@@ -64,9 +64,9 @@ describe('Binary Tree', function () {
     bTree.insert(7);
     bTree.insert(14);
     bTree.insert(16);
-    var leftRootChild = bTree._root._left;
-    var rightRootChild = bTree._root._right;
-    var sixteen = bTree.find(16);
+    let leftRootChild = bTree._root._left;
+    let rightRootChild = bTree._root._right;
+    let sixteen = bTree.find(16);
     bTree.remove(sixteen);
     expect(bTree._root.value).toBe(10);
     expect(leftRootChild.value).toBe(5);
@@ -76,10 +76,10 @@ describe('Binary Tree', function () {
     expect(leftRootChild._right._right.value).toBe(7);
     expect(rightRootChild._left.value).toBe(14);
     expect(rightRootChild._right).toBe(null);
-    var fourteen = bTree.find(14);
+    let fourteen = bTree.find(14);
     bTree.remove(fourteen);
     expect(rightRootChild._left).toBe(null);
-    var five = bTree.find(5);
+    let five = bTree.find(5);
     bTree.remove(five);
     expect(leftRootChild.value).toBe(6);
     expect(leftRootChild._left.value).toBe(4);

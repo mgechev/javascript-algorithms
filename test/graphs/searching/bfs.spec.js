@@ -1,12 +1,12 @@
 /* jshint multistr: true */
 
-var graph = [[0, 0, 0, 0, 1],
+let graph = [[0, 0, 0, 0, 1],
              [0, 0, 0, 1, 0],
              [0, 0, 0, 0, 0],
              [1, 0, 1, 0, 0],
              [0, 1, 0, 1, 0]];
 
-var bfs = require('../../../src/graphs/searching/bfs').bfs;
+let bfs = require('../../../src/graphs/searching/bfs').bfs;
 
 describe('BFS', function () {
   'use strict';
@@ -25,7 +25,7 @@ describe('BFS', function () {
   });
 
   it('should return falsy value when there\'s no path', function () {
-    var graph = [[0, 0, 0, 0, 1],
+    let graph = [[0, 0, 0, 0, 1],
                  [0, 0, 0, 1, 0],
                  [0, 0, 0, 0, 0],
                  [1, 0, 0, 0, 0],
@@ -44,7 +44,7 @@ describe('BFS', function () {
    *      -> 2
    */
   it('should not update the parent node once set', function () {
-    var graph = [[0, 1, 1],
+    let graph = [[0, 1, 1],
                  [0, 0, 1],
                  [0, 0, 0]];
     expect(bfs(graph, 0, 2)).toEqual([0, 2]);

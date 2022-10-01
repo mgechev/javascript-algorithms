@@ -1,5 +1,5 @@
-var sortTestCase = require('./sort.testcase.js');
-var insertionBinarySort =
+let sortTestCase = require('./sort.testcase.js');
+let insertionBinarySort =
       require('../../src/sorting/' +
       'insertion-binary-sort.js').insertionBinarySort;
 

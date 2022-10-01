@@ -16,8 +16,8 @@
       if (!array || !array.length) {
         return -1;
       }
-      var maxIdx = 0;
-      for (var i = 1; i < array.length; i += 1) {
+      let maxIdx = 0;
+      for (let i = 1; i < array.length; i += 1) {
         if (array[maxIdx].distance < array[i].distance) {
           maxIdx = i;
         }
@@ -44,10 +44,10 @@
     * @return {Object} Graph represented with list of neighbours.
     */
     function buildDag(array, cmp) {
-      var result = [];
-      for (var i = 0; i < array.length; i += 1) {
+      let result = [];
+      for (let i = 0; i < array.length; i += 1) {
         result[i] = [];
-        for (var j = i + 1; j < array.length; j += 1) {
+        for (let j = i + 1; j < array.length; j += 1) {
           if (cmp(array[i], array[j]) < 0) {
             result[i].push(j);
           }
@@ -69,18 +69,18 @@
       if (find.memo[node]) {
         return find.memo[node];
       }
-      var neighbours = dag[node];
-      var neighboursDistance = [];
-      var maxDist;
+      let neighbours = dag[node];
+      let neighboursDistance = [];
+      let maxDist;
       // var maxNode;
-      var distance;
-      var result;
+      let distance;
+      let result;
 
       if (!neighbours.length) {
         return { distance: 1, neighbour: undefined, node: node };
       }
 
-      for (var i = 0; i < neighbours.length; i += 1) {
+      for (let i = 0; i < neighbours.length; i += 1) {
         neighboursDistance[i] = find(dag, neighbours[i]);
       }
 
@@ -114,11 +114,11 @@
     */
     return function (array, cmp) {
       cmp = cmp || asc;
-      var results = [];
-      var dag = buildDag(array, cmp);
-      var maxPath;
+      let results = [];
+      let dag = buildDag(array, cmp);
+      let maxPath;
       find.memo = [];
-      for (var i = 0; i < array.length; i += 1) {
+      for (let i = 0; i < array.length; i += 1) {
         results.push(find(dag, i));
       }
       maxPath = results[max(results)];

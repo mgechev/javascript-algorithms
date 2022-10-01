@@ -1,4 +1,4 @@
-var rx =
+let rx =
       require('../../src/sorting/radixsort.js').radixSort;
 
 describe('radixsort', function () {

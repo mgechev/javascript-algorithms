@@ -12,10 +12,10 @@
    * @return {Number} The maximum sum including the middle element.
    */
   function crossSubarray(array, left, middle, right) {
-    var leftSum = -Infinity;
-    var rightSum = -Infinity;
-    var sum = 0;
-    var i;
+    let leftSum = -Infinity;
+    let rightSum = -Infinity;
+    let sum = 0;
+    let i;
 
     for (i = middle; i >= left; i -= 1) {
       if (sum + array[i] >= leftSum) {
@@ -45,10 +45,10 @@
     if (right - left <= 1) {
       return array[left];
     }
-    var middle = Math.floor((left + right) / 2);
-    var leftSum = maxSubarrayPartitioner(array, left, middle);
-    var rightSum = maxSubarrayPartitioner(array, middle, right);
-    var crossSum = crossSubarray(array, left, middle, right);
+    let middle = Math.floor((left + right) / 2);
+    let leftSum = maxSubarrayPartitioner(array, left, middle);
+    let rightSum = maxSubarrayPartitioner(array, middle, right);
+    let crossSum = crossSubarray(array, left, middle, right);
 
     return Math.max(crossSum, leftSum, rightSum);
   }

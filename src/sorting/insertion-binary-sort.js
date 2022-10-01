@@ -28,11 +28,11 @@
    */
   function insertionBinarySort(array, cmp) {
     cmp = cmp || comparator;
-    var current;
-    var middle;
-    var left;
-    var right;
-    for (var i = 1; i < array.length; i += 1) {
+    let current;
+    let middle;
+    let left;
+    let right;
+    for (let i = 1; i < array.length; i += 1) {
       current = array[i];
       left = 0;
       right = i;
@@ -45,7 +45,8 @@
         }
         middle = Math.floor((right + left) / 2);
       }
-      for (var j = i; j > left; j -= 1) {
+      let j = i;
+      for (j = i; j > left; j -= 1) {
         array[j] = array[j - 1];
       }
       array[j] = current;

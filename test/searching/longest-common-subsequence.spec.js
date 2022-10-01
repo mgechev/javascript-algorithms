@@ -1,4 +1,4 @@
-var longestCommonSubsequence =
+let longestCommonSubsequence =
   require('../../src/searching/' +
     'longest-common-subsequence')
     .longestCommonSubsequence;

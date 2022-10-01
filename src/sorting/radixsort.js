@@ -1,7 +1,7 @@
 (function (exports) {
   'use strict';
 
-  var radixSort = (function () {
+  let radixSort = (function () {
 
     /**
      * Returns the digit of a number that is 'lsdOffset'
@@ -16,9 +16,9 @@
      * if lsdOffset is bigger or equal to the number of digits of the 'number'
      * argument.
      */
-    var getDigit = function (number, lsdOffset) {
-      var size = number.toString().length;
-      var digit;
+    let getDigit = function (number, lsdOffset) {
+      let size = number.toString().length;
+      let digit;
 
       if (lsdOffset >= 0 && lsdOffset < size) {
         digit = number.toString()[size - 1 - lsdOffset];
@@ -44,17 +44,17 @@
      * @return {Array} Sorted array
      */
     return function (array) {
-      var size = array.length;
-      var R = 10;   /* Alphabet size ([0-9] for integers) */
-      var count;
-      var digit;
-      var i;
-      var j;
+      let size = array.length;
+      let R = 10;   /* Alphabet size ([0-9] for integers) */
+      let count;
+      let digit;
+      let i;
+      let j;
 
       /* Find maximum key size */
-      var maxKeySize = (array[0] || '').toString().length;
+      let maxKeySize = (array[0] || '').toString().length;
       for (i = 1; i < size; i += 1) {
-        var numStr = array[i].toString();
+        let numStr = array[i].toString();
         if (numStr.length > maxKeySize) {
           maxKeySize = numStr.length;
         }
@@ -79,7 +79,7 @@
         }
 
         /* Move elements to auxiliary array */
-        var aux = [];
+        let aux = [];
         for (j = size - 1; j >= 0; j -= 1) {
           digit = getDigit(array[j], i) || 0;
           count[digit] -= 1;

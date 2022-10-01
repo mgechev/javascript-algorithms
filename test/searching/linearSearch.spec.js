@@ -1,4 +1,4 @@
-var linearSearch =
+let linearSearch =
   require('../../src/searching/linearSearch').linearSearch;
 
 describe('Linear Search', function () {
@@ -9,7 +9,7 @@ describe('Linear Search', function () {
   });
 
   it('should find the element in position arr.length - 1', function () {
-    var arr = [1, 2, 3, 4, 6, 8];
+    let arr = [1, 2, 3, 4, 6, 8];
     expect(linearSearch(arr, 8)).toBe(arr.length - 1);
   });
 

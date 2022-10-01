@@ -57,17 +57,18 @@
    *   has a negative cycle.
    */
   exports.bellmanFord = function (vertexes, edges, source) {
-    var distances = {};
-    var parents = {};
-    var c;
+    let distances = {};
+    let parents = {};
+    let c;
+    let i;
     if (source) {
-      for (var i = 0; i < vertexes.length; i += 1) {
+      for (i = 0; i < vertexes.length; i += 1) {
         distances[vertexes[i].id] = Infinity;
         parents[vertexes[i].id] = null;
       }
       distances[source.id] = 0;
       for (i = 0; i < vertexes.length - 1; i += 1) {
-        for (var j = 0; j < edges.length; j += 1) {
+        for (let j = 0; j < edges.length; j += 1) {
           c = edges[j];
           if (distances[c.from.id] + c.distance < distances[c.to.id]) {
             distances[c.to.id] = distances[c.from.id] + c.distance;

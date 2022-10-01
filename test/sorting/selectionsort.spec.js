@@ -1,5 +1,5 @@
-var sortTestCase = require('./sort.testcase.js');
-var selectionSort =
+let sortTestCase = require('./sort.testcase.js');
+let selectionSort =
       require('../../src/sorting/selectionsort.js')
       .selectionSort;
 

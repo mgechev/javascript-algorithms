@@ -1,4 +1,4 @@
-var indexOf = require('../../src/searching/knuth-morris-pratt').kmp;
+let indexOf = require('../../src/searching/knuth-morris-pratt').kmp;
 
 describe('The string searching algorithm of Knuth-Morris-Pratt', function () {
   'use strict';

@@ -1,11 +1,11 @@
 (function (exports) {
   'use strict';
-  var permutations = (function () {
+  let permutations = (function () {
 
-    var res;
+    let res;
 
     function swap(arr, i, j) {
-      var temp = arr[i];
+      let temp = arr[i];
       arr[i] = arr[j];
       arr[j] = temp;
     }
@@ -14,7 +14,7 @@
       if (current >= arr.length) {
         return res.push(arr.slice());
       }
-      for (var i = current; i < arr.length; i += 1) {
+      for (let i = current; i < arr.length; i += 1) {
         swap(arr, i, current);
         permutations(arr, current + 1);
         swap(arr, i, current);
@@ -51,7 +51,7 @@
     return function (arr) {
       res = [];
       permutations(arr, 0);
-      var temp = res;
+      let temp = res;
       // Free the extra memory
       res = null;
       return temp;

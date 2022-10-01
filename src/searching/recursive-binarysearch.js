@@ -1,7 +1,7 @@
 (function (exports) {
   'use strict';
 
-  var binarySearch = (function () {
+  let binarySearch = (function () {
     /**
      * @private
      * @param {Array} array Array where we should find the index of the element
@@ -14,7 +14,7 @@
       if (left > right) {
         return -1;
       }
-      var middle = Math.floor((right + left) / 2);
+      let middle = Math.floor((right + left) / 2);
       if (array[middle] === value) {
         return middle;
       } else if (array[middle] > value) {

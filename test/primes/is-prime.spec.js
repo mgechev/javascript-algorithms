@@ -1,4 +1,4 @@
-var isPrime = require('../../src/primes/is-prime').isPrime;
+let isPrime = require('../../src/primes/is-prime').isPrime;
 
 describe('Advanced (optimised) method that checks number on prime', function () {
   'use strict';
@@ -12,8 +12,8 @@ describe('Advanced (optimised) method that checks number on prime', function () 
   });
 
   it('the 10001st prime number should be 104743', function () {
-    var count = 1; //we know that 2 is prime
-    var value = 1;
+    let count = 1; //we know that 2 is prime
+    let value = 1;
 
     while (count < 10001) {
       value += 2;

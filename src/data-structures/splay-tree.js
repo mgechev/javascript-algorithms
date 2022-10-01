@@ -62,11 +62,11 @@
    */
   exports.SplayTree.prototype._splay = function (node) {
     while (this._root !== node) {
-      var hasParent = node._parent !== null;
-      var hasGrandparent = (hasParent && node._parent._parent !== null);
+      let hasParent = node._parent !== null;
+      let hasGrandparent = (hasParent && node._parent._parent !== null);
       if (hasParent && hasGrandparent) {
-        var isLeftChild = node._parent._left === node;
-        var isParentLeftChild = node._parent._parent._left === node._parent;
+        let isLeftChild = node._parent._left === node;
+        let isParentLeftChild = node._parent._parent._left === node._parent;
         if (
           (isLeftChild && isParentLeftChild) ||
           (!isLeftChild && !isParentLeftChild)
@@ -92,14 +92,14 @@
    */
   exports.SplayTree.prototype._zigZig = function (node) {
 
-    var parent = node._parent;
-    var grandParent = node._parent._parent;
-    var greatGrandParent = grandParent._parent !== undefined ?
+    let parent = node._parent;
+    let grandParent = node._parent._parent;
+    let greatGrandParent = grandParent._parent !== undefined ?
       grandParent._parent : null;
 
-    var orientation = (parent._right === node) ? '_right' : '_left';
-    var oppositeOrientation = (orientation === '_left') ? '_right' : '_left';
-    var grandParentOrientation = (greatGrandParent !== null &&
+    let orientation = (parent._right === node) ? '_right' : '_left';
+    let oppositeOrientation = (orientation === '_left') ? '_right' : '_left';
+    let grandParentOrientation = (greatGrandParent !== null &&
       greatGrandParent._left === grandParent) ? '_left' : '_right';
 
     // Fix grandparent & great if it exists/not root
@@ -142,14 +142,14 @@
    */
   exports.SplayTree.prototype._zigZag = function (node) {
 
-    var parent = node._parent;
-    var grandParent = parent._parent;
-    var greatGrandParent = grandParent._parent !== undefined ?
+    let parent = node._parent;
+    let grandParent = parent._parent;
+    let greatGrandParent = grandParent._parent !== undefined ?
       grandParent._parent : null;
 
-    var orientation = (parent._left === node) ? '_left' : '_right';
-    var oppositeOrientation = (orientation === '_right') ? '_left' : '_right';
-    var grandParentOrientation = (greatGrandParent !== null &&
+    let orientation = (parent._left === node) ? '_left' : '_right';
+    let oppositeOrientation = (orientation === '_right') ? '_left' : '_right';
+    let grandParentOrientation = (greatGrandParent !== null &&
       greatGrandParent._left === grandParent) ? '_left' : '_right';
 
     // Fix GrandParent
@@ -192,9 +192,9 @@
    */
   exports.SplayTree.prototype._zig = function (node) {
 
-    var parent = node._parent;
-    var orientation = (parent._right === node) ? '_right' : '_left';
-    var oppositeOrientation = (orientation === '_right') ? '_left' : '_right';
+    let parent = node._parent;
+    let orientation = (parent._right === node) ? '_right' : '_left';
+    let oppositeOrientation = (orientation === '_right') ? '_left' : '_right';
 
     if (this._root === parent) {
       this._root = node;
@@ -227,7 +227,7 @@
       this._root = new exports.Node(value, null, null, null);
       return;
     }
-    var insertKey;
+    let insertKey;
     current = current || this._root;
     if (current.value > value) {
       insertKey = '_left';
@@ -341,7 +341,7 @@
    * @param {Number|String} value of the node which should be found.
    */
   exports.SplayTree.prototype.search = function (value) {
-    var node = this._search(value, this._root);
+    let node = this._search(value, this._root);
     return this._splay(node);
   };
 
@@ -418,13 +418,13 @@
    *    on whether the given node is removed.
    */
   exports.SplayTree.prototype.remove = function (value) {
-    var node = this._splaylessSearch(value);
+    let node = this._splaylessSearch(value);
     if (!node) {
       return false;
     }
     if (node._left && node._right) {
-      var min = this._findMin(node._right);
-      var temp = node.value;
+      let min = this._findMin(node._right);
+      let temp = node.value;
 
       node.value = min.value;
       min.value = temp;
@@ -494,13 +494,13 @@
    * @returns {Number} The longest path in the tree.
    */
   exports.SplayTree.prototype.getDiameter = function () {
-    var getDiameter = function (root) {
+    const getDiameter = function (root) {
       if (!root) {
         return 0;
       }
-      var leftHeight = this._getHeight(root._left);
-      var rightHeight = this._getHeight(root._right);
-      var path = leftHeight + rightHeight + 1;
+      let leftHeight = this._getHeight(root._left);
+      let rightHeight = this._getHeight(root._right);
+      let path = leftHeight + rightHeight + 1;
       return Math.max(path, getDiameter(root._left), getDiameter(root._right));
     }.bind(this);
     return getDiameter(this._root);
@@ -555,10 +555,10 @@
    */
   exports.SplayTree.prototype._lowestCommonAncestor =
     function (firstNode, secondNode, current) {
-      var firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
-      var secondNodeInLeft = this._existsInSubtree(secondNode, current._left);
-      var firstNodeInRight = this._existsInSubtree(firstNode, current._right);
-      var secondNodeInRight = this._existsInSubtree(secondNode, current._right);
+      let firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
+      let secondNodeInLeft = this._existsInSubtree(secondNode, current._left);
+      let firstNodeInRight = this._existsInSubtree(firstNode, current._right);
+      let secondNodeInRight = this._existsInSubtree(secondNode, current._right);
       if ((firstNodeInLeft && secondNodeInRight) ||
         (firstNodeInRight && secondNodeInLeft)) {
         return current;

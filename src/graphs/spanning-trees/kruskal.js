@@ -3,8 +3,8 @@
 (function(exports) {
   'use strict';
 
-  var QuickUnion = require('../../sets/quickunion').QuickUnion;
-  var mergeSort = require('../../sorting/mergesort').mergeSort;
+  let QuickUnion = require('../../sets/quickunion').QuickUnion;
+  let mergeSort = require('../../sorting/mergesort').mergeSort;
   exports.Vertex = require('../../data-structures/vertex').Vertex;
   exports.Edge = require('../../data-structures/edge').Edge;
 
@@ -13,9 +13,9 @@
   }
 
   exports.Graph.prototype.kruskal = (function () {
-    var qunion;
-    var spanningTree;
-    var indexes;
+    let qunion;
+    let spanningTree;
+    let indexes;
 
     /**
      * Used for sorting the edges
@@ -37,8 +37,8 @@
      * @private
      */
     function init() {
-      var edge;
-      var i = 0;
+      let edge;
+      let i = 0;
 
       mergeSort(this.edges, compareEdges);
       spanningTree = [];
@@ -62,11 +62,11 @@
     return function () {
       init.call(this);
 
-      var edge;
+      let edge;
 
       for (edge of this.edges) {
-        var from = indexes[edge.from.id];
-        var to = indexes[edge.to.id];
+        let from = indexes[edge.from.id];
+        let to = indexes[edge.to.id];
         if (!qunion.connected(from, to)) {
           qunion.union(from, to);
           spanningTree.push(edge);

@@ -1,4 +1,4 @@
-var longestIncreasingSubsequence =
+let longestIncreasingSubsequence =
   require('../../src/searching/' +
     'longest-increasing-subsequence')
     .longestIncreasingSubsequence;
@@ -6,7 +6,7 @@ var longestIncreasingSubsequence =
 describe('longest increasing subsequence', function () {
   'use strict';
 
-  var sequence;
+  let sequence;
   beforeEach(function () {
     sequence = [5, 2, 8, 6, 3, 6, 9, 7, 11];
   });
@@ -16,7 +16,7 @@ describe('longest increasing subsequence', function () {
   });
 
   it('should return the only element in a single element array', function () {
-    var array = [1];
+    let array = [1];
     expect(longestIncreasingSubsequence(array)).toEqual([1]);
   });
 
@@ -34,11 +34,11 @@ describe('longest increasing subsequence', function () {
   });
 
   it('should work with a custom comparator', function () {
-    var cmp = function (a, b) {
+    let cmp = function (a, b) {
       return b - a;
     };
-    var seq = [1, 2, -1];
-    var result = longestIncreasingSubsequence(seq, cmp);
+    let seq = [1, 2, -1];
+    let result = longestIncreasingSubsequence(seq, cmp);
     expect(result.length).toBe(2);
     expect(result).toEqual([1, -1]);
   });

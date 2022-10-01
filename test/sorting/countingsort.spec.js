@@ -1,4 +1,4 @@
-var cs =
+let cs =
   require('../../src/sorting/countingsort').countingSort;
 
 describe('countingsort', function () {

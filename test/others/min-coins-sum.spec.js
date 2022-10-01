@@ -1,4 +1,4 @@
-var minCoinsChange =
+let minCoinsChange =
   require('../../src/others/min-coins-change.js').minCoinsChange;
 
 describe('Change making problem', function () {

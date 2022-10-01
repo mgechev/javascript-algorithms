@@ -1,5 +1,5 @@
-var mod = require('../../src/others/minkowski-distance.js');
-var minkowskiDistance = mod.minkowskiDistance;
+let mod = require('../../src/others/minkowski-distance.js');
+let minkowskiDistance = mod.minkowskiDistance;
 
 describe('Minkowski Distance', function () {
   'use strict';

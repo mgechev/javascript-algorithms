@@ -38,7 +38,7 @@
    */
   exports.QuickUnion = function (n) {
     this._ids = [];
-    for (var i = 0; i < n; i += 1) {
+    for (let i = 0; i < n; i += 1) {
       this._ids[i] = i;
     }
   };
@@ -67,8 +67,8 @@
    * @param {Number} q The second node.
    */
   exports.QuickUnion.prototype.union = function (p, q) {
-    var pRoot = this._root(p);
-    var qRoot = this._root(q);
+    let pRoot = this._root(p);
+    let qRoot = this._root(q);
     this._ids[pRoot] = qRoot;
   };
 

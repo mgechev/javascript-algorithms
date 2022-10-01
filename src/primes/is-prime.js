@@ -29,8 +29,8 @@
       return (number === 3);
     }
 
-    var horizon = Math.floor(Math.sqrt(number));
-    var factor = 5;
+    let horizon = Math.floor(Math.sqrt(number));
+    let factor = 5;
 
     while (factor <= horizon) {
 
