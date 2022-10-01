@@ -1,6 +1,6 @@
-var mod = require('../../src/data-structures/avl-tree.js');
-var Node = mod.Node;
-var AVLTree = mod.AVLTree;
+let mod = require('../../src/data-structures/avl-tree.js');
+let Node = mod.Node;
+let AVLTree = mod.AVLTree;
 
 describe('Node', function () {
   'use strict';
@@ -20,7 +20,7 @@ describe('AVL Tree', function () {
     expect(new AVLTree()._root).toBe(null);
   });
   it('should insert and single rotate (leftRight) properly', function () {
-    var avlTree = new AVLTree();
+    let avlTree = new AVLTree();
     avlTree.insert(66);
     avlTree.insert(3);
     avlTree.insert(5);
@@ -33,7 +33,7 @@ describe('AVL Tree', function () {
     expect(avlTree._root._right._height).toBe(1);
   });
   it('should insert and single rotate (rightLeft) properly', function () {
-    var avlTree = new AVLTree();
+    let avlTree = new AVLTree();
     avlTree.insert(50);
     avlTree.insert(75);
     avlTree.insert(60);
@@ -46,7 +46,7 @@ describe('AVL Tree', function () {
     expect(avlTree._root._right._height).toBe(1);
   });
   it('should insert and double rotate (leftLeft) properly', function () {
-    var avlTree = new AVLTree();
+    let avlTree = new AVLTree();
     avlTree.insert(50);
     avlTree.insert(25);
     avlTree.insert(10);
@@ -59,7 +59,7 @@ describe('AVL Tree', function () {
     expect(avlTree._root._right._height).toBe(1);
   });
   it('should insert and double rotate (rightRight) properly', function () {
-    var avlTree = new AVLTree();
+    let avlTree = new AVLTree();
     avlTree.insert(50);
     avlTree.insert(75);
     avlTree.insert(100);
@@ -72,7 +72,7 @@ describe('AVL Tree', function () {
     expect(avlTree._root._right._height).toBe(1);
   });
   it('should insert multiple nodes and balance properly (1)', function () {
-    var avlTree = new AVLTree();
+    let avlTree = new AVLTree();
     avlTree.insert(30);
     avlTree.insert(15);
     avlTree.insert(60);
@@ -91,7 +91,7 @@ describe('AVL Tree', function () {
     expect(avlTree._root._right._right._height).toBe(1);
   });
   it('should insert multiple nodes and balance properly (2)', function () {
-    var avlTree = new AVLTree();
+    let avlTree = new AVLTree();
     avlTree.insert(24);
     avlTree.insert(67);
     avlTree.insert(33);
@@ -126,7 +126,7 @@ describe('AVL Tree', function () {
     expect(avlTree._root._left._right._right._height).toBe(1);
   });
   it('should remove nodes and balance properly (1)', function () {
-    var avlTree = new AVLTree();
+    let avlTree = new AVLTree();
     avlTree.insert(30);
     avlTree.insert(15);
     avlTree.insert(60);
@@ -147,7 +147,7 @@ describe('AVL Tree', function () {
     expect(avlTree._root._left._right._height).toBe(1);
   });
   it('should remove nodes and balance properly (2)', function () {
-    var avlTree = new AVLTree();
+    let avlTree = new AVLTree();
     avlTree.insert(55);
     avlTree.insert(25);
     avlTree.insert(11);
@@ -164,7 +164,7 @@ describe('AVL Tree', function () {
     expect(avlTree._root._right._height).toBe(1);
   });
   it('should remove nodes and balance properly (3)', function () {
-    var avlTree = new AVLTree();
+    let avlTree = new AVLTree();
     avlTree.insert(55);
     avlTree.insert(25);
     avlTree.insert(11);

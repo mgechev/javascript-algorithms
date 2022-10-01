@@ -1,4 +1,4 @@
-var binarySearch =
+let binarySearch =
   require('../../src/searching/binarysearch').binarySearch;
 
 describe('Binary search', function () {
@@ -9,7 +9,7 @@ describe('Binary search', function () {
   });
 
   it('should find the element in position arr.length - 1', function () {
-    var arr = [1, 2, 3, 4, 6, 8];
+    let arr = [1, 2, 3, 4, 6, 8];
     expect(binarySearch(arr, 8)).toBe(arr.length - 1);
   });
 

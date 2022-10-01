@@ -1,7 +1,7 @@
-var mod = require('../../src/data-structures/red-black-tree.js');
-var Vertex = mod.Node;
-var RBTree = mod.RBTree;
-var Colors = mod.Colors;
+let mod = require('../../src/data-structures/red-black-tree.js');
+let Vertex = mod.Node;
+let RBTree = mod.RBTree;
+let Colors = mod.Colors;
 
 describe('Node', function () {
   'use strict';
@@ -11,7 +11,7 @@ describe('Node', function () {
   });
 
   it('should set all properties via the constructor', function () {
-    var node = new Vertex('key', 'value', 1, 2, Colors.RED);
+    let node = new Vertex('key', 'value', 1, 2, Colors.RED);
     expect(node.getKey()).toBe('key');
     expect(node.getLeft()).toBe(1);
     expect(node.getRight()).toBe(2);
@@ -21,11 +21,11 @@ describe('Node', function () {
 
   describe('Node flipColor', function () {
     it('should has method flipColor', function () {
-      var node = new Vertex();
+      let node = new Vertex();
       expect(typeof node.flipColor).toBe('function');
     });
     it('should work properly', function () {
-      var node = new Vertex();
+      let node = new Vertex();
       expect(node.isRed()).toBe(false);
       node.flipColor();
       expect(node.isRed()).toBe(true);
@@ -47,14 +47,14 @@ describe('RBTree', function () {
 
   describe('node insertion', function () {
     it('should be able to insert a node in empty tree', function () {
-      var tree = new RBTree();
+      let tree = new RBTree();
       tree.put('foo', 'bar');
       expect(tree._root.getKey()).toBe('foo');
       expect(tree._root.getValue()).toBe('bar');
     });
 
     it('should be able to insert a node in 1 level tree', function () {
-      var tree = new RBTree();
+      let tree = new RBTree();
       tree.put(1, 'bar');
       tree.put(0, 'baz');
       expect(tree._root.getLeft()).not.toBeNull();
@@ -82,7 +82,7 @@ describe('RBTree', function () {
 
   describe('get method', function () {
     it('should be able to find value by given key', function () {
-      var tree = new RBTree();
+      let tree = new RBTree();
       expect(tree.get(1)).toBeUndefined();
       tree.put(1, 'baz');
       expect(tree.get(1)).toBe('baz');
@@ -100,7 +100,7 @@ describe('RBTree', function () {
 
   describe('levelOrderTraversal method', function () {
     it('should be able to traverse tree in level order', function () {
-      var tree = new RBTree();
+      let tree = new RBTree();
       expect(tree.levelOrderTraversal()).toBe('Level Order Traversal -: Tree is empty');
       tree.put(10);
       tree.put(20);

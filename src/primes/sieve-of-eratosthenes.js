@@ -24,10 +24,10 @@
    * console.log(sieveOfEratosthenes(12)); // [2, 3, 5, 7, 11]
    */
   exports.sieveOfEratosthenes = function (limit) {
-    var sieve = [];
-    var primes = [];
-    var k;
-    var l;
+    let sieve = [];
+    let primes = [];
+    let k;
+    let l;
 
     sieve[1] = false;
 

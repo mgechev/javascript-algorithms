@@ -1,4 +1,4 @@
-var bw = require('../../../src/compression/burrows-wheeler/burrows-wheeler').burrowsWheeler;
+let bw = require('../../../src/compression/burrows-wheeler/burrows-wheeler').burrowsWheeler;
 
 describe('Burrows Wheeler', function () {
   'use strict';

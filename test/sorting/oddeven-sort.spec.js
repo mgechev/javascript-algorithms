@@ -1,4 +1,4 @@
-var oes =
+let oes =
   require('../../src/sorting/oddeven-sort').oddEvenSort;
 
 describe('oddeven-sort', function () {

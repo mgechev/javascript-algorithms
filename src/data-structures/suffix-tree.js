@@ -13,8 +13,8 @@
   SuffixTree.prototype.addNode = (function () {
 
     function maxPrefix(a, b) {
-      var res = [];
-      for (var i = 0; i < Math.min(a.length, b.length); i += 1) {
+      let res = [];
+      for (let i = 0; i < Math.min(a.length, b.length); i += 1) {
         if (a[i] === b[i]) {
           res.push(a[i]);
         } else {
@@ -39,11 +39,11 @@
         current.nodes[suffix[0]]);
       }
       // Find the maximum prefix and split the current node if prefix exists
-      var prefix = maxPrefix(current.value, suffix);
+      let prefix = maxPrefix(current.value, suffix);
       if (prefix.length) {
-        var temp = current.value;
-        var suffixSuffix = suffix.substr(prefix.length, suffix.length);
-        var currentSuffix = temp.substr(prefix.length, temp.length);
+        let temp = current.value;
+        let suffixSuffix = suffix.substr(prefix.length, suffix.length);
+        let currentSuffix = temp.substr(prefix.length, temp.length);
         current.value = prefix;
         addNode(currentSuffix, current);
         addNode(suffixSuffix, current);
@@ -61,7 +61,7 @@
   // O(n^2) or even O(n^3) because of maxPrefix
   SuffixTree.prototype.build = function (string) {
     this.root.value = string;
-    for (var i = 1; i < string.length; i += 1) {
+    for (let i = 1; i < string.length; i += 1) {
       this.addNode(string.substr(i, string.length));
     }
   };

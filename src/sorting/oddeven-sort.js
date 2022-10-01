@@ -17,22 +17,22 @@
    */
   function oddEvenSort(arr) {
     function swap(arr, i, j) {
-      var temp = arr[i];
+      let temp = arr[i];
       arr[i] = arr[j];
       arr[j] = temp;
     }
 
-    var sorted = false;
+    let sorted = false;
     while (!sorted) {
       sorted = true;
-      for (var i = 1; i < arr.length - 1; i += 2) {
+      for (let i = 1; i < arr.length - 1; i += 2) {
         if (arr[i] > arr[i + 1]) {
           swap(arr, i, i + 1);
           sorted = false;
         }
       }
 
-      for (i = 0; i < arr.length - 1; i += 2) {
+      for (let i = 0; i < arr.length - 1; i += 2) {
         if (arr[i] > arr[i + 1]) {
           swap(arr, i, i + 1);
           sorted = false;

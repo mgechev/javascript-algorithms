@@ -1,4 +1,4 @@
-var quicksort =
+let quicksort =
   require('../../src/sorting/3-way-string-quicksort.js').quicksort;
 
 describe('Most-Significant Digit', function () {
@@ -9,14 +9,14 @@ describe('Most-Significant Digit', function () {
   });
 
   it('should work with arrays with a single element', function () {
-    var arr = ['a'];
+    let arr = ['a'];
     quicksort(arr);
     expect(arr.length).toBe(1);
     expect(arr[0]).toBe('a');
   });
 
   it('should work with arrays with equally length strings', function () {
-    var arr = ['bb', 'aa', 'cc'];
+    let arr = ['bb', 'aa', 'cc'];
     quicksort(arr);
     expect(arr.length).toBe(3);
     expect(arr[0]).toBe('aa');
@@ -25,7 +25,7 @@ describe('Most-Significant Digit', function () {
   });
 
   it('should work with arrays with differently length strings', function () {
-    var arr = ['bb', 'aaa', 'a', 'aa'];
+    let arr = ['bb', 'aaa', 'a', 'aa'];
     quicksort(arr);
     expect(arr.length).toBe(4);
     expect(arr[0]).toBe('a');

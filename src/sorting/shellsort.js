@@ -5,9 +5,9 @@
     return a - b;
   }
 
-  var shellSort = (function () {
+  let shellSort = (function () {
 
-    var gaps = [701, 301, 132, 57, 23, 10, 4, 1];
+    let gaps = [701, 301, 132, 57, 23, 10, 4, 1];
 
     /**
      * Shellsort which uses the gaps 701, 301, 132, 57, 23, 10, 4, 1 and
@@ -30,13 +30,14 @@
     return function (array, cmp) {
       cmp = cmp || compare;
 
-      var gap;
-      var current;
-      for (var k = 0; k < gaps.length; k += 1) {
+      let gap;
+      let current;
+      let j;
+      for (let k = 0; k < gaps.length; k += 1) {
         gap = gaps[k];
-        for (var i = gap; i < array.length; i += gap) {
+        for (let i = gap; i < array.length; i += gap) {
           current = array[i];
-          for (var j = i;
+          for (j = i;
               j >= gap && cmp(array[j - gap], current) > 0; j -= gap) {
             array[j] = array[j - gap];
           }

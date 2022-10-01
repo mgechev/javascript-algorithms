@@ -18,8 +18,8 @@
    * console.log(primeFactorTree(600851475143)); // [71, 839, 1471, 6857]
    */
   exports.primeFactorTree = function (number) {
-    var array = [];
-    var s = 6;
+    let array = [];
+    let s = 6;
     while (number > 1 && number % 2 === 0) {
       number /= 2;
       array.push(2);
@@ -29,8 +29,8 @@
       array.push(3);
     }
     while (number > 4) {
-      var p = s - 1;
-      var q = s + 1;
+      let p = s - 1;
+      let q = s + 1;
       while (number > 4 && number % p === 0) {
         number /= p;
         array.push(p);

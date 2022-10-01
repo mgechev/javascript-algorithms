@@ -1,11 +1,11 @@
 (function (exports) {
   'use strict';
 
-  var minkowskiDistance = (function () {
+  let minkowskiDistance = (function () {
 
     function chebyshevDistance (x, y, lx, p, mathfn) {
-      var ret = -p;
-      var i;
+      let ret = -p;
+      let i;
 
       for (i = 0; i < lx; i += 1) {
         ret = mathfn(ret, Math.abs(x[i] - y[i]));
@@ -15,8 +15,8 @@
     }
 
     function minkowskiDistance (x, lx, y, ly, p) {
-      var d;
-      var i;
+      let d;
+      let i;
 
       if (lx !== ly) {
         throw 'Both vectors should have same dimension';

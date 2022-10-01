@@ -1,6 +1,6 @@
-var tj = require('../../../src/graphs/others/tarjan-connected-components').tarjanConnectedComponents;
+let tj = require('../../../src/graphs/others/tarjan-connected-components').tarjanConnectedComponents;
 
-var nonConnected = {
+let nonConnected = {
   v1: [],
   v2: [],
   v3: [],
@@ -8,7 +8,7 @@ var nonConnected = {
   v5: []
 };
 
-var cyclicGraph = {
+let cyclicGraph = {
   v1: ['v2'],
   v2: ['v3'],
   v3: ['v4'],

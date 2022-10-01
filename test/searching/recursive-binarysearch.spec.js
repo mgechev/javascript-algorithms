@@ -1,4 +1,4 @@
-var binarySearch =
+let binarySearch =
   require('../../src/searching/recursive-binarysearch').binarySearch;
 
 describe('Binary search', function () {

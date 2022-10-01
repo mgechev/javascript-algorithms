@@ -31,7 +31,7 @@
     const onStack = {};
     const result = [];
     const stack = [];
-    var index = 1;
+    let index = 1;
 
     const connectedComponent = function (node) {
       stack.push(node);
@@ -50,7 +50,7 @@
       // This is a "root" node
       const cc = [];
       if (indexes[node] === lowIndexes[node]) {
-        var current;
+        let current;
         do {
           current = stack.pop();
           onStack[current] = false;

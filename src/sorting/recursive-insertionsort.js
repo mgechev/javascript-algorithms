@@ -34,7 +34,10 @@
       return array;
     }
     recursiveInsertionSort(array, cmp, max - 1);
-    for (var i = max - 1, current = array[max];
+
+    let i;
+    let current;
+    for (i = max - 1, current = array[max];
         i >= 0 && cmp(current, array[i]) < 0; i -= 1) {
       array[i + 1] = array[i];
     }

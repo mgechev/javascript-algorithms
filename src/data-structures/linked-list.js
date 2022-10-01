@@ -81,11 +81,11 @@
    * @param {Object} data Data which should be added.
    */
   exports.LinkedList.prototype.push = function (data) {
-    var node = new exports.Node(data);
+    let node = new exports.Node(data);
     if (this.first === null) {
       this.first = this.last = node;
     } else {
-      var temp = this.last;
+      let temp = this.last;
       this.last = node;
       node.prev = temp;
       temp.next = node;
@@ -100,11 +100,11 @@
    * @param {Object} data Data which should be added.
    */
   exports.LinkedList.prototype.unshift = function (data) {
-    var node = new exports.Node(data);
+    let node = new exports.Node(data);
     if (this.first === null) {
       this.first = this.last = node;
     } else {
-      var temp = this.first;
+      let temp = this.first;
       this.first = node;
       node.next = temp;
       temp.prev = node;
@@ -119,7 +119,7 @@
    * @param {Function} cb Callback which should be executed on each node.
    */
   exports.LinkedList.prototype.inorder = function (cb) {
-    var temp = this.first;
+    let temp = this.first;
     while (temp) {
       cb(temp);
       temp = temp.next;
@@ -138,11 +138,11 @@
     if (this.first === null) {
       return false;
     }
-    var temp = this.first;
-    var next;
-    var prev;
+    let temp = this.first;
+    let next;
+    let prev;
     while (temp) {
-      var dataFound = equals ? equals(temp.data, data) : temp.data === data;
+      let dataFound = equals ? equals(temp.data, data) : temp.data === data;
       if (dataFound) {
         next = temp.next;
         prev = temp.prev;
@@ -173,8 +173,8 @@
    * @return {Boolean} Returns true if linked list contains cycle.
    */
   exports.LinkedList.prototype.hasCycle = function () {
-    var fast = this.first;
-    var slow = this.first;
+    let fast = this.first;
+    let slow = this.first;
     while (true) {
       if (fast === null) {
         return false;
@@ -202,7 +202,7 @@
     if (this.last === null) {
       return null;
     }
-    var temp = this.last;
+    let temp = this.last;
     this.last = this.last.prev;
     return temp;
   };
@@ -218,7 +218,7 @@
     if (this.first === null) {
       return null;
     }
-    var temp = this.first;
+    let temp = this.first;
     this.first = this.first.next;
     return temp;
   };
@@ -246,7 +246,7 @@
     inverse(this.first, this.first.next);
     this.first.prev = this.first.next;
     this.first.next = null;
-    var temp = this.first;
+    let temp = this.first;
     this.first = this.last;
     this.last = temp;
   };
@@ -261,8 +261,8 @@
     if (!this.first || !this.first.next) {
       return;
     }
-    var current = this.first
-    var next
+    let current = this.first
+    let next
 
     do {
       next = current.next
@@ -271,7 +271,7 @@
       current = next
     } while (next)
 
-    var tmp = this.first
+    let tmp = this.first
     this.first = this.last
     this.last = tmp
   };

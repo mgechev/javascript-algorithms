@@ -1,4 +1,4 @@
-var sieveOfEratosthenes =
+let sieveOfEratosthenes =
   require('../../src/primes/sieve-of-eratosthenes').sieveOfEratosthenes;
 
 describe('Sieve Of Eratosthenes', function () {
@@ -16,8 +16,8 @@ describe('Sieve Of Eratosthenes', function () {
   });
 
   it('sum of prime numbers up to 2000000 limit should be 142913828922', function () {
-    var sieve = sieveOfEratosthenes(2000000);
-    var sumOfPrimes = sieve.reduce(function (previousValue, currentValue) {
+    let sieve = sieveOfEratosthenes(2000000);
+    let sumOfPrimes = sieve.reduce(function (previousValue, currentValue) {
       return previousValue + currentValue;
     });
 

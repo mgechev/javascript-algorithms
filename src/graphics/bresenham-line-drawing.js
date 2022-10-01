@@ -20,13 +20,13 @@
    * @param  {function} draw Optional custom drawing function.
    */
   function drawLine(x1, y1, x2, y2, draw) {
-    var drawPointStrategy = draw || drawPoint;
-    var dx = Math.abs(x2 - x1);
-    var dy = Math.abs(y2 - y1);
-    var cx = (x1 < x2) ? 1 : -1;
-    var cy = (y1 < y2) ? 1 : -1;
-    var error = dx - dy;
-    var doubledError;
+    let drawPointStrategy = draw || drawPoint;
+    let dx = Math.abs(x2 - x1);
+    let dy = Math.abs(y2 - y1);
+    let cx = (x1 < x2) ? 1 : -1;
+    let cy = (y1 < y2) ? 1 : -1;
+    let error = dx - dy;
+    let doubledError;
 
     while (x1 !== x2 || y1 !== y2) {
       drawPointStrategy(x1, y1);

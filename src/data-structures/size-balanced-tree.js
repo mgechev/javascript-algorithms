@@ -89,7 +89,7 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
     if (node === Nil) {
       return node;
     }
-    var savedNode = node;
+    let savedNode = node;
     if (leftChild) {
       if (node.left.left.size > node.right.size) {
         node = RightRotate(node, node.left);
@@ -117,7 +117,7 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
 
   function maintainSizeBalancedTree(node) {
     while (node.parent !== Nil) {
-      var childNode = node;
+      let childNode = node;
       node = node.parent;
       if (node.left === childNode) {
         node = maintain(node, true);
@@ -147,7 +147,7 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
    * @public
    * @constructor
    */
-  var SBTree = function () {};
+  let SBTree = function () {};
 
   SBTree.prototype = {
     _root: Nil,
@@ -160,11 +160,11 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
     },
 
     binarySearch: function (cmp, value) {
-      var left = -1;
-      var right = this.size;
+      let left = -1;
+      let right = this.size;
       while (left + 1 < right) {
-        var middle = (left + right) >> 1; // jshint ignore:line
-        var result = cmp(this.get(middle).value, value);
+        let middle = (left + right) >> 1; // jshint ignore:line
+        let result = cmp(this.get(middle).value, value);
         if (result <= 0) {
           left = middle;
         } else {
@@ -183,9 +183,9 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
   };
 
   SBTree.prototype.getIndex = function (node) {
-    var index = node.left.size;
+    let index = node.left.size;
     while (node !== this._root) {
-      var parent = node.parent;
+      let parent = node.parent;
       if (parent.right === node) {
         index += parent.left.size + 1;
       }
@@ -195,7 +195,7 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
   };
 
   SBTree.prototype.shiftDown = function (node) {
-    var direction = 0;
+    let direction = 0;
     while (true) {
       if (node.left !== Nil && node.right !== Nil) {
         switch (direction) {
@@ -218,7 +218,7 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
   };
 
   SBTree.prototype.insertLeafNode = function (node) {
-    var parent = node.parent;
+    let parent = node.parent;
     while (parent !== Nil) {
       parent.size = parent.size + 1;
       parent = parent.parent;
@@ -226,7 +226,7 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
   };
 
   SBTree.prototype.removeLeafNode = function (node) {
-    var parent = node.parent;
+    let parent = node.parent;
     while (parent !== Nil) {
       parent.size = parent.size - 1;
       parent = parent.parent;
@@ -234,8 +234,8 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
   };
 
   SBTree.prototype.insert = function (pos, value) {
-    var node = Nil;
-    var newNode = new Node(value, Nil, Nil, Nil, 1);
+    let node = Nil;
+    let newNode = new Node(value, Nil, Nil, Nil, 1);
     if (pos === this.size) {
       if (pos > 0) {
         node = findNodeAtPos(this._root, pos - 1);
@@ -268,7 +268,7 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
 
   SBTree.prototype.removeNode = function (node) {
     this.shiftDown(node);
-    var maintainNode = node.parent;
+    let maintainNode = node.parent;
     if (maintainNode.left === node) {
       maintainNode.left = Nil;
     } else if (maintainNode.right === node) {
@@ -283,7 +283,7 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
     if (pos >= this._root.size) {
       return Nil; // There is no element to remove
     }
-    var node = findNodeAtPos(this._root, pos);
+    let node = findNodeAtPos(this._root, pos);
     return this.removeNode(node);
   };
 
@@ -304,7 +304,7 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
    * @param {Node} right Right node.
    * @param {Number} size Node's, means the Node count of this  .
    */
-  var NodeConstructor = function (value, parent, left, right, size) {
+  let NodeConstructor = function (value, parent, left, right, size) {
     this.value = value;
     this.parent = parent;
     this.left = left;
@@ -312,8 +312,8 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
     this.size = size;
   };
 
-  var createNil = function (Node, value) {
-    var Nil = new Node(value, null, null, null, 0);
+  let createNil = function (Node, value) {
+    let Nil = new Node(value, null, null, null, 0);
     Nil.parent = Nil;
     Nil.left = Nil;
     Nil.right = Nil;
@@ -326,14 +326,14 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
    * @private
    * @method
    */
-  var updateSize = function () {
+  let updateSize = function () {
     this.size = this.left.size + this.right.size + 1;
   };
 
   // node, childNode must not be Nil,
   // if the childNode turn out to be the root, the parent should be Nil
-  var updateChild = function (node, childNode) {
-    var parent = node.parent;
+  let updateChild = function (node, childNode) {
+    let parent = node.parent;
     node.parent = childNode;
     childNode.parent = parent;
 
@@ -348,13 +348,13 @@ function CreateSBTreeClass (Node, Nil, updateChild) {
     } // otherwise parent is Nil
   };
 
-  var Node = function () {
+  let Node = function () {
     NodeConstructor.apply(this, arguments);
   };
 
   Node.prototype.updateSize = updateSize;
 
-  var Nil = createNil(Node, null);
+  let Nil = createNil(Node, null);
 
   exports.NodeConstructor = NodeConstructor;
   exports.createNil = createNil;

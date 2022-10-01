@@ -1,4 +1,4 @@
-var bs =
+let bs =
   require('../../src/sorting/bucketsort').bucketSort;
 
 describe('bucketsort', function () {

@@ -1,4 +1,4 @@
-var maxSubArray =
+let maxSubArray =
   require('../../src/searching/maximum-subarray-divide-and-conquer')
   .maxSubarray;
 

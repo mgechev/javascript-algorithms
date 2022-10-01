@@ -71,7 +71,7 @@
       this._root = new exports.Node(value, null, null, null);
       return;
     }
-    var insertKey;
+    let insertKey;
     current = current || this._root;
     if (current.value > value) {
       insertKey = '_left';
@@ -253,8 +253,8 @@
       return false;
     }
     if (node._left && node._right) {
-      var min = this._findMin(node._right);
-      var temp = node.value;
+      let min = this._findMin(node._right);
+      let temp = node.value;
       node.value = min.value;
       min.value = temp;
       return this.remove(min);
@@ -363,13 +363,13 @@
    * @returns {Number} The longest path in the BST.
    */
   exports.BinaryTree.prototype.getDiameter = function () {
-    var getDiameter = function (root) {
+    const getDiameter = function (root) {
       if (!root) {
         return 0;
       }
-      var leftHeight = this._getHeight(root._left);
-      var rightHeight = this._getHeight(root._right);
-      var path = leftHeight + rightHeight + 1;
+      let leftHeight = this._getHeight(root._left);
+      let rightHeight = this._getHeight(root._right);
+      let path = leftHeight + rightHeight + 1;
       return Math.max(path, getDiameter(root._left), getDiameter(root._right));
     }.bind(this);
     return getDiameter(this._root);
@@ -426,10 +426,10 @@
    * @returns {Node} The lowest common ancestor of the two nodes or null.
    */
   exports.BinaryTree.prototype._lowestCommonAncestor = function (firstNode, secondNode, current) {
-    var firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
-    var secondNodeInLeft = this._existsInSubtree(secondNode, current._left);
-    var firstNodeInRight = this._existsInSubtree(firstNode, current._right);
-    var secondNodeInRight = this._existsInSubtree(secondNode, current._right);
+    let firstNodeInLeft = this._existsInSubtree(firstNode, current._left);
+    let secondNodeInLeft = this._existsInSubtree(secondNode, current._left);
+    let firstNodeInRight = this._existsInSubtree(firstNode, current._right);
+    let secondNodeInRight = this._existsInSubtree(secondNode, current._right);
     if ((firstNodeInLeft && secondNodeInRight) ||
         (firstNodeInRight && secondNodeInLeft)) {
       return current;

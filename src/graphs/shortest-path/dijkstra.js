@@ -1,13 +1,13 @@
 (function (exports) {
   'use strict';
 
-  var dijkstra = (function () {
+  let dijkstra = (function () {
 
-    var Heap = require('../../data-structures/heap.js').Heap;
-    var current;
-    var visited;
-    var distance;
-    var unvisited;
+    let Heap = require('../../data-structures/heap.js').Heap;
+    let current;
+    let visited;
+    let distance;
+    let unvisited;
 
     /**
      * Creates a new node instance.
@@ -42,12 +42,12 @@
      * @param {Array} graph A distance matrix of the graph.
      */
     function init(src, graph) {
-      var currentTemp;
+      let currentTemp;
       current = {};
       visited = [];
       distance = [];
       unvisited = new Heap(compareNodesDistance);
-      for (var i = 0; i < graph.length; i += 1) {
+      for (let i = 0; i < graph.length; i += 1) {
         currentTemp = new Node();
         if (src === i) {
           currentTemp.distance = 0;
@@ -92,10 +92,10 @@
      * var shortestDist = dijkstra(0, 2, distMatrix); // 9
      */
     return function (src, dest, graph) {
-      var tempDistance = 0;
+      let tempDistance = 0;
       init(src, graph);
       while (current.node !== dest && isFinite(current.distance)) {
-        for (var i = 0; i < graph.length; i += 1) {
+        for (let i = 0; i < graph.length; i += 1) {
           if (current.node !== i && //if it's not the current node
             !visited[i] && //and if we haven't visited this node
             //and this node is sibling of the current...

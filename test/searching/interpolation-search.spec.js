@@ -1,4 +1,4 @@
-var interpolationSearch = require('../../src/searching/interpolation-search')
+let interpolationSearch = require('../../src/searching/interpolation-search')
   .interpolationSearch;
 
 describe('Interpolation search', function() {

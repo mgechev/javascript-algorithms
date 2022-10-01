@@ -1,4 +1,4 @@
-var ts = require('../../../src/graphs/others/topological-sort').topologicalSort;
+let ts = require('../../../src/graphs/others/topological-sort').topologicalSort;
 
 describe('Topological sort', function () {
   'use strict';
@@ -12,7 +12,7 @@ describe('Topological sort', function () {
 
   it('should give the proper topological order', function () {
     expect(ts({ v1: [] })).toEqual(['v1']);
-    var graph = {
+    let graph = {
       v1: ['v2'],
       v2: ['v3'],
       v3: []

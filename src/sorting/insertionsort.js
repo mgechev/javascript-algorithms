@@ -25,9 +25,9 @@
    */
   function insertionSort(array, cmp) {
     cmp = cmp || compare;
-    var current;
-    var j;
-    for (var i = 1; i < array.length; i += 1) {
+    let current;
+    let j;
+    for (let i = 1; i < array.length; i += 1) {
       current = array[i];
       j = i - 1;
       while (j >= 0 && cmp(array[j], current) > 0) {

@@ -44,7 +44,7 @@
 
   'use strict';
 
-  var Heap = require('../../data-structures/heap').Heap;
+  let Heap = require('../../data-structures/heap').Heap;
   exports.Vertex = require('../../data-structures/vertex').Vertex;
   exports.Edge = require('../../data-structures/edge').Edge;
 
@@ -69,7 +69,7 @@
    * @return {Graph} Graph which is the minimum spanning tree.
    */
   exports.Graph.prototype.prim = (function () {
-    var queue;
+    let queue;
 
     /**
      * Used for comparitions in the heap
@@ -96,12 +96,12 @@
 
     return function () {
       init.call(this);
-      var inTheTree = {};
-      var startVertex = this.edges[0].e.id;
-      var spannigTree = [];
-      var parents = {};
-      var distances = {};
-      var current;
+      let inTheTree = {};
+      let startVertex = this.edges[0].e.id;
+      let spannigTree = [];
+      let parents = {};
+      let distances = {};
+      let current;
       inTheTree[startVertex] = true;
       queue.add({
         node: startVertex,
@@ -111,8 +111,8 @@
         if (inTheTree[e.v.id] && inTheTree[e.e.id]) {
           return;
         }
-        var collection = queue.getCollection();
-        var node;
+        let collection = queue.getCollection();
+        let node;
         if (e.e.id === current) {
           node = e.v.id;
         } else if (e.v.id === current) {
@@ -120,7 +120,7 @@
         } else {
           return;
         }
-        for (var i = 0; i < collection.length; i += 1) {
+        for (let i = 0; i < collection.length; i += 1) {
           if (collection[i].node === node) {
             if (collection[i].distance > e.distance) {
               queue.changeKey(i, {
@@ -140,12 +140,12 @@
         parents[node] = current;
         distances[node] = e.distance;
       };
-      for (var i = 0; i < this.nodesCount - 1; i += 1) {
+      for (let i = 0; i < this.nodesCount - 1; i += 1) {
         current = queue.extract().node;
         inTheTree[current] = true;
         this.edges.forEach(process);
       }
-      for (var node in parents) {
+      for (let node in parents) {
         spannigTree.push(
           new exports.Edge(node, parents[node], distances[node]));
       }

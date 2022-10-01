@@ -1,4 +1,4 @@
-var convexHull = require('../../src/graphics/graham').convexHull;
+let convexHull = require('../../src/graphics/graham').convexHull;
 
 const points = [
   { x: 0, y: 0 },

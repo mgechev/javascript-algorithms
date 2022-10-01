@@ -17,6 +17,7 @@
   },
   "scripts": {
     "build": "gulp build",
+    "lint": "gulp lint",
     "test": "gulp test",
     "deploy": "npm run doc:build && gh-pages -d dist -b gh-pages",
     "doc": "npm run doc:build && npm run doc:view",

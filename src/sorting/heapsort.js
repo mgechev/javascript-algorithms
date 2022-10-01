@@ -5,7 +5,7 @@
     return a - b;
   }
 
-  var heapSort = (function () {
+  let heapSort = (function () {
 
     /**
      * Finds the correct place of given element in given max heap.
@@ -18,9 +18,9 @@
      * @param {function} cmp Comparison function.
      */
     function heapify(array, index, heapSize, cmp) {
-      var left = 2 * index + 1;
-      var right = 2 * index + 2;
-      var largest = index;
+      let left = 2 * index + 1;
+      let right = 2 * index + 2;
+      let largest = index;
 
       if (left < heapSize && cmp(array[left], array[index]) > 0) {
         largest = left;
@@ -31,7 +31,7 @@
       }
 
       if (largest !== index) {
-        var temp = array[index];
+        let temp = array[index];
         array[index] = array[largest];
         array[largest] = temp;
         heapify(array, largest, heapSize, cmp);
@@ -47,7 +47,7 @@
      * @return {Array} array Array turned into max heap.
      */
     function buildMaxHeap(array, cmp) {
-      for (var i = Math.floor(array.length / 2); i >= 0; i -= 1) {
+      for (let i = Math.floor(array.length / 2); i >= 0; i -= 1) {
         heapify(array, i, array.length, cmp);
       }
       return array;
@@ -74,10 +74,10 @@
      */
     return function (array, cmp) {
       cmp = cmp || comparator;
-      var size = array.length;
-      var temp;
+      let size = array.length;
+      let temp;
       buildMaxHeap(array, cmp);
-      for (var i = array.length - 1; i > 0; i -= 1) {
+      for (let i = array.length - 1; i > 0; i -= 1) {
         temp = array[0];
         array[0] = array[i];
         array[i] = temp;

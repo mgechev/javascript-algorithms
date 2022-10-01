@@ -1,4 +1,4 @@
-var sieveOfAtkins =
+let sieveOfAtkins =
   require('../../src/primes/sieve-of-atkins').sieveOfAtkins;
 
 describe('Sieve Of Atkins', function () {
@@ -16,8 +16,8 @@ describe('Sieve Of Atkins', function () {
   });
 
   it('sum of prime numbers up to 2000000 limit should be 142913828922', function () {
-    var sieve = sieveOfAtkins(2000000);
-    var sumOfPrimes = sieve.reduce(function (previousValue, currentValue) {
+    let sieve = sieveOfAtkins(2000000);
+    let sumOfPrimes = sieve.reduce(function (previousValue, currentValue) {
       return previousValue + currentValue;
     });
 

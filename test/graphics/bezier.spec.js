@@ -1,7 +1,7 @@
-var bezier = require('../../src/graphics/bezier');
-var linearBezier = bezier.linearBezier;
-var quadraticBezier = bezier.quadraticBezier;
-var cubicBezier = bezier.cubicBezier;
+let bezier = require('../../src/graphics/bezier');
+let linearBezier = bezier.linearBezier;
+let quadraticBezier = bezier.quadraticBezier;
+let cubicBezier = bezier.cubicBezier;
 
 // see https://www.geogebra.org/m/ek7RHvuc for graphical representation of test values
 

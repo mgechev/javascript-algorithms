@@ -1,14 +1,14 @@
 (function (exports) {
   'use strict';
 
-  var kmp = (function () {
+  let kmp = (function () {
     function builtKMPTable(str) {
-      var res = [];
-      var len;
-      var front;
-      var end;
-      var found;
-      for (var i = 1; i <= str.length; i += 1) {
+      let res = [];
+      let len;
+      let front;
+      let end;
+      let found;
+      for (let i = 1; i <= str.length; i += 1) {
         front = Math.max(1, i - ((res[i - 2] || 0) + 1));
         end = Math.min(i - 1, (res[i - 2] || 0) + 1);
         found = false;
@@ -49,9 +49,9 @@
       if (str === substr) {
         return 0;
       }
-      var table = builtKMPTable(substr);
-      var i = 0;
-      var j = 0;
+      let table = builtKMPTable(substr);
+      let i = 0;
+      let j = 0;
       while (i < str.length) {
         if (str[i] === substr[j]) {
           i += 1;

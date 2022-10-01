@@ -1,4 +1,4 @@
-var kruskal = require('../../../src/graphs/spanning-trees/kruskal');
+let kruskal = require('../../../src/graphs/spanning-trees/kruskal');
 
 describe('Kruskal', function() {
   'use strict';
@@ -12,16 +12,16 @@ describe('Kruskal', function() {
   });
 
   it('should work with an empty graph', function() {
-    var graph = new kruskal.Graph([], 0);
-    var spanningTree = graph.kruskal();
+    let graph = new kruskal.Graph([], 0);
+    let spanningTree = graph.kruskal();
 
     expect(spanningTree.edges.length).toEqual(0);
   });
 
   it('should correctly compute general example', function() {
-    var nodes = [];
-    var edges = [];
-    var i;
+    let nodes = [];
+    let edges = [];
+    let i;
     for (i = 0; i < 7; i += 1) {
       nodes[i] = new kruskal.Vertex(i);
     }
@@ -38,12 +38,12 @@ describe('Kruskal', function() {
     edges.push(new kruskal.Edge(nodes[3], nodes[4], 15));
     edges.push(new kruskal.Edge(nodes[4], nodes[5], 8));
 
-    var graph = new kruskal.Graph(edges);
-    var spanningTree = graph.kruskal();
+    let graph = new kruskal.Graph(edges);
+    let spanningTree = graph.kruskal();
 
     expect(spanningTree.edges.length).toEqual(6);
 
-    var sum = spanningTree.edges.reduce(function(acc, edge) {
+    let sum = spanningTree.edges.reduce(function(acc, edge) {
       return acc += edge.distance;
     }, 0);
 

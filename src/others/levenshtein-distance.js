@@ -1,13 +1,13 @@
 (function (exports) {
   'use strict';
 
-  var levenshteinDistance = (function () {
+  let levenshteinDistance = (function () {
 
     function levenshteinDistance (s, ls, t, lt) {
-      var memo = [];
-      var currRowMemo;
-      var i;
-      var k;
+      let memo = [];
+      let currRowMemo;
+      let i;
+      let k;
 
       for (k = 0; k <= lt; k += 1) {
         memo[k] = k;

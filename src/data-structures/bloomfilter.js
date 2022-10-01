@@ -29,9 +29,9 @@
    */
   function hashFnv32a(str, asString, seed) {
     /*jshint bitwise:false */
-    var i;
-    var l;
-    var hval = seed === undefined ? 0x811c9dc5 : seed;
+    let i;
+    let l;
+    let hval = seed === undefined ? 0x811c9dc5 : seed;
 
     for (i = 0, l = str.length; i < l; i = i + 1) {
       hval ^= str.charCodeAt(i);
@@ -92,9 +92,9 @@
     }
 
     // Calculate the offset within the int
-    var intOffset = index % 32;
-    var arrayOffset = Math.floor(index / 32); // the offset for the array
-    var mask = 1 << intOffset;
+    let intOffset = index % 32;
+    let arrayOffset = Math.floor(index / 32); // the offset for the array
+    let mask = 1 << intOffset;
     return (mask & this.intArray[arrayOffset]) !== 0;
   };
 
@@ -110,9 +110,9 @@
     }
 
     // Calculate the offset within the int
-    var intOffset = index % 32;
-    var arrayOffset = Math.floor(index / 32); // the offset for the array
-    var mask = 1 << intOffset;
+    let intOffset = index % 32;
+    let arrayOffset = Math.floor(index / 32); // the offset for the array
+    let mask = 1 << intOffset;
     if ((mask & this.intArray[arrayOffset]) !== 0) {
       return 1;
     } else {
@@ -132,9 +132,9 @@
       throw new Error('Index out of bound')
     }
 
-    var intOffset = index % 32; //calculate the offset within the int
-    var arrayOffset = Math.floor(index / 32); // the offset for the array
-    var mask = 1 << intOffset;
+    let intOffset = index % 32; //calculate the offset within the int
+    let arrayOffset = Math.floor(index / 32); // the offset for the array
+    let mask = 1 << intOffset;
 
     // Check trutyness
     if (value) {
@@ -163,7 +163,7 @@
     this.errorRate = errorRate;
 
     // Calculate the optimal size of the bitmap
-    var numBit = Math.ceil(
+    let numBit = Math.ceil(
       (capacity * Math.log(1.0 / errorRate)) / Math.pow(Math.log(2), 2)
     );
 
@@ -189,12 +189,12 @@
    */
   exports.Bloomfilter.prototype.get = function(value) {
     value = String(value); // make it string
-    var hashes = this.hashFunctions.map(function(hashFct) {
+    let hashes = this.hashFunctions.map(function(hashFct) {
       return hashFct(value);
     });
 
     // if one of the bits is not set
-    for (var i = 0; i < hashes.length; i = i + 1) {
+    for (let i = 0; i < hashes.length; i = i + 1) {
       if (this.bitmap.exists(hashes[i]) === false) {
         return false;
       }
@@ -209,12 +209,12 @@
    */
   exports.Bloomfilter.prototype.set = function(value) {
     value = String(value); // make it string
-    var hashes = this.hashFunctions.map(function(hashFct) {
+    let hashes = this.hashFunctions.map(function(hashFct) {
       return hashFct(value);
     });
 
     // Set all the corresponding bits
-    for (var i = 0; i < hashes.length; i = i + 1) {
+    for (let i = 0; i < hashes.length; i = i + 1) {
       this.bitmap.set(hashes[i], true);
     }
   };

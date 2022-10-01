@@ -4,7 +4,7 @@
    */
   'use strict';
 
-  var ll = require('../data-structures/linked-list.js');
+  let ll = require('../data-structures/linked-list.js');
 
   function compare(a, b) {
     return a - b;
@@ -34,7 +34,7 @@
     if (Math.abs(end - start) <= 1) {
       return [];
     }
-    var middle = Math.ceil((start + end) / 2);
+    let middle = Math.ceil((start + end) / 2);
 
     mergeSort(array, cmp, start, middle);
     mergeSort(array, cmp, middle, end);
@@ -63,14 +63,14 @@
    * }, 0, 4, 7);
    */
   mergeSort.merge = function (array, cmp, start, middle, end) {
-    var left = new ll.LinkedList();
-    var right = new ll.LinkedList();
+    let left = new ll.LinkedList();
+    let right = new ll.LinkedList();
 
-    var leftSize = middle - start;
-    var rightSize = end - middle;
-    var maxSize = Math.max(leftSize, rightSize);
-    var size = end - start;
-    var i;
+    let leftSize = middle - start;
+    let rightSize = end - middle;
+    let maxSize = Math.max(leftSize, rightSize);
+    let size = end - start;
+    let i;
 
     for (i = 0; i < maxSize; i += 1) {
       if (i < leftSize) {

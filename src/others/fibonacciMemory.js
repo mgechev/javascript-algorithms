@@ -16,17 +16,17 @@
  * @module others/fibonacciMemory
 */
 (function (exports) {
-    'use strict';
+  'use strict';
 
-    function fibonacciMemory(n) {
-        var i = 0;
-        var aux = [0, 1];
-        while (n != i) {
-            aux[i + 2] = aux[i] + aux[i + 1];
-            i++;
-        }
-        return aux[i];
+  function fibonacciMemory(n) {
+    let i = 0;
+    let aux = [0, 1];
+    while (n !== i) {
+      aux[i + 2] = aux[i] + aux[i + 1];
+      i += 1;
     }
+    return aux[i];
+  }
 
-    exports.fibonacciMemory = fibonacciMemory;
+  exports.fibonacciMemory = fibonacciMemory;
 })(typeof window === 'undefined' ? module.exports : window);

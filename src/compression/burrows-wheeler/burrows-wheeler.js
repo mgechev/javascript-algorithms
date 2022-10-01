@@ -29,12 +29,12 @@
    */
   exports.burrowsWheeler.encode = function(str) {
     str = '$' + str;
-    var combinations = [];
+    let combinations = [];
     for (let i = 0; i < str.length; i += 1) {
       combinations.push(str.substring(i) + str.substring(0, i));
     }
-    var sorted = combinations.sort();
-    var result = [];
+    let sorted = combinations.sort();
+    let result = [];
     for (let i = 0; i < sorted.length; i += 1) {
       result.push(combinations[i][str.length - 1]);
     }
@@ -45,11 +45,11 @@
     const sortedCharSequence = encodedStr.split('').sort().join('');
     const leftSide = {};
     const rightSide = {};
-    var maxEachCharLeft = {};
-    var maxEachCharRight = {};
+    let maxEachCharLeft = {};
+    let maxEachCharRight = {};
 
     for (let i = 0; i < encodedStr.length; i += 1) {
-      var idLeft = sortedCharSequence[i];
+      let idLeft = sortedCharSequence[i];
       if (idLeft in maxEachCharLeft) {
         maxEachCharLeft[idLeft] = maxEachCharLeft[idLeft] + 1;
       } else {
@@ -57,7 +57,7 @@
       }
       idLeft += String(maxEachCharLeft[idLeft]);
 
-      var idRight = encodedStr[i];
+      let idRight = encodedStr[i];
       if (idRight in maxEachCharRight) {
         maxEachCharRight[idRight] = maxEachCharRight[idRight] + 1;
       } else {
@@ -68,10 +68,10 @@
       leftSide[idLeft] = {char: sortedCharSequence[i], right: idRight};
       rightSide[idRight] = {char: encodedStr[i], left: idRight};
     }
-    var result = '';
-    var firstChar = sortedCharSequence[0];
-    var searchChar = firstChar + '1';
-    var endChar = searchChar;
+    let result = '';
+    let firstChar = sortedCharSequence[0];
+    let searchChar = firstChar + '1';
+    let endChar = searchChar;
     while (rightSide[leftSide[searchChar].right].left !== endChar) {
       result     += leftSide[searchChar].char;
       searchChar = rightSide[leftSide[searchChar].right].left;

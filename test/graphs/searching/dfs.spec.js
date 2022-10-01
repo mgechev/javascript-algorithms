@@ -1,4 +1,4 @@
-var dfs = require('../../../src/graphs/searching/dfs').dfs;
+let dfs = require('../../../src/graphs/searching/dfs').dfs;
 
 describe('dfs', function () {
   'use strict';

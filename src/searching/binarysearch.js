@@ -24,11 +24,11 @@
   function binarySearch(array, value, key) {
     key = !key ? id : typeof key === 'string' ? get(key) : key;
     value = key(value);
-    var middle = Math.floor(array.length / 2);
-    var left = 0;
-    var right = array.length;
+    let middle = Math.floor(array.length / 2);
+    let left = 0;
+    let right = array.length;
     while (right >= left) {
-      var middleValue = key(array[middle]);
+      let middleValue = key(array[middle]);
       if (middleValue === value) {
         return middle;
       } else if (middleValue > value) {

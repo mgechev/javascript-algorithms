@@ -1,4 +1,4 @@
-var maxSubArray = require('../../src/searching/maximum-subarray').maxSubarray;
+let maxSubArray = require('../../src/searching/maximum-subarray').maxSubarray;
 
 describe('Maximum subarray', function() {
   'use strict';

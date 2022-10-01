@@ -1,10 +1,10 @@
 (function (exports) {
   'use strict';
 
-  var bfs = (function () {
+  let bfs = (function () {
 
     function buildPath(parents, targetNode) {
-      var result = [targetNode];
+      let result = [targetNode];
       while (parents[targetNode] !== null) {
         targetNode = parents[targetNode];
         result.push(targetNode);
@@ -35,10 +35,10 @@
      * var shortestPath = bfs(graph, 1, 5); // [1, 2, 3, 5]
      */
     return function (graph, startNode, targetNode) {
-      var parents = [];
-      var queue = [];
-      var visited = [];
-      var current;
+      let parents = [];
+      let queue = [];
+      let visited = [];
+      let current;
       queue.push(startNode);
       parents[startNode] = null;
       visited[startNode] = true;
@@ -47,7 +47,7 @@
         if (current === targetNode) {
           return buildPath(parents, targetNode);
         }
-        for (var i = 0; i < graph.length; i += 1) {
+        for (let i = 0; i < graph.length; i += 1) {
           if (i !== current && graph[current][i] && !visited[i]) {
             parents[i] = current;
             visited[i] = true;

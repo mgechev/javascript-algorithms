@@ -1,4 +1,4 @@
-var jumpSearch = require('../../src/searching/jump-search').jumpSearch;
+let jumpSearch = require('../../src/searching/jump-search').jumpSearch;
 
 describe('Jump search', function() {
   'use strict';
