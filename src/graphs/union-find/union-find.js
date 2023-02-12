@@ -1,7 +1,7 @@
 const unionFind = (edges) => {
     let parent = [];
 
-    for (let i = 0; i <= edges.length; i++) {
+    for (let i = 0; i <= edges.length; i += 1) {
         parent.push(i);
     }
 
@@ -22,11 +22,3 @@ const unionFind = (edges) => {
         parent[parentU] = parentV;
     };
 };
-
-unionFind([
-    [1, 2],
-    [2, 3],
-    [3, 4],
-    [1, 4],
-    [1, 5],
-]);
