@@ -4,3 +4,5 @@ npm-debug.log
 debug
 dist
 .idea
+/package-lock.json
+/yarn.lock
