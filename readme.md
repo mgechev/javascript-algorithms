@@ -1,7 +1,5 @@
 ## About
 
-[![Build Status](https://travis-ci.org/mgechev/javascript-algorithms.svg?branch=Jakehp-patch-1)](https://travis-ci.org/mgechev/javascript-algorithms)
-
 This repository contains JavaScript implementations of famous computer science algorithms.
 
 API reference with usage examples available
