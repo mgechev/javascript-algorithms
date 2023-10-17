@@ -1,6 +1,5 @@
 (function (exports) {
-
-  'use strict';
+  "use strict";
 
   /**
    * Shuffle of an array elements.
@@ -19,18 +18,18 @@
    * @return {Array} Shuffled array.
    */
   function shuffle(array) {
-    var arraySize = array.length - 1;
-    var rand;
-    var temp;
+    let arraySize = array.length - 1;
+    let rand;
+    let temp;
     for (var i = arraySize; i >= 0; i -= 1) {
       rand = Math.round(Math.random() * arraySize);
       temp = array[i];
       array[i] = array[rand];
       array[rand] = temp;
     }
+
     return array;
   }
 
   exports.shuffle = shuffle;
-
-}(typeof exports === 'undefined' ? window : exports));
+})(typeof exports === "undefined" ? window : exports);
